@@ -12,6 +12,7 @@
         <activity
             android:name="com.mobileweb3.dvs.android.AppActivity"
             android:exported="true"
+            android:screenOrientation="portrait"
             android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
