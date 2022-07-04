@@ -1,9 +1,13 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="Theme.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@android:color/white</item>
+<!--        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_dvs_icon</item>-->
+        <item name="windowSplashScreenAnimationDuration">500</item>
+
+        <!-- Status bar color. -->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">@color/bank_internal_transparent</item>-->
+<!--        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>-->
     </style>
 
 </resources>
