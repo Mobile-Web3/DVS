@@ -1,4 +1,4 @@
-rootProject.name = "basic_kmm_sample"
+rootProject.name = "DVS"
 
 include(":androidApp")
 include(":shared")
