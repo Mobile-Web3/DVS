@@ -11,7 +11,7 @@ android {
         minSdk = (findProperty("android.minSdk") as String).toInt()
         targetSdk = (findProperty("android.targetSdk") as String).toInt()
 
-        applicationId = "com.mobileweb3.basic_kmm_sample.android"
+        applicationId = "com.mobileweb3.dvs.android"
         versionCode = 1
         versionName = "1.0"
     }

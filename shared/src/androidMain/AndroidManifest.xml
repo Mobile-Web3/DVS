@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mobileweb3.basic_kmm_sample">
+    package="com.mobileweb3.dvs">
 
     <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
