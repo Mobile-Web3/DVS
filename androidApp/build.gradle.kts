@@ -81,6 +81,7 @@ android {
         implementation(libs.activity.compose)
         implementation(libs.accompanist.insets)
         implementation(libs.accompanist.swiperefresh)
+        implementation(libs.accompanist.systemuicontroller)
         //Coroutines
         implementation(libs.kotlinx.coroutines.core)
         implementation(libs.kotlinx.coroutines.android)
