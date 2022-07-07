@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 data class MainState(
-    val validatorModels: List<ValidatorModel>
+    val validatorViewStates: List<ValidatorViewState>
 ) : State
 
 sealed class MainAction : Action {
@@ -26,7 +26,17 @@ sealed class MainSideEffect : Effect {
 
 class MainStore : Store<MainState, MainAction, MainSideEffect>, CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
-    private val state = MutableStateFlow(MainState(emptyList()))
+    private val state =
+        MutableStateFlow(
+            MainState(
+                listOf(
+                    ValidatorViewState(isLoading = true),
+                    ValidatorViewState(isLoading = true),
+                    ValidatorViewState(isLoading = true),
+                    ValidatorViewState(isLoading = true),
+                )
+            )
+        )
     private val sideEffect = MutableSharedFlow<MainSideEffect>()
 
     init {
@@ -52,13 +62,20 @@ class MainStore : Store<MainState, MainAction, MainSideEffect>, CoroutineScope b
 
     private fun loadValidators() {
         launch {
-            delay(2000)
+            delay(3000)
 
-            state.value = MainState(listOf(web34ever))
-
-            delay(2000)
-
-            state.value = MainState(listOf(web34ever, web34ever, web34ever))
+            state.value = MainState(
+                listOf(
+                    ValidatorViewState(isLoading = false, validatorModel = web34ever),
+                    ValidatorViewState(isLoading = false, validatorModel = web34ever),
+                    ValidatorViewState(isLoading = false, validatorModel = web34ever)
+                )
+            )
         }
     }
 }
+
+data class ValidatorViewState(
+    val isLoading: Boolean,
+    val validatorModel: ValidatorModel? = null
+)

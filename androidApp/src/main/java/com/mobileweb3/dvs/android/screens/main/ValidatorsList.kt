@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
 import com.mobileweb3.dvs.app.MainStore
+import com.mobileweb3.dvs.app.ValidatorViewState
 
 @Composable
 fun ValidatorsList(
@@ -30,7 +31,7 @@ fun ValidatorsList(
 ) {
     val state = store.observeState().collectAsState()
 
-    val chunkedList = state.value.validatorModels.chunked(columns)
+    val chunkedList = state.value.validatorViewStates.chunked(columns)
 
     Column(
         modifier = modifier.verticalScroll(scrollState)
@@ -41,10 +42,9 @@ fun ValidatorsList(
                     .fillMaxWidth()
                     .wrapContentHeight()
             ) {
-
-                chunk.forEach { model ->
+                chunk.forEach { validatorViewState ->
                     ValidatorCard(
-                        validatorModel = model,
+                        validatorViewState = validatorViewState,
                         modifier = Modifier
                             .padding(2.dp)
                             .weight(1f)
