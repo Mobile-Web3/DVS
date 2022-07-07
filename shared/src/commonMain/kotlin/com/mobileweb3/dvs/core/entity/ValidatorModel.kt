@@ -1,6 +1,6 @@
 package com.mobileweb3.dvs.core.entity
 
-data class Validator(
+data class ValidatorModel(
     val title: String,
     val avatar: String,
     val description: String,
