@@ -1,8 +1,11 @@
 package com.mobileweb3.dvs.app
 
+import com.mobileweb3.dvs.core.datasource.mock.web34ever
+import com.mobileweb3.dvs.core.entity.ValidatorModel
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,7 +13,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 data class MainState(
-    val count: Int
+    val validatorModels: List<ValidatorModel>
 ) : State
 
 sealed class MainAction : Action {
@@ -23,8 +26,12 @@ sealed class MainSideEffect : Effect {
 
 class MainStore : Store<MainState, MainAction, MainSideEffect>, CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
-    private val state = MutableStateFlow(MainState(0))
+    private val state = MutableStateFlow(MainState(emptyList()))
     private val sideEffect = MutableSharedFlow<MainSideEffect>()
+
+    init {
+        loadValidators()
+    }
 
     override fun observeState(): StateFlow<MainState> = state
 
@@ -35,19 +42,23 @@ class MainStore : Store<MainState, MainAction, MainSideEffect>, CoroutineScope b
 
         val oldState = state.value
 
-        val newState = when (action) {
-            MainAction.Click -> {
-                val newCount = oldState.count + 1
-                if (newCount % 2 == 0) {
-                    launch { sideEffect.emit(MainSideEffect.Message("value can be divided by 2: $newCount")) }
-                }
-                oldState.copy(count = newCount)
-            }
-        }
+        val newState = oldState
 
         if (newState != oldState) {
             Napier.d(tag = "MainStore", message = "NewState: $newState")
             state.value = newState
+        }
+    }
+
+    private fun loadValidators() {
+        launch {
+            delay(2000)
+
+            state.value = MainState(listOf(web34ever))
+
+            delay(2000)
+
+            state.value = MainState(listOf(web34ever, web34ever, web34ever))
         }
     }
 }
