@@ -18,12 +18,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
-import com.mobileweb3.dvs.app.MainStore
-import com.mobileweb3.dvs.app.ValidatorViewState
+import cafe.adriel.voyager.navigator.LocalNavigator
+import com.mobileweb3.dvs.android.screens.detail.ValidatorDetailsScreen
+import com.mobileweb3.dvs.app.ValidatorListStore
 
 @Composable
 fun ValidatorsList(
-    store: MainStore,
+    store: ValidatorListStore,
     columns: Int = 2,
     modifier: Modifier = Modifier,
     scrollState: ScrollState = rememberScrollState(),
@@ -32,6 +33,8 @@ fun ValidatorsList(
     val state = store.observeState().collectAsState()
 
     val chunkedList = state.value.validatorViewStates.chunked(columns)
+
+    val navigator = LocalNavigator.current
 
     Column(
         modifier = modifier.verticalScroll(scrollState)
@@ -47,7 +50,12 @@ fun ValidatorsList(
                         validatorViewState = validatorViewState,
                         modifier = Modifier
                             .padding(2.dp)
-                            .weight(1f)
+                            .weight(1f),
+                        onValidatorClicked = { model ->
+                            model?.let {
+                                navigator?.push(ValidatorDetailsScreen(it))
+                            }
+                        }
                     )
                 }
 

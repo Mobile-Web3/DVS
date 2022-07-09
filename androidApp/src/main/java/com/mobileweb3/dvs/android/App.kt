@@ -1,7 +1,8 @@
 package com.mobileweb3.dvs.android
 
 import android.app.Application
-import com.mobileweb3.dvs.app.MainStore
+import com.mobileweb3.dvs.app.ValidatorDetailsStore
+import com.mobileweb3.dvs.app.ValidatorListStore
 import com.mobileweb3.dvs.core.create
 import com.mobileweb3.dvs.interactor.MainInteractor
 import org.koin.android.ext.koin.androidContext
@@ -14,7 +15,8 @@ class App : Application() {
 
     private val appModule = module {
         single { MainInteractor.create(get(), BuildConfig.DEBUG) }
-        single { MainStore() }
+        single { ValidatorListStore() }
+        single { ValidatorDetailsStore() }
     }
 
     override fun onCreate() {

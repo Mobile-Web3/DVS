@@ -35,6 +35,7 @@ import com.google.accompanist.placeholder.placeholder
 import com.google.accompanist.placeholder.shimmer
 import com.mobileweb3.dvs.android.utils.applyDefaults
 import com.mobileweb3.dvs.app.ValidatorViewState
+import com.mobileweb3.dvs.core.entity.ValidatorModel
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.glide.GlideImage
 import com.skydoves.landscapist.palette.BitmapPalette
@@ -45,7 +46,8 @@ private val SPACER_HEIGHT = 8.dp
 @Composable
 fun ValidatorCard(
     validatorViewState: ValidatorViewState,
-    modifier: Modifier
+    modifier: Modifier,
+    onValidatorClicked: (ValidatorModel?) -> Unit
 ) {
     var palette by remember { mutableStateOf<Palette?>(null) }
     val backgroundBrush = palette?.let { safePalette ->
@@ -67,9 +69,7 @@ fun ValidatorCard(
                 brush = backgroundBrush,
                 shape = RoundedCornerShape(10.dp)
             )
-            .clickable {
-
-            }
+            .clickable { onValidatorClicked(validatorViewState.validatorModel) }
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),

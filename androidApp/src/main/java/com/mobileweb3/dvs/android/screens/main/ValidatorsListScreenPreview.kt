@@ -3,12 +3,12 @@ package com.mobileweb3.dvs.android.screens.main
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.mobileweb3.dvs.android.ui.AppTheme
-import com.mobileweb3.dvs.app.MainStore
+import com.mobileweb3.dvs.app.ValidatorListStore
 
 @Preview
 @Composable
-private fun MainScreenPreview() {
+private fun ValidatorsListScreenPreview() {
     AppTheme {
-        MainScreen(MainStore())
+        ValidatorsListContent(ValidatorListStore())
     }
 }

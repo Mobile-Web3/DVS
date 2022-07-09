@@ -20,10 +20,10 @@ import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.mobileweb3.dvs.android.screens.AppScreen
+import com.mobileweb3.dvs.android.screens.main.ValidatorsListScreen
 import com.mobileweb3.dvs.android.ui.AppTheme
-import com.mobileweb3.dvs.app.MainSideEffect
-import com.mobileweb3.dvs.app.MainStore
+import com.mobileweb3.dvs.app.ValidatorListSideEffect
+import com.mobileweb3.dvs.app.ValidatorListStore
 import kotlinx.coroutines.flow.filterIsInstance
 import org.koin.android.ext.android.inject
 
@@ -45,10 +45,10 @@ class AppActivity : ComponentActivity() {
                 ProvideWindowInsets {
                     val scaffoldState = rememberScaffoldState()
 
-                    val store: MainStore by inject()
+                    val store: ValidatorListStore by inject()
                     val message = store.observeSideEffect()
-                        .filterIsInstance<MainSideEffect.Message>()
-                        .collectAsState(MainSideEffect.Message("start message"))
+                        .filterIsInstance<ValidatorListSideEffect.Message>()
+                        .collectAsState(null)
 
                     LaunchedEffect(message.value) {
                         message.value?.let {
@@ -83,7 +83,7 @@ class AppActivity : ComponentActivity() {
                                 )
                             }
                         ) {
-                            Navigator(AppScreen())
+                            Navigator(ValidatorsListScreen())
                         }
                     }
                 }

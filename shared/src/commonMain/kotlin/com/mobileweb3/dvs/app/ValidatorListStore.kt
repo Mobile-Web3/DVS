@@ -12,23 +12,24 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-data class MainState(
+data class ValidatorListState(
     val validatorViewStates: List<ValidatorViewState>
 ) : State
 
-sealed class MainAction : Action {
-    object Click : MainAction()
+sealed class ValidatorListAction : Action {
+    object ValidatorCardSelect : ValidatorListAction()
 }
 
-sealed class MainSideEffect : Effect {
-    data class Message(val text: String) : MainSideEffect()
+sealed class ValidatorListSideEffect : Effect {
+    data class Message(val text: String) : ValidatorListSideEffect()
 }
 
-class MainStore : Store<MainState, MainAction, MainSideEffect>, CoroutineScope by CoroutineScope(Dispatchers.Main) {
+class ValidatorListStore : Store<ValidatorListState, ValidatorListAction, ValidatorListSideEffect>,
+    CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     private val state =
         MutableStateFlow(
-            MainState(
+            ValidatorListState(
                 listOf(
                     ValidatorViewState(isLoading = true),
                     ValidatorViewState(isLoading = true),
@@ -37,20 +38,26 @@ class MainStore : Store<MainState, MainAction, MainSideEffect>, CoroutineScope b
                 )
             )
         )
-    private val sideEffect = MutableSharedFlow<MainSideEffect>()
+    private val sideEffect = MutableSharedFlow<ValidatorListSideEffect>()
 
     init {
         loadValidators()
     }
 
-    override fun observeState(): StateFlow<MainState> = state
+    override fun observeState(): StateFlow<ValidatorListState> = state
 
-    override fun observeSideEffect(): Flow<MainSideEffect> = sideEffect
+    override fun observeSideEffect(): Flow<ValidatorListSideEffect> = sideEffect
 
-    override fun dispatch(action: MainAction) {
+    override fun dispatch(action: ValidatorListAction) {
         Napier.d(tag = "MainStore", message = "Action: $action")
 
         val oldState = state.value
+
+        when (action) {
+            ValidatorListAction.ValidatorCardSelect -> {
+
+            }
+        }
 
         val newState = oldState
 
@@ -64,7 +71,7 @@ class MainStore : Store<MainState, MainAction, MainSideEffect>, CoroutineScope b
         launch {
             delay(1000)
 
-            state.value = MainState(
+            state.value = ValidatorListState(
                 validators.map { ValidatorViewState(isLoading = false, validatorModel = it) }
             )
         }

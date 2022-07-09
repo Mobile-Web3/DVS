@@ -10,11 +10,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.mobileweb3.dvs.android.R
-import com.mobileweb3.dvs.app.MainStore
+import com.mobileweb3.dvs.app.ValidatorListStore
 
 @Composable
-fun MainScreen(
-    store: MainStore,
+fun ValidatorsListContent(
+    store: ValidatorListStore,
     modifier: Modifier = Modifier
 ) {
     Column(

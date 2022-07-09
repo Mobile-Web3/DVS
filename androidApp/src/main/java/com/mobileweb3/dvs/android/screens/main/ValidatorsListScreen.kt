@@ -1,4 +1,4 @@
-package com.mobileweb3.dvs.android.screens
+package com.mobileweb3.dvs.android.screens.main
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -7,19 +7,18 @@ import androidx.compose.ui.platform.LocalContext
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import com.mobileweb3.dvs.android.screens.main.MainScreen
-import com.mobileweb3.dvs.app.MainStore
+import com.mobileweb3.dvs.app.ValidatorListStore
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class AppScreen : Screen, KoinComponent {
+class ValidatorsListScreen : Screen, KoinComponent {
 
     @Composable
     override fun Content() {
         val context = LocalContext.current
         val navigator = LocalNavigator.currentOrThrow
 
-        val store: MainStore by inject()
+        val store: ValidatorListStore by inject()
         val state = store.observeState().collectAsState()
 
         LaunchedEffect(Unit) {
@@ -41,7 +40,7 @@ class AppScreen : Screen, KoinComponent {
 //                //store.dispatch(Action.Refresh(true))
 //            }
 //        ) {
-        MainScreen(
+        ValidatorsListContent(
             store = store
         )
 
