@@ -17,6 +17,7 @@ accompanist = "0.23.1"
 work-runtime-ktx = "2.7.1"
 desugar-jdk-libs = "1.1.6"
 androidx-splash = "1.0.0-beta02"
+landscapist-glide = "1.5.3"
 
 [libraries]
 plugin-android = { module = "com.android.tools.build:gradle", version.ref = "plugin-android" }
@@ -56,6 +57,9 @@ accompanist-placeholder = { module = "com.google.accompanist:accompanist-placeho
 
 #logging
 napier = { module = "io.github.aakira:napier", version.ref = "napier" }
+
+#glide
+landscapist-glide = { module = "com.github.skydoves:landscapist-glide", version.ref = "landscapist-glide" }
 
 #shared preferences
 multiplatform-settings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatform-settings" }

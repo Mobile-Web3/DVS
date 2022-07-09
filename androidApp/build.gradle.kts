@@ -77,7 +77,6 @@ android {
         implementation(libs.androidx.compose.material)
         implementation(libs.androidx.splashscreen)
         //Compose Utils
-        implementation(libs.coil.compose)
         implementation(libs.activity.compose)
         implementation(libs.accompanist.insets)
         implementation(libs.accompanist.swiperefresh)
@@ -93,5 +92,7 @@ android {
         implementation(libs.voyager.navigator)
         //WorkManager
         implementation(libs.work.runtime.ktx)
+
+        implementation(libs.landscapist.glide)
     }
 }
