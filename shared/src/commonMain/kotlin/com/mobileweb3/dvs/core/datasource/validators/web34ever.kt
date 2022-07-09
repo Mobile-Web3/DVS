@@ -1,4 +1,4 @@
-package com.mobileweb3.dvs.core.datasource.mock
+package com.mobileweb3.dvs.core.datasource.validators
 
 import com.mobileweb3.dvs.core.entity.BlockChainNetwork
 import com.mobileweb3.dvs.core.entity.Contact

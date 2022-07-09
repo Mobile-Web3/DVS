@@ -1,6 +1,6 @@
 package com.mobileweb3.dvs.app
 
-import com.mobileweb3.dvs.core.datasource.mock.web34ever
+import com.mobileweb3.dvs.core.datasource.validators.validators
 import com.mobileweb3.dvs.core.entity.ValidatorModel
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
@@ -62,14 +62,10 @@ class MainStore : Store<MainState, MainAction, MainSideEffect>, CoroutineScope b
 
     private fun loadValidators() {
         launch {
-            delay(3000)
+            delay(1000)
 
             state.value = MainState(
-                listOf(
-                    ValidatorViewState(isLoading = false, validatorModel = web34ever),
-                    ValidatorViewState(isLoading = false, validatorModel = web34ever),
-                    ValidatorViewState(isLoading = false, validatorModel = web34ever)
-                )
+                validators.map { ValidatorViewState(isLoading = false, validatorModel = it) }
             )
         }
     }
