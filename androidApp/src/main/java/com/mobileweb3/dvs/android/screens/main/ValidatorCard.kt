@@ -5,6 +5,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -90,6 +91,13 @@ fun ValidatorCard(
                 validatorViewState = validatorViewState,
                 colorPalette = palette
             )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            ValidatorDescription(
+                validatorViewState = validatorViewState,
+                colorPalette = palette
+            )
         }
     }
 }
@@ -155,6 +163,37 @@ fun ValidatorTitle(
         modifier = Modifier
             .fillMaxWidth()
             .padding(start = 16.dp, end = 16.dp)
+            .placeholder(
+                visible = validatorViewState.isLoading,
+                color = Color.Gray,
+                shape = RoundedCornerShape(4.dp),
+                highlight = PlaceholderHighlight.shimmer(
+                    highlightColor = Color.White,
+                )
+            )
+    )
+}
+
+@Composable
+fun ColumnScope.ValidatorDescription(
+    validatorViewState: ValidatorViewState,
+    colorPalette: Palette?
+) {
+    val descriptionText = if (validatorViewState.validatorModel == null) {
+        "default text"
+    } else {
+        validatorViewState.validatorModel!!.getSmallDescription()
+    }
+
+    Text(
+        text = descriptionText,
+        color = colorPalette?.let { Color(colorPalette.mutedSwatch!!.bodyTextColor) } ?: Color.White,
+        maxLines = 6,
+        textAlign = TextAlign.Start,
+        style = typography.subtitle2,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
             .placeholder(
                 visible = validatorViewState.isLoading,
                 color = Color.Gray,
