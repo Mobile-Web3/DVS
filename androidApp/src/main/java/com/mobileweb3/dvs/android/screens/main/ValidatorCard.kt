@@ -48,22 +48,23 @@ fun ValidatorCard(
     modifier: Modifier
 ) {
     var palette by remember { mutableStateOf<Palette?>(null) }
+    val backgroundBrush = palette?.let { safePalette ->
+        val mostThreeColors = safePalette.swatches
+            .sortedByDescending { it.population }
+            .take(3)
+        return@let Brush.linearGradient(
+            mostThreeColors.map { Color(it.rgb) }
+        )
+    } ?: Brush.linearGradient(
+        listOf(Color.Black, Color.Black)
+    )
 
     Box(
         modifier = modifier
             .height(300.dp)
             .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(10.dp))
             .background(
-                brush = palette?.let { safePalette ->
-                    val mostThreeColors = safePalette.swatches
-                        .sortedByDescending { it.population }
-                        .take(3)
-                    return@let Brush.linearGradient(
-                        mostThreeColors.map { Color(it.rgb) }
-                    )
-                } ?: Brush.linearGradient(
-                    listOf(Color.Black, Color.Black)
-                ),
+                brush = backgroundBrush,
                 shape = RoundedCornerShape(10.dp)
             )
             .clickable {
@@ -127,6 +128,7 @@ fun Avatar(
 ) {
     GlideImage(
         modifier = Modifier
+            .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(100.dp))
             .width(AVATAR_HEIGHT_WIDTH)
             .height(AVATAR_HEIGHT_WIDTH),
         imageModel = url,
@@ -156,7 +158,7 @@ fun ValidatorTitle(
 ) {
     Text(
         text = validatorViewState.validatorModel?.title ?: "default text",
-        color = colorPalette?.let { Color(colorPalette.mutedSwatch!!.bodyTextColor) } ?: Color.White,
+        color = colorPalette?.mutedSwatch?.bodyTextColor?.let { Color(it) } ?: Color.White,
         maxLines = 2,
         textAlign = TextAlign.Center,
         style = typography.h6,
@@ -187,7 +189,7 @@ fun ColumnScope.ValidatorDescription(
 
     Text(
         text = descriptionText,
-        color = colorPalette?.let { Color(colorPalette.mutedSwatch!!.bodyTextColor) } ?: Color.White,
+        color = colorPalette?.mutedSwatch?.bodyTextColor?.let { Color(it) } ?: Color.White,
         maxLines = 6,
         textAlign = TextAlign.Start,
         style = typography.subtitle2,
