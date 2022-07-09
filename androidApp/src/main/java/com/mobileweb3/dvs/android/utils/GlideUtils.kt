@@ -10,7 +10,7 @@ fun <T : Drawable> RequestBuilder<T>.applyDefaults(): RequestBuilder<T> {
     return apply(
         RequestOptions()
             .centerInside()
-            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
             .skipMemoryCache(false)
     ).transition(DrawableTransitionOptions.withCrossFade())
 }

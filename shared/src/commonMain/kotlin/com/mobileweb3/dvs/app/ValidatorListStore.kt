@@ -69,8 +69,6 @@ class ValidatorListStore : Store<ValidatorListState, ValidatorListAction, Valida
 
     private fun loadValidators() {
         launch {
-            delay(1000)
-
             state.value = ValidatorListState(
                 validators.map { ValidatorViewState(isLoading = false, validatorModel = it) }
             )
