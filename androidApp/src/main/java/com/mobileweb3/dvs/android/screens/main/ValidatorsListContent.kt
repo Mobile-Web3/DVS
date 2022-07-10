@@ -27,6 +27,10 @@ fun ValidatorsListContent(
             contentDescription = null,
             contentScale = ContentScale.FillWidth,
         )
-        ValidatorsList(store = store)
+        ValidatorsList(
+            store = store,
+            modifier = Modifier
+                .fillMaxSize()
+        )
     }
 }
