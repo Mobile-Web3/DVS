@@ -64,13 +64,27 @@ data class ValidatorModel(
     fun getTopics(): List<ValidatorTopic> {
         val resultList = mutableListOf<ValidatorTopic>()
 
-        if (description.isNotEmpty()) {
+        if (description.isNotEmpty() || contacts.isNotEmpty()) {
+            val resultTopicsList = mutableListOf<ValidatorTopicContent>()
+
+            if (description.isNotEmpty()) {
+                resultTopicsList.add(ValidatorTopicContent.SimpleText(description))
+            }
+
+            if (contacts.isNotEmpty()) {
+                resultTopicsList.add(
+                    ValidatorTopicContent.Contacts(
+                        contactsContent = contacts.map { contact ->
+                            contact.type to contact.link
+                        }
+                    )
+                )
+            }
+
             resultList.add(
                 ValidatorTopic(
                     title = "Bio",
-                    topicContent = listOf(
-                        ValidatorTopicContent.SimpleText(description)
-                    )
+                    topicContent = resultTopicsList
                 )
             )
         }
@@ -205,7 +219,7 @@ data class Contribution(
 }
 
 data class Contact(
-    val type: String, //tg, twitter, keybase, github, website, medium, discord, instagram, email
+    val type: String,
     val link: String
 )
 
