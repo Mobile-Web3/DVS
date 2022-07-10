@@ -14,7 +14,7 @@ data class ValidatorDetailsState(
 ) : State
 
 sealed class ValidatorDetailsAction : Action {
-
+    data class ValidatorSelected(val validatorModel: ValidatorModel) : ValidatorDetailsAction()
 }
 
 sealed class ValidatorDetailsSideEffect : Effect {
@@ -41,7 +41,11 @@ class ValidatorDetailsStore : Store<ValidatorDetailsState, ValidatorDetailsActio
 
         val oldState = state.value
 
-        val newState = oldState
+        val newState = when (action) {
+            is ValidatorDetailsAction.ValidatorSelected -> {
+                ValidatorDetailsState(action.validatorModel)
+            }
+        }
 
         if (newState != oldState) {
             Napier.d(tag = "MainStore", message = "NewState: $newState")

@@ -1,6 +1,5 @@
 package com.mobileweb3.dvs.android.screens.main
 
-import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -18,26 +17,27 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.navigator.LocalNavigator
-import com.mobileweb3.dvs.android.screens.detail.ValidatorDetailsScreen
+import androidx.navigation.NavController
+import com.mobileweb3.dvs.app.ValidatorDetailsAction
+import com.mobileweb3.dvs.app.ValidatorDetailsStore
 import com.mobileweb3.dvs.app.ValidatorListStore
+
+private const val COLUMNS_COUNT = 2
 
 @Composable
 fun ValidatorsList(
-    store: ValidatorListStore,
-    columns: Int = 2,
+    validatorListStore: ValidatorListStore,
+    validatorDetailsStore: ValidatorDetailsStore,
+    navController: NavController,
     modifier: Modifier = Modifier,
-    scrollState: ScrollState = rememberScrollState(),
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
-    val state = store.observeState().collectAsState()
+    val state = validatorListStore.observeState().collectAsState()
 
-    val chunkedList = state.value.validatorViewStates.chunked(columns)
-
-    val navigator = LocalNavigator.current
+    val chunkedList = state.value.validatorViewStates.chunked(COLUMNS_COUNT)
 
     Column(
-        modifier = modifier.verticalScroll(scrollState)
+        modifier = modifier.verticalScroll(rememberScrollState())
     ) {
         chunkedList.forEach { chunk ->
             Row(
@@ -53,13 +53,14 @@ fun ValidatorsList(
                             .weight(1f),
                         onValidatorClicked = { model ->
                             model?.let {
-                                navigator?.push(ValidatorDetailsScreen(it))
+                                validatorDetailsStore.dispatch(ValidatorDetailsAction.ValidatorSelected(it))
+                                navController.navigate("details")
                             }
                         }
                     )
                 }
 
-                val emptyCells = columns - chunk.size
+                val emptyCells = COLUMNS_COUNT - chunk.size
                 if (emptyCells > 0) {
                     Spacer(modifier = Modifier.weight(emptyCells.toFloat()))
                 }

@@ -15,13 +15,17 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
-import cafe.adriel.voyager.navigator.Navigator
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import com.mobileweb3.dvs.android.screens.main.ValidatorsListScreen
+import com.mobileweb3.dvs.android.screens.detail.ValidatorDetailsContent
+import com.mobileweb3.dvs.android.screens.main.ValidatorsListContent
 import com.mobileweb3.dvs.android.ui.AppTheme
+import com.mobileweb3.dvs.app.ValidatorDetailsStore
 import com.mobileweb3.dvs.app.ValidatorListSideEffect
 import com.mobileweb3.dvs.app.ValidatorListStore
 import kotlinx.coroutines.flow.filterIsInstance
@@ -47,8 +51,10 @@ class AppActivity : ComponentActivity() {
                 ProvideWindowInsets {
                     val scaffoldState = rememberScaffoldState()
 
-                    val store: ValidatorListStore by inject()
-                    val message = store.observeSideEffect()
+                    val validatorListStore: ValidatorListStore by inject()
+                    val validatorDetailsStore: ValidatorDetailsStore by inject()
+
+                    val message = validatorListStore.observeSideEffect()
                         .filterIsInstance<ValidatorListSideEffect.Message>()
                         .collectAsState(null)
 
@@ -85,7 +91,20 @@ class AppActivity : ComponentActivity() {
                                 )
                             }
                         ) {
-                            Navigator(ValidatorsListScreen())
+                            val navController = rememberNavController()
+
+                            NavHost(navController = navController, startDestination = "list") {
+                                composable("list") {
+                                    ValidatorsListContent(
+                                        validatorListStore,
+                                        validatorDetailsStore,
+                                        navController
+                                    )
+                                }
+                                composable("details") {
+                                    ValidatorDetailsContent(validatorDetailsStore)
+                                }
+                            }
                         }
                     }
                 }
