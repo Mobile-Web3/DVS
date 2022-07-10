@@ -3,7 +3,6 @@ package com.mobileweb3.dvs.android.screens.main
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
@@ -61,45 +60,41 @@ fun ValidatorCard(
         listOf(Color.Black, Color.Black)
     )
 
-    Box(
-        modifier = modifier
+    Column(
+        modifier = Modifier
             .height(300.dp)
             .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(10.dp))
             .background(
                 brush = backgroundBrush,
                 shape = RoundedCornerShape(10.dp)
             )
-            .clickable { onValidatorClicked(validatorViewState.validatorModel) }
+            .clickable { onValidatorClicked(validatorViewState.validatorModel) },
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Spacer(modifier = Modifier.height(SPACER_HEIGHT))
+        Spacer(modifier = Modifier.height(SPACER_HEIGHT))
 
-            if (validatorViewState.isLoading) {
-                AvatarShimmer()
-            } else {
-                Avatar(
-                    url = validatorViewState.validatorModel?.avatar,
-                    onPaletteChanged = { palette = it }
-                )
-            }
-
-            Spacer(modifier = Modifier.height(SPACER_HEIGHT))
-
-            ValidatorTitle(
-                validatorViewState = validatorViewState,
-                colorPalette = palette
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            ValidatorDescription(
-                validatorViewState = validatorViewState,
-                colorPalette = palette
+        if (validatorViewState.isLoading) {
+            AvatarShimmer()
+        } else {
+            Avatar(
+                url = validatorViewState.validatorModel?.avatar,
+                onPaletteChanged = { palette = it }
             )
         }
+
+        Spacer(modifier = Modifier.height(SPACER_HEIGHT))
+
+        ValidatorTitle(
+            validatorViewState = validatorViewState,
+            colorPalette = palette
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        ValidatorDescription(
+            validatorViewState = validatorViewState,
+            colorPalette = palette
+        )
     }
 }
 
