@@ -6,12 +6,12 @@ plugin-gver = "0.42.0"
 androidx-compose-compiler = "1.2.0"
 androidx-compose = "1.1.1"
 activity-compose = "1.5.0"
+androidx-compose-navigation = "2.5.0"
 kotlinx-serialization = "1.3.3"
 kotlinx-coroutines = "1.6.3"
 ktor = "2.0.3"
 napier = "2.6.1"
 multiplatform-settings = "0.9"
-voyager = "1.0.0-rc02"
 koin = "3.2.0"
 accompanist = "0.23.1"
 work-runtime-ktx = "2.7.1"
@@ -35,6 +35,7 @@ androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "androi
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "androidx-compose" }
 androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "androidx-compose" }
 androidx-compose-material = { module = "androidx.compose.material:material", version.ref = "androidx-compose" }
+androidx-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-compose-navigation" }
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splash" }
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
 
@@ -63,9 +64,6 @@ landscapist-glide = { module = "com.github.skydoves:landscapist-glide", version.
 
 #shared preferences
 multiplatform-settings = { module = "com.russhwolf:multiplatform-settings", version.ref = "multiplatform-settings" }
-
-#navigation
-voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 
 #others
 work-runtime-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "work-runtime-ktx" }
