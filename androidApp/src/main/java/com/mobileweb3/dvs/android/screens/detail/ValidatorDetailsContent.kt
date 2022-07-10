@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.palette.graphics.Palette
 import com.mobileweb3.dvs.android.ui.composables.Avatar
+import com.mobileweb3.dvs.android.ui.composables.IconWithHtmlLink
 import com.mobileweb3.dvs.android.ui.composables.TextWithHtml
 import com.mobileweb3.dvs.android.ui.composables.ValidatorTitle
 import com.mobileweb3.dvs.android.ui.composables.getGradientBrush
@@ -118,6 +119,32 @@ fun ValidatorDetailsContent(
                             textWithHtml = topicContent.text,
                             modifier = modifier
                         )
+                    }
+                    is ValidatorTopicContent.Contacts -> {
+                        Row(
+                            modifier = modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    start = 16.dp,
+                                    end = 16.dp,
+                                    bottom = 16.dp
+                                )
+                                .horizontalScroll(
+                                    state = rememberScrollState(),
+                                    enabled = true
+                                )
+                        ) {
+                            topicContent.contactsContent.forEachIndexed { index, pair ->
+                                IconWithHtmlLink(
+                                    iconTag = pair.first,
+                                    link = pair.second
+                                )
+
+                                if (index != topicContent.contactsContent.lastIndex) {
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                }
+                            }
+                        }
                     }
                 }
             }
