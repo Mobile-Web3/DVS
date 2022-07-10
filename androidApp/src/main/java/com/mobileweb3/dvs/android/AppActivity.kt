@@ -32,6 +32,8 @@ class AppActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        actionBar?.hide()
+
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
         setContent {
