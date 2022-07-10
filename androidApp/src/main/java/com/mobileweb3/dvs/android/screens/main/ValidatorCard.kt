@@ -34,6 +34,10 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.accompanist.placeholder.PlaceholderHighlight
 import com.google.accompanist.placeholder.placeholder
 import com.google.accompanist.placeholder.shimmer
+import com.mobileweb3.dvs.android.ui.composables.Avatar
+import com.mobileweb3.dvs.android.ui.composables.AvatarShimmer
+import com.mobileweb3.dvs.android.ui.composables.ValidatorTitle
+import com.mobileweb3.dvs.android.ui.composables.getGradientBrush
 import com.mobileweb3.dvs.android.utils.applyDefaults
 import com.mobileweb3.dvs.app.ValidatorViewState
 import com.mobileweb3.dvs.core.entity.ValidatorModel
@@ -51,23 +55,13 @@ fun ValidatorCard(
     onValidatorClicked: (ValidatorModel?) -> Unit
 ) {
     var palette by remember { mutableStateOf<Palette?>(null) }
-    val backgroundBrush = palette?.let { safePalette ->
-        val mostThreeColors = safePalette.swatches
-            .sortedByDescending { it.population }
-            .take(3)
-        return@let Brush.linearGradient(
-            mostThreeColors.map { Color(it.rgb) }
-        )
-    } ?: Brush.linearGradient(
-        listOf(Color.Black, Color.Black)
-    )
 
     Box(
         modifier = modifier
             .height(300.dp)
             .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(10.dp))
             .background(
-                brush = backgroundBrush,
+                brush = getGradientBrush(palette),
                 shape = RoundedCornerShape(10.dp)
             )
             .clickable { onValidatorClicked(validatorViewState.validatorModel) }
@@ -103,82 +97,6 @@ fun ValidatorCard(
             )
         }
     }
-}
-
-@Composable
-fun AvatarShimmer(
-    widthHeightDp: Dp,
-) {
-    Text(
-        text = "default text",
-        modifier = Modifier
-            .width(widthHeightDp)
-            .height(widthHeightDp)
-            .placeholder(
-                visible = true,
-                color = Color.Gray,
-                shape = RoundedCornerShape(100.dp),
-                highlight = PlaceholderHighlight.shimmer(
-                    highlightColor = Color.White,
-                )
-            )
-    )
-}
-
-@Composable
-fun Avatar(
-    url: String?,
-    widthHeightDp: Dp,
-    onPaletteChanged: (Palette) -> Unit
-) {
-    GlideImage(
-        modifier = Modifier
-            .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(100.dp))
-            .width(widthHeightDp)
-            .height(widthHeightDp),
-        imageModel = url,
-        requestBuilder = {
-            Glide.with(LocalContext.current.applicationContext)
-                .asDrawable()
-                .applyDefaults()
-        },
-        requestOptions = { RequestOptions.circleCropTransform() },
-        circularReveal = CircularReveal(duration = 600),
-        loading = {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                AvatarShimmer(widthHeightDp)
-            }
-        },
-        bitmapPalette = BitmapPalette { onPaletteChanged(it) }
-    )
-}
-
-@Composable
-fun ValidatorTitle(
-    validatorViewState: ValidatorViewState,
-    colorPalette: Palette?
-) {
-    Text(
-        text = validatorViewState.validatorModel?.title ?: "default text",
-        color = colorPalette?.mutedSwatch?.bodyTextColor?.let { Color(it) } ?: Color.White,
-        maxLines = 2,
-        textAlign = TextAlign.Center,
-        style = typography.h6,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 16.dp, end = 16.dp)
-            .placeholder(
-                visible = validatorViewState.isLoading,
-                color = Color.Gray,
-                shape = RoundedCornerShape(4.dp),
-                highlight = PlaceholderHighlight.shimmer(
-                    highlightColor = Color.White,
-                )
-            )
-    )
 }
 
 @Composable
