@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Theme.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@android:color/white</item>
+        <item name="windowSplashScreenBackground">@android:color/black</item>
 <!--        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_dvs_icon</item>-->
         <item name="windowSplashScreenAnimationDuration">500</item>
 
