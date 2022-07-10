@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.palette.graphics.Palette
 import com.bumptech.glide.Glide
@@ -78,10 +79,11 @@ fun ValidatorCard(
             Spacer(modifier = Modifier.height(SPACER_HEIGHT))
 
             if (validatorViewState.isLoading) {
-                AvatarShimmer()
+                AvatarShimmer(AVATAR_HEIGHT_WIDTH)
             } else {
                 Avatar(
                     url = validatorViewState.validatorModel?.avatar,
+                    widthHeightDp = AVATAR_HEIGHT_WIDTH,
                     onPaletteChanged = { palette = it }
                 )
             }
@@ -104,12 +106,14 @@ fun ValidatorCard(
 }
 
 @Composable
-fun AvatarShimmer() {
+fun AvatarShimmer(
+    widthHeightDp: Dp,
+) {
     Text(
         text = "default text",
         modifier = Modifier
-            .width(AVATAR_HEIGHT_WIDTH)
-            .height(AVATAR_HEIGHT_WIDTH)
+            .width(widthHeightDp)
+            .height(widthHeightDp)
             .placeholder(
                 visible = true,
                 color = Color.Gray,
@@ -124,13 +128,14 @@ fun AvatarShimmer() {
 @Composable
 fun Avatar(
     url: String?,
+    widthHeightDp: Dp,
     onPaletteChanged: (Palette) -> Unit
 ) {
     GlideImage(
         modifier = Modifier
             .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(100.dp))
-            .width(AVATAR_HEIGHT_WIDTH)
-            .height(AVATAR_HEIGHT_WIDTH),
+            .width(widthHeightDp)
+            .height(widthHeightDp),
         imageModel = url,
         requestBuilder = {
             Glide.with(LocalContext.current.applicationContext)
@@ -144,7 +149,7 @@ fun Avatar(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                AvatarShimmer()
+                AvatarShimmer(widthHeightDp)
             }
         },
         bitmapPalette = BitmapPalette { onPaletteChanged(it) }

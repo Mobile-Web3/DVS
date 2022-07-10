@@ -13,8 +13,8 @@ data class ValidatorModel(
     val contacts: List<Contact>,
     val otherInfo: List<OtherInfo>
 ) {
-    val validatingNetworksCount = mainNets.size + testNets.orEmpty().size + genesisNets.orEmpty().size
-    val otherActivities = otherProjects.size + contributions.size
+    private val validatingNetworksCount = mainNets.size + testNets.orEmpty().size + genesisNets.orEmpty().size
+    private val otherActivities = otherProjects.size + contributions.size
 
     fun getSmallDescription(): String {
         val networksCount = validatingNetworksCount
@@ -59,6 +59,34 @@ data class ValidatorModel(
         }
 
         return stringBuilder.toString()
+    }
+
+    fun getTopics(): List<ValidatorTopic> {
+        val resultList = mutableListOf<ValidatorTopic>()
+
+        if (description.isNotEmpty()) {
+            resultList.add(
+                ValidatorTopic(
+                    title = "Bio",
+                    topicContent = listOf(
+                        ValidatorTopicContent.SimpleText(description)
+                    )
+                )
+            )
+        }
+
+        if (mainNets.isNotEmpty()) {
+            resultList.add(
+                ValidatorTopic(
+                    title = "Mainnets",
+                    topicContent = listOf(
+                        ValidatorTopicContent.SimpleText("MainNets")
+                    )
+                )
+            )
+        }
+
+        return resultList
     }
 }
 

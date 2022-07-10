@@ -20,7 +20,10 @@ fun ValidatorsListContent(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(top = 24.dp)
+            .padding(
+                top = 24.dp,
+                bottom = 56.dp
+            )
     ) {
         Image(
             painter = painterResource(id = R.drawable.dvs_background),
