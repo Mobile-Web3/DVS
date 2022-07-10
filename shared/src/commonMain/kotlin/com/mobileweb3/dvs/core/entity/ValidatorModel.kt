@@ -4,17 +4,17 @@ data class ValidatorModel(
     val title: String,
     val avatar: String,
     val description: String,
-    val mainNets: List<ValidatorNetwork>,
-    val testNets: List<ValidatorNetwork>? = null,
-    val genesisNets: List<ValidatorNetwork>? = null,
-    val otherProjects: List<OtherProjects>,
-    val ambassadorPrograms: List<Project>,
-    val contributions: List<Contributions>,
-    val contacts: List<Contact>,
-    val otherInfo: List<OtherInfo>
+    val mainNets: List<ValidatorNetwork> = emptyList(),
+    val testNets: List<ValidatorNetwork> = emptyList(),
+    val genesisNets: List<ValidatorNetwork> = emptyList(),
+    val otherProjects: List<OtherProjects> = emptyList(),
+    val ambassadorPrograms: List<Project> = emptyList(),
+    val contributionsTypes: List<Contributions> = emptyList(),
+    val contacts: List<Contact> = emptyList(),
+    val otherInfo: List<OtherInfo> = emptyList()
 ) {
-    private val validatingNetworksCount = mainNets.size + testNets.orEmpty().size + genesisNets.orEmpty().size
-    private val otherActivities = otherProjects.size + contributions.size
+    private val validatingNetworksCount = mainNets.size + testNets.size + genesisNets.size
+    private val otherActivities = otherProjects.size + contributionsTypes.size
 
     fun getSmallDescription(): String {
         val networksCount = validatingNetworksCount
@@ -78,10 +78,69 @@ data class ValidatorModel(
         if (mainNets.isNotEmpty()) {
             resultList.add(
                 ValidatorTopic(
-                    title = "Mainnets",
-                    topicContent = listOf(
-                        ValidatorTopicContent.SimpleText("MainNets")
+                    title = "MainNets",
+                    topicContent = mainNets.map { network ->
+                        ValidatorTopicContent.SimpleText(network.toString())
+                    }
+                )
+            )
+        }
+
+        if (testNets.isNotEmpty()) {
+            resultList.add(
+                ValidatorTopic(
+                    title = "TestNets",
+                    topicContent = testNets.map { network ->
+                        ValidatorTopicContent.SimpleText(network.toString())
+                    }
+                )
+            )
+        }
+
+        if (ambassadorPrograms.isNotEmpty()) {
+            resultList.add(
+                ValidatorTopic(
+                    title = "Ambassador",
+                    topicContent = ambassadorPrograms.map { program ->
+                        ValidatorTopicContent.SimpleText(program.toString())
+                    }
+                )
+            )
+        }
+
+        otherProjects.forEach { otherProject ->
+            if (otherProject.projects.isNotEmpty()) {
+                resultList.add(
+                    ValidatorTopic(
+                        title = otherProject.topic,
+                        topicContent = otherProject.projects.map { project ->
+                            ValidatorTopicContent.SimpleText(project.toString())
+                        }
                     )
+                )
+            }
+        }
+
+        contributionsTypes.forEach { contributions ->
+            if (contributions.contributions.isNotEmpty()) {
+                resultList.add(
+                    ValidatorTopic(
+                        title = contributions.type,
+                        topicContent = contributions.contributions.map { contribution ->
+                            ValidatorTopicContent.SimpleText(contribution.toString())
+                        }
+                    )
+                )
+            }
+        }
+
+        if (otherInfo.isNotEmpty()) {
+            resultList.add(
+                ValidatorTopic(
+                    title = "Other Info",
+                    topicContent = otherInfo.map { otherInfo ->
+                        ValidatorTopicContent.SimpleText("${otherInfo.title}\n\n${otherInfo.body}\n\n")
+                    }
                 )
             )
         }
@@ -91,9 +150,18 @@ data class ValidatorModel(
 }
 
 data class ValidatorNetwork(
-    val network: BlockChainNetwork,
-    val link: String
-)
+    val blockChainNetwork: BlockChainNetwork,
+    val link: String? = null
+) {
+
+    override fun toString(): String {
+        return if (link != null) {
+            "- <a href=\"${link}\" rel=\"nofollow\">${blockChainNetwork.title}</a>"
+        } else {
+            "- ${blockChainNetwork.title}"
+        }
+    }
+}
 
 data class BlockChainNetwork(
     val title: String,
@@ -107,8 +175,16 @@ data class OtherProjects(
 
 data class Project(
     val title: String,
-    val link: String
-)
+    val link: String? = null
+) {
+    override fun toString(): String {
+        return if (link != null) {
+            "- <a href=\"${link}\" rel=\"nofollow\">$title</a>"
+        } else {
+            "- $title"
+        }
+    }
+}
 
 data class Contributions(
     val type: String, //tech,community,other
@@ -118,7 +194,15 @@ data class Contributions(
 data class Contribution(
     val label: String,
     val link: String? = null
-)
+) {
+    override fun toString(): String {
+        return if (link != null) {
+            "- <a href=\"${link}\" rel=\"nofollow\">$label</a>"
+        } else {
+            "- $label"
+        }
+    }
+}
 
 data class Contact(
     val type: String, //tg, twitter, keybase, github, website, medium, discord, instagram, email

@@ -10,7 +10,7 @@ val KURASH = ValidatorModel(
     testNets = emptyList(),
     otherProjects = emptyList(),
     ambassadorPrograms = emptyList(),
-    contributions = emptyList(),
+    contributionsTypes = emptyList(),
     contacts = emptyList(),
     otherInfo = emptyList()
 )
