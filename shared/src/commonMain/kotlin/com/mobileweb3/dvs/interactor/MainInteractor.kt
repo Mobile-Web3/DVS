@@ -3,11 +3,13 @@ package com.mobileweb3.dvs.interactor
 import com.mobileweb3.dvs.core.datasource.network.SomethingLoader
 import com.mobileweb3.dvs.core.datasource.storage.SomethingStorage
 import com.mobileweb3.dvs.core.entity.Something
+import com.mobileweb3.dvs.core.entity.validator.ValidatorVote
+import com.mobileweb3.dvs.core.entity.validator.Vote
 
 class MainInteractor internal constructor(
     private val somethingLoader: SomethingLoader,
     private val somethingStorage: SomethingStorage,
-){
+) {
 
     @Throws(Exception::class)
     suspend fun getAllSomething(
@@ -33,6 +35,28 @@ class MainInteractor internal constructor(
     @Throws(Exception::class)
     suspend fun deleteSomething(id: String) {
         somethingStorage.deleteSomething(id)
+    }
+
+    suspend fun getValidatorVotes(
+        chain: String,
+        validatorAddress: String
+    ): List<ValidatorVote> {
+        val proposals = somethingLoader.getProposalsFromMintScan(chain)
+        val validatorTransactions = somethingLoader.getValidatorTransactions(validatorAddress)
+
+        val resultList = mutableListOf<ValidatorVote>()
+        validatorTransactions
+            .filter { transaction -> transaction.data.tx.body.messages?.get(0)?.proposal_id != null }
+            .forEach { transaction ->
+                val transactionMessage = transaction.data.tx.body.messages!![0]
+
+                resultList.add(0, ValidatorVote(
+                    proposal = proposals.first { proposal -> proposal.id.toString() == transactionMessage.proposal_id!! },
+                    vote = Vote.from(transactionMessage.option)
+                ))
+            }
+
+        return resultList.sortedByDescending { it.proposal.id }
     }
 
     companion object

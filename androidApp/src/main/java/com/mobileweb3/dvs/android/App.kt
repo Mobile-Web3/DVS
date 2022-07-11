@@ -15,7 +15,7 @@ class App : Application() {
 
     private val appModule = module {
         single { MainInteractor.create(get(), BuildConfig.DEBUG) }
-        single { ValidatorListStore() }
+        single { ValidatorListStore(get()) }
         single { ValidatorDetailsStore() }
     }
 
