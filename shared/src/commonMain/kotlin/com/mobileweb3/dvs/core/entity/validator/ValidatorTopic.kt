@@ -1,4 +1,4 @@
-package com.mobileweb3.dvs.core.entity
+package com.mobileweb3.dvs.core.entity.validator
 
 data class ValidatorTopic(
     val title: String,

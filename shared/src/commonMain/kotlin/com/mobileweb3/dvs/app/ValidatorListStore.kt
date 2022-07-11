@@ -1,11 +1,11 @@
 package com.mobileweb3.dvs.app
 
 import com.mobileweb3.dvs.core.datasource.validators.validators
-import com.mobileweb3.dvs.core.entity.ValidatorModel
+import com.mobileweb3.dvs.core.entity.validator.ValidatorModel
+import com.mobileweb3.dvs.interactor.MainInteractor
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,7 +24,9 @@ sealed class ValidatorListSideEffect : Effect {
     data class Message(val text: String) : ValidatorListSideEffect()
 }
 
-class ValidatorListStore : Store<ValidatorListState, ValidatorListAction, ValidatorListSideEffect>,
+class ValidatorListStore(
+    val interactor: MainInteractor
+) : Store<ValidatorListState, ValidatorListAction, ValidatorListSideEffect>,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     private val state =
@@ -42,6 +44,14 @@ class ValidatorListStore : Store<ValidatorListState, ValidatorListAction, Valida
 
     init {
         loadValidators()
+
+        launch {
+            val proposals = interactor.getValidatorVotes(
+                chain = "cosmos",
+                validatorAddress = "cosmos1vvwtk805lxehwle9l4yudmq6mn0g32pxqjlrmt"
+            )
+            proposals.size
+        }
     }
 
     override fun observeState(): StateFlow<ValidatorListState> = state

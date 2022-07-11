@@ -1,5 +1,5 @@
 package com.mobileweb3.dvs.core.datasource.validators
-import com.mobileweb3.dvs.core.entity.ValidatorModel
+import com.mobileweb3.dvs.core.entity.validator.ValidatorModel
 
 val vbloher = ValidatorModel(
     title = "vbloher",

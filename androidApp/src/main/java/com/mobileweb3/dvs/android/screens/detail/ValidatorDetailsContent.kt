@@ -32,7 +32,7 @@ import com.mobileweb3.dvs.android.ui.composables.ValidatorTitle
 import com.mobileweb3.dvs.android.ui.composables.getGradientBrush
 import com.mobileweb3.dvs.app.ValidatorDetailsStore
 import com.mobileweb3.dvs.app.ValidatorViewState
-import com.mobileweb3.dvs.core.entity.ValidatorTopicContent
+import com.mobileweb3.dvs.core.entity.validator.ValidatorTopicContent
 
 private val AVATAR_HEIGHT_WIDTH = 180.dp
 

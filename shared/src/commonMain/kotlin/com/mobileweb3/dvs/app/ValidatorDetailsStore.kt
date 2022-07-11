@@ -1,6 +1,6 @@
 package com.mobileweb3.dvs.app
 
-import com.mobileweb3.dvs.core.entity.ValidatorModel
+import com.mobileweb3.dvs.core.entity.validator.ValidatorModel
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

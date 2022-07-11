@@ -1,14 +1,14 @@
 package com.mobileweb3.dvs.core.datasource.validators
 
-import com.mobileweb3.dvs.core.entity.BlockChainNetwork
-import com.mobileweb3.dvs.core.entity.Contact
-import com.mobileweb3.dvs.core.entity.Contribution
-import com.mobileweb3.dvs.core.entity.Contributions
-import com.mobileweb3.dvs.core.entity.OtherInfo
-import com.mobileweb3.dvs.core.entity.OtherProjects
-import com.mobileweb3.dvs.core.entity.Project
-import com.mobileweb3.dvs.core.entity.ValidatorModel
-import com.mobileweb3.dvs.core.entity.ValidatorNetwork
+import com.mobileweb3.dvs.core.entity.validator.BlockChainNetwork
+import com.mobileweb3.dvs.core.entity.validator.Contact
+import com.mobileweb3.dvs.core.entity.validator.Contribution
+import com.mobileweb3.dvs.core.entity.validator.Contributions
+import com.mobileweb3.dvs.core.entity.validator.OtherInfo
+import com.mobileweb3.dvs.core.entity.validator.OtherProjects
+import com.mobileweb3.dvs.core.entity.validator.Project
+import com.mobileweb3.dvs.core.entity.validator.ValidatorModel
+import com.mobileweb3.dvs.core.entity.validator.ValidatorNetwork
 
 val web34ever = ValidatorModel(
     title = "web34ever",
