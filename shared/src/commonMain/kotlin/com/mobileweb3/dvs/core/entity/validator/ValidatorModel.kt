@@ -195,7 +195,7 @@ data class ValidatorNetwork(
 
     fun getValidatorTransactionsLink(): String {
         return if (walletAddress != null) {
-            "${blockchainNetwork.transactionsRef}/${walletAddress}"
+            "${blockchainNetwork.getTransactionsRef}/${walletAddress}"
         } else {
             "${blockchainNetwork.validatorRef}"
         }

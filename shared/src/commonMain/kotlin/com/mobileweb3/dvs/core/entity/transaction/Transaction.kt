@@ -9,7 +9,9 @@ data class Transaction(
 
 @Serializable
 data class TransactionData(
-    val tx: Tx
+    val tx: Tx,
+    val txhash: String,
+    val raw_log: String? = null
 )
 
 @Serializable

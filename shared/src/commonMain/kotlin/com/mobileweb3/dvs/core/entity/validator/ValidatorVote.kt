@@ -4,7 +4,8 @@ import com.mobileweb3.dvs.core.entity.proposal.Proposal
 
 data class ValidatorVote(
     val proposal: Proposal,
-    val vote: Vote
+    val vote: Vote,
+    val txhash: String
 )
 
 enum class Vote {
