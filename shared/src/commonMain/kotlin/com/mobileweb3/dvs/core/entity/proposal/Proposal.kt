@@ -20,6 +20,10 @@ data class Proposal(
     val initial_deposit: Coin? = null,
     val total_deposit: List<Coin>? = null,
     val voteMeta: VoteMeta? = null,
+    val yes: String? = null,
+    val no: String? = null,
+    val no_with_veto: String? = null,
+    val abstain: String? = null,
 )
 
 @Serializable

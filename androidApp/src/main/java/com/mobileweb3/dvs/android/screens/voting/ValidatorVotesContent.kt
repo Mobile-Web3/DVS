@@ -25,6 +25,7 @@ import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import com.mobileweb3.dvs.app.ValidatorVotesStore
 import com.mobileweb3.dvs.core.entity.RequestStatus
+import com.mobileweb3.dvs.core.entity.proposal.ProposalStatus
 import com.mobileweb3.dvs.core.entity.validator.ValidatorVote
 
 @Composable
@@ -59,6 +60,8 @@ fun ValidatorVotesContent(
                         Text(text = "Error...")
                     }
                     is ProposalViewItem.Data -> {
+                        val proposalStatus = ProposalStatus.from(item.validatorVote.proposal.proposal_status)
+
                         Box(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -84,11 +87,15 @@ fun ValidatorVotesContent(
                                     color = MaterialTheme.colors.onPrimary
                                 )
                                 Text(
+                                    modifier = Modifier
+                                        .padding(
+                                            top = 4.dp
+                                        ),
                                     text = "${item.validatorVote.proposal.title}",
                                     style = MaterialTheme.typography.subtitle1,
                                     color = MaterialTheme.colors.onPrimary
                                 )
-
+                                ProposalStatusView(proposalStatus)
                             }
                             
                             Text(
