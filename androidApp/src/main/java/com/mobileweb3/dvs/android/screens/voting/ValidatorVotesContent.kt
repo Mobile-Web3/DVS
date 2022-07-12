@@ -6,9 +6,11 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
@@ -22,11 +24,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.mobileweb3.dvs.app.ValidatorVotesStore
 import com.mobileweb3.dvs.core.entity.RequestStatus
 import com.mobileweb3.dvs.core.entity.proposal.ProposalStatus
 import com.mobileweb3.dvs.core.entity.validator.ValidatorVote
+import com.mobileweb3.dvs.core.entity.validator.Vote
 
 @Composable
 fun ValidatorVotesContent(
@@ -68,18 +72,14 @@ fun ValidatorVotesContent(
                                 .border(2.dp, MaterialTheme.colors.primary, RoundedCornerShape(8.dp))
                                 .clip(RoundedCornerShape(8.dp))
                                 .clickable {
-                                    val exploreProposalRef = votesState.value!!.network!!.blockchainNetwork.exploreProposalRef
+                                    val exploreProposalRef =
+                                        votesState.value!!.network!!.blockchainNetwork.exploreProposalRef
                                     uriHandler.openUri("${exploreProposalRef}/${item.validatorVote.proposal.id}")
                                 }
                         ) {
                             Column(
                                 modifier = Modifier
-                                    .padding(
-                                        start = 16.dp,
-                                        end = 80.dp,
-                                        top = 16.dp,
-                                        bottom = 16.dp
-                                    )
+                                    .padding(16.dp)
                             ) {
                                 Text(
                                     text = "Proposal ${item.validatorVote.proposal.id}",
@@ -89,19 +89,30 @@ fun ValidatorVotesContent(
                                 Text(
                                     modifier = Modifier
                                         .padding(
-                                            top = 4.dp
+                                            top = 4.dp,
+                                            end = 100.dp
                                         ),
                                     text = "${item.validatorVote.proposal.title}",
                                     style = MaterialTheme.typography.subtitle1,
                                     color = MaterialTheme.colors.onPrimary
                                 )
-                                ProposalStatusView(proposalStatus)
+                                Row(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(top = 20.dp),
+                                    horizontalArrangement = Arrangement.SpaceBetween
+                                ) {
+                                    ProposalStatusView(proposalStatus)
+
+                                    val proposalPercents = item.validatorVote.proposal.getPercentages()
+                                    ProposalVotesView(proposalPercents)
+                                }
                             }
                             
                             Text(
                                 text = item.validatorVote.vote.string,
                                 style = MaterialTheme.typography.h5,
-                                color = Color(item.validatorVote.vote.textColor),
+                                color = Color(item.validatorVote.vote.color),
                                 modifier = Modifier
                                     .align(Alignment.TopEnd)
                                     .clickable {

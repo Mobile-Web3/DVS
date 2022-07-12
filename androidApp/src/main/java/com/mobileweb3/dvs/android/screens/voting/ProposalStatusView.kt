@@ -18,7 +18,6 @@ fun ProposalStatusView(proposalStatus: ProposalStatus) {
         fontWeight = FontWeight.Bold,
         color = Color(proposalStatus.textColor),
         modifier = Modifier
-            .padding(top = 8.dp)
             .background(
                 color = Color(proposalStatus.backgroundColor),
                 shape = RoundedCornerShape(100.dp)
