@@ -53,6 +53,7 @@ class MainInteractor internal constructor(
         val resultList = mutableListOf<ValidatorVote>()
         validatorTransactions
             .filter { transaction -> transaction.data.tx.body.messages?.get(0)?.proposal_id != null }
+            .filter { transaction -> transaction.data.raw_log != null && !transaction.data.raw_log.contains("fail") }
             .forEach { transaction ->
                 val transactionMessage = transaction.data.tx.body.messages!![0]
 
