@@ -9,6 +9,8 @@ sealed class ValidatorTopicContent {
 
     data class SimpleText(val text: String) : ValidatorTopicContent()
 
+    data class MainNetworks(val networks: List<ValidatorNetwork>) : ValidatorTopicContent()
+
     data class Contacts(
         val contactsContent: List<Pair<String, String>>
     ) : ValidatorTopicContent()

@@ -1,6 +1,6 @@
 package com.mobileweb3.dvs.core.datasource.validators
 
-import com.mobileweb3.dvs.core.entity.validator.BlockChainNetwork
+import com.mobileweb3.dvs.core.entity.validator.BlockchainNetwork
 import com.mobileweb3.dvs.core.entity.validator.Contact
 import com.mobileweb3.dvs.core.entity.validator.Contribution
 import com.mobileweb3.dvs.core.entity.validator.Contributions
@@ -17,11 +17,8 @@ val web34ever = ValidatorModel(
             "Passionate experts with over five years of expertise in decentralized technologies. Professional validator and full time enthusiast from 2015 with powerful knowledge and exhaustive experience in crypto industry, successfully participated in more than 50 testnets. Validate many known mainnet networks such as Solana, MinaProtocol, Avalanche, TheGraph, CertiK, Sentinel, XX-network, FreeTON, Microtick, LikeCoin. Ambassador in Moonbeam, FreeTon (Jury in NFT Subgovarnance), Covalent networks, Polygon, Octopus, Sentinel, TheGraph curator. Co-founder of the rapidly developing crypto <a href=\"https://koinsortium.com/\" rel=\"nofollow\">consortium</a>. Feel free to familiarize yourself with the list of projects below to which I contributed my knowledge, skills and invaluable experience:",
     mainNets = listOf(
         ValidatorNetwork(
-            blockChainNetwork = BlockChainNetwork(
-                "Solana",
-                ""
-            ),
-            link = "https://www.validators.app/validators/mainnet/7MTjmteQHhthwwTZhUzsc2dP4NBvGNRqj8jzdqNxHFGE?locale=en&order=&refresh="
+            blockchainNetwork = BlockchainNetwork.SOLANA,
+            validatorAddress = "7MTjmteQHhthwwTZhUzsc2dP4NBvGNRqj8jzdqNxHFGE"
         )
     ),
     testNets = emptyList(),

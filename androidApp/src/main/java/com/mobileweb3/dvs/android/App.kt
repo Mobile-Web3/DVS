@@ -15,8 +15,8 @@ class App : Application() {
 
     private val appModule = module {
         single { MainInteractor.create(get(), BuildConfig.DEBUG) }
-        single { ValidatorListStore(get()) }
-        single { ValidatorDetailsStore() }
+        single { ValidatorListStore() }
+        single { ValidatorDetailsStore(get()) }
     }
 
     override fun onCreate() {

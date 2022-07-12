@@ -29,6 +29,7 @@ class SomethingLoader(
     //cosmos1vvwtk805lxehwle9l4yudmq6mn0g32pxqjlrmt
     suspend fun getValidatorTransactions(validationAddress: String): List<Transaction> {
         return json.decodeFromString(
+            // also there is another path to get tx-ns "https://api.cosmostation.io/v1/account/txs/$validationAddress?limit=100&from=0"
             httpClient.get("https://api.cosmostation.io/v1/account/new_txs/$validationAddress?limit=100&from=0")
                 .bodyAsText()
         )

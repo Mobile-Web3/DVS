@@ -93,9 +93,7 @@ data class ValidatorModel(
             resultList.add(
                 ValidatorTopic(
                     title = "MainNets",
-                    topicContent = mainNets.map { network ->
-                        ValidatorTopicContent.SimpleText(network.toString())
-                    }
+                    topicContent = listOf(ValidatorTopicContent.MainNetworks(mainNets))
                 )
             )
         }
@@ -164,23 +162,26 @@ data class ValidatorModel(
 }
 
 data class ValidatorNetwork(
-    val blockChainNetwork: BlockChainNetwork,
-    val link: String? = null
+    val blockchainNetwork: BlockchainNetwork,
+    val validatorAddress: String? = null
 ) {
 
     override fun toString(): String {
-        return if (link != null) {
-            "- <a href=\"${link}\" rel=\"nofollow\">${blockChainNetwork.title}</a>"
+        return if (validatorAddress != null) {
+            "<a href=\"${blockchainNetwork.validatorRef}/${validatorAddress}\">${blockchainNetwork.title}</a>"
         } else {
-            "- ${blockChainNetwork.title}"
+            "- ${blockchainNetwork.title}"
+        }
+    }
+
+    fun getLink(): String {
+        return if (validatorAddress != null) {
+            "${blockchainNetwork.validatorRef}/${validatorAddress}"
+        } else {
+            "${blockchainNetwork.validatorRef}"
         }
     }
 }
-
-data class BlockChainNetwork(
-    val title: String,
-    val image: String
-)
 
 data class OtherProjects(
     val topic: String,
