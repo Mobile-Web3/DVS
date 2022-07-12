@@ -59,7 +59,8 @@ class MainInteractor internal constructor(
                 resultList.add(
                     0, ValidatorVote(
                         proposal = proposals.first { proposal -> proposal.id.toString() == transactionMessage.proposal_id!! },
-                        vote = Vote.from(transactionMessage.option)
+                        vote = Vote.from(transactionMessage.option),
+                        txhash = transaction.data.txhash
                     )
                 )
             }
