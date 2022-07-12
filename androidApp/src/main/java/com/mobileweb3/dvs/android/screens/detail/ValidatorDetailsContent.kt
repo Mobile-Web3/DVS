@@ -106,7 +106,6 @@ fun ValidatorDetailsContent(
         Column(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(bottom = 56.dp)
                 .verticalScroll(
                     state = rememberScrollState(),
                     enabled = true

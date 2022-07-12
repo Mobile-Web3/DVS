@@ -26,7 +26,6 @@ fun ValidatorsListContent(
             .fillMaxSize()
             .padding(
                 top = 24.dp,
-                bottom = 56.dp
             )
     ) {
         Image(
