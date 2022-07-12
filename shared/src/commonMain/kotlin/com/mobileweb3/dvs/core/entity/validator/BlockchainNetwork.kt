@@ -5,7 +5,8 @@ enum class BlockchainNetwork(
     val chain: String,
     val imageRef: String,
     val validatorRef: String? = null,
-    val proposalsRef: String? = null,
+    val getProposalsRef: String? = null,
+    val exploreProposalRef: String? = null,
     val getTransactionsRef: String? = null,
     val exploreTransactionRef: String? = null,
     val isCosmosNetwork: Boolean = false
@@ -25,7 +26,8 @@ enum class BlockchainNetwork(
         chain = "juno",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/14299.png",
         validatorRef = "https://www.mintscan.io/juno/validators",
-        proposalsRef = "https://api.mintscan.io/v1/juno/proposals",
+        getProposalsRef = "https://api.mintscan.io/v1/juno/proposals",
+        exploreProposalRef = "https://www.mintscan.io/juno/proposals",
         getTransactionsRef = "https://api-juno.cosmostation.io/v1/account/new_txs",
         exploreTransactionRef = "https://www.mintscan.io/juno/txs",
         isCosmosNetwork = true

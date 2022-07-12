@@ -1,5 +1,6 @@
 package com.mobileweb3.dvs.android.screens.voting
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -16,7 +17,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import com.mobileweb3.dvs.app.ValidatorVotesStore
@@ -59,9 +63,10 @@ fun ValidatorVotesContent(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .border(2.dp, MaterialTheme.colors.primary, RoundedCornerShape(8.dp))
+                                .clip(RoundedCornerShape(8.dp))
                                 .clickable {
-                                    val transactionExploreRef = votesState.value!!.network!!.blockchainNetwork.exploreTransactionRef
-                                    uriHandler.openUri("$transactionExploreRef/${item.validatorVote.txhash}")
+                                    val exploreProposalRef = votesState.value!!.network!!.blockchainNetwork.exploreProposalRef
+                                    uriHandler.openUri("${exploreProposalRef}/${item.validatorVote.proposal.id}")
                                 }
                         ) {
                             Column(
@@ -85,6 +90,24 @@ fun ValidatorVotesContent(
                                 )
 
                             }
+                            
+                            Text(
+                                text = item.validatorVote.vote.string,
+                                style = MaterialTheme.typography.h5,
+                                color = Color(item.validatorVote.vote.textColor),
+                                modifier = Modifier
+                                    .align(Alignment.TopEnd)
+                                    .clickable {
+                                        val transactionExploreRef =
+                                            votesState.value!!.network!!.blockchainNetwork.exploreTransactionRef
+                                        uriHandler.openUri("$transactionExploreRef/${item.validatorVote.txhash}")
+                                    }
+                                    .background(
+                                        color = MaterialTheme.colors.primary,
+                                        shape = RoundedCornerShape(4.dp)
+                                    )
+                                    .padding(12.dp)
+                            )
                         }
 
                     }

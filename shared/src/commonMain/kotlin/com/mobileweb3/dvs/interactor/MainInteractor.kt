@@ -41,11 +41,11 @@ class MainInteractor internal constructor(
     suspend fun getValidatorVotes(
         validatorNetwork: ValidatorNetwork
     ): List<ValidatorVote> {
-        if (validatorNetwork.blockchainNetwork.proposalsRef == null) {
+        if (validatorNetwork.blockchainNetwork.getProposalsRef == null) {
             return emptyList()
         }
 
-        val proposals = somethingLoader.getProposalsFromMintScan(validatorNetwork.blockchainNetwork.proposalsRef)
+        val proposals = somethingLoader.getProposalsFromMintScan(validatorNetwork.blockchainNetwork.getProposalsRef)
         val validatorTransactions = somethingLoader.getValidatorTransactions(
             validatorNetwork.getValidatorTransactionsLink()
         )

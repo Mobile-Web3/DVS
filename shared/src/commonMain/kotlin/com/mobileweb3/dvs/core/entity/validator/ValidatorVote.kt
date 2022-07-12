@@ -8,12 +8,12 @@ data class ValidatorVote(
     val txhash: String
 )
 
-enum class Vote {
-    YES,
-    NO,
-    NO_WITH_VETO,
-    ABSTAIN,
-    UNKNOWN;
+enum class Vote(val string: String, val textColor: Long) {
+    YES("Yes", 0xff5FD68B),
+    NO("No", 0xffef6767),
+    NO_WITH_VETO("NoWithVeto", 0xffFF999A),
+    ABSTAIN("Abstain", 0xff9FA4AD),
+    UNKNOWN("Unknown", 0xff000000);
 
     companion object {
 
