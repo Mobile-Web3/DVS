@@ -25,8 +25,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.palette.graphics.Palette
+import com.google.accompanist.flowlayout.FlowRow
 import com.mobileweb3.dvs.android.ui.composables.Avatar
 import com.mobileweb3.dvs.android.ui.composables.IconWithHtmlLink
+import com.mobileweb3.dvs.android.ui.composables.NetworkButton
 import com.mobileweb3.dvs.android.ui.composables.TextWithHtml
 import com.mobileweb3.dvs.android.ui.composables.ValidatorTitle
 import com.mobileweb3.dvs.android.ui.composables.getGradientBrush
@@ -106,6 +108,11 @@ fun ValidatorDetailsContent(
         Column(
             modifier = modifier
                 .fillMaxWidth()
+                .padding(
+                    start = 16.dp,
+                    end = 16.dp,
+                    bottom = 16.dp
+                )
                 .verticalScroll(
                     state = rememberScrollState(),
                     enabled = true
@@ -119,33 +126,44 @@ fun ValidatorDetailsContent(
                             modifier = modifier
                         )
                     }
-                    is ValidatorTopicContent.Contacts -> {
-                        Row(
-                            modifier = modifier
-                                .fillMaxWidth()
-                                .padding(
-                                    start = 16.dp,
-                                    end = 16.dp,
-                                    bottom = 16.dp
-                                )
-                                .horizontalScroll(
-                                    state = rememberScrollState(),
-                                    enabled = true
-                                )
-                        ) {
-                            topicContent.contactsContent.forEachIndexed { index, pair ->
-                                IconWithHtmlLink(
-                                    iconTag = pair.first,
-                                    link = pair.second
-                                )
+                    is ValidatorTopicContent.MainNetworks -> {
+                        FlowRow {
+                            topicContent.networks.forEachIndexed { index, network ->
+                                NetworkButton(network, modifier)
 
-                                if (index != topicContent.contactsContent.lastIndex) {
-                                    Spacer(modifier = Modifier.width(8.dp))
+                                if (index != topics.lastIndex) {
+                                    Spacer(modifier = modifier.width(16.dp))
                                 }
                             }
                         }
                     }
+                    is ValidatorTopicContent.Contacts -> {
+                        RowValidatorContacts(topicContent.contactsContent, modifier.padding(top = 16.dp))
+                    }
                 }
+            }
+        }
+    }
+}
+
+@Composable
+fun RowValidatorContacts(contacts: List<Pair<String, String>>, modifier: Modifier) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .horizontalScroll(
+                state = rememberScrollState(),
+                enabled = true
+            )
+    ) {
+        contacts.forEachIndexed { index, pair ->
+            IconWithHtmlLink(
+                iconTag = pair.first,
+                link = pair.second
+            )
+
+            if (index != contacts.lastIndex) {
+                Spacer(modifier = Modifier.width(8.dp))
             }
         }
     }

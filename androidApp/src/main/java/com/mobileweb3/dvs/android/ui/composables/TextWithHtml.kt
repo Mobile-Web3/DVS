@@ -20,8 +20,7 @@ fun TextWithHtml(
     ClickableText(
         text = textWithLinks,
         style = LocalTextStyle.current,
-        modifier = modifier
-            .padding(16.dp),
+        modifier = modifier,
         onClick = { offset ->
             textWithLinks.getStringAnnotations(
                 tag = "link_tag",
