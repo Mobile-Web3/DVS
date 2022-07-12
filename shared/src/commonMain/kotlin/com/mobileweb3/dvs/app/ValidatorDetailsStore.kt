@@ -1,7 +1,6 @@
 package com.mobileweb3.dvs.app
 
 import com.mobileweb3.dvs.core.entity.validator.ValidatorModel
-import com.mobileweb3.dvs.interactor.MainInteractor
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,11 +10,14 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 data class ValidatorDetailsState(
-    val validatorModel: ValidatorModel?
+    val validatorModel: ValidatorModel?,
+    val selectedTopicIndex: Int
 ) : State
 
 sealed class ValidatorDetailsAction : Action {
     data class ValidatorSelected(val validatorModel: ValidatorModel) : ValidatorDetailsAction()
+
+    data class TopicSelected(val index: Int) : ValidatorDetailsAction()
 }
 
 sealed class ValidatorDetailsSideEffect : Effect {
@@ -25,12 +27,7 @@ sealed class ValidatorDetailsSideEffect : Effect {
 class ValidatorDetailsStore : Store<ValidatorDetailsState, ValidatorDetailsAction, ValidatorDetailsSideEffect>,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
-    private val state =
-        MutableStateFlow(
-            ValidatorDetailsState(
-                null
-            )
-        )
+    private val state = MutableStateFlow(ValidatorDetailsState(null, 0))
     private val sideEffect = MutableSharedFlow<ValidatorDetailsSideEffect>()
 
     override fun observeState(): StateFlow<ValidatorDetailsState> = state
@@ -44,7 +41,10 @@ class ValidatorDetailsStore : Store<ValidatorDetailsState, ValidatorDetailsActio
 
         val newState = when (action) {
             is ValidatorDetailsAction.ValidatorSelected -> {
-                ValidatorDetailsState(action.validatorModel)
+                ValidatorDetailsState(action.validatorModel, 0)
+            }
+            is ValidatorDetailsAction.TopicSelected -> {
+                oldState.copy(selectedTopicIndex = action.index)
             }
         }
 

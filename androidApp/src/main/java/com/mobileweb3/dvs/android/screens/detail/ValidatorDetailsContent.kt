@@ -34,6 +34,7 @@ import com.mobileweb3.dvs.android.ui.composables.NetworkButton
 import com.mobileweb3.dvs.android.ui.composables.TextWithHtml
 import com.mobileweb3.dvs.android.ui.composables.ValidatorTitle
 import com.mobileweb3.dvs.android.ui.composables.getGradientBrush
+import com.mobileweb3.dvs.app.ValidatorDetailsAction
 import com.mobileweb3.dvs.app.ValidatorDetailsStore
 import com.mobileweb3.dvs.app.ValidatorViewState
 import com.mobileweb3.dvs.app.ValidatorVotesAction
@@ -85,7 +86,7 @@ fun ValidatorDetailsContent(
 
         val topics = validatorModel.getTopics()
         var content: List<ValidatorTopicContent> by remember {
-            mutableStateOf(topics[0].topicContent)
+            mutableStateOf(topics[validatorModelState.value?.selectedTopicIndex ?: 0].topicContent)
         }
 
         Row(
@@ -99,7 +100,10 @@ fun ValidatorDetailsContent(
         ) {
             topics.forEachIndexed { index, validatorTopic ->
                 Button(
-                    onClick = { content = validatorTopic.topicContent },
+                    onClick = {
+                        validatorDetailsStore.dispatch(ValidatorDetailsAction.TopicSelected(index))
+                        content = validatorTopic.topicContent
+                    },
                     modifier = modifier,
                 ) {
                     Text(text = validatorTopic.title)
