@@ -19,6 +19,10 @@ val web34ever = ValidatorModel(
         ValidatorNetwork(
             blockchainNetwork = BlockchainNetwork.SOLANA,
             validatorAddress = "7MTjmteQHhthwwTZhUzsc2dP4NBvGNRqj8jzdqNxHFGE"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.JUNO,
+            validatorAddress = "junovaloper1mxpyg8u68k6a8wdu3hs5whcpw9q285pcpxm5yx"
         )
     ),
     testNets = emptyList(),
