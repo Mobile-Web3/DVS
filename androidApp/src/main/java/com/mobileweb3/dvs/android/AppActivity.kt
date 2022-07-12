@@ -113,7 +113,6 @@ class AppActivity : ComponentActivity() {
                                 }
                                 composable("voting") {
                                     ValidatorVotesContent(
-                                        validatorDetailsStore,
                                         validatorVotesStore
                                     )
                                 }

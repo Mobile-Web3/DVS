@@ -1,7 +1,9 @@
 package com.mobileweb3.dvs.app
 
+import com.mobileweb3.dvs.core.entity.RequestStatus
 import com.mobileweb3.dvs.core.entity.validator.ValidatorModel
 import com.mobileweb3.dvs.core.entity.validator.ValidatorNetwork
+import com.mobileweb3.dvs.core.entity.validator.ValidatorVote
 import com.mobileweb3.dvs.interactor.MainInteractor
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
@@ -10,10 +12,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 
 data class ValidatorVotesState(
     val validatorModel: ValidatorModel?,
-    val network: ValidatorNetwork?
+    val network: ValidatorNetwork?,
+    val proposals: RequestStatus<List<ValidatorVote>>
 ) : State
 
 sealed class ValidatorVotesAction : Action {
@@ -31,7 +35,13 @@ class ValidatorVotesStore(
 ) : Store<ValidatorVotesState, ValidatorVotesAction, ValidatorVotesSideEffect>,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
-    private val state = MutableStateFlow(ValidatorVotesState(null, null))
+    private val state = MutableStateFlow(
+        ValidatorVotesState(
+            validatorModel = null,
+            network = null,
+            proposals = RequestStatus.Loading()
+        )
+    )
     private val sideEffect = MutableSharedFlow<ValidatorVotesSideEffect>()
 
     override fun observeState(): StateFlow<ValidatorVotesState> = state
@@ -45,7 +55,13 @@ class ValidatorVotesStore(
 
         val newState = when (action) {
             is ValidatorVotesAction.NetworkSelected -> {
-                ValidatorVotesState(action.validatorModel, action.network)
+                loadValidatorProposals(action.network)
+
+                oldState.copy(
+                    validatorModel = action.validatorModel,
+                    network = action.network,
+                    proposals = RequestStatus.Loading()
+                )
             }
         }
 
@@ -55,7 +71,19 @@ class ValidatorVotesStore(
         }
     }
 
-    private fun loadValidatorProposals() {
+    private fun loadValidatorProposals(network: ValidatorNetwork) {
+        launch(Dispatchers.Default) {
+            try {
+                val proposalList = interactor.getValidatorVotes(network)
 
+                state.value = state.value.copy(
+                    proposals = RequestStatus.Data(proposalList)
+                )
+            } catch (ex: Exception) {
+                state.value = state.value.copy(
+                    proposals = RequestStatus.Error(ex)
+                )
+            }
+        }
     }
 }

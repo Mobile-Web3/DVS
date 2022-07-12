@@ -173,7 +173,8 @@ data class ValidatorModel(
 
 data class ValidatorNetwork(
     val blockchainNetwork: BlockchainNetwork,
-    val validatorAddress: String? = null
+    val validatorAddress: String? = null,
+    val walletAddress: String? = null,
 ) {
 
     override fun toString(): String {
@@ -184,9 +185,17 @@ data class ValidatorNetwork(
         }
     }
 
-    fun getLink(): String {
+    fun getValidatorPageLink(): String {
         return if (validatorAddress != null) {
             "${blockchainNetwork.validatorRef}/${validatorAddress}"
+        } else {
+            "${blockchainNetwork.validatorRef}"
+        }
+    }
+
+    fun getValidatorTransactionsLink(): String {
+        return if (walletAddress != null) {
+            "${blockchainNetwork.transactionsRef}/${walletAddress}"
         } else {
             "${blockchainNetwork.validatorRef}"
         }

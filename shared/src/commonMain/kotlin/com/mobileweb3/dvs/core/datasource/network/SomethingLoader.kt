@@ -22,16 +22,15 @@ class SomethingLoader(
         return json.decodeFromString(httpClient.get(url).bodyAsText())
     }
 
-    suspend fun getProposalsFromMintScan(chain: String): List<Proposal> {
-        return json.decodeFromString(httpClient.get("https://api.mintscan.io/v1/$chain/proposals").bodyAsText())
+    suspend fun getProposalsFromMintScan(url: String): List<Proposal> {
+        return json.decodeFromString(httpClient.get(url).bodyAsText())
     }
 
     //cosmos1vvwtk805lxehwle9l4yudmq6mn0g32pxqjlrmt
-    suspend fun getValidatorTransactions(validationAddress: String): List<Transaction> {
+    suspend fun getValidatorTransactions(url: String): List<Transaction> {
         return json.decodeFromString(
             // also there is another path to get tx-ns "https://api.cosmostation.io/v1/account/txs/$validationAddress?limit=100&from=0"
-            httpClient.get("https://api.cosmostation.io/v1/account/new_txs/$validationAddress?limit=100&from=0")
-                .bodyAsText()
+            httpClient.get("$url?limit=100&from=0").bodyAsText()
         )
     }
 }

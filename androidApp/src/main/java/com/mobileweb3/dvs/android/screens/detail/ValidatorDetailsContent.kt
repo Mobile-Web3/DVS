@@ -160,7 +160,7 @@ fun ValidatorDetailsContent(
                         FlowRow {
                             topicContent.networks.forEachIndexed { index, network ->
                                 NetworkButton(network, modifier) {
-                                    uriHandler.openUri(network.getLink())
+                                    uriHandler.openUri(network.getValidatorPageLink())
                                 }
 
                                 if (index != topics.lastIndex) {
