@@ -83,6 +83,7 @@ android {
         implementation(libs.accompanist.swiperefresh)
         implementation(libs.accompanist.systemuicontroller)
         implementation(libs.accompanist.placeholder)
+        implementation(libs.accompanist.flowlayout)
         //Coroutines
         implementation(libs.kotlinx.coroutines.core)
         implementation(libs.kotlinx.coroutines.android)
