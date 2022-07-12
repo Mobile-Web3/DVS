@@ -4,7 +4,8 @@ enum class BlockchainNetwork(
     val title: String,
     val imageRef: String,
     val validatorRef: String? = null,
-    val proposalsRef: String? = null // потом, сейчас только для сетей космоса
+    val proposalsRef: String? = null,
+    val isCosmosNetwork: Boolean = false
 ) {
 
     //non-cosmos
@@ -18,6 +19,8 @@ enum class BlockchainNetwork(
     JUNO(
         "Juno",
         "https://s2.coinmarketcap.com/static/img/coins/64x64/14299.png",
-        "https://www.mintscan.io/juno/validators"
-    )
+        "https://www.mintscan.io/juno/validators",
+        "https://www.mintscan.io/juno/proposals",
+        true
+    );
 }

@@ -1,6 +1,7 @@
 package com.mobileweb3.dvs.app
 
 import com.mobileweb3.dvs.core.entity.validator.ValidatorModel
+import com.mobileweb3.dvs.interactor.MainInteractor
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +22,9 @@ sealed class ValidatorDetailsSideEffect : Effect {
     data class Message(val text: String) : ValidatorDetailsSideEffect()
 }
 
-class ValidatorDetailsStore : Store<ValidatorDetailsState, ValidatorDetailsAction, ValidatorDetailsSideEffect>,
+class ValidatorDetailsStore(
+    val interactor: MainInteractor
+) : Store<ValidatorDetailsState, ValidatorDetailsAction, ValidatorDetailsSideEffect>,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     private val state =
@@ -51,5 +54,9 @@ class ValidatorDetailsStore : Store<ValidatorDetailsState, ValidatorDetailsActio
             Napier.d(tag = "MainStore", message = "NewState: $newState")
             state.value = newState
         }
+    }
+
+    private fun loadValidatorProposals() {
+
     }
 }

@@ -89,6 +89,16 @@ data class ValidatorModel(
             )
         }
 
+        val cosmosNetworks = mainNets.filter { it.blockchainNetwork.isCosmosNetwork }
+        if (cosmosNetworks.isNotEmpty()) {
+            resultList.add(
+                ValidatorTopic(
+                    title = "Voting",
+                    topicContent = listOf(ValidatorTopicContent.VotingNetworks(cosmosNetworks))
+                )
+            )
+        }
+
         if (mainNets.isNotEmpty()) {
             resultList.add(
                 ValidatorTopic(

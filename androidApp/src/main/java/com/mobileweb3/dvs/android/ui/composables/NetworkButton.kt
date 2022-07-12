@@ -23,12 +23,11 @@ import com.skydoves.landscapist.glide.GlideImage
 @Composable
 fun NetworkButton(
     network: ValidatorNetwork,
-    modifier: Modifier
+    modifier: Modifier,
+    onClick: () -> Unit
 ) {
-    val uriHandler = LocalUriHandler.current
-
     Button(
-        onClick = { uriHandler.openUri(network.getLink()) },
+        onClick = { onClick.invoke() },
         modifier = modifier,
         shape = RoundedCornerShape(30.dp)
     ) {

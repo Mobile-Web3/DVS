@@ -23,6 +23,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import androidx.palette.graphics.Palette
 import com.google.accompanist.flowlayout.FlowRow
@@ -118,6 +119,8 @@ fun ValidatorDetailsContent(
                     enabled = true
                 )
         ) {
+            val uriHandler = LocalUriHandler.current
+
             content.forEach { topicContent ->
                 when (topicContent) {
                     is ValidatorTopicContent.SimpleText -> {
@@ -126,10 +129,25 @@ fun ValidatorDetailsContent(
                             modifier = modifier
                         )
                     }
+                    is ValidatorTopicContent.VotingNetworks -> {
+                        FlowRow {
+                            topicContent.networks.forEachIndexed { index, network ->
+                                NetworkButton(network, modifier) {
+
+                                }
+
+                                if (index != topics.lastIndex) {
+                                    Spacer(modifier = modifier.width(16.dp))
+                                }
+                            }
+                        }
+                    }
                     is ValidatorTopicContent.MainNetworks -> {
                         FlowRow {
                             topicContent.networks.forEachIndexed { index, network ->
-                                NetworkButton(network, modifier)
+                                NetworkButton(network, modifier) {
+                                    uriHandler.openUri(network.getLink())
+                                }
 
                                 if (index != topics.lastIndex) {
                                     Spacer(modifier = modifier.width(16.dp))
