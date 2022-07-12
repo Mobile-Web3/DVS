@@ -24,9 +24,7 @@ sealed class ValidatorListSideEffect : Effect {
     data class Message(val text: String) : ValidatorListSideEffect()
 }
 
-class ValidatorListStore(
-    val interactor: MainInteractor
-) : Store<ValidatorListState, ValidatorListAction, ValidatorListSideEffect>,
+class ValidatorListStore : Store<ValidatorListState, ValidatorListAction, ValidatorListSideEffect>,
     CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     private val state =
@@ -45,13 +43,13 @@ class ValidatorListStore(
     init {
         loadValidators()
 
-        launch {
-            val proposals = interactor.getValidatorVotes(
-                chain = "cosmos",
-                validatorAddress = "cosmos1vvwtk805lxehwle9l4yudmq6mn0g32pxqjlrmt"
-            )
-            proposals.size
-        }
+//        launch {
+//            val proposals = interactor.getValidatorVotes(
+//                chain = "cosmos",
+//                validatorAddress = "cosmos1vvwtk805lxehwle9l4yudmq6mn0g32pxqjlrmt"
+//            )
+//            proposals.size
+//        }
     }
 
     override fun observeState(): StateFlow<ValidatorListState> = state

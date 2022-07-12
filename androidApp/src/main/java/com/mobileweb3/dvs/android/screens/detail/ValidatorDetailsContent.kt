@@ -25,6 +25,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.palette.graphics.Palette
 import com.google.accompanist.flowlayout.FlowRow
 import com.mobileweb3.dvs.android.ui.composables.Avatar
@@ -35,6 +36,8 @@ import com.mobileweb3.dvs.android.ui.composables.ValidatorTitle
 import com.mobileweb3.dvs.android.ui.composables.getGradientBrush
 import com.mobileweb3.dvs.app.ValidatorDetailsStore
 import com.mobileweb3.dvs.app.ValidatorViewState
+import com.mobileweb3.dvs.app.ValidatorVotesAction
+import com.mobileweb3.dvs.app.ValidatorVotesStore
 import com.mobileweb3.dvs.core.entity.validator.ValidatorTopicContent
 
 private val AVATAR_HEIGHT_WIDTH = 180.dp
@@ -42,6 +45,8 @@ private val AVATAR_HEIGHT_WIDTH = 180.dp
 @Composable
 fun ValidatorDetailsContent(
     validatorDetailsStore: ValidatorDetailsStore,
+    validatorVotesStore: ValidatorVotesStore,
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
     val validatorModelState = validatorDetailsStore.observeState().collectAsState(null)
@@ -133,11 +138,16 @@ fun ValidatorDetailsContent(
                         FlowRow {
                             topicContent.networks.forEachIndexed { index, network ->
                                 NetworkButton(network, modifier) {
-
+                                    validatorVotesStore.dispatch(
+                                        ValidatorVotesAction.NetworkSelected(
+                                            validatorModel, network
+                                        )
+                                    )
+                                    navController.navigate("voting")
                                 }
 
                                 if (index != topics.lastIndex) {
-                                    Spacer(modifier = modifier.width(16.dp))
+                                    Spacer(modifier = modifier.width(8.dp))
                                 }
                             }
                         }
@@ -150,7 +160,7 @@ fun ValidatorDetailsContent(
                                 }
 
                                 if (index != topics.lastIndex) {
-                                    Spacer(modifier = modifier.width(16.dp))
+                                    Spacer(modifier = modifier.width(8.dp))
                                 }
                             }
                         }

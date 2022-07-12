@@ -24,10 +24,12 @@ import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.mobileweb3.dvs.android.screens.detail.ValidatorDetailsContent
 import com.mobileweb3.dvs.android.screens.main.ValidatorsListContent
+import com.mobileweb3.dvs.android.screens.voting.ValidatorVotesContent
 import com.mobileweb3.dvs.android.ui.AppTheme
 import com.mobileweb3.dvs.app.ValidatorDetailsStore
 import com.mobileweb3.dvs.app.ValidatorListSideEffect
 import com.mobileweb3.dvs.app.ValidatorListStore
+import com.mobileweb3.dvs.app.ValidatorVotesStore
 import kotlinx.coroutines.flow.filterIsInstance
 import org.koin.android.ext.android.inject
 
@@ -53,6 +55,7 @@ class AppActivity : ComponentActivity() {
 
                     val validatorListStore: ValidatorListStore by inject()
                     val validatorDetailsStore: ValidatorDetailsStore by inject()
+                    val validatorVotesStore: ValidatorVotesStore by inject()
 
                     val message = validatorListStore.observeSideEffect()
                         .filterIsInstance<ValidatorListSideEffect.Message>()
@@ -102,7 +105,17 @@ class AppActivity : ComponentActivity() {
                                     )
                                 }
                                 composable("details") {
-                                    ValidatorDetailsContent(validatorDetailsStore)
+                                    ValidatorDetailsContent(
+                                        validatorDetailsStore,
+                                        validatorVotesStore,
+                                        navController
+                                    )
+                                }
+                                composable("voting") {
+                                    ValidatorVotesContent(
+                                        validatorDetailsStore,
+                                        validatorVotesStore
+                                    )
                                 }
                             }
                         }
