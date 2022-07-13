@@ -13,6 +13,7 @@ data class ValidatorModel(
     val contacts: List<Contact> = emptyList(),
     val otherInfo: List<OtherInfo> = emptyList()
 ) {
+
     private val validatingNetworksCount = mainNets.size + testNets.size + genesisNets.size
     private val otherActivities = otherProjects.size + contributionsTypes.size
 
@@ -123,9 +124,16 @@ data class ValidatorModel(
             resultList.add(
                 ValidatorTopic(
                     title = "Ambassador",
-                    topicContent = ambassadorPrograms.map { program ->
-                        ValidatorTopicContent.SimpleText(program.toString())
-                    }
+                    topicContent = listOf(
+                        ValidatorTopicContent.ButtonsWithRefFlow(
+                            ambassadorPrograms.map { program ->
+                                ButtonWithRef(
+                                    text = program.title,
+                                    reference = program.link
+                                )
+                            }
+                        )
+                    )
                 )
             )
         }
@@ -135,9 +143,16 @@ data class ValidatorModel(
                 resultList.add(
                     ValidatorTopic(
                         title = otherProject.topic,
-                        topicContent = otherProject.projects.map { project ->
-                            ValidatorTopicContent.SimpleText(project.toString())
-                        }
+                        topicContent = listOf(
+                            ValidatorTopicContent.ButtonsWithRefFlow(
+                                otherProject.projects.map { project ->
+                                    ButtonWithRef(
+                                        text = project.title,
+                                        reference = project.link
+                                    )
+                                }
+                            )
+                        )
                     )
                 )
             }
@@ -148,9 +163,16 @@ data class ValidatorModel(
                 resultList.add(
                     ValidatorTopic(
                         title = contributions.type,
-                        topicContent = contributions.contributions.map { contribution ->
-                            ValidatorTopicContent.SimpleText(contribution.toString())
-                        }
+                        topicContent = listOf(
+                            ValidatorTopicContent.ButtonsWithRefFlow(
+                                contributions.contributions.map { contribution ->
+                                    ButtonWithRef(
+                                        text = contribution.label,
+                                        reference = contribution.link
+                                    )
+                                }
+                            )
+                        )
                     )
                 )
             }
@@ -210,15 +232,7 @@ data class OtherProjects(
 data class Project(
     val title: String,
     val link: String? = null
-) {
-    override fun toString(): String {
-        return if (link != null) {
-            "- <a href=\"${link}\" rel=\"nofollow\">$title</a>"
-        } else {
-            "- $title"
-        }
-    }
-}
+)
 
 data class Contributions(
     val type: String, //tech,community,other
@@ -228,15 +242,7 @@ data class Contributions(
 data class Contribution(
     val label: String,
     val link: String? = null
-) {
-    override fun toString(): String {
-        return if (link != null) {
-            "- <a href=\"${link}\" rel=\"nofollow\">$label</a>"
-        } else {
-            "- $label"
-        }
-    }
-}
+)
 
 data class Contact(
     val type: String,

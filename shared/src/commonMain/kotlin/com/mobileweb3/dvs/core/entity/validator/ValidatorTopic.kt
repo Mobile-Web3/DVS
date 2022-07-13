@@ -9,6 +9,10 @@ sealed class ValidatorTopicContent {
 
     data class SimpleText(val text: String) : ValidatorTopicContent()
 
+    data class ButtonsWithRefFlow(
+        val buttons: List<ButtonWithRef>
+    ) : ValidatorTopicContent()
+
     data class MainNetworks(val networks: List<ValidatorNetwork>) : ValidatorTopicContent()
 
     data class VotingNetworks(val networks: List<ValidatorNetwork>) : ValidatorTopicContent()
@@ -17,3 +21,8 @@ sealed class ValidatorTopicContent {
         val contactsContent: List<Pair<String, String>>
     ) : ValidatorTopicContent()
 }
+
+data class ButtonWithRef(
+    val text: String,
+    val reference: String?,
+)

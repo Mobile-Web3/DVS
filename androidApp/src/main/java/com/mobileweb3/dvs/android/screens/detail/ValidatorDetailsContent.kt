@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -24,7 +25,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.palette.graphics.Palette
 import com.google.accompanist.flowlayout.FlowRow
@@ -106,7 +109,10 @@ fun ValidatorDetailsContent(
                     },
                     modifier = modifier,
                 ) {
-                    Text(text = validatorTopic.title)
+                    Text(
+                        text = validatorTopic.title,
+                        fontSize = 20.sp
+                    )
                 }
 
                 if (index != topics.lastIndex) {
@@ -137,6 +143,33 @@ fun ValidatorDetailsContent(
                             textWithHtml = topicContent.text,
                             modifier = modifier
                         )
+                    }
+                    is ValidatorTopicContent.ButtonsWithRefFlow -> {
+                        FlowRow {
+                            topicContent.buttons.forEachIndexed { index, content ->
+                                Button(
+                                    modifier = modifier.height(56.dp),
+                                    shape = RoundedCornerShape(30.dp),
+                                    onClick = {
+                                        content.reference?.let {
+                                            uriHandler.openUri(it)
+                                        }
+                                    }
+                                ) {
+                                    Text(
+                                        modifier = Modifier
+                                            ,
+                                        text = content.text,
+                                        textDecoration = TextDecoration.Underline,
+                                        fontSize = 20.sp
+                                    )
+                                }
+
+                                if (index != topics.lastIndex) {
+                                    Spacer(modifier = modifier.width(8.dp))
+                                }
+                            }
+                        }
                     }
                     is ValidatorTopicContent.VotingNetworks -> {
                         FlowRow {

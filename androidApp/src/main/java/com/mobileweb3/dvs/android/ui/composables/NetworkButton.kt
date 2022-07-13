@@ -14,6 +14,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.mobileweb3.dvs.android.utils.applyDefaults
@@ -34,8 +35,8 @@ fun NetworkButton(
         GlideImage(
             modifier = Modifier
                 .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(100.dp))
-                .width(30.dp)
-                .height(30.dp),
+                .width(40.dp)
+                .height(40.dp),
             imageModel = network.blockchainNetwork.imageRef,
             requestBuilder = {
                 Glide.with(LocalContext.current.applicationContext)
@@ -49,7 +50,8 @@ fun NetworkButton(
 
         Text(
             text = network.blockchainNetwork.title,
-            textDecoration = TextDecoration.Underline
+            textDecoration = TextDecoration.Underline,
+            fontSize = 20.sp
         )
     }
 }
