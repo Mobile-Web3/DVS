@@ -57,13 +57,16 @@ fun ValidatorVotesContent(
             items(votesState.value!!.proposals.toViewItems()) { item ->
                 when (item) {
                     ProposalViewItem.Loading -> {
-                        Text(text = "Loading...")
+                        ProposalShimmerView()
                     }
                     ProposalViewItem.Error -> {
                         Text(text = "Error...")
                     }
                     is ProposalViewItem.Data -> {
-                        ProposalView(item = item, network = votesState.value!!.network!!.blockchainNetwork)
+                        ProposalView(
+                            item = item,
+                            network = votesState.value!!.network!!.blockchainNetwork
+                        )
                     }
                 }
             }
@@ -75,8 +78,6 @@ fun RequestStatus<List<ValidatorVote>>.toViewItems(): List<ProposalViewItem> {
     return when (this) {
         is RequestStatus.Loading -> {
             listOf(
-                ProposalViewItem.Loading,
-                ProposalViewItem.Loading,
                 ProposalViewItem.Loading,
                 ProposalViewItem.Loading
             )
