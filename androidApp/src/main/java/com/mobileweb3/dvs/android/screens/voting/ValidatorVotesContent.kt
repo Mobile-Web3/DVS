@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.mobileweb3.dvs.app.ValidatorVotesStore
@@ -60,7 +61,22 @@ fun ValidatorVotesContent(
                         ProposalShimmerView()
                     }
                     ProposalViewItem.Error -> {
-                        Text(text = "Error...")
+                        Text(
+                            text = "Loading proposals error. Please check your internet connection on try later",
+                            color = Color.Red,
+                            fontWeight = FontWeight.Bold,
+                            style = MaterialTheme.typography.h5,
+                            modifier = Modifier.padding(16.dp)
+                        )
+                    }
+                    is ProposalViewItem.Empty -> {
+                        Text(
+                            text = "There is no proposals yet in ${votesState.value!!.network!!.blockchainNetwork.name}",
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold,
+                            style = MaterialTheme.typography.h5,
+                            modifier = Modifier.padding(16.dp)
+                        )
                     }
                     is ProposalViewItem.Data -> {
                         ProposalView(
@@ -86,7 +102,11 @@ fun RequestStatus<List<ValidatorVote>>.toViewItems(): List<ProposalViewItem> {
             listOf(ProposalViewItem.Error)
         }
         is RequestStatus.Data -> {
-            data.map { ProposalViewItem.Data(it) }
+            if (data.isEmpty()) {
+                listOf(ProposalViewItem.Empty)
+            } else {
+                data.map { ProposalViewItem.Data(it) }
+            }
         }
     }
 }
@@ -98,4 +118,6 @@ sealed class ProposalViewItem {
     object Error : ProposalViewItem()
 
     data class Data(val validatorVote: ValidatorVote) : ProposalViewItem()
+
+    object Empty : ProposalViewItem()
 }
