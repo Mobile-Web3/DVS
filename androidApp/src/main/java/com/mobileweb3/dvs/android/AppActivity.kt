@@ -113,7 +113,8 @@ class AppActivity : ComponentActivity() {
                                 }
                                 composable("voting") {
                                     ValidatorVotesContent(
-                                        validatorVotesStore
+                                        validatorVotesStore,
+                                        navController
                                     )
                                 }
                             }

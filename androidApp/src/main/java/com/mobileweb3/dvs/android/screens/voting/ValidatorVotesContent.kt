@@ -1,37 +1,54 @@
 package com.mobileweb3.dvs.android.screens.voting
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.mobileweb3.dvs.app.ValidatorVotesStore
 import com.mobileweb3.dvs.core.entity.RequestStatus
 import com.mobileweb3.dvs.core.entity.validator.ValidatorVote
 
 @Composable
 fun ValidatorVotesContent(
-    validatorVotesStore: ValidatorVotesStore
+    validatorVotesStore: ValidatorVotesStore,
+    navController: NavHostController
 ) {
     val votesState = validatorVotesStore.observeState().collectAsState(null)
     if (votesState.value?.network == null || votesState.value?.validatorModel == null) {
         return
     }
 
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(
                 top = 24.dp
             )
     ) {
+        ValidatorVotesHeader(votesState.value!!, navController)
+
+        Text(
+            modifier = Modifier.padding(
+                top = 16.dp,
+                start = 16.dp,
+                end = 16.dp
+            ),
+            color = Color.White,
+            text = "Note: click on proposal to see detailed information.\n" +
+                    "Click on validator vote in top right to see the vote transaction."
+        )
+
         LazyVerticalGrid(
             columns = GridCells.Fixed(1),
             modifier = Modifier.padding(16.dp),

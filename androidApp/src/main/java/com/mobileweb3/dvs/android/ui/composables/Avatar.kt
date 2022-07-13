@@ -25,7 +25,7 @@ import com.skydoves.landscapist.palette.BitmapPalette
 fun Avatar(
     url: String?,
     widthHeightDp: Dp,
-    onPaletteChanged: (Palette) -> Unit
+    onPaletteChanged: ((Palette) -> Unit)? = null
 ) {
     GlideImage(
         modifier = Modifier
@@ -48,6 +48,6 @@ fun Avatar(
                 AvatarShimmer(widthHeightDp)
             }
         },
-        bitmapPalette = BitmapPalette { onPaletteChanged(it) }
+        bitmapPalette = BitmapPalette { onPaletteChanged?.invoke(it) }
     )
 }
