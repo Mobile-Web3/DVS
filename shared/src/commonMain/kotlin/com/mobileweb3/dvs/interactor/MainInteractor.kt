@@ -6,6 +6,8 @@ import com.mobileweb3.dvs.core.entity.Something
 import com.mobileweb3.dvs.core.entity.validator.ValidatorNetwork
 import com.mobileweb3.dvs.core.entity.validator.ValidatorVote
 import com.mobileweb3.dvs.core.entity.validator.Vote
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.withContext
 
 class MainInteractor internal constructor(
     private val somethingLoader: SomethingLoader,
@@ -39,16 +41,19 @@ class MainInteractor internal constructor(
     }
 
     suspend fun getValidatorVotes(
-        validatorNetwork: ValidatorNetwork
+        validatorNetwork: ValidatorNetwork,
+        coroutineScope: CoroutineScope
     ): List<ValidatorVote> {
         if (validatorNetwork.blockchainNetwork.getProposalsRef == null) {
             return emptyList()
         }
 
-        val proposals = somethingLoader.getProposalsFromMintScan(validatorNetwork.blockchainNetwork.getProposalsRef)
-        val validatorTransactions = somethingLoader.getValidatorTransactions(
-            validatorNetwork.getValidatorTransactionsLink()
-        )
+        val proposals = withContext(coroutineScope.coroutineContext) {
+            somethingLoader.getProposalsFromMintScan(validatorNetwork.blockchainNetwork.getProposalsRef)
+        }
+        val validatorTransactions = withContext(coroutineScope.coroutineContext) {
+            somethingLoader.getValidatorTransactions(validatorNetwork.getValidatorTransactionsLink())
+        }
 
         val resultList = mutableListOf<ValidatorVote>()
         validatorTransactions

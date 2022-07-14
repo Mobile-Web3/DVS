@@ -74,7 +74,7 @@ class ValidatorVotesStore(
     private fun loadValidatorProposals(network: ValidatorNetwork) {
         launch(Dispatchers.Default) {
             try {
-                val proposalList = interactor.getValidatorVotes(network)
+                val proposalList = interactor.getValidatorVotes(network, this)
 
                 state.value = state.value.copy(
                     proposals = RequestStatus.Data(proposalList)
