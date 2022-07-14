@@ -6,6 +6,7 @@ import com.mobileweb3.dvs.interactor.MainInteractor
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,8 +34,6 @@ class ValidatorListStore : Store<ValidatorListState, ValidatorListAction, Valida
                 listOf(
                     ValidatorViewState(isLoading = true),
                     ValidatorViewState(isLoading = true),
-                    ValidatorViewState(isLoading = true),
-                    ValidatorViewState(isLoading = true),
                 )
             )
         )
@@ -42,14 +41,6 @@ class ValidatorListStore : Store<ValidatorListState, ValidatorListAction, Valida
 
     init {
         loadValidators()
-
-//        launch {
-//            val proposals = interactor.getValidatorVotes(
-//                chain = "cosmos",
-//                validatorAddress = "cosmos1vvwtk805lxehwle9l4yudmq6mn0g32pxqjlrmt"
-//            )
-//            proposals.size
-//        }
     }
 
     override fun observeState(): StateFlow<ValidatorListState> = state
@@ -77,6 +68,8 @@ class ValidatorListStore : Store<ValidatorListState, ValidatorListAction, Valida
 
     private fun loadValidators() {
         launch {
+            delay(1000)
+
             state.value = ValidatorListState(
                 validators.map { ValidatorViewState(isLoading = false, validatorModel = it) }
             )
