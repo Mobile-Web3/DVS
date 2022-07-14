@@ -24,6 +24,11 @@ val web34ever = ValidatorModel(
             blockchainNetwork = BlockchainNetwork.JUNO,
             validatorAddress = "junovaloper1mxpyg8u68k6a8wdu3hs5whcpw9q285pcpxm5yx",
             walletAddress = "juno1mxpyg8u68k6a8wdu3hs5whcpw9q285pc7mdmll"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.OMNIFLIX,
+            validatorAddress = "omniflixvaloper147l6zgkn7af5d2rgxktt5wavct2l4hf5hf79hm",
+            walletAddress = "omniflix147l6zgkn7af5d2rgxktt5wavct2l4hf56mvykn"
         )
     ),
     testNets = emptyList(),

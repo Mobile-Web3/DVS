@@ -31,5 +31,17 @@ enum class BlockchainNetwork(
         getTransactionsRef = "https://api-juno.cosmostation.io/v1/account/new_txs",
         exploreTransactionRef = "https://www.mintscan.io/juno/txs",
         isCosmosNetwork = true
+    ),
+
+    OMNIFLIX(
+        title = "Omniflix",
+        chain = "omniflix",
+        imageRef = "https://static.tildacdn.com/tild3632-6535-4136-b362-356132663835/omniflix.png",
+        validatorRef = "https://www.mintscan.io/omniflix/validators",
+        getProposalsRef = "https://api.mintscan.io/v1/omniflix/proposals",
+        exploreProposalRef = "https://www.mintscan.io/omniflix/proposals",
+        getTransactionsRef = "https://api-omniflix.cosmostation.io/v1/account/new_txs",
+        exploreTransactionRef = "https://www.mintscan.io/omniflix/txs",
+        isCosmosNetwork = true
     );
 }
