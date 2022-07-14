@@ -144,15 +144,11 @@ fun ValidatorDetailsContent(
                         ButtonsRow(
                             topicContent,
                             uriHandler,
-                            context,
-                            topics.lastIndex
+                            context
                         )
                     }
                     is ValidatorTopicContent.VotingNetworks -> {
-                        NetworkButtonsRow(
-                            topicContent.networks,
-                            topics.lastIndex
-                        ) { network ->
+                        NetworkButtonsRow(topicContent.networks) { network ->
                             validatorVotesStore.dispatch(
                                 ValidatorVotesAction.NetworkSelected(
                                     validatorModel, network
@@ -162,10 +158,7 @@ fun ValidatorDetailsContent(
                         }
                     }
                     is ValidatorTopicContent.MainNetworks -> {
-                        NetworkButtonsRow(
-                            topicContent.networks,
-                            topics.lastIndex
-                        ) { network ->
+                        NetworkButtonsRow(topicContent.networks) { network ->
                             uriHandler.openUri(network.getValidatorPageLink())
                         }
                     }

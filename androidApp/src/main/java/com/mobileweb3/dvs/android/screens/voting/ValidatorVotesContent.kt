@@ -62,11 +62,11 @@ fun ValidatorVotesContent(
                     }
                     ProposalViewItem.Error -> {
                         Text(
-                            text = "Loading proposals error. Please check your internet connection on try later",
+                            text = "Loading proposals error. Maybe there are no proposals in ${votesState.value!!.network!!.blockchainNetwork.title}. Try later",
                             color = Color.Red,
                             fontWeight = FontWeight.Bold,
                             style = MaterialTheme.typography.h5,
-                            modifier = Modifier.padding(16.dp)
+                            modifier = Modifier.padding(top = 16.dp)
                         )
                     }
                     is ProposalViewItem.Empty -> {

@@ -33,8 +33,8 @@ fun NetworkButton(
         GlideImage(
             modifier = Modifier
                 .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(100.dp))
-                .width(40.dp)
-                .height(40.dp),
+                .width(30.dp)
+                .height(30.dp),
             imageModel = network.blockchainNetwork.imageRef,
             requestBuilder = {
                 Glide.with(LocalContext.current.applicationContext)
@@ -48,7 +48,7 @@ fun NetworkButton(
 
         Text(
             text = network.blockchainNetwork.title,
-            fontSize = 20.sp
+            fontSize = 16.sp
         )
     }
 }
