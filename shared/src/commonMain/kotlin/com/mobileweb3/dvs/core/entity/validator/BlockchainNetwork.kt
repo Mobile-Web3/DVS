@@ -43,5 +43,17 @@ enum class BlockchainNetwork(
         getTransactionsRef = "https://api-omniflix.cosmostation.io/v1/account/new_txs",
         exploreTransactionRef = "https://www.mintscan.io/omniflix/txs",
         isCosmosNetwork = true
+    ),
+
+    EVMOS(
+        title = "Evmos",
+        chain = "evmos",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/19899.png",
+        validatorRef = "https://www.mintscan.io/evmos/validators",
+        getProposalsRef = "https://api.mintscan.io/v1/evmos/proposals",
+        exploreProposalRef = "https://www.mintscan.io/evmos/proposals",
+        getTransactionsRef = "https://api-evmos.cosmostation.io/v1/account/new_txs",
+        exploreTransactionRef = "https://www.mintscan.io/evmos/txs",
+        isCosmosNetwork = true
     );
 }
