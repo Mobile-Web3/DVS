@@ -1,7 +1,5 @@
 package com.mobileweb3.dvs.android.screens.detail
 
-import android.widget.Toast
-import android.widget.Toast.LENGTH_LONG
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -14,7 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -28,14 +25,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.palette.graphics.Palette
-import com.google.accompanist.flowlayout.FlowRow
 import com.mobileweb3.dvs.android.ui.composables.Avatar
-import com.mobileweb3.dvs.android.ui.composables.NetworkButton
 import com.mobileweb3.dvs.android.ui.composables.TextWithHtml
 import com.mobileweb3.dvs.android.ui.composables.ValidatorTitle
 import com.mobileweb3.dvs.android.ui.composables.getGradientBrush
@@ -147,61 +141,32 @@ fun ValidatorDetailsContent(
                         )
                     }
                     is ValidatorTopicContent.ButtonsWithRefFlow -> {
-                        FlowRow {
-                            topicContent.buttons.forEachIndexed { index, content ->
-                                Button(
-                                    modifier = modifier.height(56.dp),
-                                    shape = RoundedCornerShape(30.dp),
-                                    onClick = {
-                                        content.reference?.let {
-                                            uriHandler.openUri(it)
-                                        }
-                                    }
-                                ) {
-                                    Text(
-                                        modifier = Modifier
-                                            ,
-                                        text = content.text,
-                                        textDecoration = TextDecoration.Underline,
-                                        fontSize = 20.sp
-                                    )
-                                }
-
-                                if (index != topics.lastIndex) {
-                                    Spacer(modifier = modifier.width(8.dp))
-                                }
-                            }
-                        }
+                        ButtonsRow(
+                            topicContent,
+                            uriHandler,
+                            context,
+                            topics.lastIndex
+                        )
                     }
                     is ValidatorTopicContent.VotingNetworks -> {
-                        FlowRow {
-                            topicContent.networks.forEachIndexed { index, network ->
-                                NetworkButton(network, modifier) {
-                                    validatorVotesStore.dispatch(
-                                        ValidatorVotesAction.NetworkSelected(
-                                            validatorModel, network
-                                        )
-                                    )
-                                    navController.navigate("voting")
-                                }
-
-                                if (index != topics.lastIndex) {
-                                    Spacer(modifier = modifier.width(8.dp))
-                                }
-                            }
+                        NetworkButtonsRow(
+                            topicContent.networks,
+                            topics.lastIndex
+                        ) { network ->
+                            validatorVotesStore.dispatch(
+                                ValidatorVotesAction.NetworkSelected(
+                                    validatorModel, network
+                                )
+                            )
+                            navController.navigate("voting")
                         }
                     }
                     is ValidatorTopicContent.MainNetworks -> {
-                        FlowRow {
-                            topicContent.networks.forEachIndexed { index, network ->
-                                NetworkButton(network, modifier) {
-                                    uriHandler.openUri(network.getValidatorPageLink())
-                                }
-
-                                if (index != topics.lastIndex) {
-                                    Spacer(modifier = modifier.width(8.dp))
-                                }
-                            }
+                        NetworkButtonsRow(
+                            topicContent.networks,
+                            topics.lastIndex
+                        ) { network ->
+                            uriHandler.openUri(network.getValidatorPageLink())
                         }
                     }
                     is ValidatorTopicContent.Contacts -> {

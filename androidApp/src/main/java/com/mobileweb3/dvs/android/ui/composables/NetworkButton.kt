@@ -24,12 +24,10 @@ import com.skydoves.landscapist.glide.GlideImage
 @Composable
 fun NetworkButton(
     network: ValidatorNetwork,
-    modifier: Modifier,
     onClick: () -> Unit
 ) {
     Button(
         onClick = { onClick.invoke() },
-        modifier = modifier,
         shape = RoundedCornerShape(30.dp)
     ) {
         GlideImage(
@@ -46,7 +44,7 @@ fun NetworkButton(
             requestOptions = { RequestOptions.circleCropTransform() }
         )
 
-        Spacer(modifier = modifier.width(4.dp))
+        Spacer(modifier = Modifier.width(4.dp))
 
         Text(
             text = network.blockchainNetwork.title,
