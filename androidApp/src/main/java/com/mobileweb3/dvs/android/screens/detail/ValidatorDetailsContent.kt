@@ -1,5 +1,7 @@
 package com.mobileweb3.dvs.android.screens.detail
 
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
@@ -24,6 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
@@ -133,6 +136,7 @@ fun ValidatorDetailsContent(
                 )
         ) {
             val uriHandler = LocalUriHandler.current
+            val context = LocalContext.current
 
             content.forEach { topicContent ->
                 when (topicContent) {

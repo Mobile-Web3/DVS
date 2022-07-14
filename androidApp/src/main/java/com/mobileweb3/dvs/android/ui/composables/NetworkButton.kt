@@ -50,7 +50,6 @@ fun NetworkButton(
 
         Text(
             text = network.blockchainNetwork.title,
-            textDecoration = TextDecoration.Underline,
             fontSize = 20.sp
         )
     }
