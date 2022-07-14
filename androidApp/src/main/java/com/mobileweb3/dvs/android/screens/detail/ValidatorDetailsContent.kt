@@ -32,7 +32,6 @@ import androidx.navigation.NavController
 import androidx.palette.graphics.Palette
 import com.google.accompanist.flowlayout.FlowRow
 import com.mobileweb3.dvs.android.ui.composables.Avatar
-import com.mobileweb3.dvs.android.ui.composables.IconWithHtmlLink
 import com.mobileweb3.dvs.android.ui.composables.NetworkButton
 import com.mobileweb3.dvs.android.ui.composables.TextWithHtml
 import com.mobileweb3.dvs.android.ui.composables.ValidatorTitle
@@ -126,8 +125,7 @@ fun ValidatorDetailsContent(
                 .fillMaxWidth()
                 .padding(
                     start = 16.dp,
-                    end = 16.dp,
-                    bottom = 16.dp
+                    end = 16.dp
                 )
                 .verticalScroll(
                     state = rememberScrollState(),
@@ -203,32 +201,9 @@ fun ValidatorDetailsContent(
                         }
                     }
                     is ValidatorTopicContent.Contacts -> {
-                        RowValidatorContacts(topicContent.contactsContent, modifier.padding(top = 16.dp))
+                        RowValidatorContacts(topicContent.contactsContent, modifier.padding(bottom = 16.dp))
                     }
                 }
-            }
-        }
-    }
-}
-
-@Composable
-fun RowValidatorContacts(contacts: List<Pair<String, String>>, modifier: Modifier) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .horizontalScroll(
-                state = rememberScrollState(),
-                enabled = true
-            )
-    ) {
-        contacts.forEachIndexed { index, pair ->
-            IconWithHtmlLink(
-                iconTag = pair.first,
-                link = pair.second
-            )
-
-            if (index != contacts.lastIndex) {
-                Spacer(modifier = Modifier.width(8.dp))
             }
         }
     }

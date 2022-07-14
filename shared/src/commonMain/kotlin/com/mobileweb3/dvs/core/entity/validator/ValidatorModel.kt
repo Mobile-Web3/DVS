@@ -68,10 +68,6 @@ data class ValidatorModel(
         if (description.isNotEmpty() || contacts.isNotEmpty()) {
             val resultTopicsList = mutableListOf<ValidatorTopicContent>()
 
-            if (description.isNotEmpty()) {
-                resultTopicsList.add(ValidatorTopicContent.SimpleText(description))
-            }
-
             if (contacts.isNotEmpty()) {
                 resultTopicsList.add(
                     ValidatorTopicContent.Contacts(
@@ -80,6 +76,10 @@ data class ValidatorModel(
                         }
                     )
                 )
+            }
+
+            if (description.isNotEmpty()) {
+                resultTopicsList.add(ValidatorTopicContent.SimpleText(description))
             }
 
             resultList.add(
