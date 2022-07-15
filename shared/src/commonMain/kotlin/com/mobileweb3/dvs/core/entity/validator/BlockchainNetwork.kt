@@ -34,6 +34,7 @@ enum class BlockchainNetwork(
         exploreProposalRef = "https://www.mintscan.io/juno/proposals",
         getTransactionsRef = "https://api-juno.cosmostation.io/v1/account/new_txs",
         exploreTransactionRef = "https://www.mintscan.io/juno/txs",
+        validatorInfoRef = "https://api-juno.cosmostation.io/v1/staking/validator",
         isCosmosNetwork = true
     ),
 
@@ -47,6 +48,7 @@ enum class BlockchainNetwork(
         exploreProposalRef = "https://www.mintscan.io/omniflix/proposals",
         getTransactionsRef = "https://api-omniflix.cosmostation.io/v1/account/new_txs",
         exploreTransactionRef = "https://www.mintscan.io/omniflix/txs",
+        validatorInfoRef = "https://api-omniflix.cosmostation.io/v1/staking/validator",
         isCosmosNetwork = true
     ),
 
