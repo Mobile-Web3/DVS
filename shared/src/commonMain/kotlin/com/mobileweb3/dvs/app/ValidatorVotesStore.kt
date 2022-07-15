@@ -1,6 +1,7 @@
 package com.mobileweb3.dvs.app
 
 import com.mobileweb3.dvs.core.entity.RequestStatus
+import com.mobileweb3.dvs.core.entity.validator.ValidatorInfo
 import com.mobileweb3.dvs.core.entity.validator.ValidatorModel
 import com.mobileweb3.dvs.core.entity.validator.ValidatorNetwork
 import com.mobileweb3.dvs.core.entity.validator.ValidatorVote
@@ -17,7 +18,8 @@ import kotlinx.coroutines.launch
 data class ValidatorVotesState(
     val validatorModel: ValidatorModel?,
     val network: ValidatorNetwork?,
-    val proposals: RequestStatus<List<ValidatorVote>>
+    val proposals: RequestStatus<List<ValidatorVote>>,
+    val validatorInfo: RequestStatus<ValidatorInfo>
 ) : State
 
 sealed class ValidatorVotesAction : Action {
@@ -39,7 +41,8 @@ class ValidatorVotesStore(
         ValidatorVotesState(
             validatorModel = null,
             network = null,
-            proposals = RequestStatus.Loading()
+            proposals = RequestStatus.Loading(),
+            validatorInfo = RequestStatus.Loading()
         )
     )
     private val sideEffect = MutableSharedFlow<ValidatorVotesSideEffect>()
@@ -55,6 +58,8 @@ class ValidatorVotesStore(
 
         val newState = when (action) {
             is ValidatorVotesAction.NetworkSelected -> {
+                loadValidatorProfile(action.network)
+
                 loadValidatorProposals(action.network)
 
                 oldState.copy(
@@ -68,6 +73,22 @@ class ValidatorVotesStore(
         if (newState != oldState) {
             Napier.d(tag = "MainStore", message = "NewState: $newState")
             state.value = newState
+        }
+    }
+
+    private fun loadValidatorProfile(network: ValidatorNetwork) {
+        launch(Dispatchers.Default) {
+            try {
+                val validatorInfo = interactor.getValidatorInfo(network)
+
+                state.value = state.value.copy(
+                    validatorInfo = RequestStatus.Data(validatorInfo)
+                )
+            } catch (ex: Exception) {
+                state.value = state.value.copy(
+                    validatorInfo = RequestStatus.Error(ex)
+                )
+            }
         }
     }
 

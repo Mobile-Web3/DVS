@@ -1,5 +1,6 @@
 package com.mobileweb3.dvs.android.screens.voting
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -23,11 +25,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.mobileweb3.dvs.android.ui.composables.Avatar
 import com.mobileweb3.dvs.app.ValidatorVotesState
+import com.mobileweb3.dvs.core.entity.validator.ValidatorStatus
 
 @Composable
 fun ValidatorVotesHeader(
     value: ValidatorVotesState,
-    navController: NavHostController
+    navController: NavHostController,
+    uriHandler: UriHandler
 ) {
     Row(
         modifier = Modifier
@@ -41,43 +45,28 @@ fun ValidatorVotesHeader(
             )
         }
 
-        Avatar(
-            url = value.validatorModel!!.avatar,
-            widthHeightDp = 70.dp
-        )
-
-        Spacer(modifier = Modifier.width(8.dp))
-
-        Avatar(
-            url = value.network!!.blockchainNetwork.imageRef,
-            widthHeightDp = 70.dp
-        )
-
-        Spacer(modifier = Modifier.width(8.dp))
-
-        Spacer(modifier = Modifier.weight(1f))
-
-        val validatorTitle = value.validatorModel?.title
-        val networkTitle = value.network?.blockchainNetwork?.title
+        val validatorRank = value.validatorInfo.dataOrNull?.rank
+        val validatorStatus = ValidatorStatus.from(value.validatorInfo.dataOrNull?.status)
 
         val spannedText = buildAnnotatedString {
-            append("This is how ")
+            append("Validator Rank: ")
             withStyle(
                 SpanStyle(
                     color = MaterialTheme.colors.primary,
                     fontWeight = FontWeight.Bold
                 )
             ) {
-                append("$validatorTitle ")
+                append("$validatorRank")
             }
-            append("votes in ")
+            append("\n")
+            append("Validator Status: ")
             withStyle(
                 SpanStyle(
                     color = MaterialTheme.colors.primary,
                     fontWeight = FontWeight.Bold
                 )
             ) {
-                append("$networkTitle ")
+                append("$validatorStatus ")
             }
         }
 
