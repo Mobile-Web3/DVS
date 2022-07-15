@@ -65,7 +65,8 @@ class ValidatorVotesStore(
                 oldState.copy(
                     validatorModel = action.validatorModel,
                     network = action.network,
-                    proposals = RequestStatus.Loading()
+                    proposals = RequestStatus.Loading(),
+                    validatorInfo = RequestStatus.Loading()
                 )
             }
         }

@@ -6,6 +6,8 @@ import com.mobileweb3.dvs.core.entity.transaction.Transaction
 import com.mobileweb3.dvs.core.entity.validator.ValidatorInfo
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
+import io.ktor.client.request.header
+import io.ktor.client.request.headers
 import io.ktor.client.statement.bodyAsText
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -36,6 +38,14 @@ class SomethingLoader(
     }
 
     suspend fun getValidatorInfo(url: String): ValidatorInfo {
-        return json.decodeFromString(httpClient.get(url).bodyAsText())
+        return json.decodeFromString(
+            httpClient.get(url) {
+//                headers {
+//                    header("Referer", "https://www.mintscan.io/")
+//                    header("Origin", "https://www.mintscan.io")
+//                    header("Host", "https://www.mintscan.io")
+//                }
+            }.bodyAsText()
+        )
     }
 }

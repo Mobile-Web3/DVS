@@ -34,6 +34,11 @@ val web34ever = ValidatorModel(
             blockchainNetwork = BlockchainNetwork.EVMOS,
             validatorAddress = "evmosvaloper1rq0r53s3wg4854n05tg0hrw5u3jaqlw483z0pg",
             walletAddress = "evmos1rq0r53s3wg4854n05tg0hrw5u3jaqlw42ldlq4"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.STARGAZE,
+            validatorAddress = "starsvaloper1jg39wazpukeqcytuuad7tsn3end22spg2m4u0x",
+            walletAddress = "stars1jg39wazpukeqcytuuad7tsn3end22spgp9pg57"
         )
     ),
     testNets = emptyList(),
