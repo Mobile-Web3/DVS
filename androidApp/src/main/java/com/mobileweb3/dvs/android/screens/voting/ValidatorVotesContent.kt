@@ -38,18 +38,9 @@ fun ValidatorVotesContent(
                 top = 24.dp
             )
     ) {
-        ValidatorVotesHeader(votesState.value!!, navController, LocalUriHandler.current)
+        ValidatorVotesHeader(navController)
 
-        Text(
-            modifier = Modifier.padding(
-                top = 16.dp,
-                start = 16.dp,
-                end = 16.dp
-            ),
-            color = Color.White,
-            text = "Note: click on proposal to see detailed information.\n" +
-                    "Click on validator vote in top right to see the vote transaction."
-        )
+        ValidatorStatusView(votesState.value!!, LocalUriHandler.current)
 
         LazyVerticalGrid(
             columns = GridCells.Fixed(1),

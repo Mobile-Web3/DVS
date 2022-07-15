@@ -9,6 +9,7 @@ enum class ValidatorStatus {
             return when (status) {
                 //seems like 3 is active
                 3 -> "ACTIVE"
+                null -> "UNKNOWN"
                 else -> "INACTIVE"
             }
         }
