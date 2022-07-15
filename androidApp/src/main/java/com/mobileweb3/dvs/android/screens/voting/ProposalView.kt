@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mobileweb3.dvs.core.entity.proposal.ProposalStatus
 import com.mobileweb3.dvs.core.entity.validator.BlockchainNetwork
@@ -50,9 +51,11 @@ fun ProposalView(item: ProposalViewItem.Data, network: BlockchainNetwork) {
             Text(
                 modifier = Modifier
                     .padding(
-                        top = 4.dp,
+                        top = 8.dp,
                         end = 100.dp
                     ),
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
                 text = "${item.validatorVote.proposal.title}",
                 style = MaterialTheme.typography.subtitle1,
                 color = MaterialTheme.colors.onPrimary
