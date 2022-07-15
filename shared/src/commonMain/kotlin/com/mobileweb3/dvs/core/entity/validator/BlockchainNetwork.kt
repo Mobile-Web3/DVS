@@ -71,5 +71,33 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "evmos".toExploreCosmosTransaction(),
         validatorInfoRef = "evmos".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    STARGAZE(
+        title = "Stargaze",
+        chain = "stargaze",
+        landingRef = "https://www.stargaze.zone/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/16842.png",
+        validatorsListRef = "stargaze".toCosmosValidators(),
+        getProposalsRef = "stargaze".toGetCosmosProposals(),
+        exploreProposalRef = "stargaze".toCosmosProposals(),
+        getTransactionsRef = "stargaze".toGetCosmosTransactions(),
+        exploreTransactionRef = "stargaze".toExploreCosmosTransaction(),
+        validatorInfoRef = "stargaze".toGetCosmosValidator(),
+        isCosmosNetwork = true
+    ),
+
+    CERTIK(
+        title = "Certik",
+        chain = "certik",
+        landingRef = "https://www.certik.com/",
+        imageRef = "https://www.mintscan.io/_next/static/image/assets/Dashboard/chain_certik.8ae38e6334ad25a00b7808b5747e7374.svg",
+        validatorsListRef = "certik".toCosmosValidators(),
+        getProposalsRef = "certik".toGetCosmosProposals(),
+        exploreProposalRef = "certik".toCosmosProposals(),
+        getTransactionsRef = "certik".toGetCosmosTransactions(),
+        exploreTransactionRef = "certik".toExploreCosmosTransaction(),
+        validatorInfoRef = "certik".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 }

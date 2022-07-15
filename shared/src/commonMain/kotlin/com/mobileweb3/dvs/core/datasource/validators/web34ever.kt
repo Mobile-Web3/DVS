@@ -39,6 +39,11 @@ val web34ever = ValidatorModel(
             blockchainNetwork = BlockchainNetwork.STARGAZE,
             validatorAddress = "starsvaloper1jg39wazpukeqcytuuad7tsn3end22spg2m4u0x",
             walletAddress = "stars1jg39wazpukeqcytuuad7tsn3end22spgp9pg57"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.CERTIK,
+            validatorAddress = "certikvaloper1036rphfnyw49fzm5ajfud743j2qutlk9flnnsq",
+            walletAddress = "certik1036rphfnyw49fzm5ajfud743j2qutlk97thne6"
         )
     ),
     testNets = emptyList(),
