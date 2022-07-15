@@ -1,5 +1,12 @@
 package com.mobileweb3.dvs.core.entity.validator
 
+import com.mobileweb3.dvs.utils.toCosmosProposals
+import com.mobileweb3.dvs.utils.toExploreCosmosTransaction
+import com.mobileweb3.dvs.utils.toGetCosmosProposals
+import com.mobileweb3.dvs.utils.toCosmosValidators
+import com.mobileweb3.dvs.utils.toGetCosmosTransactions
+import com.mobileweb3.dvs.utils.toGetCosmosValidator
+
 enum class BlockchainNetwork(
     val title: String,
     val chain: String,
@@ -29,12 +36,12 @@ enum class BlockchainNetwork(
         chain = "juno",
         landingRef = "https://www.junonetwork.io/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/14299.png",
-        validatorsListRef = "https://www.mintscan.io/juno/validators",
-        getProposalsRef = "https://api.mintscan.io/v1/juno/proposals",
-        exploreProposalRef = "https://www.mintscan.io/juno/proposals",
-        getTransactionsRef = "https://api-juno.cosmostation.io/v1/account/new_txs",
-        exploreTransactionRef = "https://www.mintscan.io/juno/txs",
-        validatorInfoRef = "https://api-juno.cosmostation.io/v1/staking/validator",
+        validatorsListRef = "juno".toCosmosValidators(),
+        getProposalsRef = "juno".toGetCosmosProposals(),
+        exploreProposalRef = "juno".toCosmosProposals(),
+        getTransactionsRef = "juno".toGetCosmosTransactions(),
+        exploreTransactionRef = "juno".toExploreCosmosTransaction(),
+        validatorInfoRef = "juno".toGetCosmosValidator(),
         isCosmosNetwork = true
     ),
 
@@ -43,12 +50,12 @@ enum class BlockchainNetwork(
         chain = "omniflix",
         landingRef = "https://omniflix.network/",
         imageRef = "https://static.tildacdn.com/tild3632-6535-4136-b362-356132663835/omniflix.png",
-        validatorsListRef = "https://www.mintscan.io/omniflix/validators",
-        getProposalsRef = "https://api.mintscan.io/v1/omniflix/proposals",
-        exploreProposalRef = "https://www.mintscan.io/omniflix/proposals",
-        getTransactionsRef = "https://api-omniflix.cosmostation.io/v1/account/new_txs",
-        exploreTransactionRef = "https://www.mintscan.io/omniflix/txs",
-        validatorInfoRef = "https://api-omniflix.cosmostation.io/v1/staking/validator",
+        validatorsListRef = "omniflix".toCosmosValidators(),
+        getProposalsRef = "omniflix".toGetCosmosProposals(),
+        exploreProposalRef = "omniflix".toCosmosProposals(),
+        getTransactionsRef = "omniflix".toGetCosmosTransactions(),
+        exploreTransactionRef = "omniflix".toExploreCosmosTransaction(),
+        validatorInfoRef = "omniflix".toGetCosmosValidator(),
         isCosmosNetwork = true
     ),
 
@@ -57,12 +64,12 @@ enum class BlockchainNetwork(
         chain = "evmos",
         landingRef = "https://evmos.org/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/19899.png",
-        validatorsListRef = "https://www.mintscan.io/evmos/validators",
-        getProposalsRef = "https://api.mintscan.io/v1/evmos/proposals",
-        exploreProposalRef = "https://www.mintscan.io/evmos/proposals",
-        getTransactionsRef = "https://api-evmos.cosmostation.io/v1/account/new_txs",
-        exploreTransactionRef = "https://www.mintscan.io/evmos/txs",
-        validatorInfoRef = "https://api-evmos.cosmostation.io/v1/staking/validator",
+        validatorsListRef = "evmos".toCosmosValidators(),
+        getProposalsRef = "evmos".toGetCosmosProposals(),
+        exploreProposalRef = "evmos".toCosmosProposals(),
+        getTransactionsRef = "evmos".toGetCosmosTransactions(),
+        exploreTransactionRef = "evmos".toExploreCosmosTransaction(),
+        validatorInfoRef = "evmos".toGetCosmosValidator(),
         isCosmosNetwork = true
     );
 }
