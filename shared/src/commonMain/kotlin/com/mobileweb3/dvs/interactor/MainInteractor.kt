@@ -3,6 +3,7 @@ package com.mobileweb3.dvs.interactor
 import com.mobileweb3.dvs.core.datasource.network.SomethingLoader
 import com.mobileweb3.dvs.core.datasource.storage.SomethingStorage
 import com.mobileweb3.dvs.core.entity.Something
+import com.mobileweb3.dvs.core.entity.validator.ValidatorInfo
 import com.mobileweb3.dvs.core.entity.validator.ValidatorNetwork
 import com.mobileweb3.dvs.core.entity.validator.ValidatorVote
 import com.mobileweb3.dvs.core.entity.validator.Vote
@@ -82,6 +83,10 @@ class MainInteractor internal constructor(
             }
 
         return resultList.sortedByDescending { it.proposal.id }
+    }
+
+    suspend fun getValidatorInfo(network: ValidatorNetwork): ValidatorInfo {
+        return somethingLoader.getValidatorInfo(network.getValidatorStatusLink())
     }
 
     companion object

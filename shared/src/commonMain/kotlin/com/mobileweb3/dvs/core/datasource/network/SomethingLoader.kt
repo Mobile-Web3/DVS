@@ -3,6 +3,7 @@ package com.mobileweb3.dvs.core.datasource.network
 import com.mobileweb3.dvs.core.entity.SomethingResponse
 import com.mobileweb3.dvs.core.entity.proposal.Proposal
 import com.mobileweb3.dvs.core.entity.transaction.Transaction
+import com.mobileweb3.dvs.core.entity.validator.ValidatorInfo
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
@@ -32,5 +33,9 @@ class SomethingLoader(
             // also there is another path to get tx-ns "https://api.cosmostation.io/v1/account/txs/$validationAddress?limit=100&from=0"
             httpClient.get("$url?limit=100&from=0").bodyAsText()
         )
+    }
+
+    suspend fun getValidatorInfo(url: String): ValidatorInfo {
+        return json.decodeFromString(httpClient.get(url).bodyAsText())
     }
 }

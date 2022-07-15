@@ -201,7 +201,7 @@ data class ValidatorNetwork(
 
     override fun toString(): String {
         return if (validatorAddress != null) {
-            "<a href=\"${blockchainNetwork.validatorRef}/${validatorAddress}\">${blockchainNetwork.title}</a>"
+            "<a href=\"${blockchainNetwork.validatorsListRef}/${validatorAddress}\">${blockchainNetwork.title}</a>"
         } else {
             "- ${blockchainNetwork.title}"
         }
@@ -209,9 +209,9 @@ data class ValidatorNetwork(
 
     fun getValidatorPageLink(): String {
         return if (validatorAddress != null) {
-            "${blockchainNetwork.validatorRef}/${validatorAddress}"
+            "${blockchainNetwork.validatorsListRef}/${validatorAddress}"
         } else {
-            "${blockchainNetwork.validatorRef}"
+            "${blockchainNetwork.validatorsListRef}"
         }
     }
 
@@ -219,7 +219,15 @@ data class ValidatorNetwork(
         return if (walletAddress != null) {
             "${blockchainNetwork.getTransactionsRef}/${walletAddress}"
         } else {
-            "${blockchainNetwork.validatorRef}"
+            "${blockchainNetwork.validatorsListRef}"
+        }
+    }
+
+    fun getValidatorStatusLink(): String {
+        return if (validatorAddress != null) {
+            "${blockchainNetwork.validatorInfoRef}/${validatorAddress}"
+        } else {
+            "${blockchainNetwork.validatorInfoRef}"
         }
     }
 }

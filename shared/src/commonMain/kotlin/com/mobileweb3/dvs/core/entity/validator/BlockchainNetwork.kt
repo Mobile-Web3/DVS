@@ -10,6 +10,7 @@ enum class BlockchainNetwork(
     val exploreProposalRef: String? = null,
     val getTransactionsRef: String? = null,
     val exploreTransactionRef: String? = null,
+    val validatorInfoRef: String? = null,
     val isCosmosNetwork: Boolean = false
 ) {
 
@@ -19,15 +20,16 @@ enum class BlockchainNetwork(
         chain = "Solana",
         landingRef = "https://solana.com/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png",
-        validatorRef = "https://www.validators.app/validators/mainnet"
+        validatorsListRef = "https://www.validators.app/validators/mainnet"
     ),
 
     //cosmos
     JUNO(
         title = "Juno",
         chain = "juno",
+        landingRef = "https://www.junonetwork.io/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/14299.png",
-        validatorRef = "https://www.mintscan.io/juno/validators",
+        validatorsListRef = "https://www.mintscan.io/juno/validators",
         getProposalsRef = "https://api.mintscan.io/v1/juno/proposals",
         exploreProposalRef = "https://www.mintscan.io/juno/proposals",
         getTransactionsRef = "https://api-juno.cosmostation.io/v1/account/new_txs",
@@ -40,7 +42,7 @@ enum class BlockchainNetwork(
         chain = "omniflix",
         landingRef = "https://omniflix.network/",
         imageRef = "https://static.tildacdn.com/tild3632-6535-4136-b362-356132663835/omniflix.png",
-        validatorRef = "https://www.mintscan.io/omniflix/validators",
+        validatorsListRef = "https://www.mintscan.io/omniflix/validators",
         getProposalsRef = "https://api.mintscan.io/v1/omniflix/proposals",
         exploreProposalRef = "https://www.mintscan.io/omniflix/proposals",
         getTransactionsRef = "https://api-omniflix.cosmostation.io/v1/account/new_txs",
@@ -53,11 +55,12 @@ enum class BlockchainNetwork(
         chain = "evmos",
         landingRef = "https://evmos.org/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/19899.png",
-        validatorRef = "https://www.mintscan.io/evmos/validators",
+        validatorsListRef = "https://www.mintscan.io/evmos/validators",
         getProposalsRef = "https://api.mintscan.io/v1/evmos/proposals",
         exploreProposalRef = "https://www.mintscan.io/evmos/proposals",
         getTransactionsRef = "https://api-evmos.cosmostation.io/v1/account/new_txs",
         exploreTransactionRef = "https://www.mintscan.io/evmos/txs",
+        validatorInfoRef = "https://api-evmos.cosmostation.io/v1/staking/validator",
         isCosmosNetwork = true
     );
 }
