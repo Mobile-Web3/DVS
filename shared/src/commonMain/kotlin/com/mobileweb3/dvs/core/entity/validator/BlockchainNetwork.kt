@@ -99,5 +99,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "certik".toExploreCosmosTransaction(),
         validatorInfoRef = "certik".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    RIZON(
+        title = "Rizon",
+        chain = "rizon",
+        landingRef = "https://rizon.world/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/15388.png",
+        validatorsListRef = "rizon".toCosmosValidators(),
+        getProposalsRef = "rizon".toGetCosmosProposals(),
+        exploreProposalRef = "rizon".toCosmosProposals(),
+        getTransactionsRef = "rizon".toGetCosmosTransactions(),
+        exploreTransactionRef = "rizon".toExploreCosmosTransaction(),
+        validatorInfoRef = "rizon".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 }
