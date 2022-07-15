@@ -12,6 +12,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.text.SpanStyle
@@ -89,11 +90,13 @@ fun ValidatorStatusView(
         Avatar(
             url = value.validatorModel!!.avatar,
             widthHeightDp = 50.dp,
-            modifier = Modifier.clickable {
-                value.network?.getValidatorPageLink()?.let {
-                    uriHandler.openUri(it)
+            modifier = Modifier
+                .clip(RoundedCornerShape(100.dp))
+                .clickable {
+                    value.network?.getValidatorPageLink()?.let {
+                        uriHandler.openUri(it)
+                    }
                 }
-            }
         )
 
         Spacer(modifier = Modifier.width(8.dp))
@@ -101,9 +104,11 @@ fun ValidatorStatusView(
         Avatar(
             url = value.network!!.blockchainNetwork.imageRef,
             widthHeightDp = 50.dp,
-            modifier = Modifier.clickable {
-                uriHandler.openUri(value.network?.blockchainNetwork!!.landingRef)
-            }
+            modifier = Modifier
+                .clip(RoundedCornerShape(100.dp))
+                .clickable {
+                    uriHandler.openUri(value.network?.blockchainNetwork!!.landingRef)
+                }
         )
 
         Spacer(modifier = Modifier.width(8.dp))

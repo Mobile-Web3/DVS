@@ -33,8 +33,7 @@ fun Avatar(
         modifier = modifier
             .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(100.dp))
             .width(widthHeightDp)
-            .height(widthHeightDp)
-            .clip(RoundedCornerShape(100.dp)),
+            .height(widthHeightDp),
         imageModel = url,
         requestBuilder = {
             Glide.with(LocalContext.current.applicationContext)
