@@ -4,7 +4,8 @@ enum class BlockchainNetwork(
     val title: String,
     val chain: String,
     val imageRef: String,
-    val validatorRef: String? = null,
+    val landingRef: String,
+    val validatorsListRef: String? = null,
     val getProposalsRef: String? = null,
     val exploreProposalRef: String? = null,
     val getTransactionsRef: String? = null,
@@ -16,6 +17,7 @@ enum class BlockchainNetwork(
     SOLANA(
         title = "Solana",
         chain = "Solana",
+        landingRef = "https://solana.com/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png",
         validatorRef = "https://www.validators.app/validators/mainnet"
     ),
@@ -36,6 +38,7 @@ enum class BlockchainNetwork(
     OMNIFLIX(
         title = "Omniflix",
         chain = "omniflix",
+        landingRef = "https://omniflix.network/",
         imageRef = "https://static.tildacdn.com/tild3632-6535-4136-b362-356132663835/omniflix.png",
         validatorRef = "https://www.mintscan.io/omniflix/validators",
         getProposalsRef = "https://api.mintscan.io/v1/omniflix/proposals",
@@ -48,6 +51,7 @@ enum class BlockchainNetwork(
     EVMOS(
         title = "Evmos",
         chain = "evmos",
+        landingRef = "https://evmos.org/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/19899.png",
         validatorRef = "https://www.mintscan.io/evmos/validators",
         getProposalsRef = "https://api.mintscan.io/v1/evmos/proposals",

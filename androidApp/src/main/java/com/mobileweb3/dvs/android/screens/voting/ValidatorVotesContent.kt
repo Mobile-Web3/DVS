@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -37,7 +38,7 @@ fun ValidatorVotesContent(
                 top = 24.dp
             )
     ) {
-        ValidatorVotesHeader(votesState.value!!, navController)
+        ValidatorVotesHeader(votesState.value!!, navController, LocalUriHandler.current)
 
         Text(
             modifier = Modifier.padding(

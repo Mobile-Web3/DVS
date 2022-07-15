@@ -87,6 +87,28 @@ fun ValidatorVotesHeader(
             modifier = Modifier.align(alignment = Alignment.CenterVertically)
         )
 
+        Spacer(modifier = Modifier.weight(1f))
+
+        Avatar(
+            url = value.validatorModel!!.avatar,
+            widthHeightDp = 70.dp,
+            modifier = Modifier.clickable {
+                value.network?.getValidatorPageLink()?.let {
+                    uriHandler.openUri(it)
+                }
+            }
+        )
+
+        Spacer(modifier = Modifier.width(8.dp))
+
+        Avatar(
+            url = value.network!!.blockchainNetwork.imageRef,
+            widthHeightDp = 70.dp,
+            modifier = Modifier.clickable {
+                uriHandler.openUri(value.network?.blockchainNetwork!!.landingRef)
+            }
+        )
+
         Spacer(modifier = Modifier.width(8.dp))
     }
 }
