@@ -5,6 +5,7 @@ enum class ProposalStatus(val title: String, val backgroundColor: Long, val text
     VOTING_PERIOD("VOTING PERIOD", 0xffEBF7FF, 0xff02B1FF),
     FAILED("FAILED", 0xffE2E2E2, 0xff898989),
     REJECTED("REJECTED", 0xffFFEBED, 0xffFF2745),
+    DEPOSIT_PERIOD("DEPOSIT PERIOD", 0xfffef6ec, 0xfff3a52f),
     UNKNOWN("UNKNOWN", 0xffE2E2E2, 0xff898989);
 
     companion object {
@@ -15,6 +16,7 @@ enum class ProposalStatus(val title: String, val backgroundColor: Long, val text
                 "PROPOSAL_STATUS_VOTING_PERIOD" -> VOTING_PERIOD
                 "PROPOSAL_STATUS_FAILED" -> FAILED
                 "PROPOSAL_STATUS_REJECTED" -> REJECTED
+                "PROPOSAL_STATUS_DEPOSIT_PERIOD" -> DEPOSIT_PERIOD
                 else -> UNKNOWN
             }
         }
