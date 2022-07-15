@@ -9,6 +9,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.Dp
@@ -25,13 +26,15 @@ import com.skydoves.landscapist.palette.BitmapPalette
 fun Avatar(
     url: String?,
     widthHeightDp: Dp,
-    onPaletteChanged: ((Palette) -> Unit)? = null
+    onPaletteChanged: ((Palette) -> Unit)? = null,
+    modifier: Modifier = Modifier
 ) {
     GlideImage(
-        modifier = Modifier
+        modifier = modifier
             .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(100.dp))
             .width(widthHeightDp)
-            .height(widthHeightDp),
+            .height(widthHeightDp)
+            .clip(RoundedCornerShape(100.dp)),
         imageModel = url,
         requestBuilder = {
             Glide.with(LocalContext.current.applicationContext)
