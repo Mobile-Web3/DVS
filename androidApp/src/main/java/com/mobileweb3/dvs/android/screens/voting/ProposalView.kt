@@ -78,7 +78,9 @@ fun ProposalView(item: ProposalViewItem.Data, network: BlockchainNetwork) {
                 .align(Alignment.TopEnd)
                 .clickable {
                     val transactionExploreRef = network.exploreTransactionRef
-                    uriHandler.openUri("$transactionExploreRef/${item.validatorVote.txhash}")
+                    item.validatorVote.txhash?.let {
+                        uriHandler.openUri("$transactionExploreRef/$it")
+                    }
                 }
                 .background(
                     color = MaterialTheme.colors.primary,

@@ -56,17 +56,27 @@ class MainInteractor internal constructor(
         }
 
         val resultList = mutableListOf<ValidatorVote>()
-        validatorTransactions
+        val validatorVoteTransactions = validatorTransactions
             .filter { transaction -> transaction.data.tx.body.messages?.get(0)?.proposal_id != null }
             .filter { transaction -> transaction.data.raw_log != null && !transaction.data.raw_log.contains("fail") }
-            .forEach { transaction ->
-                val transactionMessage = transaction.data.tx.body.messages!![0]
+
+        proposals
+            .sortedBy { it.id }
+            .forEach { proposal ->
+                val validatorVoteTransaction = validatorVoteTransactions.find { voteTransaction ->
+                    val transactionMessage = voteTransaction.data.tx.body.messages!![0]
+                    proposal.id.toString() == transactionMessage.proposal_id!!
+                }
+
+                val validatorVote = validatorVoteTransaction?.let {
+                    Vote.from(it.data.tx.body.messages!![0].option)
+                } ?: Vote.DID_NOT_VOTE
 
                 resultList.add(
-                    0, ValidatorVote(
-                        proposal = proposals.first { proposal -> proposal.id.toString() == transactionMessage.proposal_id!! },
-                        vote = Vote.from(transactionMessage.option),
-                        txhash = transaction.data.txhash
+                    ValidatorVote(
+                        proposal = proposal,
+                        vote = validatorVote,
+                        txhash = validatorVoteTransaction?.data?.txhash
                     )
                 )
             }

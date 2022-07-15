@@ -5,7 +5,7 @@ import com.mobileweb3.dvs.core.entity.proposal.Proposal
 data class ValidatorVote(
     val proposal: Proposal,
     val vote: Vote,
-    val txhash: String
+    val txhash: String?
 )
 
 enum class Vote(val string: String, val color: Long) {
@@ -13,6 +13,7 @@ enum class Vote(val string: String, val color: Long) {
     NO("No", 0xffef6767),
     NO_WITH_VETO("NoWithVeto", 0xffFF999A),
     ABSTAIN("Abstain", 0xff9FA4AD),
+    DID_NOT_VOTE("Did not vote", 0xff000000),
     UNKNOWN("Unknown", 0xff000000);
 
     companion object {
