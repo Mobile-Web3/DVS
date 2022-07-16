@@ -1,13 +1,19 @@
 package com.mobileweb3.dvs.core.datasource.network
 
 import com.mobileweb3.dvs.core.entity.SomethingResponse
+import com.mobileweb3.dvs.core.entity.proposal.BostromProposals
 import com.mobileweb3.dvs.core.entity.proposal.Proposal
+import com.mobileweb3.dvs.core.entity.proposal.toDefaultProposals
 import com.mobileweb3.dvs.core.entity.transaction.Transaction
+import com.mobileweb3.dvs.core.entity.validator.BlockchainNetwork
 import com.mobileweb3.dvs.core.entity.validator.ValidatorInfo
+import com.mobileweb3.dvs.core.entity.validator.ValidatorNetwork
+import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.client.request.headers
+import io.ktor.client.statement.HttpResponse
 import io.ktor.client.statement.bodyAsText
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
@@ -25,7 +31,14 @@ class SomethingLoader(
         return json.decodeFromString(httpClient.get(url).bodyAsText())
     }
 
-    suspend fun getProposalsFromMintScan(url: String): List<Proposal> {
+    suspend fun getProposals(blockchainNetwork: BlockchainNetwork): List<Proposal> {
+        val url = blockchainNetwork.getProposalsRef!!
+
+        if (blockchainNetwork == BlockchainNetwork.BOSTROM) {
+            val bostromProposals: BostromProposals = json.decodeFromString(httpClient.get(url).bodyAsText())
+            return bostromProposals.toDefaultProposals()
+        }
+
         return json.decodeFromString(httpClient.get(url).bodyAsText())
     }
 

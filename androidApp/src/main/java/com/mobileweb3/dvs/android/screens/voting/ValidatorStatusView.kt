@@ -53,7 +53,7 @@ fun ValidatorStatusView(
                     fontWeight = FontWeight.Bold
                 )
             ) {
-                append("${validatorRank ?: "Error"}")
+                append("${validatorRank ?: "UNKNOWN"}")
             }
             append("\n")
             append("Validator Status: ")

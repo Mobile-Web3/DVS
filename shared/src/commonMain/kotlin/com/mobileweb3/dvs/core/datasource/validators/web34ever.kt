@@ -46,6 +46,11 @@ val web34ever = ValidatorModel(
             walletAddress = "certik1036rphfnyw49fzm5ajfud743j2qutlk97thne6"
         ),
         ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.BOSTROM,
+            validatorAddress = "bostromvaloper15zs0cjct43xs4z4sesxcrynar5mxm82fh73g0j",
+            walletAddress = "bostrom15zs0cjct43xs4z4sesxcrynar5mxm82f0ykhl3"
+        ),
+        ValidatorNetwork(
             blockchainNetwork = BlockchainNetwork.RIZON,
             validatorAddress = "rizonvaloper17kpyk8nqwr0dkv4nz5j4d3r9umfm23we0fk8wj",
             walletAddress = "rizon17kpyk8nqwr0dkv4nz5j4d3r9umfm23weud5xvz"

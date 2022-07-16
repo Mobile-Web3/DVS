@@ -101,6 +101,20 @@ enum class BlockchainNetwork(
         isCosmosNetwork = true
     ),
 
+    BOSTROM(
+        title = "Bostrom",
+        chain = "bostrom",
+        landingRef = "https://cyb.ai/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/19111.png",
+        validatorsListRef = "https://cyb.ai/network/bostrom/hero",
+        getProposalsRef = "https://lcd.bostrom.cybernode.ai/gov/proposals",
+        exploreProposalRef = "https://cyb.ai/senate",
+        getTransactionsRef = "", //seems like it getting from socket
+        exploreTransactionRef = "https://cyb.ai/network/bostrom/tx",
+        validatorInfoRef = "", //seems like it getting from socket
+        isCosmosNetwork = true
+    ),
+
     RIZON(
         title = "Rizon",
         chain = "rizon",
