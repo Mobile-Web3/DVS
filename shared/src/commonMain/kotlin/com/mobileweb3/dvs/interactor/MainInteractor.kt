@@ -3,6 +3,7 @@ package com.mobileweb3.dvs.interactor
 import com.mobileweb3.dvs.core.datasource.network.SomethingLoader
 import com.mobileweb3.dvs.core.datasource.storage.SomethingStorage
 import com.mobileweb3.dvs.core.entity.Something
+import com.mobileweb3.dvs.core.entity.transaction.Transaction
 import com.mobileweb3.dvs.core.entity.validator.ValidatorInfo
 import com.mobileweb3.dvs.core.entity.validator.ValidatorNetwork
 import com.mobileweb3.dvs.core.entity.validator.ValidatorVote
@@ -50,10 +51,14 @@ class MainInteractor internal constructor(
         }
 
         val proposals = withContext(coroutineScope.coroutineContext) {
-            somethingLoader.getProposalsFromMintScan(validatorNetwork.blockchainNetwork.getProposalsRef)
+            somethingLoader.getProposals(validatorNetwork.blockchainNetwork)
         }
-        val validatorTransactions = withContext(coroutineScope.coroutineContext) {
-            somethingLoader.getValidatorTransactions(validatorNetwork.getValidatorTransactionsLink())
+        val validatorTransactions: List<Transaction> = try {
+            withContext(coroutineScope.coroutineContext) {
+                somethingLoader.getValidatorTransactions(validatorNetwork.getValidatorTransactionsLink())
+            }
+        } catch (ex: Exception) {
+            emptyList()
         }
 
         val resultList = mutableListOf<ValidatorVote>()
