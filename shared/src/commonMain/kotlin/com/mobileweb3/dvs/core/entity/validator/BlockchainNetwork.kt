@@ -155,5 +155,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "rizon".toExploreCosmosTransaction(),
         validatorInfoRef = "rizon".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    LIKECOIN(
+        title = "Likecoin",
+        chain = "likecoin",
+        landingRef = "https://likecoin.bigdipper.live/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/2909.png",
+        validatorsListRef = "https://likecoin.bigdipper.live/validators",
+        getProposalsRef = "",
+        exploreProposalRef = "https://likecoin.bigdipper.live/proposals",
+        getTransactionsRef = "",
+        exploreTransactionRef = "https://likecoin.bigdipper.live/transactions",
+        validatorInfoRef = "",
+        isCosmosNetwork = true
     );
 }

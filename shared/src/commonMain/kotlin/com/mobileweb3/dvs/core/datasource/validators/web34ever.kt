@@ -64,6 +64,11 @@ val web34ever = ValidatorModel(
             blockchainNetwork = BlockchainNetwork.RIZON,
             validatorAddress = "rizonvaloper17kpyk8nqwr0dkv4nz5j4d3r9umfm23we0fk8wj",
             walletAddress = "rizon17kpyk8nqwr0dkv4nz5j4d3r9umfm23weud5xvz"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.LIKECOIN,
+            validatorAddress = "likevaloper1yxzlyqmje82kc3l6nl3tpxhqs356vvh6emyftv",
+            walletAddress = "like1yxzlyqmje82kc3l6nl3tpxhqs356vvh605jhml"
         )
     ),
     testNets = emptyList(),
