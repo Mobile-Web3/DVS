@@ -11,6 +11,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.mobileweb3.dvs.android.R
+import com.mobileweb3.dvs.android.ui.composables.DefaultHeader
 import com.mobileweb3.dvs.app.ValidatorDetailsStore
 import com.mobileweb3.dvs.app.ValidatorListStore
 
@@ -28,11 +29,7 @@ fun ValidatorsListContent(
                 top = 24.dp,
             )
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.dvs_background),
-            contentDescription = null,
-            contentScale = ContentScale.FillWidth,
-        )
+        DefaultHeader()
 
         FindValidatorView(
             navController = navController

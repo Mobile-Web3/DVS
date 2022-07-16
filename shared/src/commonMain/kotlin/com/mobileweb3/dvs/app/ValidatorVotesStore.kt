@@ -52,7 +52,7 @@ class ValidatorVotesStore(
     override fun observeSideEffect(): Flow<ValidatorVotesSideEffect> = sideEffect
 
     override fun dispatch(action: ValidatorVotesAction) {
-        Napier.d(tag = "MainStore", message = "Action: $action")
+        Napier.d(tag = "ValidatorVotesStore", message = "Action: $action")
 
         val oldState = state.value
 

@@ -35,7 +35,7 @@ class ValidatorDetailsStore : Store<ValidatorDetailsState, ValidatorDetailsActio
     override fun observeSideEffect(): Flow<ValidatorDetailsSideEffect> = sideEffect
 
     override fun dispatch(action: ValidatorDetailsAction) {
-        Napier.d(tag = "MainStore", message = "Action: $action")
+        Napier.d(tag = "ValidatorDetailsStore", message = "Action: $action")
 
         val oldState = state.value
 
@@ -49,7 +49,7 @@ class ValidatorDetailsStore : Store<ValidatorDetailsState, ValidatorDetailsActio
         }
 
         if (newState != oldState) {
-            Napier.d(tag = "MainStore", message = "NewState: $newState")
+            Napier.d(tag = "ValidatorDetailsStore", message = "NewState: $newState")
             state.value = newState
         }
     }

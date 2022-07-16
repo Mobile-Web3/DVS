@@ -1,6 +1,7 @@
 package com.mobileweb3.dvs.android
 
 import android.app.Application
+import com.mobileweb3.dvs.app.SearchNetworkStore
 import com.mobileweb3.dvs.app.ValidatorDetailsStore
 import com.mobileweb3.dvs.app.ValidatorListStore
 import com.mobileweb3.dvs.app.ValidatorVotesStore
@@ -19,6 +20,7 @@ class App : Application() {
         single { ValidatorListStore() }
         single { ValidatorDetailsStore() }
         single { ValidatorVotesStore(get()) }
+        single { SearchNetworkStore() }
     }
 
     override fun onCreate() {

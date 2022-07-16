@@ -27,6 +27,7 @@ import com.mobileweb3.dvs.android.screens.main.ValidatorsListContent
 import com.mobileweb3.dvs.android.screens.search.SearchValidatorContent
 import com.mobileweb3.dvs.android.screens.voting.ValidatorVotesContent
 import com.mobileweb3.dvs.android.ui.AppTheme
+import com.mobileweb3.dvs.app.SearchNetworkStore
 import com.mobileweb3.dvs.app.ValidatorDetailsStore
 import com.mobileweb3.dvs.app.ValidatorListSideEffect
 import com.mobileweb3.dvs.app.ValidatorListStore
@@ -57,6 +58,7 @@ class AppActivity : ComponentActivity() {
                     val validatorListStore: ValidatorListStore by inject()
                     val validatorDetailsStore: ValidatorDetailsStore by inject()
                     val validatorVotesStore: ValidatorVotesStore by inject()
+                    val searchNetworkStore: SearchNetworkStore by inject()
 
                     val message = validatorListStore.observeSideEffect()
                         .filterIsInstance<ValidatorListSideEffect.Message>()
@@ -119,7 +121,7 @@ class AppActivity : ComponentActivity() {
                                     )
                                 }
                                 composable("search") {
-                                    SearchValidatorContent()
+                                    SearchValidatorContent(searchNetworkStore)
                                 }
                             }
                         }

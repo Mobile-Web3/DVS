@@ -1,4 +1,4 @@
-package com.mobileweb3.dvs.android.screens.main
+package com.mobileweb3.dvs.android.screens.search
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -19,34 +19,27 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.palette.graphics.Palette
+import com.mobileweb3.dvs.android.screens.main.SPACER_HEIGHT
 import com.mobileweb3.dvs.android.ui.composables.Avatar
-import com.mobileweb3.dvs.android.ui.composables.AvatarShimmer
-import com.mobileweb3.dvs.android.ui.composables.ValidatorDescription
-import com.mobileweb3.dvs.android.ui.composables.ValidatorTitle
 import com.mobileweb3.dvs.android.ui.composables.getGradientBrush
-import com.mobileweb3.dvs.app.ValidatorViewState
-import com.mobileweb3.dvs.core.entity.validator.ValidatorModel
-
-private val AVATAR_HEIGHT_WIDTH = 120.dp
-val SPACER_HEIGHT = 8.dp
+import com.mobileweb3.dvs.core.entity.validator.BlockchainNetwork
 
 @Composable
-fun ValidatorCard(
-    validatorViewState: ValidatorViewState,
+fun BlockchainCard(
+    blockchainNetworkViewItem: BlockchainNetworkViewItem.Data,
     modifier: Modifier,
-    onValidatorClicked: (ValidatorModel?) -> Unit
+    onBlockchainClicked: (BlockchainNetwork) -> Unit
 ) {
     var palette by remember { mutableStateOf<Palette?>(null) }
 
     Box(
         modifier = modifier
-            .height(300.dp)
             .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(10.dp))
             .background(
                 brush = getGradientBrush(palette),
                 shape = RoundedCornerShape(10.dp)
             )
-            .clickable { onValidatorClicked(validatorViewState.validatorModel) }
+            .clickable { onBlockchainClicked(blockchainNetworkViewItem.blockchainNetwork) }
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
@@ -54,29 +47,20 @@ fun ValidatorCard(
         ) {
             Spacer(modifier = Modifier.height(SPACER_HEIGHT))
 
-            if (validatorViewState.isLoading) {
-                AvatarShimmer(AVATAR_HEIGHT_WIDTH)
-            } else {
-                Avatar(
-                    url = validatorViewState.validatorModel?.avatar,
-                    widthHeightDp = AVATAR_HEIGHT_WIDTH,
-                    onPaletteChanged = { palette = it }
-                )
-            }
+            Avatar(
+                url = blockchainNetworkViewItem.blockchainNetwork.imageRef,
+                widthHeightDp = 50.dp,
+                onPaletteChanged = { palette = it }
+            )
 
             Spacer(modifier = Modifier.height(SPACER_HEIGHT))
 
-            ValidatorTitle(
-                validatorViewState = validatorViewState,
+            BlockchainTitle(
+                blockchainNetwork = blockchainNetworkViewItem.blockchainNetwork,
                 colorPalette = palette
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
-
-            ValidatorDescription(
-                validatorViewState = validatorViewState,
-                colorPalette = palette
-            )
+            Spacer(modifier = Modifier.height(SPACER_HEIGHT))
         }
     }
 }
