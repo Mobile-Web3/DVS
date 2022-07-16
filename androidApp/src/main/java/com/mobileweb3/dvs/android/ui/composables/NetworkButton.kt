@@ -1,5 +1,6 @@
 package com.mobileweb3.dvs.android.ui.composables
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -34,7 +35,8 @@ fun NetworkButton(
             modifier = Modifier
                 .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(100.dp))
                 .width(30.dp)
-                .height(30.dp),
+                .height(30.dp)
+                .background(Color.White, RoundedCornerShape(100.dp)),
             imageModel = network.blockchainNetwork.imageRef,
             requestBuilder = {
                 Glide.with(LocalContext.current.applicationContext)

@@ -1,5 +1,6 @@
 package com.mobileweb3.dvs.android.ui.composables
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -33,7 +34,8 @@ fun Avatar(
         modifier = modifier
             .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(100.dp))
             .width(widthHeightDp)
-            .height(widthHeightDp),
+            .height(widthHeightDp)
+            .background(Color.White, RoundedCornerShape(100.dp)),
         imageModel = url,
         requestBuilder = {
             Glide.with(LocalContext.current.applicationContext)
