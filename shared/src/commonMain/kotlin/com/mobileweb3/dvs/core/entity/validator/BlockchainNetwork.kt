@@ -169,5 +169,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "https://likecoin.bigdipper.live/transactions",
         validatorInfoRef = "",
         isCosmosNetwork = true
+    ),
+
+    BITCANNA(
+        title = "Bitcanna",
+        chain = "bitcanna",
+        landingRef = "https://www.bitcanna.io/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/4263.png",
+        validatorsListRef = "bitcanna".toCosmosValidators(),
+        getProposalsRef = "bitcanna".toGetCosmosProposals(),
+        exploreProposalRef = "bitcanna".toCosmosProposals(),
+        getTransactionsRef = "bitcanna".toGetCosmosTransactions(),
+        exploreTransactionRef = "bitcanna".toExploreCosmosTransaction(),
+        validatorInfoRef = "bitcanna".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 }
