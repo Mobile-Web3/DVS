@@ -21,6 +21,42 @@ val web34ever = ValidatorModel(
             validatorAddress = "7MTjmteQHhthwwTZhUzsc2dP4NBvGNRqj8jzdqNxHFGE"
         ),
         ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.VELAS,
+            validatorAddress = "AeH8nSJYDPVsEhXqEMi5Ujy8ZZ7CAs7zGXGwbBicPQnd"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.AVALANCE,
+            validatorAddress = "NodeID-5uYQ6R4WF7kmGfraM9LtsUJG2CDmh78Lf"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.MINA,
+            validatorAddress = "B62qrnPdz8HpsDJfGHirDLpVrN2VeyeitdaTKBaccWtHpeVW9Hgwi75"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.MOONBEAM,
+            validatorAddress = "0x47dd026c7e6c80c78b53811bf17c2cada73bf0d4"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.EVERSCALE,
+            validatorAddress = "depoolDetails?id=0%3Ae108fbffddd3999898788f59b267a0641287703866845d1734be5cd7f637473c"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.THE_GRAPH,
+            validatorAddress = "profile?id=0xd93456bf656436e66a8e0a8835c43a6f59afbb37"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.CASPER,
+            validatorAddress = "018dc552de3c403dbefe03a9c604e11346d96159ed49f9381a55c2e06c45197d43"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.IDENA,
+            validatorAddress = "0x8f13de3aad441684cdfb84c5410f845697cce378"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.XX_NETWORK,
+            validatorAddress = "CbbUZQAwfg7uSVebxdMLS76YQatTG9YZXp0OjmOpT8MC"
+        ),
+        ValidatorNetwork(
             blockchainNetwork = BlockchainNetwork.JUNO,
             validatorAddress = "junovaloper1mxpyg8u68k6a8wdu3hs5whcpw9q285pcpxm5yx",
             walletAddress = "juno1mxpyg8u68k6a8wdu3hs5whcpw9q285pc7mdmll"
@@ -84,15 +120,6 @@ val web34ever = ValidatorModel(
     testNets = emptyList(),
     otherProjects = listOf(
         OtherProjects(
-            topic = "Cosmos SDK projects",
-            projects = listOf(
-                Project(
-                    "Cyber.page",
-                    link = "https://rebyc.cyber.page/network/bostrom/hero/bostromvaloper15zs0cjct43xs4z4sesxcrynar5mxm82fh73g0j"
-                )
-            )
-        ),
-        OtherProjects(
             topic = "Other projects",
             projects = listOf(
                 Project(
@@ -115,6 +142,10 @@ val web34ever = ValidatorModel(
                 Contribution(
                     label = "Cosmos Network",
                     link = "https://www.youtube.com/watch?v=cIxdLwKAYYQ&t=6s&ab_channel=PapsanLysenko"
+                ),
+                Contribution(
+                    label = "FreeTON Network",
+                    link = "https://www.youtube.com/watch?v=gi47M7hE1yg&t=11s&ab_channel=PapsanLysenko"
                 )
             )
         )
@@ -123,6 +154,22 @@ val web34ever = ValidatorModel(
         Contact(
             type = "telegram",
             link = "https://t.me/hekit"
+        ),
+        Contact(
+            type = "twitter",
+            link = "https://twitter.com/web34ever"
+        ),
+        Contact(
+            type = "keybase",
+            link = "https://keybase.io/web34ever"
+        ),
+        Contact(
+            type = "github",
+            link = "https://github.com/cybernekit"
+        ),
+        Contact(
+            type = "website",
+            link = "https://web34ever.network/"
         )
     ),
     otherInfo = listOf(

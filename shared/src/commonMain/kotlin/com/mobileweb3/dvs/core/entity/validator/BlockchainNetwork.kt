@@ -9,7 +9,6 @@ import com.mobileweb3.dvs.utils.toGetCosmosValidator
 
 enum class BlockchainNetwork(
     val title: String,
-    val chain: String,
     val imageRef: String,
     val landingRef: String,
     val validatorsListRef: String? = null,
@@ -24,16 +23,77 @@ enum class BlockchainNetwork(
     //non-cosmos
     SOLANA(
         title = "Solana",
-        chain = "Solana",
         landingRef = "https://solana.com/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png",
         validatorsListRef = "https://www.validators.app/validators/mainnet"
     ),
 
+    VELAS(
+        title = "Velas",
+        landingRef = "https://velas.com/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/4747.png",
+        validatorsListRef = "https://velasvalidators.com"
+    ),
+
+    AVALANCE(
+        title = "Avalance",
+        landingRef = "https://www.avax.network/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png",
+        validatorsListRef = "https://avascan.info/staking/validator"
+    ),
+
+    MINA(
+        title = "Mina",
+        landingRef = "https://minaprotocol.com/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/8646.png",
+        validatorsListRef = "https://minaexplorer.com/wallet"
+    ),
+
+    MOONBEAM(
+        title = "Moonbeam",
+        landingRef = "https://moonbeam.network/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/6836.png",
+        validatorsListRef = "https://moonbeam.subscan.io/waiting"
+    ),
+
+    EVERSCALE(
+        title = "Everscale",
+        landingRef = "https://everscale.network/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/7505.png",
+        validatorsListRef = "https://ever.live/depools"
+    ),
+
+    THE_GRAPH(
+        title = "The Graph",
+        landingRef = "https://thegraph.com/en/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/6719.png",
+        validatorsListRef = "https://thegraph.com/explorer"
+    ),
+
+    CASPER(
+        title = "Casper",
+        landingRef = "https://casper.network/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/5899.png",
+        validatorsListRef = "https://cspr.live/account"
+    ),
+
+    IDENA(
+        title = "Idena",
+        landingRef = "https://idena.io/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/5836.png",
+        validatorsListRef = "https://scan.idena.io/address"
+    ),
+
+    XX_NETWORK(
+        title = "XX network",
+        landingRef = "https://xx.network/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/18995.png",
+        validatorsListRef = "https://dashboard.xx.network/nodes"
+    ),
+
     //cosmos
     JUNO(
         title = "Juno",
-        chain = "juno",
         landingRef = "https://www.junonetwork.io/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/14299.png",
         validatorsListRef = "juno".toExproleCosmosValidators(),
@@ -47,7 +107,6 @@ enum class BlockchainNetwork(
 
     OMNIFLIX(
         title = "Omniflix",
-        chain = "omniflix",
         landingRef = "https://omniflix.network/",
         imageRef = "https://static.tildacdn.com/tild3632-6535-4136-b362-356132663835/omniflix.png",
         validatorsListRef = "omniflix".toExproleCosmosValidators(),
@@ -61,7 +120,6 @@ enum class BlockchainNetwork(
 
     EVMOS(
         title = "Evmos",
-        chain = "evmos",
         landingRef = "https://evmos.org/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/19899.png",
         validatorsListRef = "evmos".toExproleCosmosValidators(),
@@ -75,7 +133,6 @@ enum class BlockchainNetwork(
 
     STARGAZE(
         title = "Stargaze",
-        chain = "stargaze",
         landingRef = "https://www.stargaze.zone/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/16842.png",
         validatorsListRef = "stargaze".toExproleCosmosValidators(),
@@ -89,7 +146,6 @@ enum class BlockchainNetwork(
 
     CERTIK(
         title = "Certik",
-        chain = "certik",
         landingRef = "https://www.certik.com/",
         imageRef = "https://www.mintscan.io/_next/static/image/assets/Dashboard/chain_certik.8ae38e6334ad25a00b7808b5747e7374.svg",
         validatorsListRef = "certik".toExproleCosmosValidators(),
@@ -103,7 +159,6 @@ enum class BlockchainNetwork(
 
     BOSTROM(
         title = "Bostrom",
-        chain = "bostrom",
         landingRef = "https://cyb.ai/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/19111.png",
         validatorsListRef = "https://cyb.ai/network/bostrom/hero",
@@ -117,7 +172,6 @@ enum class BlockchainNetwork(
 
     MICROTICK(
         title = "Microtick",
-        chain = "microtick",
         landingRef = "https://explorer.microtick.zone/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/17451.png",
         validatorsListRef = "https://explorer.microtick.zone/validators",
@@ -131,7 +185,6 @@ enum class BlockchainNetwork(
 
     GRAVITY_BRIDGE(
         title = "Gravity-Bridge",
-        chain = "gravity-bridge",
         landingRef = "https://gravitybridge.persona.co/",
         imageRef = "https://assets.coingecko.com/coins/images/24818/small/Graviton_-_Blue_200x200i.png?1649038479",
         validatorsListRef = "gravity-bridge".toExproleCosmosValidators(),
@@ -145,7 +198,6 @@ enum class BlockchainNetwork(
 
     RIZON(
         title = "Rizon",
-        chain = "rizon",
         landingRef = "https://rizon.world/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/15388.png",
         validatorsListRef = "rizon".toExproleCosmosValidators(),
@@ -159,7 +211,6 @@ enum class BlockchainNetwork(
 
     LIKECOIN(
         title = "Likecoin",
-        chain = "likecoin",
         landingRef = "https://likecoin.bigdipper.live/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/2909.png",
         validatorsListRef = "https://likecoin.bigdipper.live/validators",
@@ -173,7 +224,6 @@ enum class BlockchainNetwork(
 
     BITCANNA(
         title = "Bitcanna",
-        chain = "bitcanna",
         landingRef = "https://www.bitcanna.io/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/4263.png",
         validatorsListRef = "bitcanna".toExproleCosmosValidators(),
@@ -187,7 +237,6 @@ enum class BlockchainNetwork(
 
     BITSONG(
         title = "Bitsong",
-        chain = "bitsong",
         landingRef = "https://bitsong.io/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/8905.png",
         validatorsListRef = "bitsong".toExproleCosmosValidators(),
@@ -201,7 +250,6 @@ enum class BlockchainNetwork(
 
     CHRONIC(
         title = "Chronic-token",
-        chain = "chronic-token",
         landingRef = "https://www.chronictoken.io/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/11217.png",
         validatorsListRef = "https://www.skynetexplorers.com/chronic-token/staking",
