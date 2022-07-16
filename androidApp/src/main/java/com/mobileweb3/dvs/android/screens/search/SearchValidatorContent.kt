@@ -1,6 +1,5 @@
 package com.mobileweb3.dvs.android.screens.search
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,8 +7,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -24,9 +28,7 @@ import com.mobileweb3.dvs.app.SearchNetworkStore
 import com.mobileweb3.dvs.core.entity.validator.BlockchainNetwork
 
 @Composable
-fun SearchValidatorContent(
-    searchNetworkStore: SearchNetworkStore
-) {
+fun SearchValidatorContent(searchNetworkStore: SearchNetworkStore) {
     val searchState = searchNetworkStore.observeState().collectAsState()
 
     Column(
@@ -48,6 +50,22 @@ fun SearchValidatorContent(
                 ),
             value = text,
             label = { Text("Network title") },
+            trailingIcon = {
+                if (text.isNotEmpty()) {
+                    IconButton(
+                        onClick = {
+                            text = ""
+                            searchNetworkStore.dispatch(SearchNetworkAction.SearchStringChanged(text))
+                        }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Filled.Clear,
+                            contentDescription = "Search",
+                            tint = MaterialTheme.colors.primary
+                        )
+                    }
+                }
+            },
             onValueChange = {
                 text = it
                 searchNetworkStore.dispatch(SearchNetworkAction.SearchStringChanged(text))

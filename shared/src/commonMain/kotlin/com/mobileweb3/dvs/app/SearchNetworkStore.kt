@@ -11,12 +11,15 @@ import kotlinx.coroutines.flow.StateFlow
 
 data class SearchNetworkState(
     val networks: List<BlockchainNetwork>,
+    val selectedNetwork: BlockchainNetwork?
 ) : State
 
 sealed class SearchNetworkAction : Action {
     data class SearchStringChanged(val searchString: String) : SearchNetworkAction()
 
-    data class NetworkSelected(val networks: BlockchainNetwork) : SearchNetworkAction()
+    data class NetworkSelected(val network: BlockchainNetwork) : SearchNetworkAction()
+
+    object NetworkSelectCanceled : SearchNetworkAction()
 }
 
 sealed class SearchNetworkSideEffect : Effect {
@@ -27,7 +30,7 @@ class SearchNetworkStore : Store<SearchNetworkState, SearchNetworkAction, Search
 
     private val allNetworks = BlockchainNetwork.values().sortedBy { it.title }.toList()
 
-    private val state = MutableStateFlow(SearchNetworkState(allNetworks))
+    private val state = MutableStateFlow(SearchNetworkState(allNetworks, selectedNetwork = null))
     private val sideEffect = MutableSharedFlow<SearchNetworkSideEffect>()
 
     override fun observeState(): StateFlow<SearchNetworkState> = state
@@ -41,13 +44,20 @@ class SearchNetworkStore : Store<SearchNetworkState, SearchNetworkAction, Search
 
         val newState = when (action) {
             is SearchNetworkAction.NetworkSelected -> {
-                oldState
+                oldState.copy(
+                    selectedNetwork = action.network
+                )
             }
             is SearchNetworkAction.SearchStringChanged -> {
                 oldState.copy(
                     networks = allNetworks.filter {
                         it.title.startsWith(action.searchString, true)
                     }
+                )
+            }
+            is SearchNetworkAction.NetworkSelectCanceled -> {
+                oldState.copy(
+                    selectedNetwork = null
                 )
             }
         }
