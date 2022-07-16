@@ -115,6 +115,20 @@ enum class BlockchainNetwork(
         isCosmosNetwork = true
     ),
 
+    MICROTICK(
+        title = "Microtick",
+        chain = "microtick",
+        landingRef = "https://explorer.microtick.zone/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/17451.png",
+        validatorsListRef = "https://explorer.microtick.zone/validators",
+        getProposalsRef = "",
+        exploreProposalRef = "https://explorer.microtick.zone/proposals",
+        getTransactionsRef = "",
+        exploreTransactionRef = "https://explorer.microtick.zone/transactions",
+        validatorInfoRef = "",
+        isCosmosNetwork = true
+    ),
+
     RIZON(
         title = "Rizon",
         chain = "rizon",
