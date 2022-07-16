@@ -132,7 +132,33 @@ val web34ever = ValidatorModel(
     ambassadorPrograms = listOf(
         Project(
             title = "Covalent",
-            link = "https://github.com/Distributed-Validators-Synctems/Self-Identity/blob/main"
+        ),
+        Project(
+            title = "Polygon",
+        ),
+        Project(
+            title = "Octopus Network",
+        ),
+        Project(
+            title = "FreeTON",
+        ),
+        Project(
+            title = "Cyber",
+        ),
+        Project(
+            title = "Qredo",
+        ),
+        Project(
+            title = "TheGraph",
+        ),
+        Project(
+            title = "SecretNetwork",
+        ),
+        Project(
+            title = "Moonbeam",
+        ),
+        Project(
+            title = "Goldfinch finance",
         )
     ),
     contributionsTypes = listOf(
