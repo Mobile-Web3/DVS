@@ -13,7 +13,11 @@ internal fun BostromProposals.toDefaultProposals(): List<Proposal> {
         Proposal(
             id = bostromProposal.id.toInt(),
             title = bostromProposal.content.value.title,
-            proposal_status = mapBostromStatusToProposalStatus(bostromProposal.status)
+            proposal_status = mapBostromStatusToProposalStatus(bostromProposal.status),
+            yes = bostromProposal.voteResults.yes,
+            no = bostromProposal.voteResults.no,
+            no_with_veto = bostromProposal.voteResults.no_with_veto,
+            abstain = bostromProposal.voteResults.abstain,
         )
     }
 }
@@ -21,8 +25,8 @@ internal fun BostromProposals.toDefaultProposals(): List<Proposal> {
 internal fun mapBostromStatusToProposalStatus(bostrom: Int): String {
     //need to know what other int statuses are
     return when (bostrom) {
-        2 -> "PROPOSAL_STATUS_VOTING_PERIOD"
-        3 -> "PROPOSAL_STATUS_PASSED"
+        2 -> PROPOSAL_STATUS_VOTING_PERIOD
+        3 -> DEFAULT_PROPOSAL_STATUS_PASSED
         else -> "UNKNOWN"
     }
 }

@@ -2,6 +2,7 @@ package com.mobileweb3.dvs.core.datasource.network
 
 import com.mobileweb3.dvs.core.entity.SomethingResponse
 import com.mobileweb3.dvs.core.entity.proposal.BostromProposals
+import com.mobileweb3.dvs.core.entity.proposal.ChronicProposals
 import com.mobileweb3.dvs.core.entity.proposal.Proposal
 import com.mobileweb3.dvs.core.entity.proposal.toDefaultProposals
 import com.mobileweb3.dvs.core.entity.transaction.Transaction
@@ -37,6 +38,11 @@ class SomethingLoader(
         if (blockchainNetwork == BlockchainNetwork.BOSTROM) {
             val bostromProposals: BostromProposals = json.decodeFromString(httpClient.get(url).bodyAsText())
             return bostromProposals.toDefaultProposals()
+        }
+
+        if (blockchainNetwork == BlockchainNetwork.CHRONIC) {
+            val chronicProposals: ChronicProposals = json.decodeFromString(httpClient.get(url).bodyAsText())
+            return chronicProposals.toDefaultProposals()
         }
 
         return json.decodeFromString(httpClient.get(url).bodyAsText())
