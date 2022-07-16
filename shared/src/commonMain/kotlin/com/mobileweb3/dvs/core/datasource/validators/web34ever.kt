@@ -56,6 +56,11 @@ val web34ever = ValidatorModel(
             walletAddress = "micro1mn8r3x4g2nmwmvsqqh3tsnzxp54c7qwrlpwyjd"
         ),
         ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.GRAVITY_BRIDGE,
+            validatorAddress = "gravityvaloper1exksjeh9c0h03mxsvechrcc6axe56c5a56573y",
+            walletAddress = "gravity1exksjeh9c0h03mxsvechrcc6axe56c5a93dqms"
+        ),
+        ValidatorNetwork(
             blockchainNetwork = BlockchainNetwork.RIZON,
             validatorAddress = "rizonvaloper17kpyk8nqwr0dkv4nz5j4d3r9umfm23we0fk8wj",
             walletAddress = "rizon17kpyk8nqwr0dkv4nz5j4d3r9umfm23weud5xvz"

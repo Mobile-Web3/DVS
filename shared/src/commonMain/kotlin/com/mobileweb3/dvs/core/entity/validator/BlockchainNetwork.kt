@@ -129,6 +129,20 @@ enum class BlockchainNetwork(
         isCosmosNetwork = true
     ),
 
+    GRAVITY_BRIDGE(
+        title = "Gravity-Bridge",
+        chain = "gravity-bridge",
+        landingRef = "https://gravitybridge.persona.co/",
+        imageRef = "https://assets.coingecko.com/coins/images/24818/small/Graviton_-_Blue_200x200i.png?1649038479",
+        validatorsListRef = "gravity-bridge".toCosmosValidators(),
+        getProposalsRef = "gravity-bridge".toGetCosmosProposals(),
+        exploreProposalRef = "gravity-bridge".toCosmosProposals(),
+        getTransactionsRef = "gravity-bridge".toGetCosmosTransactions(),
+        exploreTransactionRef = "gravity-bridge".toExploreCosmosTransaction(),
+        validatorInfoRef = "gravity-bridge".toGetCosmosValidator(),
+        isCosmosNetwork = true
+    ),
+
     RIZON(
         title = "Rizon",
         chain = "rizon",
