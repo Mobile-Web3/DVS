@@ -50,6 +50,7 @@ fun SearchValidatorContent(
             label = { Text("Network title") },
             onValueChange = {
                 text = it
+                searchNetworkStore.dispatch(SearchNetworkAction.SearchStringChanged(text))
             },
             maxLines = 1
         )
