@@ -183,5 +183,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "bitcanna".toExploreCosmosTransaction(),
         validatorInfoRef = "bitcanna".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    BITSONG(
+        title = "Bitsong",
+        chain = "bitsong",
+        landingRef = "https://bitsong.io/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/8905.png",
+        validatorsListRef = "bitsong".toCosmosValidators(),
+        getProposalsRef = "bitsong".toGetCosmosProposals(),
+        exploreProposalRef = "bitsong".toCosmosProposals(),
+        getTransactionsRef = "bitsong".toGetCosmosTransactions(),
+        exploreTransactionRef = "bitsong".toExploreCosmosTransaction(),
+        validatorInfoRef = "bitsong".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 }

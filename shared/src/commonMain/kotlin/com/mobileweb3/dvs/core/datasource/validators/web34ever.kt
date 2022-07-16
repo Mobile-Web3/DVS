@@ -74,6 +74,11 @@ val web34ever = ValidatorModel(
             blockchainNetwork = BlockchainNetwork.BITCANNA,
             validatorAddress = "bcnavaloper1ex2m0j9gc7l49lr5qgrhnp7vy83adq0k3uj8pk",
             walletAddress = "bcna1ex2m0j9gc7l49lr5qgrhnp7vy83adq0kgpr8mz"
+        ),
+        ValidatorNetwork(
+            blockchainNetwork = BlockchainNetwork.BITSONG,
+            validatorAddress = "bitsongvaloper139dppl6gyerq8yaweksajut3urwyygsz7r4ej4",
+            walletAddress = "bitsong139dppl6gyerq8yaweksajut3urwyygszl8fszg"
         )
     ),
     testNets = emptyList(),
