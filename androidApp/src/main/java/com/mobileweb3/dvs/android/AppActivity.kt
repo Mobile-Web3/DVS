@@ -24,6 +24,7 @@ import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.mobileweb3.dvs.android.screens.detail.ValidatorDetailsContent
 import com.mobileweb3.dvs.android.screens.main.ValidatorsListContent
+import com.mobileweb3.dvs.android.screens.search.SearchValidatorContent
 import com.mobileweb3.dvs.android.screens.voting.ValidatorVotesContent
 import com.mobileweb3.dvs.android.ui.AppTheme
 import com.mobileweb3.dvs.app.ValidatorDetailsStore
@@ -116,6 +117,9 @@ class AppActivity : ComponentActivity() {
                                         validatorVotesStore,
                                         navController
                                     )
+                                }
+                                composable("search") {
+                                    SearchValidatorContent()
                                 }
                             }
                         }

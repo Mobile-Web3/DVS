@@ -33,6 +33,11 @@ fun ValidatorsListContent(
             contentDescription = null,
             contentScale = ContentScale.FillWidth,
         )
+
+        FindValidatorView(
+            navController = navController
+        )
+
         ValidatorsList(
             validatorListStore = validatorListStore,
             validatorDetailsStore = validatorDetailsStore,

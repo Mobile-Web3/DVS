@@ -56,7 +56,7 @@ data class ValidatorModel(
 
         if (otherActivities != 0) {
             stringBuilder
-                .append("\n and $otherActivities other $otherActivitiesWord")
+                .append("\nand $otherActivities other $otherActivitiesWord")
         }
 
         return stringBuilder.toString()
