@@ -64,7 +64,7 @@ fun SelectedNetworkView(
         BlockchainTitle(
             blockchainNetwork = selectedNetwork,
             colorPalette = palette,
-            textStyle = MaterialTheme.typography.h4
+            textStyle = MaterialTheme.typography.h5
         )
 
         Spacer(modifier = Modifier.weight(1f))

@@ -46,7 +46,7 @@ fun ValidatorStatusView(
         val validatorStatus = ValidatorStatus.from(value.validatorInfo.dataOrNull?.status)
 
         val spannedText = buildAnnotatedString {
-            append("Validator Rank: ")
+            append("Rank: ")
             withStyle(
                 SpanStyle(
                     color = MaterialTheme.colors.primary,
@@ -56,7 +56,7 @@ fun ValidatorStatusView(
                 append("${validatorRank ?: "UNKNOWN"}")
             }
             append("\n")
-            append("Validator Status: ")
+            append("Status: ")
             withStyle(
                 SpanStyle(
                     color = MaterialTheme.colors.primary,

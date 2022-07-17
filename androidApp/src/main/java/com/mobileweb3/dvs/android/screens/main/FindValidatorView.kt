@@ -30,7 +30,6 @@ fun FindValidatorView(navController: NavController) {
                 navController.navigate("search")
             }
             .padding(
-                start = 16.dp,
                 end = 16.dp,
                 bottom = 8.dp,
                 top = 8.dp
@@ -50,7 +49,7 @@ fun FindValidatorView(navController: NavController) {
         }
 
         Text(
-            text = "Search the validator by network",
+            text = "Search by network",
             fontSize = 20.sp,
             color = Color.White,
             fontWeight = FontWeight.Bold,

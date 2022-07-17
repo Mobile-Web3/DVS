@@ -1,7 +1,9 @@
 package com.mobileweb3.dvs.android.ui.composables
 
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.LocalTextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,7 +23,8 @@ fun TextWithHtml(
         text = textWithLinks,
         style = LocalTextStyle.current,
         modifier = modifier
-            .padding(bottom = 8.dp),
+            .padding(bottom = 8.dp)
+            .verticalScroll(rememberScrollState()),
         onClick = { offset ->
             textWithLinks.getStringAnnotations(
                 tag = "link_tag",

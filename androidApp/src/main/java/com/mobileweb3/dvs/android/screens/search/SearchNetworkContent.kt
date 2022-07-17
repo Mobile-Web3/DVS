@@ -2,9 +2,6 @@ package com.mobileweb3.dvs.android.screens.search
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -19,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.mobileweb3.dvs.android.ui.composables.NetworksGrid
 import com.mobileweb3.dvs.app.SearchNetworkAction
 import com.mobileweb3.dvs.app.SearchNetworkState
 import com.mobileweb3.dvs.app.SearchNetworkStore
@@ -62,35 +60,12 @@ fun SearchNetworkContent(
         maxLines = 1
     )
 
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(3),
-        modifier = Modifier.padding(16.dp),
+    NetworksGrid(
+        blockchainNetworks = searchState.networks,
+        modifier = Modifier.padding(16.dp)
     ) {
-        items(searchState.networks.toViewItems()) { item ->
-            when (item) {
-                BlockchainNetworkViewItem.Empty -> {
-
-                }
-                is BlockchainNetworkViewItem.Data -> {
-                    BlockchainCard(
-                        blockchainNetworkViewItem = item,
-                        modifier = Modifier.padding(2.dp),
-                        onBlockchainClicked = { network ->
-                            searchNetworkStore.dispatch(SearchNetworkAction.NetworkSelected(network))
-                        }
-                    )
-                }
-            }
-        }
+        searchNetworkStore.dispatch(SearchNetworkAction.NetworkSelected(it))
     }
-}
-
-private fun List<BlockchainNetwork>.toViewItems(): List<BlockchainNetworkViewItem> {
-    if (this.isEmpty()) {
-        return listOf(BlockchainNetworkViewItem.Empty)
-    }
-
-    return map { BlockchainNetworkViewItem.Data(it) }
 }
 
 sealed class BlockchainNetworkViewItem {

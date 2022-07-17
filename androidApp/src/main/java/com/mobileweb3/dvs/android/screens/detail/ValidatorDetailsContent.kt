@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -30,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.palette.graphics.Palette
 import com.mobileweb3.dvs.android.ui.composables.Avatar
+import com.mobileweb3.dvs.android.ui.composables.NetworksGrid
 import com.mobileweb3.dvs.android.ui.composables.TextWithHtml
 import com.mobileweb3.dvs.android.ui.composables.ValidatorTitle
 import com.mobileweb3.dvs.android.ui.composables.getGradientBrush
@@ -124,10 +124,10 @@ fun ValidatorDetailsContent(
                     start = 16.dp,
                     end = 16.dp
                 )
-                .verticalScroll(
-                    state = rememberScrollState(),
-                    enabled = true
-                )
+            //                .verticalScroll(
+            //                    state = rememberScrollState(),
+            //                    enabled = true
+            //                )
         ) {
             val uriHandler = LocalUriHandler.current
             val context = LocalContext.current
@@ -148,18 +148,25 @@ fun ValidatorDetailsContent(
                         )
                     }
                     is ValidatorTopicContent.VotingNetworks -> {
-                        NetworkButtonsRow(topicContent.networks) { network ->
+                        NetworksGrid(
+                            blockchainNetworks = topicContent.networks.map { it.blockchainNetwork },
+                        ) { blockchainNetwork ->
                             validatorVotesStore.dispatch(
                                 ValidatorVotesAction.NetworkSelected(
-                                    validatorModel, network
+                                    validatorModel,
+                                    topicContent.networks.find { it.blockchainNetwork == blockchainNetwork }!!
                                 )
                             )
                             navController.navigate("voting")
                         }
                     }
                     is ValidatorTopicContent.MainNetworks -> {
-                        NetworkButtonsRow(topicContent.networks) { network ->
-                            uriHandler.openUri(network.getValidatorPageLink())
+                        NetworksGrid(
+                            blockchainNetworks = topicContent.networks.map { it.blockchainNetwork },
+                        ) { blockchainNetwork ->
+                            val validatorNetwork =
+                                topicContent.networks.find { it.blockchainNetwork == blockchainNetwork }!!
+                            uriHandler.openUri(validatorNetwork.getValidatorPageLink())
                         }
                     }
                     is ValidatorTopicContent.Contacts -> {
