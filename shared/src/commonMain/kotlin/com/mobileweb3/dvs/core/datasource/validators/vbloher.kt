@@ -1,5 +1,6 @@
 package com.mobileweb3.dvs.core.datasource.validators
 import com.mobileweb3.dvs.core.entity.validator.BlockchainNetwork
+import com.mobileweb3.dvs.core.entity.validator.Contact
 import com.mobileweb3.dvs.core.entity.validator.ValidatorModel
 import com.mobileweb3.dvs.core.entity.validator.ValidatorNetwork
 
@@ -18,6 +19,23 @@ val vbloher = ValidatorModel(
     otherProjects = emptyList(),
     ambassadorPrograms = emptyList(),
     contributionsTypes = emptyList(),
-    contacts = emptyList(),
+    contacts = listOf(
+        Contact(
+            type = "website",
+            link = "https://vbloher.com/"
+        ),
+        Contact(
+            type = "telegram",
+            link = "https://t.me/vbloher"
+        ),
+        Contact(
+            type = "github",
+            link = "https://github.com/vbloher"
+        ),
+        Contact(
+            type = "keybase",
+            link = "https://keybase.io/vbloher"
+        )
+    ),
     otherInfo = emptyList()
 )
