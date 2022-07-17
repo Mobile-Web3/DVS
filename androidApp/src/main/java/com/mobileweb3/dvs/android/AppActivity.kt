@@ -121,7 +121,11 @@ class AppActivity : ComponentActivity() {
                                     )
                                 }
                                 composable("search") {
-                                    SearchValidatorContent(searchNetworkStore)
+                                    SearchValidatorContent(
+                                        searchNetworkStore,
+                                        validatorDetailsStore,
+                                        navController
+                                    )
                                 }
                             }
                         }

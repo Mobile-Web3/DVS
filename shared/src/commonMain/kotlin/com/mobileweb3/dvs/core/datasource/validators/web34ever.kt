@@ -25,7 +25,7 @@ val web34ever = ValidatorModel(
             validatorAddress = "AeH8nSJYDPVsEhXqEMi5Ujy8ZZ7CAs7zGXGwbBicPQnd"
         ),
         ValidatorNetwork(
-            blockchainNetwork = BlockchainNetwork.AVALANCE,
+            blockchainNetwork = BlockchainNetwork.AVALANCHE,
             validatorAddress = "NodeID-5uYQ6R4WF7kmGfraM9LtsUJG2CDmh78Lf"
         ),
         ValidatorNetwork(

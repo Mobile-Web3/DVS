@@ -35,8 +35,8 @@ enum class BlockchainNetwork(
         validatorsListRef = "https://velasvalidators.com"
     ),
 
-    AVALANCE(
-        title = "Avalance",
+    AVALANCHE(
+        title = "Avalanche",
         landingRef = "https://www.avax.network/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png",
         validatorsListRef = "https://avascan.info/staking/validator"

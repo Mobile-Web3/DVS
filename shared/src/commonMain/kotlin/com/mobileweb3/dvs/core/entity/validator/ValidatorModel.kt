@@ -17,6 +17,12 @@ data class ValidatorModel(
     private val validatingNetworksCount = mainNets.size + testNets.size + genesisNets.size
     private val otherActivities = otherProjects.size + contributionsTypes.size
 
+    fun validatingNetwork(network: BlockchainNetwork): Boolean {
+        return mainNets.any { it.blockchainNetwork == network } ||
+                genesisNets.any { it.blockchainNetwork == network } ||
+                testNets.any { it.blockchainNetwork == network }
+    }
+
     fun getSmallDescription(): String {
         val networksCount = validatingNetworksCount
         val networksWord = if (networksCount == 1) {

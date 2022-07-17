@@ -1,6 +1,8 @@
 package com.mobileweb3.dvs.app
 
+import com.mobileweb3.dvs.core.datasource.validators.validators
 import com.mobileweb3.dvs.core.entity.validator.BlockchainNetwork
+import com.mobileweb3.dvs.core.entity.validator.ValidatorModel
 import io.github.aakira.napier.Napier
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -11,7 +13,8 @@ import kotlinx.coroutines.flow.StateFlow
 
 data class SearchNetworkState(
     val networks: List<BlockchainNetwork>,
-    val selectedNetwork: BlockchainNetwork?
+    val selectedNetwork: BlockchainNetwork?,
+    val validatorsByNetwork: List<ValidatorModel>
 ) : State
 
 sealed class SearchNetworkAction : Action {
@@ -30,7 +33,13 @@ class SearchNetworkStore : Store<SearchNetworkState, SearchNetworkAction, Search
 
     private val allNetworks = BlockchainNetwork.values().sortedBy { it.title }.toList()
 
-    private val state = MutableStateFlow(SearchNetworkState(allNetworks, selectedNetwork = null))
+    private val state = MutableStateFlow(
+        SearchNetworkState(
+            networks = allNetworks,
+            selectedNetwork = null,
+            validatorsByNetwork = emptyList()
+        )
+    )
     private val sideEffect = MutableSharedFlow<SearchNetworkSideEffect>()
 
     override fun observeState(): StateFlow<SearchNetworkState> = state
@@ -44,8 +53,11 @@ class SearchNetworkStore : Store<SearchNetworkState, SearchNetworkAction, Search
 
         val newState = when (action) {
             is SearchNetworkAction.NetworkSelected -> {
+                val searchedValidators = validators.filter { it.validatingNetwork(action.network) }
+
                 oldState.copy(
-                    selectedNetwork = action.network
+                    selectedNetwork = action.network,
+                    validatorsByNetwork = searchedValidators
                 )
             }
             is SearchNetworkAction.SearchStringChanged -> {
@@ -57,7 +69,8 @@ class SearchNetworkStore : Store<SearchNetworkState, SearchNetworkAction, Search
             }
             is SearchNetworkAction.NetworkSelectCanceled -> {
                 oldState.copy(
-                    selectedNetwork = null
+                    selectedNetwork = null,
+                    validatorsByNetwork = emptyList()
                 )
             }
         }
