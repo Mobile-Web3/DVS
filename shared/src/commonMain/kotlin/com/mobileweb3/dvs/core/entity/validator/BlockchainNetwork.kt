@@ -259,6 +259,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "https://www.skynetexplorers.com/chronic-token/tx",
         validatorInfoRef = "https://chtd-api.skynetvalidators.com/staking/validators",
         isCosmosNetwork = true
+    ),
+
+    ASSET_MANTLE(
+        title = "AssetMantle",
+        landingRef = "https://assetmantle.one/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/19686.png",
+        validatorsListRef = "asset-mantle".toExproleCosmosValidators(),
+        getProposalsRef = "assetmantle".toGetCosmosProposals(),
+        exploreProposalRef = "asset-mantle".toExploreCosmosProposals(),
+        getTransactionsRef = "asset-mantle".toGetCosmosTransactions(),
+        exploreTransactionRef = "asset-mantle".toExploreCosmosTransaction(),
+        validatorInfoRef = "asset-mantle".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 

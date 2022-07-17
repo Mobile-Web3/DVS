@@ -57,14 +57,6 @@ class SomethingLoader(
     }
 
     suspend fun getValidatorInfo(url: String): ValidatorInfo {
-        return json.decodeFromString(
-            httpClient.get(url) {
-//                headers {
-//                    header("Referer", "https://www.mintscan.io/")
-//                    header("Origin", "https://www.mintscan.io")
-//                    header("Host", "https://www.mintscan.io")
-//                }
-            }.bodyAsText()
-        )
+        return json.decodeFromString(httpClient.get(url).bodyAsText())
     }
 }
