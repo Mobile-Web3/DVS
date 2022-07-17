@@ -3,13 +3,16 @@ package com.mobileweb3.dvs.android.screens.main
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,7 +28,6 @@ fun FindValidatorView(navController: NavController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(40.dp)
             .clickable {
                 navController.navigate("search")
             }
@@ -38,6 +40,7 @@ fun FindValidatorView(navController: NavController) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(
+            modifier = Modifier.then(Modifier.size(24.dp)),
             onClick = {
                 navController.navigate("search")
             }
@@ -49,10 +52,28 @@ fun FindValidatorView(navController: NavController) {
         }
 
         Text(
+            modifier = Modifier.padding(
+                start = 8.dp,
+                bottom = 2.dp
+            ),
             text = "Search by network",
             fontSize = 20.sp,
             color = Color.White,
             fontWeight = FontWeight.Bold,
         )
+
+        Spacer(modifier = Modifier.weight(1f))
+
+        IconButton(
+            modifier = Modifier.then(Modifier.size(24.dp)),
+            onClick = {
+                navController.navigate("info")
+            }
+        ) {
+            Icon(
+                imageVector = Icons.Filled.Info,
+                contentDescription = "Info"
+            )
+        }
     }
 }

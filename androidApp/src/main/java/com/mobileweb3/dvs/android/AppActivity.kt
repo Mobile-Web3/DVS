@@ -23,6 +23,7 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.rememberInsetsPaddingValues
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.mobileweb3.dvs.android.screens.detail.ValidatorDetailsContent
+import com.mobileweb3.dvs.android.screens.info.DvsInfoContent
 import com.mobileweb3.dvs.android.screens.main.ValidatorsListContent
 import com.mobileweb3.dvs.android.screens.search.SearchValidatorContent
 import com.mobileweb3.dvs.android.screens.voting.ValidatorVotesContent
@@ -126,6 +127,9 @@ class AppActivity : ComponentActivity() {
                                         validatorDetailsStore,
                                         navController
                                     )
+                                }
+                                composable("info") {
+                                    DvsInfoContent()
                                 }
                             }
                         }
