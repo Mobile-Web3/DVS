@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -57,7 +58,8 @@ fun BlockchainCard(
 
             BlockchainTitle(
                 blockchainNetwork = blockchainNetworkViewItem.blockchainNetwork,
-                colorPalette = palette
+                colorPalette = palette,
+                modifier = Modifier.fillMaxWidth()
             )
 
             Spacer(modifier = Modifier.height(SPACER_HEIGHT))
