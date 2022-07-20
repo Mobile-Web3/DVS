@@ -32,21 +32,31 @@ struct ValidatorListView: ConnectedView {
         VStack() {
             DefaultHeaderView()
             
-            Spacer()
-            
-            VStack(alignment: .center) {
-                Text("Count: \(props.state.validatorViewStates.count)")
-                    .foregroundColor(Color.white)
+            let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+            let validatorViewItems = props.state.validatorViewStates.map { ValidatorViewState in
+                ValidatorViewItem(isLoading: ValidatorViewState.isLoading, validatorModel: ValidatorViewState.validatorModel)
             }
             
-            Spacer()
-
-            HStack(alignment: .bottom) {
-                Text("by Mobile Web 3")
-                    .foregroundColor(PurpleColor)
+            ScrollView(.vertical, showsIndicators: false) {
+                LazyVGrid(columns: twoColumnGrid) {
+                    ForEach(validatorViewItems) { item in
+                        if (item.isLoading) {
+                            Text("loading item")
+                                .foregroundColor(Color.white)
+                        } else {
+                            Text("validator item")
+                                .foregroundColor(Color.white)
+                        }
+                    }
+                }
             }
-            .padding(16)
         }
         .background(Color.black)
     }
+}
+
+struct ValidatorViewItem: Identifiable {
+    let id = UUID()
+    let isLoading: Bool
+    let validatorModel: ValidatorModel?
 }
