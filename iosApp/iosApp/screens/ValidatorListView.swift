@@ -30,6 +30,8 @@ struct ValidatorListView: ConnectedView {
 
     func body(props: Props) -> some View {
         VStack {
+            DefaultHeaderView()
+            
             Spacer()
             
             VStack(alignment: .center) {
