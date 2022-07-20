@@ -1,7 +1,7 @@
 package com.mobileweb3.dvs.core
 
 import android.content.Context
-import com.mobileweb3.dvs.core.datasource.network.SomethingLoader
+import com.mobileweb3.dvs.core.datasource.network.Api
 import com.mobileweb3.dvs.core.datasource.storage.SomethingStorage
 import com.mobileweb3.dvs.interactor.MainInteractor
 import com.russhwolf.settings.AndroidSettings
@@ -10,7 +10,7 @@ import io.github.aakira.napier.Napier
 import kotlinx.serialization.json.Json
 
 fun MainInteractor.Companion.create(ctx: Context, withLog: Boolean) = MainInteractor(
-    SomethingLoader(
+    Api(
         AndroidHttpClient(withLog)
     ),
     SomethingStorage(
