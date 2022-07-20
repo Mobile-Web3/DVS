@@ -29,21 +29,24 @@ struct ValidatorListView: ConnectedView {
     }
 
     func body(props: Props) -> some View {
-        VStack {
+        VStack() {
             DefaultHeaderView()
             
             Spacer()
             
             VStack(alignment: .center) {
                 Text("Count: \(props.state.validatorViewStates.count)")
+                    .foregroundColor(Color.white)
             }
             
             Spacer()
 
             HStack(alignment: .bottom) {
                 Text("by Mobile Web 3")
+                    .foregroundColor(PurpleColor)
             }
             .padding(16)
         }
+        .background(Color.black)
     }
 }

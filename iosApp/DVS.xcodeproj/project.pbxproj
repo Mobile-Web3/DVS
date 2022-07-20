@@ -12,6 +12,7 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* RootView.swift */; };
 		7B7A9B092887E6D900A59D6E /* DefaultHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A9B082887E6D900A59D6E /* DefaultHeaderView.swift */; };
+		7B7A9B0C2887EB8400A59D6E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A9B0B2887EB8400A59D6E /* Colors.swift */; };
 		7BFEE7FD2871D3090016E6FD /* ValidatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		7555FF82242A565900829871 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B7A9B082887E6D900A59D6E /* DefaultHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultHeaderView.swift; sourceTree = "<group>"; };
+		7B7A9B0B2887EB8400A59D6E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				7B7A9B0A2887EB7000A59D6E /* theme */,
 				7B7A9B072887E6BE00A59D6E /* views */,
 				7BFEE7FB2871D2F20016E6FD /* screens */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
@@ -101,6 +104,14 @@
 				7B7A9B082887E6D900A59D6E /* DefaultHeaderView.swift */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		7B7A9B0A2887EB7000A59D6E /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				7B7A9B0B2887EB8400A59D6E /* Colors.swift */,
+			);
+			path = theme;
 			sourceTree = "<group>";
 		};
 		7BFEE7FB2871D2F20016E6FD /* screens */ = {
@@ -205,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				7B7A9B0C2887EB8400A59D6E /* Colors.swift in Sources */,
 				7BFEE7FD2871D3090016E6FD /* ValidatorListView.swift in Sources */,
 				7555FF83242A565900829871 /* RootView.swift in Sources */,
 				7B7A9B092887E6D900A59D6E /* DefaultHeaderView.swift in Sources */,
