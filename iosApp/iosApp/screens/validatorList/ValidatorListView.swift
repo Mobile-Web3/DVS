@@ -41,8 +41,9 @@ struct ValidatorListView: ConnectedView {
                 LazyVGrid(columns: twoColumnGrid) {
                     ForEach(validatorViewItems) { item in
                         if (item.isLoading) {
-                            Text("loading item")
-                                .foregroundColor(Color.white)
+                            ValidatorCardLoading()
+//                            Text("loading item")
+//                                .foregroundColor(Color.white)
                         } else {
                             Text("validator item")
                                 .foregroundColor(Color.white)
