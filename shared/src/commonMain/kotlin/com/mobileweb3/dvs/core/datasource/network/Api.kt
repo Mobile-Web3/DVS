@@ -23,7 +23,7 @@ class Api(
     }
 
     suspend fun getProposals(blockchainNetwork: BlockchainNetwork): List<Proposal> {
-        val url = blockchainNetwork.getProposalsRef!!
+        val url = blockchainNetwork.getProposalsRef ?: return emptyList()
 
         if (blockchainNetwork == BlockchainNetwork.BOSTROM) {
             val bostromProposals: BostromProposals = json.decodeFromString(httpClient.get(url).bodyAsText())
