@@ -9,21 +9,21 @@
 import SwiftUI
 import shared
 
-struct MainView: ConnectedView {
+struct ValidatorListView: ConnectedView {
     
-    @EnvironmentObject var store: ObservableMainStore
+    @EnvironmentObject var store: ObservableValidatorListStore
     
     struct Props {
-        let count: Int32
+        let state: ValidatorListState
         
         let onClick: () -> Void
     }
     
-    func map(state: MainState, dispatch: @escaping DispatchFunction) -> Props {
+    func map(state: ValidatorListState, dispatch: @escaping DispatchFunction) -> Props {
         return Props(
-            count: state.count,
+            state: state,
             onClick: {
-                dispatch(MainAction.Click())
+                dispatch(ValidatorListAction.ValidatorCardSelect())
             }
         )
     }
@@ -33,10 +33,7 @@ struct MainView: ConnectedView {
             Spacer()
             
             VStack(alignment: .center) {
-                Text("Count: \(props.count)")
-                    .onTapGesture {
-                        props.onClick()
-                    }
+                Text("Count: \(props.state.validatorViewStates.count)")
             }
             
             Spacer()
@@ -46,11 +43,5 @@ struct MainView: ConnectedView {
             }
             .padding(16)
         }
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
     }
 }

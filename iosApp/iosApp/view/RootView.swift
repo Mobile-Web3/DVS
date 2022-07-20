@@ -2,13 +2,13 @@ import SwiftUI
 import shared
 
 struct RootView: View {
-    @EnvironmentObject var store: ObservableMainStore
+    @EnvironmentObject var store: ObservableValidatorListStore
     @SwiftUI.State var message: String?
 
 	var body: some View {
         ZStack {
             NavigationView {
-                MainView().environmentObject(store)
+                ValidatorListView().environmentObject(store)
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
             }
@@ -30,7 +30,7 @@ struct RootView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onReceive(store.$sideEffect) { value in
-            if let message = (value as? MainSideEffect.Message)?.text {
+            if let message = (value as? ValidatorListSideEffect.Message)?.text {
                 withAnimation { self.message = message }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     withAnimation { self.message = nil }

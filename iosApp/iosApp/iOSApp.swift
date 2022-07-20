@@ -5,31 +5,31 @@ import shared
 @main
 class iOSApp: App {
     let mainInteractor: MainInteractor
-    let store: ObservableMainStore
+    let validatorListStore: ObservableValidatorListStore
     
     required init() {
         mainInteractor = MainInteractor.Companion().create(withLog: true)
-        store = ObservableMainStore(store: MainStore())
+        validatorListStore = ObservableValidatorListStore(validatorListStore: ValidatorListStore())
     }
     
 	var body: some Scene {
 		WindowGroup {
-            RootView().environmentObject(store)
+            RootView().environmentObject(validatorListStore)
 		}
 	}
 }
 
-class ObservableMainStore: ObservableObject {
-    @Published public var state: MainState =  MainState(count: 0)
-    @Published public var sideEffect: MainSideEffect?
+class ObservableValidatorListStore: ObservableObject {
+    @Published public var state: ValidatorListState = ValidatorListState(validatorViewStates: [ValidatorViewState]())
+    @Published public var sideEffect: ValidatorListSideEffect?
     
-    let store: MainStore
+    let store: ValidatorListStore
     
     var stateWatcher : Closeable?
     var sideEffectWatcher : Closeable?
 
-    init(store: MainStore) {
-        self.store = store
+    init(validatorListStore: ValidatorListStore) {
+        self.store = validatorListStore
         stateWatcher = self.store.watchState().watch { [weak self] state in
             self?.state = state
         }
@@ -38,7 +38,7 @@ class ObservableMainStore: ObservableObject {
         }
     }
     
-    public func dispatch(_ action: MainAction) {
+    public func dispatch(_ action: ValidatorListAction) {
         store.dispatch(action: action)
     }
     
@@ -48,18 +48,18 @@ class ObservableMainStore: ObservableObject {
     }
 }
 
-public typealias DispatchFunction = (MainAction) -> ()
+public typealias DispatchFunction = (ValidatorListAction) -> ()
 
 public protocol ConnectedView: View {
     associatedtype Props
     associatedtype V: View
     
-    func map(state: MainState, dispatch: @escaping DispatchFunction) -> Props
+    func map(state: ValidatorListState, dispatch: @escaping DispatchFunction) -> Props
     func body(props: Props) -> V
 }
 
 public extension ConnectedView {
-    func render(state: MainState, dispatch: @escaping DispatchFunction) -> V {
+    func render(state: ValidatorListState, dispatch: @escaping DispatchFunction) -> V {
         let props = map(state: state, dispatch: dispatch)
         return body(props: props)
     }
@@ -70,8 +70,8 @@ public extension ConnectedView {
 }
 
 public struct StoreConnector<V: View>: View {
-    @EnvironmentObject var store: ObservableMainStore
-    let content: (MainState, @escaping DispatchFunction) -> V
+    @EnvironmentObject var store: ObservableValidatorListStore
+    let content: (ValidatorListState, @escaping DispatchFunction) -> V
     
     public var body: V {
         return content(store.state, store.dispatch)
