@@ -13,6 +13,7 @@ struct RemoteImageView: View {
     
     var urlString: String
     var size: CoreGraphics.CGFloat
+    var onImageLoaded: ((RetrieveImageResult) -> Void)
 
     var body: some View {
         KFImage(URL(string: urlString)!)
@@ -20,6 +21,9 @@ struct RemoteImageView: View {
             .placeholder { Progress in
                 AvatarShimmer()
             }
+            .onSuccess({ RetrieveImageResult in
+                onImageLoaded(RetrieveImageResult)
+            })
             .fade(duration: 1)
             .frame(width: size, height: size)
             .cornerRadius(100)
@@ -27,5 +31,6 @@ struct RemoteImageView: View {
                 RoundedRectangle(cornerRadius: 100)
                     .stroke(.white, lineWidth: 2)
             )
+        
     }
 }
