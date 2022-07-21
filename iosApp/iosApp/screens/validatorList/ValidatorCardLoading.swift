@@ -16,12 +16,11 @@ struct ValidatorCardLoading: View {
                 .padding(.top, 8)
                 .frame(width: 120, height: 120, alignment: Alignment.top)
             
-            Spacer()
+            Divider()
             
             TextShimmer()
             
-            TextShimmer()
-                .padding(.top, 2)
+            Divider()
             
             Spacer()
         }
