@@ -42,11 +42,8 @@ struct ValidatorListView: ConnectedView {
                     ForEach(validatorViewItems) { item in
                         if (item.isLoading) {
                             ValidatorCardLoading()
-//                            Text("loading item")
-//                                .foregroundColor(Color.white)
                         } else {
-                            Text("validator item")
-                                .foregroundColor(Color.white)
+                            ValidatorCardView(validatorModel: item.validatorModel!)
                         }
                     }
                 }
