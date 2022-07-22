@@ -9,7 +9,7 @@
 import SwiftUI
 import shared
 
-struct ValidatorListView: ConnectedView {
+struct ValidatorListView: ValidatorListConnectedView {
     
     @EnvironmentObject var validatorListStore: ObservableValidatorListStore
     
@@ -19,7 +19,7 @@ struct ValidatorListView: ConnectedView {
         let onClick: () -> Void
     }
     
-    func map(state: ValidatorListState, dispatch: @escaping DispatchFunction) -> Props {
+    func map(state: ValidatorListState, dispatch: @escaping ValidatorListDispatchFunction) -> Props {
         return Props(
             state: state,
             onClick: {

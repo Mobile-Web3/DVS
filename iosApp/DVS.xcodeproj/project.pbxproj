@@ -22,6 +22,7 @@
 		7BE90E6F2889282700423B1F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE90E6E2889282700423B1F /* Kingfisher */; };
 		7BEFA5BE288A636200F07461 /* ColorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BEFA5BD288A636200F07461 /* ColorKit */; };
 		7BEFA5C1288A7F9D00F07461 /* ObservableValidatorListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5C0288A7F9D00F07461 /* ObservableValidatorListStore.swift */; };
+		7BEFA5C3288A877100F07461 /* ObservableValidatorDetailsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5C2288A877100F07461 /* ObservableValidatorDetailsStore.swift */; };
 		7BFEE7FD2871D3090016E6FD /* ValidatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		7BE90E6928890E3400423B1F /* ValidatorCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorCardView.swift; sourceTree = "<group>"; };
 		7BE90E6B288910C400423B1F /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
 		7BEFA5C0288A7F9D00F07461 /* ObservableValidatorListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValidatorListStore.swift; sourceTree = "<group>"; };
+		7BEFA5C2288A877100F07461 /* ObservableValidatorDetailsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValidatorDetailsStore.swift; sourceTree = "<group>"; };
 		7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				7BEFA5C0288A7F9D00F07461 /* ObservableValidatorListStore.swift */,
+				7BEFA5C2288A877100F07461 /* ObservableValidatorDetailsStore.swift */,
 			);
 			path = storeObservables;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				7BE90E682888892F00423B1F /* TextShimmer.swift in Sources */,
 				7BE90E6C288910C400423B1F /* RemoteImageView.swift in Sources */,
 				7BEFA5C1288A7F9D00F07461 /* ObservableValidatorListStore.swift in Sources */,
+				7BEFA5C3288A877100F07461 /* ObservableValidatorDetailsStore.swift in Sources */,
 				7B7A9B092887E6D900A59D6E /* DefaultHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
