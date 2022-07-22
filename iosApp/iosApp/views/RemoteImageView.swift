@@ -8,12 +8,13 @@
 
 import SwiftUI
 import Kingfisher
+import ColorKit
 
 struct RemoteImageView: View {
     
     var urlString: String
     var size: CoreGraphics.CGFloat
-    var onImageLoaded: ((RetrieveImageResult) -> Void)
+    var onImageLoaded: (([UIColor]) -> Void)
 
     var body: some View {
         KFImage(URL(string: urlString)!)
@@ -22,9 +23,28 @@ struct RemoteImageView: View {
                 AvatarShimmer()
             }
             .onSuccess({ RetrieveImageResult in
-                onImageLoaded(RetrieveImageResult)
+                DispatchQueue.global(qos: .background).async {
+                    do {
+                        let dominantColorsFreq = try RetrieveImageResult.image.dominantColorFrequencies(with: .best)
+                        let sortedColors = dominantColorsFreq
+                            .sorted { color1, color2 in
+                                color1.frequency > color2.frequency
+                            }
+                            .prefix(2)
+                            .map { ColorFrequency in
+                                ColorFrequency.color
+                            }
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                            onImageLoaded(sortedColors)
+                        })
+                    } catch {
+                        
+                    }
+                }
             })
             .fade(duration: 1)
+            .background(Color.clear)
             .frame(width: size, height: size)
             .cornerRadius(100)
             .overlay(

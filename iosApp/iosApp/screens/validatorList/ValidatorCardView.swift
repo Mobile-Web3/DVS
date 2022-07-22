@@ -17,7 +17,8 @@ struct ValidatorCardView: View {
         gradient: LinearGradient(
             colors: [.black],
             startPoint: .top,
-            endPoint: .center)
+            endPoint: .center
+        )
     )
     
     var body: some View {
@@ -25,12 +26,14 @@ struct ValidatorCardView: View {
             RemoteImageView(
                 urlString: validatorModel.avatar,
                 size: 120,
-                onImageLoaded: { RetrieveImageResult in
-                    defaultGradient.gradient = LinearGradient(
-                        colors: [.orange, .red],
-                        startPoint: .top,
-                        endPoint: .center
+                onImageLoaded: { colors in
+                    let newGradient = LinearGradient(
+                        colors: colors.map({ it in Color(it)}),
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
                     )
+
+                    defaultGradient.gradient = newGradient
                 }
             )
             .padding(.top, 8)
