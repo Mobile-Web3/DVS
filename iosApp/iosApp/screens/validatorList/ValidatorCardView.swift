@@ -38,9 +38,20 @@ struct ValidatorCardView: View {
             )
             .padding(.top, 8)
             
+            Text(validatorModel.title)
+                .multilineTextAlignment(TextAlignment.center)
+                .foregroundColor(Color.white)
+                .padding(10)
+                .font(.system(size: 20))
+            
+            Text(validatorModel.getSmallDescription())
+                .foregroundColor(Color.white)
+                .padding(6)
+                .font(.system(size: 12))
+            
             Spacer()
         }
-        .frame(maxWidth: .infinity, minHeight: 300)
+        .frame(maxWidth: .infinity, minHeight: 300, maxHeight: 300)
         .background(defaultGradient.gradient)
         .cornerRadius(20)
         .overlay(
