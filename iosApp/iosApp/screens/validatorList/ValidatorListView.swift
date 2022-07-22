@@ -11,7 +11,7 @@ import shared
 
 struct ValidatorListView: ConnectedView {
     
-    @EnvironmentObject var store: ObservableValidatorListStore
+    @EnvironmentObject var validatorListStore: ObservableValidatorListStore
     
     struct Props {
         let state: ValidatorListState
@@ -44,6 +44,9 @@ struct ValidatorListView: ConnectedView {
                             ValidatorCardLoading()
                         } else {
                             ValidatorCardView(validatorModel: item.validatorModel!)
+                                .onTapGesture {
+                                    
+                                }
                         }
                     }
                 }

@@ -13,6 +13,7 @@ import ColorKit
 struct ValidatorCardView: View {
     
     var validatorModel: ValidatorModel
+
     @ObservedObject var defaultGradient: GradientWrapper = GradientWrapper(
         gradient: LinearGradient(
             colors: [.black],

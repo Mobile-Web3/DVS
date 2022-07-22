@@ -19,35 +19,6 @@ class iOSApp: App {
 	}
 }
 
-class ObservableValidatorListStore: ObservableObject {
-    @Published public var state: ValidatorListState = ValidatorListState(validatorViewStates: [ValidatorViewState]())
-    @Published public var sideEffect: ValidatorListSideEffect?
-    
-    let store: ValidatorListStore
-    
-    var stateWatcher : Closeable?
-    var sideEffectWatcher : Closeable?
-
-    init(validatorListStore: ValidatorListStore) {
-        self.store = validatorListStore
-        stateWatcher = self.store.watchState().watch { [weak self] state in
-            self?.state = state
-        }
-        sideEffectWatcher = self.store.watchSideEffect().watch { [weak self] state in
-            self?.sideEffect = state
-        }
-    }
-    
-    public func dispatch(_ action: ValidatorListAction) {
-        store.dispatch(action: action)
-    }
-    
-    deinit {
-        stateWatcher?.close()
-        sideEffectWatcher?.close()
-    }
-}
-
 public typealias DispatchFunction = (ValidatorListAction) -> ()
 
 public protocol ConnectedView: View {

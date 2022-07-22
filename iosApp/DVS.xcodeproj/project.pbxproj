@@ -21,6 +21,7 @@
 		7BE90E6C288910C400423B1F /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E6B288910C400423B1F /* RemoteImageView.swift */; };
 		7BE90E6F2889282700423B1F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE90E6E2889282700423B1F /* Kingfisher */; };
 		7BEFA5BE288A636200F07461 /* ColorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BEFA5BD288A636200F07461 /* ColorKit */; };
+		7BEFA5C1288A7F9D00F07461 /* ObservableValidatorListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5C0288A7F9D00F07461 /* ObservableValidatorListStore.swift */; };
 		7BFEE7FD2871D3090016E6FD /* ValidatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		7BE90E672888892F00423B1F /* TextShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextShimmer.swift; sourceTree = "<group>"; };
 		7BE90E6928890E3400423B1F /* ValidatorCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorCardView.swift; sourceTree = "<group>"; };
 		7BE90E6B288910C400423B1F /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
+		7BEFA5C0288A7F9D00F07461 /* ObservableValidatorListStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValidatorListStore.swift; sourceTree = "<group>"; };
 		7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				7BEFA5BF288A7F7C00F07461 /* storeObservables */,
 				7B7A9B0A2887EB7000A59D6E /* theme */,
 				7B7A9B072887E6BE00A59D6E /* views */,
 				7BFEE7FB2871D2F20016E6FD /* screens */,
@@ -141,6 +144,14 @@
 				7BE90E6928890E3400423B1F /* ValidatorCardView.swift */,
 			);
 			path = validatorList;
+			sourceTree = "<group>";
+		};
+		7BEFA5BF288A7F7C00F07461 /* storeObservables */ = {
+			isa = PBXGroup;
+			children = (
+				7BEFA5C0288A7F9D00F07461 /* ObservableValidatorListStore.swift */,
+			);
+			path = storeObservables;
 			sourceTree = "<group>";
 		};
 		7BFEE7FB2871D2F20016E6FD /* screens */ = {
@@ -263,6 +274,7 @@
 				7555FF83242A565900829871 /* RootView.swift in Sources */,
 				7BE90E682888892F00423B1F /* TextShimmer.swift in Sources */,
 				7BE90E6C288910C400423B1F /* RemoteImageView.swift in Sources */,
+				7BEFA5C1288A7F9D00F07461 /* ObservableValidatorListStore.swift in Sources */,
 				7B7A9B092887E6D900A59D6E /* DefaultHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
