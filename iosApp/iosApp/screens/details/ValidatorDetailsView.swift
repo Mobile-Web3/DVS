@@ -53,6 +53,13 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                         defaultGradient.gradient = newGradient
                     }
                 )
+                
+                Text(props.state.validatorModel!.title)
+                    .padding(8)
+                    .foregroundColor(Color.white)
+                    .background(Color.purple)
+                    .font(Font.headline.weight(.bold))
+                    .cornerRadius(10)
             }
             .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
             .background(defaultGradient.gradient)

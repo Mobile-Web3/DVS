@@ -30,7 +30,7 @@ struct RemoteImageView: View {
                             .sorted { color1, color2 in
                                 color1.frequency > color2.frequency
                             }
-                            .prefix(2)
+                            .prefix(3)
                             .map { ColorFrequency in
                                 ColorFrequency.color
                             }
