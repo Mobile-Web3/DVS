@@ -47,6 +47,7 @@ struct ValidatorCardView: View {
                 .cornerRadius(10)
             
             Text(validatorModel.getSmallDescription())
+                .multilineTextAlignment(.leading)
                 .foregroundColor(Color.white)
                 .padding(6)
                 .font(.system(size: 12))

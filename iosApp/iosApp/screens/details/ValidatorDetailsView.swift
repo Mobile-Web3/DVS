@@ -38,44 +38,81 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     }
 
     func body(props: Props) -> some View {
-        ZStack(alignment: .topLeading) {
-            VStack {
-                RemoteImageView(
-                    urlString: props.state.validatorModel!.avatar,
-                    size: 120,
-                    onImageLoaded: { colors in
-                        let newGradient = LinearGradient(
-                            colors: colors.map({ it in Color(it)}),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
+        VStack() {
+            ZStack(alignment: .topLeading) {
+                VStack {
+                    RemoteImageView(
+                        urlString: props.state.validatorModel!.avatar,
+                        size: 120,
+                        onImageLoaded: { colors in
+                            let newGradient = LinearGradient(
+                                colors: colors.map({ it in Color(it)}),
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
 
-                        defaultGradient.gradient = newGradient
-                    }
-                )
-                
-                Text(props.state.validatorModel!.title)
-                    .padding(8)
-                    .foregroundColor(Color.white)
-                    .background(Color.purple)
-                    .font(Font.headline.weight(.bold))
-                    .cornerRadius(10)
-            }
-            .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
-            .background(defaultGradient.gradient)
-            
-            Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }, label: {
-                HStack(spacing: 4) {
-                    Image(systemName: "arrow.left")
+                            defaultGradient.gradient = newGradient
+                        }
+                    )
+                    
+                    Text(props.state.validatorModel!.title)
+                        .padding(8)
+                        .foregroundColor(Color.white)
+                        .background(Color.purple)
+                        .font(Font.headline.weight(.bold))
+                        .cornerRadius(10)
                 }
-            })
-            .padding(8)
-            .accentColor(PurpleColor)
+                .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
+                .background(defaultGradient.gradient)
+            
+                
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    HStack(spacing: 4) {
+                        Image(systemName: "arrow.left")
+                    }
+                })
+                .padding(8)
+                .accentColor(PurpleColor)
+            }
+            .frame(maxWidth: .infinity, alignment: .topLeading)
+            
+            let validatorTopicItems = props.state.validatorModel!.getTopics().map { validatorTopic in
+                ValidatorTopicItem(topic: validatorTopic)
+            }
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 8) {
+                    ForEach(validatorTopicItems) { topicViewItem in
+                        Button(
+                            action: {
+                            
+                            },
+                            label: {
+                                Text(topicViewItem.topic.title)
+                                    .foregroundColor(Color.white)
+                            }
+                        )
+                        .padding(8)
+                        .background(Color.purple)
+                        .font(Font.headline.weight(.bold))
+                        .cornerRadius(10)
+                    }
+                }
+            }
+            
+            Spacer()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black)
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }
+}
+
+
+struct ValidatorTopicItem: Identifiable {
+    let id = UUID()
+    let topic: ValidatorTopic
 }
