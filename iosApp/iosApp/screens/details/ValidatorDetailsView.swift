@@ -14,6 +14,14 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     @EnvironmentObject var validatorDetailsStore: ObservableValidatorDetailsStore
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
+    @ObservedObject var defaultGradient: GradientWrapper = GradientWrapper(
+        gradient: LinearGradient(
+            colors: [.black],
+            startPoint: .top,
+            endPoint: .center
+        )
+    )
+    
     struct Props {
         let state: ValidatorDetailsState
         
@@ -30,13 +38,36 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     }
 
     func body(props: Props) -> some View {
-        ZStack() {
-            Text(props.state.validatorModel!.title)
-                .onTapGesture {
-                    presentationMode.wrappedValue.dismiss()
+        ZStack(alignment: .topLeading) {
+            VStack {
+                RemoteImageView(
+                    urlString: props.state.validatorModel!.avatar,
+                    size: 120,
+                    onImageLoaded: { colors in
+                        let newGradient = LinearGradient(
+                            colors: colors.map({ it in Color(it)}),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+
+                        defaultGradient.gradient = newGradient
+                    }
+                )
+            }
+            .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
+            .background(defaultGradient.gradient)
+            
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
+                HStack(spacing: 4) {
+                    Image(systemName: "arrow.left")
                 }
+            })
+            .padding(8)
+            .accentColor(PurpleColor)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .navigationBarTitle("")
         .navigationBarHidden(true)
     }
