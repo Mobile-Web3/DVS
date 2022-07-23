@@ -12,6 +12,7 @@ import shared
 struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     
     @EnvironmentObject var validatorDetailsStore: ObservableValidatorDetailsStore
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
     struct Props {
         let state: ValidatorDetailsState
@@ -29,9 +30,14 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     }
 
     func body(props: Props) -> some View {
-        VStack() {
+        ZStack() {
             Text(props.state.validatorModel!.title)
+                .onTapGesture {
+                    presentationMode.wrappedValue.dismiss()
+                }
         }
-        .background(Color.white)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
 }
