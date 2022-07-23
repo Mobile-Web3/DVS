@@ -40,10 +40,11 @@ struct ValidatorCardView: View {
             .padding(.top, 8)
             
             Text(validatorModel.title)
-                .multilineTextAlignment(TextAlignment.center)
+                .padding(8)
                 .foregroundColor(Color.white)
-                .padding(10)
-                .font(.system(size: 20))
+                .background(Color.purple)
+                .font(Font.headline.weight(.bold))
+                .cornerRadius(10)
             
             Text(validatorModel.getSmallDescription())
                 .foregroundColor(Color.white)
