@@ -12,18 +12,21 @@ import shared
 struct ValidatorListView: ValidatorListConnectedView {
     
     @EnvironmentObject var validatorListStore: ObservableValidatorListStore
+    @EnvironmentObject var validatorDetailsStore: ObservableValidatorDetailsStore
+    
+    @SwiftUI.State var shouldTransit: Bool = false
     
     struct Props {
         let state: ValidatorListState
         
-        let onClick: () -> Void
+        let onClick: (ValidatorModel) -> Void
     }
     
     func map(state: ValidatorListState, dispatch: @escaping ValidatorListDispatchFunction) -> Props {
         return Props(
             state: state,
-            onClick: {
-                dispatch(ValidatorListAction.ValidatorCardSelect())
+            onClick: { validatorModel in
+                validatorDetailsStore.dispatch(ValidatorDetailsAction.ValidatorSelected(validatorModel: validatorModel))
             }
         )
     }
@@ -43,10 +46,16 @@ struct ValidatorListView: ValidatorListConnectedView {
                         if (item.isLoading) {
                             ValidatorCardLoading()
                         } else {
-                            ValidatorCardView(validatorModel: item.validatorModel!)
-                                .onTapGesture {
-                                    
-                                }
+                            NavigationLink(
+                                destination: ValidatorDetailsView()
+                                    .environmentObject(validatorDetailsStore), isActive: $shouldTransit
+                            ) {
+                                ValidatorCardView(validatorModel: item.validatorModel!)
+                                    .onTapGesture {
+                                        props.onClick(item.validatorModel!)
+                                        self.shouldTransit.toggle()
+                                    }
+                            }
                         }
                     }
                 }
