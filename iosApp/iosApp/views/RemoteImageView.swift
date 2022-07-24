@@ -23,6 +23,8 @@ struct RemoteImageView: View {
                 AvatarShimmer()
             }
             .onSuccess({ RetrieveImageResult in
+                onImageLoaded([UIColor(Color.black)])
+
                 DispatchQueue.global(qos: .background).async {
                     do {
                         let dominantColorsFreq = try RetrieveImageResult.image.dominantColorFrequencies(with: .best)
