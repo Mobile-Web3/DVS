@@ -26,6 +26,7 @@
 		7BEFA5C5288AC29500F07461 /* ObservableValidatorVotesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5C4288AC29400F07461 /* ObservableValidatorVotesStore.swift */; };
 		7BEFA5C7288AC8BD00F07461 /* ObservableSearchNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5C6288AC8BD00F07461 /* ObservableSearchNetworkStore.swift */; };
 		7BEFA5CC288BB27000F07461 /* ValidatorDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5CB288BB27000F07461 /* ValidatorDetailsView.swift */; };
+		7BEFA5D3288D4D7400F07461 /* SwiftUIFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 7BEFA5D2288D4D7400F07461 /* SwiftUIFlowLayout */; };
 		7BFEE7FD2871D3090016E6FD /* ValidatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +72,7 @@
 			files = (
 				7BEFA5BE288A636200F07461 /* ColorKit in Frameworks */,
 				7BE90E6F2889282700423B1F /* Kingfisher in Frameworks */,
+				7BEFA5D3288D4D7400F07461 /* SwiftUIFlowLayout in Frameworks */,
 				7BE90E642888849F00423B1F /* Shimmer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -205,6 +207,7 @@
 				7BE90E632888849F00423B1F /* Shimmer */,
 				7BE90E6E2889282700423B1F /* Kingfisher */,
 				7BEFA5BD288A636200F07461 /* ColorKit */,
+				7BEFA5D2288D4D7400F07461 /* SwiftUIFlowLayout */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* DVS.app */;
@@ -238,6 +241,7 @@
 				7BE90E622888849F00423B1F /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 				7BE90E6D2889282700423B1F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				7BEFA5BC288A636200F07461 /* XCRemoteSwiftPackageReference "ColorKit" */,
+				7BEFA5D1288D4D7400F07461 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -520,6 +524,14 @@
 				kind = branch;
 			};
 		};
+		7BEFA5D1288D4D7400F07461 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-flow-layout";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -537,6 +549,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7BEFA5BC288A636200F07461 /* XCRemoteSwiftPackageReference "ColorKit" */;
 			productName = ColorKit;
+		};
+		7BEFA5D2288D4D7400F07461 /* SwiftUIFlowLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BEFA5D1288D4D7400F07461 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */;
+			productName = SwiftUIFlowLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

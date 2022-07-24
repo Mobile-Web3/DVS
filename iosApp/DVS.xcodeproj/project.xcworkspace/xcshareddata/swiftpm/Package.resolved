@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "swiftui-flow-layout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/globulus/swiftui-flow-layout",
+      "state" : {
+        "revision" : "96f9a3fdb83fd0b73525f6324b8a35ef0dc235fd",
+        "version" : "1.0.4"
+      }
+    },
+    {
       "identity" : "swiftui-shimmer",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/markiv/SwiftUI-Shimmer",
