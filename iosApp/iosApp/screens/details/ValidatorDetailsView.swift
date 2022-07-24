@@ -101,8 +101,37 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                 }
             }
             
-            Text("\(props.state.selectedTopicIndex)")
-                .foregroundColor(Color.white)
+            let topicContent = validatorTopicItems[Int(props.state.selectedTopicIndex)].topic.topicContent.map { topicContent in
+                ValidatorTopicContentItem(content: topicContent)
+            }
+            ForEach(topicContent) { content in
+                switch content.content {
+                case is ValidatorTopicContent.SimpleText:
+                    Text("SimpleText")
+                        .foregroundColor(Color.white)
+                
+                case is ValidatorTopicContent.ButtonsWithRefFlow:
+                    Text("ButtonsWithRefFlow")
+                        .foregroundColor(Color.white)
+                    
+                case is ValidatorTopicContent.MainNetworks:
+                    Text("MainNetworks")
+                        .foregroundColor(Color.white)
+                    
+                case is ValidatorTopicContent.VotingNetworks:
+                    Text("VotingNetworks")
+                        .foregroundColor(Color.white)
+                    
+                case is ValidatorTopicContent.Contacts:
+                    Text("Contacts")
+                        .foregroundColor(Color.white)
+                    
+                default:
+                    Text("default")
+                        .foregroundColor(Color.white)
+                    
+                }
+            }
             
             Spacer()
         }
@@ -117,4 +146,9 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
 struct ValidatorTopicItem: Identifiable {
     let id = UUID()
     let topic: ValidatorTopic
+}
+
+struct ValidatorTopicContentItem: Identifiable {
+    let id = UUID()
+    let content: ValidatorTopicContent
 }
