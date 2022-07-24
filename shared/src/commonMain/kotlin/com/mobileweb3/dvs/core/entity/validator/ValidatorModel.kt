@@ -91,7 +91,8 @@ data class ValidatorModel(
             resultList.add(
                 ValidatorTopic(
                     title = "Bio",
-                    topicContent = resultTopicsList
+                    topicContent = resultTopicsList,
+                    topicIndex = resultList.count()
                 )
             )
         }
@@ -101,7 +102,8 @@ data class ValidatorModel(
             resultList.add(
                 ValidatorTopic(
                     title = "Voting",
-                    topicContent = listOf(ValidatorTopicContent.VotingNetworks(cosmosNetworks))
+                    topicContent = listOf(ValidatorTopicContent.VotingNetworks(cosmosNetworks)),
+                    topicIndex = resultList.count()
                 )
             )
         }
@@ -110,7 +112,8 @@ data class ValidatorModel(
             resultList.add(
                 ValidatorTopic(
                     title = "MainNets",
-                    topicContent = listOf(ValidatorTopicContent.MainNetworks(mainNets))
+                    topicContent = listOf(ValidatorTopicContent.MainNetworks(mainNets)),
+                    topicIndex = resultList.count()
                 )
             )
         }
@@ -121,7 +124,8 @@ data class ValidatorModel(
                     title = "TestNets",
                     topicContent = testNets.map { network ->
                         ValidatorTopicContent.SimpleText(network.toString())
-                    }
+                    },
+                    topicIndex = resultList.count()
                 )
             )
         }
@@ -139,7 +143,8 @@ data class ValidatorModel(
                                 )
                             }
                         )
-                    )
+                    ),
+                    topicIndex = resultList.count()
                 )
             )
         }
@@ -158,7 +163,8 @@ data class ValidatorModel(
                                     )
                                 }
                             )
-                        )
+                        ),
+                        topicIndex = resultList.count()
                     )
                 )
             }
@@ -178,7 +184,8 @@ data class ValidatorModel(
                                     )
                                 }
                             )
-                        )
+                        ),
+                        topicIndex = resultList.count()
                     )
                 )
             }
@@ -190,7 +197,8 @@ data class ValidatorModel(
                     title = "Other Info",
                     topicContent = otherInfo.map { otherInfo ->
                         ValidatorTopicContent.SimpleText("${otherInfo.title}\n\n${otherInfo.body}\n\n")
-                    }
+                    },
+                    topicIndex = resultList.count()
                 )
             )
         }
