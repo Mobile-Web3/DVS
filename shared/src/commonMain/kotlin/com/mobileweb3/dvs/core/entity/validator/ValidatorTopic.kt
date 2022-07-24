@@ -2,7 +2,8 @@ package com.mobileweb3.dvs.core.entity.validator
 
 data class ValidatorTopic(
     val title: String,
-    val topicContent: List<ValidatorTopicContent>
+    val topicContent: List<ValidatorTopicContent>,
+    val topicIndex: Int // for ios lol
 )
 
 sealed class ValidatorTopicContent {
