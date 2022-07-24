@@ -3,15 +3,15 @@ import shared
 
 struct RootView: View {
     @EnvironmentObject var validatorListStore: ObservableValidatorListStore
-    @EnvironmentObject var validatorDetailsStore: ObservableValidatorDetailsStore
+    var validatorDetailsStore: ObservableValidatorDetailsStore
     @SwiftUI.State var message: String?
 
 	var body: some View {
         ZStack {
             NavigationView {
-                ValidatorListView()
+                ValidatorListView(validatorDetailsStore: validatorDetailsStore)
                     .environmentObject(validatorListStore)
-                    .environmentObject(validatorDetailsStore)
+                    //.environmentObject(validatorDetailsStore)
                     .navigationBarTitle("")
                     .navigationBarHidden(true)
             }
@@ -40,11 +40,5 @@ struct RootView: View {
                 }
             }
         }
-	}
-}
-
-struct RootView_Previews: PreviewProvider {
-	static var previews: some View {
-		RootView()
 	}
 }

@@ -16,9 +16,9 @@ class iOSApp: App {
     
 	var body: some Scene {
 		WindowGroup {
-            RootView()
+            RootView(validatorDetailsStore: validatorDetailsStore)
                 .environmentObject(validatorListStore)
-                .environmentObject(validatorDetailsStore)
+                //.environmentObject(validatorDetailsStore)
 		}
 	}
 }

@@ -12,7 +12,7 @@ import shared
 struct ValidatorListView: ValidatorListConnectedView {
     
     @EnvironmentObject var validatorListStore: ObservableValidatorListStore
-    @EnvironmentObject var validatorDetailsStore: ObservableValidatorDetailsStore
+    var validatorDetailsStore: ObservableValidatorDetailsStore
     
     @SwiftUI.State var shouldTransit: Bool = false
     
