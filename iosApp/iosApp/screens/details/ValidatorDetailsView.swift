@@ -8,6 +8,7 @@
 
 import SwiftUI
 import shared
+import WebKit
 
 struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     
@@ -107,8 +108,10 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
             ForEach(topicContent) { content in
                 switch content.content {
                 case is ValidatorTopicContent.SimpleText:
-                    Text("SimpleText")
-                        .foregroundColor(Color.white)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        Text((content.content as! ValidatorTopicContent.SimpleText).text)
+                            .foregroundColor(Color.white)
+                    }
                 
                 case is ValidatorTopicContent.ButtonsWithRefFlow:
                     Text("ButtonsWithRefFlow")
