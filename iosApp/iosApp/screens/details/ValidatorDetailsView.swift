@@ -9,11 +9,13 @@
 import SwiftUI
 import shared
 import WebKit
+import SwiftUIFlowLayout
 
 struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     
     @EnvironmentObject var validatorDetailsStore: ObservableValidatorDetailsStore
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @Environment(\.openURL) var openURL
     
     @ObservedObject var defaultGradient: GradientWrapper = GradientWrapper(
         gradient: LinearGradient(
@@ -105,6 +107,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
             let topicContent = validatorTopicItems[Int(props.state.selectedTopicIndex)].topic.topicContent.map { topicContent in
                 ValidatorTopicContentItem(content: topicContent)
             }
+            
             ForEach(topicContent) { content in
                 switch content.content {
                 case is ValidatorTopicContent.SimpleText:
@@ -114,8 +117,23 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                     }
                 
                 case is ValidatorTopicContent.ButtonsWithRefFlow:
-                    Text("ButtonsWithRefFlow")
-                        .foregroundColor(Color.white)
+                    FlowLayout(mode: .scrollable, items: (content.content as! ValidatorTopicContent.ButtonsWithRefFlow).buttons, viewMapping: { button in
+                        Button(
+                            action: {
+                                if (button.reference != nil) {
+                                    openURL(URL(string: button.reference!)!)
+                                }
+                            },
+                            label: {
+                                Text(button.text)
+                                    .foregroundColor(Color.white)
+                            }
+                        )
+                        .padding(8)
+                        .background(Color.purple)
+                        .font(Font.subheadline.weight(.bold))
+                        .cornerRadius(10)
+                    })
                     
                 case is ValidatorTopicContent.MainNetworks:
                     Text("MainNetworks")
