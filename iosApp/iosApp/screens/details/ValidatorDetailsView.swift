@@ -64,7 +64,6 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                 }
                 .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
                 .background(defaultGradient.gradient)
-            
                 
                 Button(action: {
                     presentationMode.wrappedValue.dismiss()
@@ -87,7 +86,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                     ForEach(validatorTopicItems) { topicViewItem in
                         Button(
                             action: {
-                            
+                                validatorDetailsStore.dispatch(ValidatorDetailsAction.TopicSelected(index: topicViewItem.topic.topicIndex))
                             },
                             label: {
                                 Text(topicViewItem.topic.title)
@@ -96,11 +95,14 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                         )
                         .padding(8)
                         .background(Color.purple)
-                        .font(Font.headline.weight(.bold))
+                        .font(Font.subheadline.weight(.bold))
                         .cornerRadius(10)
                     }
                 }
             }
+            
+            Text("\(props.state.selectedTopicIndex)")
+                .foregroundColor(Color.white)
             
             Spacer()
         }
