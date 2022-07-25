@@ -4,16 +4,22 @@ import shared
 struct RootView: View {
     @EnvironmentObject var validatorListStore: ObservableValidatorListStore
     var validatorDetailsStore: ObservableValidatorDetailsStore
+    var validatorVotesStore: ObservableValidatorVotesStore
+    
     @SwiftUI.State var message: String?
 
 	var body: some View {
         ZStack {
             NavigationView {
-                ValidatorListView(validatorDetailsStore: validatorDetailsStore)
-                    .environmentObject(validatorListStore)
-                    //.environmentObject(validatorDetailsStore)
-                    .navigationBarTitle("")
-                    .navigationBarHidden(true)
+                ValidatorListView(
+                    validatorDetailsStore: validatorDetailsStore,
+                    validatorVotesStore: validatorVotesStore
+                )
+                .environmentObject(validatorListStore)
+                //.environmentObject(validatorDetailsStore)
+                .navigationBarTitle("")
+                .navigationBarHidden(true)
+                .navigationViewStyle(StackNavigationViewStyle())
             }
             .zIndex(0)
         
@@ -31,7 +37,6 @@ struct RootView: View {
                 .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .opacity) )
             }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
         .onReceive(validatorListStore.$sideEffect) { value in
             if let message = (value as? ValidatorListSideEffect.Message)?.text {
                 withAnimation { self.message = message }
