@@ -27,6 +27,7 @@
 		7BEFA5C7288AC8BD00F07461 /* ObservableSearchNetworkStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5C6288AC8BD00F07461 /* ObservableSearchNetworkStore.swift */; };
 		7BEFA5CC288BB27000F07461 /* ValidatorDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5CB288BB27000F07461 /* ValidatorDetailsView.swift */; };
 		7BEFA5D3288D4D7400F07461 /* SwiftUIFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 7BEFA5D2288D4D7400F07461 /* SwiftUIFlowLayout */; };
+		7BEFA5D7288D6E3600F07461 /* NetworkCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5D6288D6E3600F07461 /* NetworkCardView.swift */; };
 		7BFEE7FD2871D3090016E6FD /* ValidatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		7BEFA5C4288AC29400F07461 /* ObservableValidatorVotesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableValidatorVotesStore.swift; sourceTree = "<group>"; };
 		7BEFA5C6288AC8BD00F07461 /* ObservableSearchNetworkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableSearchNetworkStore.swift; sourceTree = "<group>"; };
 		7BEFA5CB288BB27000F07461 /* ValidatorDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorDetailsView.swift; sourceTree = "<group>"; };
+		7BEFA5D6288D6E3600F07461 /* NetworkCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCardView.swift; sourceTree = "<group>"; };
 		7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 				7BE90E65288886FC00423B1F /* AvatarShimmer.swift */,
 				7BE90E672888892F00423B1F /* TextShimmer.swift */,
 				7BE90E6B288910C400423B1F /* RemoteImageView.swift */,
+				7BEFA5D6288D6E3600F07461 /* NetworkCardView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				7BEFA5C1288A7F9D00F07461 /* ObservableValidatorListStore.swift in Sources */,
 				7BEFA5C3288A877100F07461 /* ObservableValidatorDetailsStore.swift in Sources */,
 				7B7A9B092887E6D900A59D6E /* DefaultHeaderView.swift in Sources */,
+				7BEFA5D7288D6E3600F07461 /* NetworkCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

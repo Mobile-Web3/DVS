@@ -17,6 +17,8 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @Environment(\.openURL) var openURL
     
+    var threeColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
     @ObservedObject var defaultGradient: GradientWrapper = GradientWrapper(
         gradient: LinearGradient(
             colors: [.black],
@@ -117,27 +119,41 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                     }
                 
                 case is ValidatorTopicContent.ButtonsWithRefFlow:
-                    FlowLayout(mode: .scrollable, items: (content.content as! ValidatorTopicContent.ButtonsWithRefFlow).buttons, viewMapping: { button in
-                        Button(
-                            action: {
-                                if (button.reference != nil) {
-                                    openURL(URL(string: button.reference!)!)
+                    FlowLayout(
+                        mode: .scrollable,
+                        items: (content.content as! ValidatorTopicContent.ButtonsWithRefFlow).buttons,
+                        viewMapping: { button in
+                            Button(
+                                action: {
+                                    if (button.reference != nil) {
+                                        openURL(URL(string: button.reference!)!)
+                                    }
+                                },
+                                label: {
+                                    Text(button.text)
+                                        .foregroundColor(Color.white)
                                 }
-                            },
-                            label: {
-                                Text(button.text)
-                                    .foregroundColor(Color.white)
-                            }
-                        )
-                        .padding(8)
-                        .background(Color.purple)
-                        .font(Font.subheadline.weight(.bold))
-                        .cornerRadius(10)
-                    })
+                            )
+                            .padding(8)
+                            .background(Color.purple)
+                            .font(Font.subheadline.weight(.bold))
+                            .cornerRadius(10)
+                        }
+                    )
                     
                 case is ValidatorTopicContent.MainNetworks:
-                    Text("MainNetworks")
-                        .foregroundColor(Color.white)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        LazyVGrid(columns: threeColumnGrid, spacing: 8) {
+                            ForEach((content.content as! ValidatorTopicContent.MainNetworks).networks.map { network in
+                                ValidatorMainNetworkItem(validatorNetwork: network)
+                            }) { networkItem in
+                                NetworkCardView(blockchainNetwork: networkItem.validatorNetwork.blockchainNetwork)
+                                    .onTapGesture {
+                                        openURL(URL(string: networkItem.validatorNetwork.getValidatorPageLink())!)
+                                    }
+                            }
+                        }
+                    }
                     
                 case is ValidatorTopicContent.VotingNetworks:
                     Text("VotingNetworks")
@@ -172,4 +188,9 @@ struct ValidatorTopicItem: Identifiable {
 struct ValidatorTopicContentItem: Identifiable {
     let id = UUID()
     let content: ValidatorTopicContent
+}
+
+struct ValidatorMainNetworkItem: Identifiable {
+    let id = UUID()
+    let validatorNetwork: ValidatorNetwork
 }
