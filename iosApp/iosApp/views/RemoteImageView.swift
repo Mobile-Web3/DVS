@@ -46,7 +46,7 @@ struct RemoteImageView: View {
                 }
             })
             .fade(duration: 1)
-            .background(Color.clear)
+            .background(Color.white)
             .frame(width: size, height: size)
             .cornerRadius(100)
             .overlay(
