@@ -28,6 +28,7 @@
 		7BEFA5CC288BB27000F07461 /* ValidatorDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5CB288BB27000F07461 /* ValidatorDetailsView.swift */; };
 		7BEFA5D3288D4D7400F07461 /* SwiftUIFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 7BEFA5D2288D4D7400F07461 /* SwiftUIFlowLayout */; };
 		7BEFA5D7288D6E3600F07461 /* NetworkCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5D6288D6E3600F07461 /* NetworkCardView.swift */; };
+		7BEFA5DA288E4A8800F07461 /* ValidatorVotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BEFA5D9288E4A8800F07461 /* ValidatorVotingView.swift */; };
 		7BFEE7FD2871D3090016E6FD /* ValidatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		7BEFA5C6288AC8BD00F07461 /* ObservableSearchNetworkStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableSearchNetworkStore.swift; sourceTree = "<group>"; };
 		7BEFA5CB288BB27000F07461 /* ValidatorDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorDetailsView.swift; sourceTree = "<group>"; };
 		7BEFA5D6288D6E3600F07461 /* NetworkCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCardView.swift; sourceTree = "<group>"; };
+		7BEFA5D9288E4A8800F07461 /* ValidatorVotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorVotingView.swift; sourceTree = "<group>"; };
 		7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,9 +180,18 @@
 			path = details;
 			sourceTree = "<group>";
 		};
+		7BEFA5D8288E48A200F07461 /* voting */ = {
+			isa = PBXGroup;
+			children = (
+				7BEFA5D9288E4A8800F07461 /* ValidatorVotingView.swift */,
+			);
+			path = voting;
+			sourceTree = "<group>";
+		};
 		7BFEE7FB2871D2F20016E6FD /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				7BEFA5D8288E48A200F07461 /* voting */,
 				7BEFA5C8288BB23700F07461 /* details */,
 				7B7A9B0E2888230B00A59D6E /* validatorList */,
 				7555FF82242A565900829871 /* RootView.swift */,
@@ -295,6 +306,7 @@
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7B7A9B102888233500A59D6E /* ValidatorCardLoading.swift in Sources */,
 				7BE90E6A28890E3400423B1F /* ValidatorCardView.swift in Sources */,
+				7BEFA5DA288E4A8800F07461 /* ValidatorVotingView.swift in Sources */,
 				7BEFA5C7288AC8BD00F07461 /* ObservableSearchNetworkStore.swift in Sources */,
 				7B7A9B0C2887EB8400A59D6E /* Colors.swift in Sources */,
 				7BE90E66288886FC00423B1F /* AvatarShimmer.swift in Sources */,

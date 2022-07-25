@@ -13,6 +13,7 @@ struct ValidatorListView: ValidatorListConnectedView {
     
     @EnvironmentObject var validatorListStore: ObservableValidatorListStore
     var validatorDetailsStore: ObservableValidatorDetailsStore
+    var validatorVotesStore: ObservableValidatorVotesStore
     
     @SwiftUI.State var shouldTransit: Bool = false
     
@@ -47,7 +48,7 @@ struct ValidatorListView: ValidatorListConnectedView {
                             ValidatorCardLoading()
                         } else {
                             NavigationLink(
-                                destination: ValidatorDetailsView()
+                                destination: ValidatorDetailsView(validatorVotesStore: validatorVotesStore)
                                     .environmentObject(validatorDetailsStore), isActive: $shouldTransit
                             ) {
                                 ValidatorCardView(validatorModel: item.validatorModel!)

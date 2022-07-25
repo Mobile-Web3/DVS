@@ -14,9 +14,12 @@ import SwiftUIFlowLayout
 struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     
     @EnvironmentObject var validatorDetailsStore: ObservableValidatorDetailsStore
+    var validatorVotesStore: ObservableValidatorVotesStore
+
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @Environment(\.openURL) var openURL
-    @SwiftUI.State var shouldTransit: Bool = false
+
+    @SwiftUI.State var shouldTransit1: Bool = false
     
     var threeColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
@@ -31,14 +34,14 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     struct Props {
         let state: ValidatorDetailsState
         
-        let onClick: () -> Void
+        let onClick: (ValidatorModel, ValidatorNetwork) -> Void
     }
     
     func map(state: ValidatorDetailsState, dispatch: @escaping ValidatorDetailsDispatchFunction) -> Props {
         return Props(
             state: state,
-            onClick: {
-                
+            onClick: { ValidatorModel, ValidatorNetwork in
+                validatorVotesStore.dispatch(ValidatorVotesAction.NetworkSelected(validatorModel: ValidatorModel, network: ValidatorNetwork))
             }
         )
     }
@@ -162,10 +165,16 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                             ForEach((content.content as! ValidatorTopicContent.VotingNetworks).networks.map { network in
                                 ValidatorVotingNetworkItem(validatorNetwork: network)
                             }) { networkItem in
-                                NetworkCardView(blockchainNetwork: networkItem.validatorNetwork.blockchainNetwork)
-                                    .onTapGesture {
-                                        
-                                    }
+                                NavigationLink(
+                                    destination: ValidatorVotingView().environmentObject(validatorVotesStore),
+                                    isActive: $shouldTransit1
+                                ) {
+                                    NetworkCardView(blockchainNetwork: networkItem.validatorNetwork.blockchainNetwork)
+                                        .onTapGesture {
+                                            props.onClick(props.state.validatorModel!, networkItem.validatorNetwork)
+                                            self.shouldTransit1.toggle()
+                                        }
+                                }
                             }
                         }
                     }
