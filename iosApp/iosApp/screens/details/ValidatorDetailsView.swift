@@ -16,6 +16,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     @EnvironmentObject var validatorDetailsStore: ObservableValidatorDetailsStore
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @Environment(\.openURL) var openURL
+    @SwiftUI.State var shouldTransit: Bool = false
     
     var threeColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
@@ -156,8 +157,18 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                     }
                     
                 case is ValidatorTopicContent.VotingNetworks:
-                    Text("VotingNetworks")
-                        .foregroundColor(Color.white)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        LazyVGrid(columns: threeColumnGrid, spacing: 8) {
+                            ForEach((content.content as! ValidatorTopicContent.VotingNetworks).networks.map { network in
+                                ValidatorVotingNetworkItem(validatorNetwork: network)
+                            }) { networkItem in
+                                NetworkCardView(blockchainNetwork: networkItem.validatorNetwork.blockchainNetwork)
+                                    .onTapGesture {
+                                        
+                                    }
+                            }
+                        }
+                    }
                     
                 case is ValidatorTopicContent.Contacts:
                     Text("Contacts")
@@ -191,6 +202,11 @@ struct ValidatorTopicContentItem: Identifiable {
 }
 
 struct ValidatorMainNetworkItem: Identifiable {
+    let id = UUID()
+    let validatorNetwork: ValidatorNetwork
+}
+
+struct ValidatorVotingNetworkItem: Identifiable {
     let id = UUID()
     let validatorNetwork: ValidatorNetwork
 }
