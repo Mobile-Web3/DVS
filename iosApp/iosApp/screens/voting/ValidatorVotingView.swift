@@ -32,15 +32,25 @@ struct ValidatorVotingView: ValidatorVotesConnectedView {
 
     func body(props: Props) -> some View {
         VStack() {
-            Text("validator: \(props.state.validatorModel!.title) network: \(props.state.network!)")
-                .foregroundColor(Color.white)
-                .onTapGesture {
+            HStack(alignment: .top) {
+                Button(action: {
                     presentationMode.wrappedValue.dismiss()
-                }
-        
-            NavigationLink(destination: EmptyView()) {
-                EmptyView()
+                }, label: {
+                    HStack(spacing: 4) {
+                        Image(systemName: "arrow.left")
+                    }
+                })
+                .padding(8)
+                .accentColor(PurpleColor)
+                
+                Text("validator: \(props.state.validatorModel!.title) network: \(props.state.network!)")
+                    .foregroundColor(Color.white)
+                    .onTapGesture {
+                        presentationMode.wrappedValue.dismiss()
+                    }
             }
+            
+            Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
