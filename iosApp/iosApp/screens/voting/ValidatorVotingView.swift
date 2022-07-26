@@ -43,12 +43,14 @@ struct ValidatorVotingView: ValidatorVotesConnectedView {
                 .padding(8)
                 .accentColor(PurpleColor)
                 
-                Text("validator: \(props.state.validatorModel!.title) network: \(props.state.network!)")
+                Text("Note: click on proposal to see detailed information.\nClick on validator vote in top right to see the vote transaction")
                     .foregroundColor(Color.white)
                     .onTapGesture {
                         presentationMode.wrappedValue.dismiss()
                     }
             }
+            
+            
             
             Spacer()
         }
