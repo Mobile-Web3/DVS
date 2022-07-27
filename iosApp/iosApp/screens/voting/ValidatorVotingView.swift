@@ -32,25 +32,15 @@ struct ValidatorVotingView: ValidatorVotesConnectedView {
 
     func body(props: Props) -> some View {
         VStack() {
-            HStack(alignment: .top) {
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "arrow.left")
-                    }
-                })
-                .padding(8)
-                .accentColor(PurpleColor)
-                
-                Text("Note: click on proposal to see detailed information.\nClick on validator vote in top right to see the vote transaction")
-                    .foregroundColor(Color.white)
-                    .onTapGesture {
-                        presentationMode.wrappedValue.dismiss()
-                    }
+            ValidatorVotingHeader {
+                presentationMode.wrappedValue.dismiss()
             }
             
-            
+            ValidatorStatusView(
+                validatorAvatar: props.state.validatorModel!.avatar,
+                networkAvatar: props.state.network!.blockchainNetwork.imageRef,
+                validatorInfo: props.state.validatorInfo
+            )
             
             Spacer()
         }
