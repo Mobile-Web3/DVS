@@ -74,15 +74,9 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                 .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
                 .background(defaultGradient.gradient)
                 
-                Button(action: {
+                DefaultButtonBack {
                     presentationMode.wrappedValue.dismiss()
-                }, label: {
-                    HStack(spacing: 4) {
-                        Image(systemName: "arrow.left")
-                    }
-                })
-                .padding(8)
-                .accentColor(PurpleColor)
+                }
             }
             .frame(maxWidth: .infinity, alignment: .topLeading)
             
