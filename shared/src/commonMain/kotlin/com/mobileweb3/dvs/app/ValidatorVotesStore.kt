@@ -18,9 +18,13 @@ import kotlinx.coroutines.launch
 data class ValidatorVotesState(
     val validatorModel: ValidatorModel?,
     val network: ValidatorNetwork?,
-    val proposals: RequestStatus<List<ValidatorVote>>,
+    val proposalsWrapper: RequestStatus<ValidatorVotesWrapper>,
     val validatorInfo: RequestStatus<ValidatorInfo>
 ) : State
+
+data class ValidatorVotesWrapper(
+    val proposals: List<ValidatorVote>,
+)
 
 sealed class ValidatorVotesAction : Action {
     data class NetworkSelected(
@@ -41,7 +45,7 @@ class ValidatorVotesStore(
         ValidatorVotesState(
             validatorModel = null,
             network = null,
-            proposals = RequestStatus.Loading(),
+            proposalsWrapper = RequestStatus.Loading(),
             validatorInfo = RequestStatus.Loading()
         )
     )
@@ -65,7 +69,7 @@ class ValidatorVotesStore(
                 oldState.copy(
                     validatorModel = action.validatorModel,
                     network = action.network,
-                    proposals = RequestStatus.Loading(),
+                    proposalsWrapper = RequestStatus.Loading(),
                     validatorInfo = RequestStatus.Loading()
                 )
             }
@@ -99,11 +103,11 @@ class ValidatorVotesStore(
                 val proposalList = interactor.getValidatorVotes(network, this)
 
                 state.value = state.value.copy(
-                    proposals = RequestStatus.Data(proposalList)
+                    proposalsWrapper = RequestStatus.Data(ValidatorVotesWrapper(proposalList))
                 )
             } catch (ex: Exception) {
                 state.value = state.value.copy(
-                    proposals = RequestStatus.Error(ex)
+                    proposalsWrapper = RequestStatus.Error(ex)
                 )
             }
         }
