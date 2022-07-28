@@ -28,8 +28,7 @@ struct ValidatorProposalsView: View {
                     ForEach(proposalVotes.map { proposalVote in
                         ValidatorProposalVoteItem(validatorVote: proposalVote)
                     }) { validatorVoteItem in
-                        Text(validatorVoteItem.validatorVote.vote.string)
-                            .foregroundColor(Color.white)
+                        ProposalCardView(validatorVote: validatorVoteItem.validatorVote, blockchainNetwork: state.network!.blockchainNetwork)
                     }
                 }
             }
