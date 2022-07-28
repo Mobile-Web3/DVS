@@ -8,6 +8,10 @@ data class ValidatorInfo(
     val status: Int
 )
 
+fun ValidatorInfo?.getRankString(): String {
+    return this?.rank?.toString() ?: "UNKNOWN"
+}
+
 fun ValidatorInfo?.getStatusString(): String {
     return ValidatorStatus.from(this?.status)
 }

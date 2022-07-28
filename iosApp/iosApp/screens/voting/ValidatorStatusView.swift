@@ -19,27 +19,32 @@ struct ValidatorStatusView: View {
         HStack() {
             VStack(alignment: .leading) {
                 if (validatorInfo is RequestStatusLoading) {
-                    Text("Loading:")
-                        .font(Font.subheadline.weight(.bold))
-                        .foregroundColor(Color.white)
+                    TextShimmer()
                 }
                 else if (validatorInfo is RequestStatusError) {
-                    Text("Error:")
-                        .font(Font.subheadline.weight(.bold))
-                        .foregroundColor(Color.white)
+                    HStack() {
+                        Text("Rank:")
+                            .font(Font.subheadline.weight(.bold))
+                            .foregroundColor(Color.white)
+                        
+                        ValidatorTextInfoView(text: "UNKNOWN")
+                    }
+
+                    HStack() {
+                        Text("Status:")
+                            .font(Font.subheadline.weight(.bold))
+                            .foregroundColor(Color.white)
+                        
+                        ValidatorTextInfoView(text: "UNKNOWN")
+                    }
                 } else {
                     HStack() {
                         Text("Rank:")
                             .font(Font.subheadline.weight(.bold))
                             .foregroundColor(Color.white)
                         
-                        let validatorInfoData = (validatorInfo as! RequestStatusData<ValidatorInfo>).dataOrNull
-
-                        if (validatorInfoData == nil) {
-                            ValidatorTextInfoView(text: "UNKNOWN")
-                        } else {
-                            ValidatorTextInfoView(text: "\(validatorInfoData!.rank)")
-                        }
+                        let validatorRank = (validatorInfo as! RequestStatusData<ValidatorInfo>).dataOrNull?.getRankString()
+                        ValidatorTextInfoView(text: validatorRank!)
                     }
 
                     HStack() {

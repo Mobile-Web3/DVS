@@ -42,6 +42,8 @@ struct ValidatorVotingView: ValidatorVotesConnectedView {
                 validatorInfo: props.state.validatorInfo
             )
             
+            
+            
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
