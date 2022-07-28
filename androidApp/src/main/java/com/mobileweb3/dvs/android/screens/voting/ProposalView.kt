@@ -22,6 +22,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mobileweb3.dvs.core.entity.proposal.ProposalStatus
 import com.mobileweb3.dvs.core.entity.validator.BlockchainNetwork
+import com.mobileweb3.dvs.core.entity.validator.exploreProposalRef
+import com.mobileweb3.dvs.core.entity.validator.exploreVoteRef
 
 @Composable
 fun ProposalView(item: ProposalViewItem.Data, network: BlockchainNetwork) {
@@ -35,8 +37,7 @@ fun ProposalView(item: ProposalViewItem.Data, network: BlockchainNetwork) {
             .border(2.dp, MaterialTheme.colors.primary, RoundedCornerShape(8.dp))
             .clip(RoundedCornerShape(8.dp))
             .clickable {
-                val exploreProposalRef = network.exploreProposalRef
-                uriHandler.openUri("${exploreProposalRef}/${item.validatorVote.proposal.id}")
+                uriHandler.openUri(item.validatorVote.exploreProposalRef(network))
             }
     ) {
         Column(
@@ -80,9 +81,8 @@ fun ProposalView(item: ProposalViewItem.Data, network: BlockchainNetwork) {
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .clickable {
-                    val transactionExploreRef = network.exploreTransactionRef
                     item.validatorVote.txhash?.let {
-                        uriHandler.openUri("$transactionExploreRef/$it")
+                        uriHandler.openUri(item.validatorVote.exploreVoteRef(network))
                     }
                 }
                 .background(
