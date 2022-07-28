@@ -18,6 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.mobileweb3.dvs.app.ValidatorVotesStore
+import com.mobileweb3.dvs.app.ValidatorVotesWrapper
 import com.mobileweb3.dvs.core.entity.RequestStatus
 import com.mobileweb3.dvs.core.entity.validator.ValidatorVote
 
@@ -47,7 +48,7 @@ fun ValidatorVotesContent(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(votesState.value!!.proposals.toViewItems()) { item ->
+            items(votesState.value!!.proposalsWrapper.toViewItems()) { item ->
                 when (item) {
                     ProposalViewItem.Loading -> {
                         ProposalShimmerView()
@@ -82,7 +83,7 @@ fun ValidatorVotesContent(
     }
 }
 
-fun RequestStatus<List<ValidatorVote>>.toViewItems(): List<ProposalViewItem> {
+fun RequestStatus<ValidatorVotesWrapper>.toViewItems(): List<ProposalViewItem> {
     return when (this) {
         is RequestStatus.Loading -> {
             listOf(
@@ -94,10 +95,10 @@ fun RequestStatus<List<ValidatorVote>>.toViewItems(): List<ProposalViewItem> {
             listOf(ProposalViewItem.Error)
         }
         is RequestStatus.Data -> {
-            if (data.isEmpty()) {
+            if (data.proposals.isEmpty()) {
                 listOf(ProposalViewItem.Empty)
             } else {
-                data.map { ProposalViewItem.Data(it) }
+                data.proposals.map { ProposalViewItem.Data(it) }
             }
         }
     }
