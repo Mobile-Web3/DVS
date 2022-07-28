@@ -8,6 +8,14 @@ data class ValidatorVote(
     val txhash: String?
 )
 
+fun ValidatorVote.exploreProposalRef(blockchainNetwork: BlockchainNetwork): String {
+    return "${blockchainNetwork.exploreProposalRef}/${proposal.id}"
+}
+
+fun ValidatorVote.exploreVoteRef(blockchainNetwork: BlockchainNetwork): String {
+    return "${blockchainNetwork.exploreTransactionRef}/${txhash}"
+}
+
 enum class Vote(val string: String, val color: Long) {
     YES("Yes", 0xff5FD68B),
     NO("No", 0xffef6767),
