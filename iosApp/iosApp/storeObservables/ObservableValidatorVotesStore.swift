@@ -12,7 +12,7 @@ import shared
 
 class ObservableValidatorVotesStore: ObservableObject {
     @Published public var state: ValidatorVotesState = ValidatorVotesState(
-        validatorModel: nil, network: nil, proposals: RequestStatusLoading(), validatorInfo: RequestStatusLoading()
+        validatorModel: nil, network: nil, proposalsWrapper: RequestStatusLoading(), validatorInfo: RequestStatusLoading()
     )
 //    @Published public var sideEffect: ValidatorVotesSideEffect?
     

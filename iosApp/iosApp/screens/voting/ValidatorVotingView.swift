@@ -42,7 +42,7 @@ struct ValidatorVotingView: ValidatorVotesConnectedView {
                 validatorInfo: props.state.validatorInfo
             )
             
-            
+            ValidatorProposalsView(state: props.state)
             
             Spacer()
         }
