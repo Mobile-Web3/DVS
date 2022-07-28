@@ -17,6 +17,7 @@
 		7BBB566B2890E97F00F9BFEE /* ValidatorVotingHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB566A2890E97F00F9BFEE /* ValidatorVotingHeader.swift */; };
 		7BBB566D2890EAB800F9BFEE /* DefaultButtonBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB566C2890EAB800F9BFEE /* DefaultButtonBack.swift */; };
 		7BBB566F2890EC9F00F9BFEE /* ValidatorStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB566E2890EC9F00F9BFEE /* ValidatorStatusView.swift */; };
+		7BBB567128923DD500F9BFEE /* ValidatorTextInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB567028923DD500F9BFEE /* ValidatorTextInfoView.swift */; };
 		7BE90E642888849F00423B1F /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE90E632888849F00423B1F /* Shimmer */; };
 		7BE90E66288886FC00423B1F /* AvatarShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E65288886FC00423B1F /* AvatarShimmer.swift */; };
 		7BE90E682888892F00423B1F /* TextShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E672888892F00423B1F /* TextShimmer.swift */; };
@@ -61,6 +62,7 @@
 		7BBB566A2890E97F00F9BFEE /* ValidatorVotingHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorVotingHeader.swift; sourceTree = "<group>"; };
 		7BBB566C2890EAB800F9BFEE /* DefaultButtonBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultButtonBack.swift; sourceTree = "<group>"; };
 		7BBB566E2890EC9F00F9BFEE /* ValidatorStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorStatusView.swift; sourceTree = "<group>"; };
+		7BBB567028923DD500F9BFEE /* ValidatorTextInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorTextInfoView.swift; sourceTree = "<group>"; };
 		7BE90E65288886FC00423B1F /* AvatarShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarShimmer.swift; sourceTree = "<group>"; };
 		7BE90E672888892F00423B1F /* TextShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextShimmer.swift; sourceTree = "<group>"; };
 		7BE90E6928890E3400423B1F /* ValidatorCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorCardView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				7BEFA5D9288E4A8800F07461 /* ValidatorVotingView.swift */,
 				7BBB566A2890E97F00F9BFEE /* ValidatorVotingHeader.swift */,
 				7BBB566E2890EC9F00F9BFEE /* ValidatorStatusView.swift */,
+				7BBB567028923DD500F9BFEE /* ValidatorTextInfoView.swift */,
 			);
 			path = voting;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BBB567128923DD500F9BFEE /* ValidatorTextInfoView.swift in Sources */,
 				7BBB566B2890E97F00F9BFEE /* ValidatorVotingHeader.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7B7A9B102888233500A59D6E /* ValidatorCardLoading.swift in Sources */,

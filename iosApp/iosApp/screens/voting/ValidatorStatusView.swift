@@ -28,13 +28,28 @@ struct ValidatorStatusView: View {
                         .font(Font.subheadline.weight(.bold))
                         .foregroundColor(Color.white)
                 } else {
-                    Text("Rank:")
-                        .font(Font.subheadline.weight(.bold))
-                        .foregroundColor(Color.white)
+                    HStack() {
+                        Text("Rank:")
+                            .font(Font.subheadline.weight(.bold))
+                            .foregroundColor(Color.white)
+                        
+                        let validatorInfoData = (validatorInfo as! RequestStatusData<ValidatorInfo>).dataOrNull
 
-                    Text("Status:")
-                        .font(Font.subheadline.weight(.bold))
-                        .foregroundColor(Color.white)
+                        if (validatorInfoData == nil) {
+                            ValidatorTextInfoView(text: "UNKNOWN")
+                        } else {
+                            ValidatorTextInfoView(text: "\(validatorInfoData!.rank)")
+                        }
+                    }
+
+                    HStack() {
+                        Text("Status:")
+                            .font(Font.subheadline.weight(.bold))
+                            .foregroundColor(Color.white)
+                        
+                        let validatorStatus = (validatorInfo as! RequestStatusData<ValidatorInfo>).dataOrNull?.getStatusString()
+                        ValidatorTextInfoView(text: validatorStatus!)
+                    }
                 }
             }
             
