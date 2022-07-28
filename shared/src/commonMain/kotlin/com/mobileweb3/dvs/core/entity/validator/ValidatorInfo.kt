@@ -7,3 +7,7 @@ data class ValidatorInfo(
     val rank: Long,
     val status: Int
 )
+
+fun ValidatorInfo?.getStatusString(): String {
+    return ValidatorStatus.from(this?.status)
+}
