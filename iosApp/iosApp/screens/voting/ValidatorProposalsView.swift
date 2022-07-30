@@ -18,8 +18,9 @@ struct ValidatorProposalsView: View {
             Text("loading")
                 .foregroundColor(Color.white)
         } else if (state.proposalsWrapper is RequestStatusError) {
-            Text("error")
-                .foregroundColor(Color.white)
+            Text(state.getErrorMessage())
+                .font(Font.headline.weight(.bold))
+                .foregroundColor(Color.red)
         } else {
             let proposalVotes = (state.proposalsWrapper as! RequestStatusData<ValidatorVotesWrapper>).dataOrNull!.proposals
             

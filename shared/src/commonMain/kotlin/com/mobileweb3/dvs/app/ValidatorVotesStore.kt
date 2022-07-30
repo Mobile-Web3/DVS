@@ -20,7 +20,13 @@ data class ValidatorVotesState(
     val network: ValidatorNetwork?,
     val proposalsWrapper: RequestStatus<ValidatorVotesWrapper>,
     val validatorInfo: RequestStatus<ValidatorInfo>
-) : State
+) : State {
+
+    fun getErrorMessage(): String {
+        return "Loading proposals error.\nMaybe there are no proposals in ${network!!.blockchainNetwork.title}.\n" +
+                "Report to developers or try later."
+    }
+}
 
 data class ValidatorVotesWrapper(
     val proposals: List<ValidatorVote>,

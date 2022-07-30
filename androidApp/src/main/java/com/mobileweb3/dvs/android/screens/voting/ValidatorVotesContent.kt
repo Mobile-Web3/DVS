@@ -55,10 +55,10 @@ fun ValidatorVotesContent(
                     }
                     ProposalViewItem.Error -> {
                         Text(
-                            text = "Loading proposals error. Maybe there are no proposals in ${votesState.value!!.network!!.blockchainNetwork.title}. Try later",
+                            text = votesState.value!!.getErrorMessage(),
                             color = Color.Red,
                             fontWeight = FontWeight.Bold,
-                            style = MaterialTheme.typography.h5,
+                            style = MaterialTheme.typography.h6,
                             modifier = Modifier.padding(top = 16.dp)
                         )
                     }
