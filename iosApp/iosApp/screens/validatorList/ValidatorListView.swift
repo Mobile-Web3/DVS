@@ -14,6 +14,7 @@ struct ValidatorListView: ValidatorListConnectedView {
     @EnvironmentObject var validatorListStore: ObservableValidatorListStore
     var validatorDetailsStore: ObservableValidatorDetailsStore
     var validatorVotesStore: ObservableValidatorVotesStore
+    var searchNetworkStore: ObservableSearchNetworkStore
     
     @SwiftUI.State var shouldTransit: Bool = false
     
@@ -36,7 +37,7 @@ struct ValidatorListView: ValidatorListConnectedView {
         VStack() {
             DefaultHeaderView()
             
-            FindValidatorView()
+            FindValidatorView(searchNetworkStore: searchNetworkStore)
             
             let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
             let validatorViewItems = props.state.validatorViewStates.map { ValidatorViewState in

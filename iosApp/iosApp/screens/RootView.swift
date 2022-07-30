@@ -5,6 +5,7 @@ struct RootView: View {
     @EnvironmentObject var validatorListStore: ObservableValidatorListStore
     var validatorDetailsStore: ObservableValidatorDetailsStore
     var validatorVotesStore: ObservableValidatorVotesStore
+    var searchNetworkStore: ObservableSearchNetworkStore
     
     @SwiftUI.State var message: String?
 
@@ -13,7 +14,8 @@ struct RootView: View {
             NavigationView {
                 ValidatorListView(
                     validatorDetailsStore: validatorDetailsStore,
-                    validatorVotesStore: validatorVotesStore
+                    validatorVotesStore: validatorVotesStore,
+                    searchNetworkStore: searchNetworkStore
                 )
                 .environmentObject(validatorListStore)
                 //.environmentObject(validatorDetailsStore)
