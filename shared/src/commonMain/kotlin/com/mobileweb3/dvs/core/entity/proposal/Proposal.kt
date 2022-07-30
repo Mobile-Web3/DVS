@@ -19,11 +19,26 @@ data class Proposal(
         val noWithVetoVotes = no_with_veto?.toDouble() ?: 0.0
         val abstainVotes = abstain?.toDouble() ?: 0.0
         val allVotes = yesVotes + noVotes + noWithVetoVotes + abstainVotes
+
+        if (allVotes == 0.0) {
+            return ProposalPercentages(
+                yes = 25.0,
+                no = 25.0,
+                noWithVeto = 25.0,
+                abstain = 25.0
+            )
+        }
+
+        val yesResult = 100 * (yesVotes / allVotes)
+        val noResult = 100 * (noVotes / allVotes)
+        val noWithVetoResult = 100 * (noWithVetoVotes / allVotes)
+        val abstainResult = 100 * (abstainVotes / allVotes)
+
         return ProposalPercentages(
-            yes = 100 * (yesVotes / allVotes),
-            no = 100 * (noVotes / allVotes),
-            noWithVeto = 100 * (noWithVetoVotes / allVotes),
-            abstain = 100 * (abstainVotes / allVotes)
+            yes = yesResult,
+            no = noResult,
+            noWithVeto = noWithVetoResult,
+            abstain = abstainResult
         )
     }
 }
