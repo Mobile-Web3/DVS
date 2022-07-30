@@ -36,6 +36,8 @@ struct ValidatorListView: ValidatorListConnectedView {
         VStack() {
             DefaultHeaderView()
             
+            FindValidatorView()
+            
             let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
             let validatorViewItems = props.state.validatorViewStates.map { ValidatorViewState in
                 ValidatorViewItem(isLoading: ValidatorViewState.isLoading, validatorModel: ValidatorViewState.validatorModel)

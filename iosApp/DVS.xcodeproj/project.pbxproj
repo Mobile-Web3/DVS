@@ -25,6 +25,7 @@
 		7BBB567B2894EAF200F9BFEE /* ShimmerProposalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB567A2894EAF200F9BFEE /* ShimmerProposalView.swift */; };
 		7BBB567D2894FDEF00F9BFEE /* ProposalStatusShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB567C2894FDEF00F9BFEE /* ProposalStatusShimmerView.swift */; };
 		7BBB567F2894FEC000F9BFEE /* ProposalVotesShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB567E2894FEC000F9BFEE /* ProposalVotesShimmerView.swift */; };
+		7BBB5683289551F100F9BFEE /* FindValidatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB5682289551F100F9BFEE /* FindValidatorView.swift */; };
 		7BE90E642888849F00423B1F /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE90E632888849F00423B1F /* Shimmer */; };
 		7BE90E66288886FC00423B1F /* AvatarShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E65288886FC00423B1F /* AvatarShimmer.swift */; };
 		7BE90E682888892F00423B1F /* TextShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E672888892F00423B1F /* TextShimmer.swift */; };
@@ -77,6 +78,7 @@
 		7BBB567A2894EAF200F9BFEE /* ShimmerProposalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerProposalView.swift; sourceTree = "<group>"; };
 		7BBB567C2894FDEF00F9BFEE /* ProposalStatusShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalStatusShimmerView.swift; sourceTree = "<group>"; };
 		7BBB567E2894FEC000F9BFEE /* ProposalVotesShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalVotesShimmerView.swift; sourceTree = "<group>"; };
+		7BBB5682289551F100F9BFEE /* FindValidatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindValidatorView.swift; sourceTree = "<group>"; };
 		7BE90E65288886FC00423B1F /* AvatarShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarShimmer.swift; sourceTree = "<group>"; };
 		7BE90E672888892F00423B1F /* TextShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextShimmer.swift; sourceTree = "<group>"; };
 		7BE90E6928890E3400423B1F /* ValidatorCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorCardView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				7BFEE7FC2871D3090016E6FD /* ValidatorListView.swift */,
 				7B7A9B0F2888233500A59D6E /* ValidatorCardLoading.swift */,
 				7BE90E6928890E3400423B1F /* ValidatorCardView.swift */,
+				7BBB5682289551F100F9BFEE /* FindValidatorView.swift */,
 			);
 			path = validatorList;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				7BBB567728926D7100F9BFEE /* ProposalStatusView.swift in Sources */,
 				7BE90E6C288910C400423B1F /* RemoteImageView.swift in Sources */,
 				7BEFA5C1288A7F9D00F07461 /* ObservableValidatorListStore.swift in Sources */,
+				7BBB5683289551F100F9BFEE /* FindValidatorView.swift in Sources */,
 				7BEFA5C3288A877100F07461 /* ObservableValidatorDetailsStore.swift in Sources */,
 				7B7A9B092887E6D900A59D6E /* DefaultHeaderView.swift in Sources */,
 				7BBB567B2894EAF200F9BFEE /* ShimmerProposalView.swift in Sources */,
