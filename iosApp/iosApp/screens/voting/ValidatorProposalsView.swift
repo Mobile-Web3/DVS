@@ -15,8 +15,9 @@ struct ValidatorProposalsView: View {
     
     var body: some View {
         if (state.proposalsWrapper is RequestStatusLoading) {
-            Text("loading")
-                .foregroundColor(Color.white)
+            ShimmerProposalView()
+
+            ShimmerProposalView()
         } else if (state.proposalsWrapper is RequestStatusError) {
             Text(state.getErrorMessage())
                 .font(Font.headline.weight(.bold))

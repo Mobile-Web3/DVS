@@ -22,6 +22,9 @@
 		7BBB567528925EF400F9BFEE /* ProposalCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB567428925EF400F9BFEE /* ProposalCardView.swift */; };
 		7BBB567728926D7100F9BFEE /* ProposalStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB567628926D7100F9BFEE /* ProposalStatusView.swift */; };
 		7BBB56792892780B00F9BFEE /* ProposalVotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB56782892780B00F9BFEE /* ProposalVotesView.swift */; };
+		7BBB567B2894EAF200F9BFEE /* ShimmerProposalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB567A2894EAF200F9BFEE /* ShimmerProposalView.swift */; };
+		7BBB567D2894FDEF00F9BFEE /* ProposalStatusShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB567C2894FDEF00F9BFEE /* ProposalStatusShimmerView.swift */; };
+		7BBB567F2894FEC000F9BFEE /* ProposalVotesShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB567E2894FEC000F9BFEE /* ProposalVotesShimmerView.swift */; };
 		7BE90E642888849F00423B1F /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE90E632888849F00423B1F /* Shimmer */; };
 		7BE90E66288886FC00423B1F /* AvatarShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E65288886FC00423B1F /* AvatarShimmer.swift */; };
 		7BE90E682888892F00423B1F /* TextShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E672888892F00423B1F /* TextShimmer.swift */; };
@@ -71,6 +74,9 @@
 		7BBB567428925EF400F9BFEE /* ProposalCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalCardView.swift; sourceTree = "<group>"; };
 		7BBB567628926D7100F9BFEE /* ProposalStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalStatusView.swift; sourceTree = "<group>"; };
 		7BBB56782892780B00F9BFEE /* ProposalVotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalVotesView.swift; sourceTree = "<group>"; };
+		7BBB567A2894EAF200F9BFEE /* ShimmerProposalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerProposalView.swift; sourceTree = "<group>"; };
+		7BBB567C2894FDEF00F9BFEE /* ProposalStatusShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalStatusShimmerView.swift; sourceTree = "<group>"; };
+		7BBB567E2894FEC000F9BFEE /* ProposalVotesShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProposalVotesShimmerView.swift; sourceTree = "<group>"; };
 		7BE90E65288886FC00423B1F /* AvatarShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarShimmer.swift; sourceTree = "<group>"; };
 		7BE90E672888892F00423B1F /* TextShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextShimmer.swift; sourceTree = "<group>"; };
 		7BE90E6928890E3400423B1F /* ValidatorCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorCardView.swift; sourceTree = "<group>"; };
@@ -208,6 +214,9 @@
 				7BBB567428925EF400F9BFEE /* ProposalCardView.swift */,
 				7BBB567628926D7100F9BFEE /* ProposalStatusView.swift */,
 				7BBB56782892780B00F9BFEE /* ProposalVotesView.swift */,
+				7BBB567A2894EAF200F9BFEE /* ShimmerProposalView.swift */,
+				7BBB567C2894FDEF00F9BFEE /* ProposalStatusShimmerView.swift */,
+				7BBB567E2894FEC000F9BFEE /* ProposalVotesShimmerView.swift */,
 			);
 			path = voting;
 			sourceTree = "<group>";
@@ -336,6 +345,7 @@
 				7BBB566F2890EC9F00F9BFEE /* ValidatorStatusView.swift in Sources */,
 				7BEFA5DA288E4A8800F07461 /* ValidatorVotingView.swift in Sources */,
 				7BEFA5C7288AC8BD00F07461 /* ObservableSearchNetworkStore.swift in Sources */,
+				7BBB567D2894FDEF00F9BFEE /* ProposalStatusShimmerView.swift in Sources */,
 				7B7A9B0C2887EB8400A59D6E /* Colors.swift in Sources */,
 				7BE90E66288886FC00423B1F /* AvatarShimmer.swift in Sources */,
 				7BEFA5CC288BB27000F07461 /* ValidatorDetailsView.swift in Sources */,
@@ -344,6 +354,7 @@
 				7555FF83242A565900829871 /* RootView.swift in Sources */,
 				7BE90E682888892F00423B1F /* TextShimmer.swift in Sources */,
 				7BBB5673289250F400F9BFEE /* ValidatorProposalsView.swift in Sources */,
+				7BBB567F2894FEC000F9BFEE /* ProposalVotesShimmerView.swift in Sources */,
 				7BEFA5C5288AC29500F07461 /* ObservableValidatorVotesStore.swift in Sources */,
 				7BBB567528925EF400F9BFEE /* ProposalCardView.swift in Sources */,
 				7BBB567728926D7100F9BFEE /* ProposalStatusView.swift in Sources */,
@@ -351,6 +362,7 @@
 				7BEFA5C1288A7F9D00F07461 /* ObservableValidatorListStore.swift in Sources */,
 				7BEFA5C3288A877100F07461 /* ObservableValidatorDetailsStore.swift in Sources */,
 				7B7A9B092887E6D900A59D6E /* DefaultHeaderView.swift in Sources */,
+				7BBB567B2894EAF200F9BFEE /* ShimmerProposalView.swift in Sources */,
 				7BEFA5D7288D6E3600F07461 /* NetworkCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
