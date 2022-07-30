@@ -104,85 +104,89 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                 }
             }
             
-            let topicContent = validatorTopicItems[Int(props.state.selectedTopicIndex)].topic.topicContent.map { topicContent in
-                ValidatorTopicContentItem(content: topicContent)
-            }
-            
-            ForEach(topicContent) { content in
-                switch content.content {
-                case is ValidatorTopicContent.SimpleText:
-                    ScrollView(.vertical, showsIndicators: false) {
-                        Text((content.content as! ValidatorTopicContent.SimpleText).text)
-                            .foregroundColor(Color.white)
-                    }
+            if (!validatorTopicItems.isEmpty) {
+                let topicContent = validatorTopicItems[Int(props.state.selectedTopicIndex)].topic.topicContent.map { topicContent in
+                    ValidatorTopicContentItem(content: topicContent)
+                }
                 
-                case is ValidatorTopicContent.ButtonsWithRefFlow:
-                    FlowLayout(
-                        mode: .scrollable,
-                        items: (content.content as! ValidatorTopicContent.ButtonsWithRefFlow).buttons,
-                        viewMapping: { button in
-                            Button(
-                                action: {
-                                    if (button.reference != nil) {
-                                        openURL(URL(string: button.reference!)!)
-                                    }
-                                },
-                                label: {
-                                    Text(button.text)
-                                        .foregroundColor(Color.white)
-                                }
-                            )
-                            .padding(8)
-                            .background(Color.purple)
-                            .font(Font.subheadline.weight(.bold))
-                            .cornerRadius(10)
+                ForEach(topicContent) { content in
+                    switch content.content {
+                    case is ValidatorTopicContent.SimpleText:
+                        ScrollView(.vertical, showsIndicators: false) {
+                            Text((content.content as! ValidatorTopicContent.SimpleText).text)
+                                .foregroundColor(Color.white)
                         }
-                    )
                     
-                case is ValidatorTopicContent.MainNetworks:
-                    ScrollView(.vertical, showsIndicators: false) {
-                        LazyVGrid(columns: threeColumnGrid, spacing: 8) {
-                            ForEach((content.content as! ValidatorTopicContent.MainNetworks).networks.map { network in
-                                ValidatorMainNetworkItem(validatorNetwork: network)
-                            }) { networkItem in
-                                NetworkCardView(blockchainNetwork: networkItem.validatorNetwork.blockchainNetwork)
-                                    .onTapGesture {
-                                        openURL(URL(string: networkItem.validatorNetwork.getValidatorPageLink())!)
+                    case is ValidatorTopicContent.ButtonsWithRefFlow:
+                        FlowLayout(
+                            mode: .scrollable,
+                            items: (content.content as! ValidatorTopicContent.ButtonsWithRefFlow).buttons,
+                            viewMapping: { button in
+                                Button(
+                                    action: {
+                                        if (button.reference != nil) {
+                                            openURL(URL(string: button.reference!)!)
+                                        }
+                                    },
+                                    label: {
+                                        Text(button.text)
+                                            .foregroundColor(Color.white)
                                     }
+                                )
+                                .padding(8)
+                                .background(Color.purple)
+                                .font(Font.subheadline.weight(.bold))
+                                .cornerRadius(10)
                             }
-                        }
-                    }
-                    
-                case is ValidatorTopicContent.VotingNetworks:
-                    ScrollView(.vertical, showsIndicators: false) {
-                        LazyVGrid(columns: threeColumnGrid, spacing: 8) {
-                            ForEach((content.content as! ValidatorTopicContent.VotingNetworks).networks.map { network in
-                                ValidatorVotingNetworkItem(validatorNetwork: network)
-                            }) { networkItem in
-                                NavigationLink(
-                                    destination: ValidatorVotingView().environmentObject(validatorVotesStore),
-                                    isActive: $shouldTransit1
-                                ) {
+                        )
+                        
+                    case is ValidatorTopicContent.MainNetworks:
+                        ScrollView(.vertical, showsIndicators: false) {
+                            LazyVGrid(columns: threeColumnGrid, spacing: 8) {
+                                ForEach((content.content as! ValidatorTopicContent.MainNetworks).networks.map { network in
+                                    ValidatorMainNetworkItem(validatorNetwork: network)
+                                }) { networkItem in
                                     NetworkCardView(blockchainNetwork: networkItem.validatorNetwork.blockchainNetwork)
                                         .onTapGesture {
-                                            props.onClick(props.state.validatorModel!, networkItem.validatorNetwork)
-                                            self.shouldTransit1.toggle()
+                                            openURL(URL(string: networkItem.validatorNetwork.getValidatorPageLink())!)
                                         }
                                 }
                             }
                         }
+                        
+                    case is ValidatorTopicContent.VotingNetworks:
+                        ScrollView(.vertical, showsIndicators: false) {
+                            LazyVGrid(columns: threeColumnGrid, spacing: 8) {
+                                ForEach((content.content as! ValidatorTopicContent.VotingNetworks).networks.map { network in
+                                    ValidatorVotingNetworkItem(validatorNetwork: network)
+                                }) { networkItem in
+                                    NavigationLink(
+                                        destination: ValidatorVotingView().environmentObject(validatorVotesStore),
+                                        isActive: $shouldTransit1
+                                    ) {
+                                        NetworkCardView(blockchainNetwork: networkItem.validatorNetwork.blockchainNetwork)
+                                            .onTapGesture {
+                                                props.onClick(props.state.validatorModel!, networkItem.validatorNetwork)
+                                                self.shouldTransit1.toggle()
+                                            }
+                                    }
+                                }
+                            }
+                        }
+                        
+                    case is ValidatorTopicContent.Contacts:
+                        Text("Contacts")
+                            .foregroundColor(Color.white)
+                        
+                    default:
+                        Text("default")
+                            .foregroundColor(Color.white)
+                        
                     }
-                    
-                case is ValidatorTopicContent.Contacts:
-                    Text("Contacts")
-                        .foregroundColor(Color.white)
-                    
-                default:
-                    Text("default")
-                        .foregroundColor(Color.white)
-                    
                 }
             }
+
+            
             
             Spacer()
         }
