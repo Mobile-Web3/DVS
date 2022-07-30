@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct FindValidatorView: View {
+    
+    @SwiftUI.State var shouldTransitToInfo: Bool = false
+    
     var body: some View {
         HStack() {
             Image(systemName: "magnifyingglass")
@@ -19,8 +22,10 @@ struct FindValidatorView: View {
             
             Spacer()
             
-            Image(systemName: "info.circle.fill")
-                .foregroundColor(Color.white)
+            NavigationLink(destination: DVSInfoView(), isActive: $shouldTransitToInfo) {
+                Image(systemName: "info.circle.fill")
+                    .foregroundColor(Color.white)
+            }
         }
         .frame(height: 30, alignment: .leading)
     }
