@@ -61,7 +61,7 @@ fun ValidatorDetailsContent(
             modifier = modifier
                 .fillMaxWidth()
                 .height(300.dp)
-                .background(brush = getGradientBrush(palette))
+                .background(brush = getGradientBrush(palette, validatorModel.avatar))
                 .padding(top = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center

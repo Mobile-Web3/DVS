@@ -43,7 +43,7 @@ fun ValidatorCard(
             .height(300.dp)
             .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(10.dp))
             .background(
-                brush = getGradientBrush(palette),
+                brush = getGradientBrush(palette, validatorViewState.validatorModel?.avatar),
                 shape = RoundedCornerShape(10.dp)
             )
             .clickable { onValidatorClicked(validatorViewState.validatorModel) }

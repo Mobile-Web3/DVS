@@ -45,7 +45,7 @@ fun SelectedNetworkView(
             )
             .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(10.dp))
             .background(
-                brush = getGradientBrush(palette),
+                brush = getGradientBrush(palette, selectedNetwork.imageRef),
                 shape = RoundedCornerShape(10.dp)
             ),
         verticalAlignment = Alignment.CenterVertically

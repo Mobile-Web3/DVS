@@ -37,7 +37,7 @@ fun BlockchainCard(
         modifier = modifier
             .border(width = 2.dp, color = Color.White, shape = RoundedCornerShape(10.dp))
             .background(
-                brush = getGradientBrush(palette),
+                brush = getGradientBrush(palette, blockchainNetworkViewItem.blockchainNetwork.imageRef),
                 shape = RoundedCornerShape(10.dp)
             )
             .clickable { onBlockchainClicked(blockchainNetworkViewItem.blockchainNetwork) }
