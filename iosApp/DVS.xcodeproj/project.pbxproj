@@ -32,6 +32,7 @@
 		7BC76AEA2896373500B2B8F2 /* SelectedNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC76AE92896373500B2B8F2 /* SelectedNetworkView.swift */; };
 		7BC76AEC28963B0C00B2B8F2 /* ResultValidatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC76AEB28963B0C00B2B8F2 /* ResultValidatorListView.swift */; };
 		7BC76AEF289654BD00B2B8F2 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC76AEE289654BD00B2B8F2 /* Configuration.swift */; };
+		7BC76AF12896D92100B2B8F2 /* ValidatorContactsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC76AF02896D92100B2B8F2 /* ValidatorContactsRow.swift */; };
 		7BE90E642888849F00423B1F /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE90E632888849F00423B1F /* Shimmer */; };
 		7BE90E66288886FC00423B1F /* AvatarShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E65288886FC00423B1F /* AvatarShimmer.swift */; };
 		7BE90E682888892F00423B1F /* TextShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E672888892F00423B1F /* TextShimmer.swift */; };
@@ -91,6 +92,7 @@
 		7BC76AE92896373500B2B8F2 /* SelectedNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNetworkView.swift; sourceTree = "<group>"; };
 		7BC76AEB28963B0C00B2B8F2 /* ResultValidatorListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultValidatorListView.swift; sourceTree = "<group>"; };
 		7BC76AEE289654BD00B2B8F2 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		7BC76AF02896D92100B2B8F2 /* ValidatorContactsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorContactsRow.swift; sourceTree = "<group>"; };
 		7BE90E65288886FC00423B1F /* AvatarShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarShimmer.swift; sourceTree = "<group>"; };
 		7BE90E672888892F00423B1F /* TextShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextShimmer.swift; sourceTree = "<group>"; };
 		7BE90E6928890E3400423B1F /* ValidatorCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorCardView.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				7BEFA5CB288BB27000F07461 /* ValidatorDetailsView.swift */,
+				7BC76AF02896D92100B2B8F2 /* ValidatorContactsRow.swift */,
 			);
 			path = details;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				7BBB56792892780B00F9BFEE /* ProposalVotesView.swift in Sources */,
 				7BFEE7FD2871D3090016E6FD /* ValidatorListView.swift in Sources */,
 				7555FF83242A565900829871 /* RootView.swift in Sources */,
+				7BC76AF12896D92100B2B8F2 /* ValidatorContactsRow.swift in Sources */,
 				7BE90E682888892F00423B1F /* TextShimmer.swift in Sources */,
 				7BBB5673289250F400F9BFEE /* ValidatorProposalsView.swift in Sources */,
 				7BBB567F2894FEC000F9BFEE /* ProposalVotesShimmerView.swift in Sources */,

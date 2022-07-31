@@ -175,13 +175,11 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                         }
                         
                     case is ValidatorTopicContent.Contacts:
-                        Text("Contacts")
-                            .foregroundColor(Color.white)
+                        ValidatorContactsRow(topicContacts: (content.content as! ValidatorTopicContent.Contacts).contacts)
                         
                     default:
                         Text("default")
                             .foregroundColor(Color.white)
-                        
                     }
                 }
             }
