@@ -12,8 +12,6 @@ import shared
 struct SearchValidatorView: SearchNetworkConnectedView {
     
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    @SwiftUI.State private var networkName: String = ""
-    @SwiftUI.State private var hideClear = true
     
     @EnvironmentObject var searchNetworkStore: ObservableSearchNetworkStore
     
@@ -43,38 +41,12 @@ struct SearchValidatorView: SearchNetworkConnectedView {
             }
             
             DefaultHeaderView()
-
-            ZStack {
-                TextField("Network title", text: $networkName)
-                    .placeholder(when: networkName.isEmpty) {
-                        Text("Network title").foregroundColor(PurpleColor)
-                    }
-                    .foregroundColor(PurpleColor)
-                    .accentColor(PurpleColor)
-                    .padding()
-                    .background(RoundedRectangle(cornerRadius: 10).fill(Color.black))
-                    .overlay(RoundedRectangle(cornerRadius: 10.0).strokeBorder(PurpleColor, style: StrokeStyle(lineWidth: 1.0)))
-                    .onChange(of: networkName) {
-                        hideClear = networkName.isEmpty
-                        searchNetworkStore.dispatch(SearchNetworkAction.SearchStringChanged(searchString: networkName))
-                        print($0)
-                    }
-                
-                HStack {
-                    Spacer()
-                    
-                    Image(systemName: "xmark")
-                        .foregroundColor(PurpleColor)
-                        .padding(.trailing, 8)
-                        .hidden(hideClear)
-                        .onTapGesture {
-                            networkName = ""
-                        }
-                }
-            }
             
-            Text("\(props.state.networks.count)")
-                .foregroundColor(Color.white)
+            if (props.state.selectedNetwork == nil) {
+                SearchNetworkView(searchNetworkStore: searchNetworkStore, searchNetworkState: props.state)
+            }
+
+            
             
             Spacer()
         }

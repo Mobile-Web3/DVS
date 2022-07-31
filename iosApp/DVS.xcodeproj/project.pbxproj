@@ -28,6 +28,7 @@
 		7BBB5683289551F100F9BFEE /* FindValidatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB5682289551F100F9BFEE /* FindValidatorView.swift */; };
 		7BBB56862895569500F9BFEE /* DVSInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB56852895569500F9BFEE /* DVSInfoView.swift */; };
 		7BBB56892895728F00F9BFEE /* SearchValidatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BBB56882895728F00F9BFEE /* SearchValidatorView.swift */; };
+		7BC76AE82896315500B2B8F2 /* SearchNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC76AE72896315500B2B8F2 /* SearchNetworkView.swift */; };
 		7BE90E642888849F00423B1F /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE90E632888849F00423B1F /* Shimmer */; };
 		7BE90E66288886FC00423B1F /* AvatarShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E65288886FC00423B1F /* AvatarShimmer.swift */; };
 		7BE90E682888892F00423B1F /* TextShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E672888892F00423B1F /* TextShimmer.swift */; };
@@ -83,6 +84,7 @@
 		7BBB5682289551F100F9BFEE /* FindValidatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindValidatorView.swift; sourceTree = "<group>"; };
 		7BBB56852895569500F9BFEE /* DVSInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DVSInfoView.swift; sourceTree = "<group>"; };
 		7BBB56882895728F00F9BFEE /* SearchValidatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchValidatorView.swift; sourceTree = "<group>"; };
+		7BC76AE72896315500B2B8F2 /* SearchNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNetworkView.swift; sourceTree = "<group>"; };
 		7BE90E65288886FC00423B1F /* AvatarShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarShimmer.swift; sourceTree = "<group>"; };
 		7BE90E672888892F00423B1F /* TextShimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextShimmer.swift; sourceTree = "<group>"; };
 		7BE90E6928890E3400423B1F /* ValidatorCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatorCardView.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				7BBB56882895728F00F9BFEE /* SearchValidatorView.swift */,
+				7BC76AE72896315500B2B8F2 /* SearchNetworkView.swift */,
 			);
 			path = search;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 				7B7A9B0C2887EB8400A59D6E /* Colors.swift in Sources */,
 				7BBB56892895728F00F9BFEE /* SearchValidatorView.swift in Sources */,
 				7BE90E66288886FC00423B1F /* AvatarShimmer.swift in Sources */,
+				7BC76AE82896315500B2B8F2 /* SearchNetworkView.swift in Sources */,
 				7BBB56862895569500F9BFEE /* DVSInfoView.swift in Sources */,
 				7BEFA5CC288BB27000F07461 /* ValidatorDetailsView.swift in Sources */,
 				7BBB56792892780B00F9BFEE /* ProposalVotesView.swift in Sources */,
