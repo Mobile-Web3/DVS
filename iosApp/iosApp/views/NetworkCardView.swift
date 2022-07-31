@@ -43,15 +43,15 @@ struct NetworkCardView: View {
                 .foregroundColor(Color.white)
                 .background(Color.purple)
                 .font(Font.subheadline.weight(.bold))
-                .cornerRadius(10)
+                .cornerRadius(4)
             
             Spacer()
         }
         .frame(maxWidth: .infinity)
         .background(defaultGradient.gradient)
-        .cornerRadius(20)
+        .cornerRadius(10)
         .overlay(
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 10)
                 .stroke(.white, lineWidth: 2)
         )
     }

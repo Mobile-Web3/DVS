@@ -69,7 +69,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                         .foregroundColor(Color.white)
                         .background(Color.purple)
                         .font(Font.headline.weight(.bold))
-                        .cornerRadius(10)
+                        .cornerRadius(4)
                 }
                 .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
                 .background(defaultGradient.gradient)
@@ -99,7 +99,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                         .padding(8)
                         .background(Color.purple)
                         .font(Font.subheadline.weight(.bold))
-                        .cornerRadius(10)
+                        .cornerRadius(4)
                     }
                 }
             }
@@ -136,7 +136,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                                 .padding(8)
                                 .background(Color.purple)
                                 .font(Font.subheadline.weight(.bold))
-                                .cornerRadius(10)
+                                .cornerRadius(100)
                             }
                         )
                         
