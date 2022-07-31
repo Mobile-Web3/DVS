@@ -76,11 +76,7 @@ data class ValidatorModel(
 
             if (contacts.isNotEmpty()) {
                 resultTopicsList.add(
-                    ValidatorTopicContent.Contacts(
-                        contactsContent = contacts.map { contact ->
-                            contact.type to contact.link
-                        }
-                    )
+                    ValidatorTopicContent.Contacts(contacts)
                 )
             }
 

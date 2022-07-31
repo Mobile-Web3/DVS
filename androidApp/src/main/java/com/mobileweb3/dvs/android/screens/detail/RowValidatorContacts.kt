@@ -10,9 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.mobileweb3.dvs.android.ui.composables.IconWithHtmlLink
+import com.mobileweb3.dvs.core.entity.validator.Contact
 
 @Composable
-fun RowValidatorContacts(contacts: List<Pair<String, String>>, modifier: Modifier) {
+fun RowValidatorContacts(contacts: List<Contact>, modifier: Modifier) {
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -21,10 +22,10 @@ fun RowValidatorContacts(contacts: List<Pair<String, String>>, modifier: Modifie
                 enabled = true
             )
     ) {
-        contacts.forEachIndexed { index, pair ->
+        contacts.forEachIndexed { index, contact ->
             IconWithHtmlLink(
-                iconTag = pair.first,
-                link = pair.second
+                iconTag = contact.type,
+                link = contact.link
             )
 
             if (index != contacts.lastIndex) {

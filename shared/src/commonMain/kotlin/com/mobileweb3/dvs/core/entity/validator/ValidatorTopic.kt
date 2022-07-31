@@ -19,7 +19,7 @@ sealed class ValidatorTopicContent {
     data class VotingNetworks(val networks: List<ValidatorNetwork>) : ValidatorTopicContent()
 
     data class Contacts(
-        val contactsContent: List<Pair<String, String>>
+        val contacts: List<Contact>
     ) : ValidatorTopicContent()
 }
 

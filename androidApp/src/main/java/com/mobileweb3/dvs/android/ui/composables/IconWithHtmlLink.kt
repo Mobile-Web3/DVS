@@ -26,7 +26,7 @@ fun IconWithHtmlLink(
             painter = painterResource(id = iconRes),
             contentDescription = iconTag,
             modifier = Modifier
-                .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(100.dp))
+                //.border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(100.dp))
                 .clip(RoundedCornerShape(100.dp))
                 .clickable { uriHandler.openUri(link) }
         )
