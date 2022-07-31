@@ -41,6 +41,7 @@ struct ValidatorCardView: View {
             
             Text(validatorModel.title)
                 .padding(8)
+                .frame(maxWidth: .infinity)
                 .foregroundColor(Color.white)
                 .background(Color.purple)
                 .font(Font.headline.weight(.bold))
