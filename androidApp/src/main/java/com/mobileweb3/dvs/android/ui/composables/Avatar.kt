@@ -43,7 +43,7 @@ fun Avatar(
                 .applyDefaults()
         },
         requestOptions = { RequestOptions.circleCropTransform() },
-        circularReveal = CircularReveal(duration = 600),
+        //circularReveal = CircularReveal(duration = 600),
         loading = {
             Column(
                 modifier = Modifier.fillMaxSize(),
