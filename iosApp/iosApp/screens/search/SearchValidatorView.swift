@@ -15,6 +15,8 @@ struct SearchValidatorView: SearchNetworkConnectedView {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
     @EnvironmentObject var searchNetworkStore: ObservableSearchNetworkStore
+    var validatorDetailsStore: ObservableValidatorDetailsStore
+    var validatorVotesStore: ObservableValidatorVotesStore
     
     struct Props {
         let state: SearchNetworkState
@@ -47,6 +49,13 @@ struct SearchValidatorView: SearchNetworkConnectedView {
                 SearchNetworkView(searchNetworkStore: searchNetworkStore, searchNetworkState: props.state)
             } else {
                 SelectedNetworkView(searchNetworkStore: searchNetworkStore, selectedNetwork: props.state.selectedNetwork!)
+                
+                ResultValidatorListView(
+                    searchNetworkStore: searchNetworkStore,
+                    validatorDetailsStore: validatorDetailsStore,
+                    validatorVotesStore: validatorVotesStore,
+                    searchNetworkState: props.state
+                )
             }
 
             Spacer()

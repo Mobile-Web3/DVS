@@ -39,7 +39,11 @@ struct ValidatorListView: ValidatorListConnectedView {
         VStack() {
             DefaultHeaderView()
             
-            FindValidatorView(searchNetworkStore: searchNetworkStore)
+            FindValidatorView(
+                searchNetworkStore: searchNetworkStore,
+                validatorDetailsStore: validatorDetailsStore,
+                validatorVotesStore: validatorVotesStore
+            )
 
             let validatorViewItems = props.state.validatorViewStates.map { ValidatorViewState in
                 ValidatorViewItem(isLoading: ValidatorViewState.isLoading, validatorModel: ValidatorViewState.validatorModel)

@@ -13,15 +13,31 @@ struct FindValidatorView: View {
     @SwiftUI.State var shouldTransitToInfo: Bool = false
     @SwiftUI.State var shouldTransitToSearch: Bool = false
     var searchNetworkStore: ObservableSearchNetworkStore
+    var validatorDetailsStore: ObservableValidatorDetailsStore
+    var validatorVotesStore: ObservableValidatorVotesStore
     
     var body: some View {
         HStack() {
-            NavigationLink(destination: SearchValidatorView().environmentObject(searchNetworkStore), isActive: $shouldTransitToSearch) {
+            NavigationLink(
+                destination: SearchValidatorView(
+                    validatorDetailsStore: validatorDetailsStore,
+                    validatorVotesStore: validatorVotesStore
+                )
+                .environmentObject(searchNetworkStore),
+                isActive: $shouldTransitToSearch
+            ) {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(Color.white)
             }
             
-            NavigationLink(destination: SearchValidatorView().environmentObject(searchNetworkStore), isActive: $shouldTransitToSearch) {
+            NavigationLink(
+                destination: SearchValidatorView(
+                    validatorDetailsStore: validatorDetailsStore,
+                    validatorVotesStore: validatorVotesStore
+                )
+                .environmentObject(searchNetworkStore),
+                isActive: $shouldTransitToSearch)
+            {
                 Text("Search by network")
                     .foregroundColor(Color.white)
             }
