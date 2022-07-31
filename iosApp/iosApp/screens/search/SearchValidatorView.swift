@@ -8,6 +8,7 @@
 
 import SwiftUI
 import shared
+import AVFAudio
 
 struct SearchValidatorView: SearchNetworkConnectedView {
     
@@ -44,10 +45,10 @@ struct SearchValidatorView: SearchNetworkConnectedView {
             
             if (props.state.selectedNetwork == nil) {
                 SearchNetworkView(searchNetworkStore: searchNetworkStore, searchNetworkState: props.state)
+            } else {
+                
             }
 
-            
-            
             Spacer()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

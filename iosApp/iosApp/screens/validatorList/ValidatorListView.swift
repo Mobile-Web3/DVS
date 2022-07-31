@@ -18,6 +18,8 @@ struct ValidatorListView: ValidatorListConnectedView {
     
     @SwiftUI.State var shouldTransit: Bool = false
     
+    var twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+    
     struct Props {
         let state: ValidatorListState
         
@@ -38,8 +40,7 @@ struct ValidatorListView: ValidatorListConnectedView {
             DefaultHeaderView()
             
             FindValidatorView(searchNetworkStore: searchNetworkStore)
-            
-            let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+
             let validatorViewItems = props.state.validatorViewStates.map { ValidatorViewState in
                 ValidatorViewItem(isLoading: ValidatorViewState.isLoading, validatorModel: ValidatorViewState.validatorModel)
             }

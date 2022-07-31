@@ -17,6 +17,8 @@ struct SearchNetworkView: View {
     @SwiftUI.State private var networkName: String = ""
     @SwiftUI.State private var hideClear = true
     
+    var threeColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
         ZStack {
             TextField("Network title", text: $networkName)
@@ -47,7 +49,22 @@ struct SearchNetworkView: View {
             }
         }
         
-        Text("\(searchNetworkState.networks.count)")
-            .foregroundColor(Color.white)
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVGrid(columns: threeColumnGrid, spacing: 8) {
+                ForEach(searchNetworkState.networks.map { network in
+                    SearchNetworkItem(blockchainNetwork: network)
+                }) { networkItem in
+                    NetworkCardView(blockchainNetwork: networkItem.blockchainNetwork)
+                        .onTapGesture {
+                            searchNetworkStore.dispatch(SearchNetworkAction.NetworkSelected(network: networkItem.blockchainNetwork))
+                        }
+                }
+            }
+        }
     }
+}
+
+struct SearchNetworkItem: Identifiable {
+    let id = UUID()
+    let blockchainNetwork: BlockchainNetwork
 }
