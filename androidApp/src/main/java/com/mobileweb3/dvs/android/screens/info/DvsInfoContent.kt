@@ -7,6 +7,7 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,7 +20,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import com.mobileweb3.dvs.android.R
 import com.mobileweb3.dvs.android.ui.composables.DefaultHeader
@@ -63,6 +66,15 @@ fun DvsInfoContent() {
                 painter = painterResource(R.drawable.dvs_credo),
                 contentDescription = null,
                 modifier = Modifier.padding(top = 8.dp)
+            )
+
+            val uriHandler = LocalUriHandler.current
+            Text(
+                text = "validators.network",
+                modifier = Modifier.clickable {
+                    uriHandler.openUri("https://validators.network/")
+                },
+                textDecoration = TextDecoration.Underline
             )
 
             Spacer(modifier = Modifier.weight(1f))

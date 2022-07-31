@@ -11,6 +11,8 @@ import SwiftUI
 struct DVSInfoView: View {
     
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+    @Environment(\.openURL) var openURL
+    
     @State var appear = false
     
     var body: some View {
@@ -48,6 +50,13 @@ struct DVSInfoView: View {
             Image("DvsCredo")
                 .resizable()
                 .scaledToFit()
+            
+            Text("validators.network")
+                .foregroundColor(Color.white)
+                .underline()
+                .onTapGesture {
+                    openURL(URL(string: "https://validators.network/")!)
+                }
             
             Spacer()
             
