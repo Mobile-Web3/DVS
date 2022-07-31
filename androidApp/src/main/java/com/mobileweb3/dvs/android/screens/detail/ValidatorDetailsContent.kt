@@ -79,7 +79,7 @@ fun ValidatorDetailsContent(
                     isLoading = false,
                     validatorModel = validatorModel
                 ),
-                colorPalette = palette
+                modifier = Modifier
             )
         }
 

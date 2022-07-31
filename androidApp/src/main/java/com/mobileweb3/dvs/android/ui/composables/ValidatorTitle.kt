@@ -1,7 +1,9 @@
 package com.mobileweb3.dvs.android.ui.composables
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -20,18 +22,17 @@ import com.mobileweb3.dvs.app.ValidatorViewState
 @Composable
 fun ValidatorTitle(
     validatorViewState: ValidatorViewState,
-    colorPalette: Palette?
+    modifier: Modifier
 ) {
     Text(
         text = validatorViewState.validatorModel?.title ?: "default text",
-        color = colorPalette?.mutedSwatch?.bodyTextColor?.let { Color(it) } ?: Color.White,
+        color =  Color.White,
         maxLines = 2,
         textAlign = TextAlign.Center,
         style = MaterialTheme.typography.h6,
         fontWeight = FontWeight.Bold,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 16.dp, end = 16.dp)
+        modifier = modifier
+            .padding(4.dp)
             .placeholder(
                 visible = validatorViewState.isLoading,
                 color = Color.Gray,
@@ -40,5 +41,10 @@ fun ValidatorTitle(
                     highlightColor = Color.White,
                 )
             )
+            .background(
+                color = MaterialTheme.colors.primary,
+                shape = RoundedCornerShape(4.dp)
+            )
+            .padding(4.dp)
     )
 }
