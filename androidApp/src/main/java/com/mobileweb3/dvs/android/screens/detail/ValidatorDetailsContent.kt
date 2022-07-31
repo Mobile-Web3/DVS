@@ -118,7 +118,7 @@ fun ValidatorDetailsContent(
                 }
 
                 if (index != topics.lastIndex) {
-                    Spacer(modifier = modifier.width(16.dp))
+                    Spacer(modifier = modifier.width(8.dp))
                 }
             }
         }

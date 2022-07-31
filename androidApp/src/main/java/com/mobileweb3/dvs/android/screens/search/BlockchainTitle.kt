@@ -1,6 +1,8 @@
 package com.mobileweb3.dvs.android.screens.search
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -22,12 +24,17 @@ fun BlockchainTitle(
 ) {
     Text(
         text = blockchainNetwork.title,
-        color = colorPalette?.mutedSwatch?.bodyTextColor?.let { Color(it) } ?: Color.White,
+        color = Color.White,
         maxLines = 1,
         textAlign = TextAlign.Center,
         style = textStyle,
         fontWeight = FontWeight.Bold,
         modifier = modifier
             .padding(start = 4.dp, end = 4.dp)
+            .background(
+                color = MaterialTheme.colors.primary,
+                shape = RoundedCornerShape(4.dp)
+            )
+            .padding(4.dp)
     )
 }
