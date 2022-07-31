@@ -46,7 +46,7 @@ struct SearchValidatorView: SearchNetworkConnectedView {
             if (props.state.selectedNetwork == nil) {
                 SearchNetworkView(searchNetworkStore: searchNetworkStore, searchNetworkState: props.state)
             } else {
-                
+                SelectedNetworkView(searchNetworkStore: searchNetworkStore, selectedNetwork: props.state.selectedNetwork!)
             }
 
             Spacer()
