@@ -84,8 +84,14 @@ fun ValidatorDetailsContent(
         }
 
         val topics = validatorModel.getTopics()
-        var content: List<ValidatorTopicContent> by remember {
-            mutableStateOf(topics[validatorModelState.value?.selectedTopicIndex ?: 0].topicContent)
+        var content: List<ValidatorTopicContent>? by remember {
+            mutableStateOf(
+                try {
+                    topics[validatorModelState.value?.selectedTopicIndex ?: 0].topicContent
+                } catch (ex: Exception) {
+                    null
+                }
+            )
         }
 
         Row(
@@ -132,7 +138,7 @@ fun ValidatorDetailsContent(
             val uriHandler = LocalUriHandler.current
             val context = LocalContext.current
 
-            content.forEach { topicContent ->
+            content?.forEach { topicContent ->
                 when (topicContent) {
                     is ValidatorTopicContent.SimpleText -> {
                         TextWithHtml(
