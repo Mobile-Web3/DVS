@@ -1,5 +1,7 @@
 package com.mobileweb3.dvs.core.entity.validator
 
+import io.github.aakira.napier.Napier
+
 data class ValidatorModel(
     val title: String,
     val avatar: String,
@@ -200,6 +202,31 @@ data class ValidatorModel(
         }
 
         return resultList
+    }
+
+    //transform <a href="https://koinsortium.com/">consortium</a>
+    //into [consortium](https://koinsortium.com/)
+    fun transformTextWithLinksForIos(text: String): String {
+        if (!text.contains("<a href=")) {
+            return text
+        }
+
+        var resultDescription = text
+
+        if (resultDescription.contains("<a href=")) {
+            val indexOfOpenHrefTagStart = resultDescription.indexOf("<a href=")
+
+            val indexOfLinkStart = indexOfOpenHrefTagStart + 1
+            val indexOfOpenHrefTagEnd = resultDescription.indexOf(">", indexOfLinkStart)
+
+            val indexOfCloseHrefTagStart = resultDescription.indexOf("</a>")
+            val linkTitle = resultDescription.substring(indexOfOpenHrefTagEnd + 1, indexOfCloseHrefTagStart)
+
+            resultDescription = resultDescription.replace("<a href=", "[$linkTitle](")
+            resultDescription = resultDescription.replace(">$linkTitle</a>", ")")
+        }
+
+        return resultDescription
     }
 }
 
