@@ -39,6 +39,7 @@ struct RootView: View {
                 .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .opacity) )
             }
         }
+        .preferredColorScheme(.dark)
         .onReceive(validatorListStore.$sideEffect) { value in
             if let message = (value as? ValidatorListSideEffect.Message)?.text {
                 withAnimation { self.message = message }
