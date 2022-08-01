@@ -21,6 +21,8 @@ struct ValidatorVotingHeader: View {
             Text("Note: click on proposal to see detailed information.\nClick on validator vote in top right to see the vote transaction")
                 .foregroundColor(Color.white)
                 .padding(.top, 8)
+            
+            Spacer()
         }
     }
 }

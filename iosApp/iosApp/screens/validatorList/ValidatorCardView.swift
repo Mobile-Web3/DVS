@@ -51,7 +51,8 @@ struct ValidatorCardView: View {
                 .multilineTextAlignment(.leading)
                 .foregroundColor(Color.white)
                 .padding(6)
-                .font(.system(size: 12))
+                .font(.system(size: 14))
+            
             
             Spacer()
         }

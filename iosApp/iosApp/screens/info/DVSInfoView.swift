@@ -40,12 +40,12 @@ struct DVSInfoView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 110, height: 110)
-                .rotationEffect(Angle(degrees: appear ? -360 : 0))
-                .offset(y: appear ? -10 : 0)
-                .animation(Animation.linear(duration: 3).repeatForever(autoreverses: false))
-                .onAppear {
-                    appear = true
-                }
+                //.rotationEffect(Angle(degrees: appear ? -360 : 0))
+                //.offset(y: appear ? -10 : 0)
+//                .animation(Animation.linear(duration: 3).repeatForever(autoreverses: false))
+//                .onAppear {
+//                    appear = true
+//                }
             
             Image("DvsCredo")
                 .resizable()
