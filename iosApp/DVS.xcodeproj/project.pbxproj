@@ -33,6 +33,7 @@
 		7BC76AEC28963B0C00B2B8F2 /* ResultValidatorListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC76AEB28963B0C00B2B8F2 /* ResultValidatorListView.swift */; };
 		7BC76AEF289654BD00B2B8F2 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC76AEE289654BD00B2B8F2 /* Configuration.swift */; };
 		7BC76AF12896D92100B2B8F2 /* ValidatorContactsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BC76AF02896D92100B2B8F2 /* ValidatorContactsRow.swift */; };
+		7BC76AF42897987C00B2B8F2 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7BC76AF32897987C00B2B8F2 /* MarkdownKit */; };
 		7BE90E642888849F00423B1F /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 7BE90E632888849F00423B1F /* Shimmer */; };
 		7BE90E66288886FC00423B1F /* AvatarShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E65288886FC00423B1F /* AvatarShimmer.swift */; };
 		7BE90E682888892F00423B1F /* TextShimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE90E672888892F00423B1F /* TextShimmer.swift */; };
@@ -113,6 +114,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BEFA5BE288A636200F07461 /* ColorKit in Frameworks */,
+				7BC76AF42897987C00B2B8F2 /* MarkdownKit in Frameworks */,
 				7BE90E6F2889282700423B1F /* Kingfisher in Frameworks */,
 				7BEFA5D3288D4D7400F07461 /* SwiftUIFlowLayout in Frameworks */,
 				7BE90E642888849F00423B1F /* Shimmer in Frameworks */,
@@ -303,6 +305,7 @@
 				7BE90E6E2889282700423B1F /* Kingfisher */,
 				7BEFA5BD288A636200F07461 /* ColorKit */,
 				7BEFA5D2288D4D7400F07461 /* SwiftUIFlowLayout */,
+				7BC76AF32897987C00B2B8F2 /* MarkdownKit */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* DVS.app */;
@@ -337,6 +340,7 @@
 				7BE90E6D2889282700423B1F /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				7BEFA5BC288A636200F07461 /* XCRemoteSwiftPackageReference "ColorKit" */,
 				7BEFA5D1288D4D7400F07461 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */,
+				7BC76AF22897987C00B2B8F2 /* XCRemoteSwiftPackageReference "MarkdownKit" */,
 			);
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
 			projectDirPath = "";
@@ -616,6 +620,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7BC76AF22897987C00B2B8F2 /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bmoliveira/MarkdownKit";
+			requirement = {
+				kind = exactVersion;
+				version = 1.7.1;
+			};
+		};
 		7BE90E622888849F00423B1F /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
@@ -651,6 +663,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7BC76AF32897987C00B2B8F2 /* MarkdownKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7BC76AF22897987C00B2B8F2 /* XCRemoteSwiftPackageReference "MarkdownKit" */;
+			productName = MarkdownKit;
+		};
 		7BE90E632888849F00423B1F /* Shimmer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7BE90E622888849F00423B1F /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;

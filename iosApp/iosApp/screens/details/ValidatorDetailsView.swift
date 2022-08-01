@@ -10,6 +10,7 @@ import SwiftUI
 import shared
 import WebKit
 import SwiftUIFlowLayout
+import MarkdownKit
 
 struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     
@@ -21,6 +22,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
 
     @SwiftUI.State var shouldTransit1: Bool = false
     
+    var markdownParser = MarkdownParser()
     var threeColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     @ObservedObject var defaultGradient: GradientWrapper = GradientWrapper(
@@ -113,8 +115,10 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                     switch content.content {
                     case is ValidatorTopicContent.SimpleText:
                         ScrollView(.vertical, showsIndicators: false) {
-                            Text((content.content as! ValidatorTopicContent.SimpleText).text)
-                                .foregroundColor(Color.white)
+                            Text(
+                                .init("\(props.state.validatorModel!.transformTextWithLinksForIos(text: (content.content as! ValidatorTopicContent.SimpleText).text))")
+                            )
+                            .foregroundColor(Color.white)
                         }
                     
                     case is ValidatorTopicContent.ButtonsWithRefFlow:

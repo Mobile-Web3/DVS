@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "markdownkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/bmoliveira/MarkdownKit",
+      "state" : {
+        "revision" : "5056f3305d3499f44d8815530d560b87082e0cf5",
+        "version" : "1.7.1"
+      }
+    },
+    {
       "identity" : "swiftui-flow-layout",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/globulus/swiftui-flow-layout",
