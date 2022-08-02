@@ -58,7 +58,6 @@ fun BlockchainCard(
 
             BlockchainTitle(
                 blockchainNetwork = blockchainNetworkViewItem.blockchainNetwork,
-                colorPalette = palette,
                 modifier = Modifier.fillMaxWidth()
             )
 

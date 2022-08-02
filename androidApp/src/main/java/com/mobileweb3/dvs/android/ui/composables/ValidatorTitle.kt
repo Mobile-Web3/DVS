@@ -32,7 +32,6 @@ fun ValidatorTitle(
         style = MaterialTheme.typography.h6,
         fontWeight = FontWeight.Bold,
         modifier = modifier
-            .padding(4.dp)
             .placeholder(
                 visible = validatorViewState.isLoading,
                 color = Color.Gray,

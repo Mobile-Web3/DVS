@@ -97,7 +97,7 @@ fun ValidatorDetailsContent(
         Row(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(8.dp)
                 .horizontalScroll(
                     state = rememberScrollState(),
                     enabled = true
@@ -176,7 +176,7 @@ fun ValidatorDetailsContent(
                         }
                     }
                     is ValidatorTopicContent.Contacts -> {
-                        RowValidatorContacts(topicContent.contacts, modifier.padding(bottom = 16.dp))
+                        RowValidatorContacts(topicContent.contacts, modifier.padding(bottom = 8.dp))
                     }
                 }
             }

@@ -1,6 +1,7 @@
 package com.mobileweb3.dvs.android.screens.search
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
@@ -18,7 +19,6 @@ import com.mobileweb3.dvs.core.entity.validator.BlockchainNetwork
 @Composable
 fun BlockchainTitle(
     blockchainNetwork: BlockchainNetwork,
-    colorPalette: Palette?,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = MaterialTheme.typography.h6
 ) {
@@ -30,7 +30,6 @@ fun BlockchainTitle(
         style = textStyle,
         fontWeight = FontWeight.Bold,
         modifier = modifier
-            .padding(start = 4.dp, end = 4.dp)
             .background(
                 color = MaterialTheme.colors.primary,
                 shape = RoundedCornerShape(4.dp)

@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -63,8 +64,7 @@ fun SelectedNetworkView(
 
         BlockchainTitle(
             blockchainNetwork = selectedNetwork,
-            colorPalette = palette,
-            textStyle = MaterialTheme.typography.h5
+            textStyle = MaterialTheme.typography.h5,
         )
 
         Spacer(modifier = Modifier.weight(1f))
@@ -75,7 +75,7 @@ fun SelectedNetworkView(
             Icon(
                 imageVector = Icons.Filled.Clear,
                 contentDescription = "Clear",
-                tint = palette?.mutedSwatch?.bodyTextColor?.let { Color(it) } ?: Color.White
+                tint = MaterialTheme.colors.primary
             )
         }
 

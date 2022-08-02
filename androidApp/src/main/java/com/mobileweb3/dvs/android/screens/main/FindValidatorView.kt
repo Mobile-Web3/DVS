@@ -27,15 +27,14 @@ import androidx.navigation.NavController
 fun FindValidatorView(navController: NavController) {
     Row(
         modifier = Modifier
+            .padding(
+                horizontal = 16.dp,
+                vertical = 8.dp
+            )
             .fillMaxWidth()
             .clickable {
                 navController.navigate("search")
             }
-            .padding(
-                end = 16.dp,
-                bottom = 8.dp,
-                top = 8.dp
-            )
             .background(Color.Black),
         verticalAlignment = Alignment.CenterVertically
     ) {
