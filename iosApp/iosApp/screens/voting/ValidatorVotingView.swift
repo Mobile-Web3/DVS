@@ -13,8 +13,6 @@ struct ValidatorVotingView: ValidatorVotesConnectedView {
     
     @EnvironmentObject var validatorVotesStore: ObservableValidatorVotesStore
     
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    
     struct Props {
         let state: ValidatorVotesState
         
@@ -32,9 +30,7 @@ struct ValidatorVotingView: ValidatorVotesConnectedView {
 
     func body(props: Props) -> some View {
         VStack() {
-            ValidatorVotingHeader {
-                presentationMode.wrappedValue.dismiss()
-            }
+            ValidatorVotingHeader()
             
             ValidatorStatusView(
                 validatorAvatar: props.state.validatorModel!.avatar,
@@ -48,7 +44,7 @@ struct ValidatorVotingView: ValidatorVotesConnectedView {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitle("Validator proposals votes")
     }
 }
