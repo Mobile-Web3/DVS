@@ -12,8 +12,6 @@ import shared
 struct ValidatorContactsRow: View {
 
     var topicContacts: [Contact]
-    
-    @Environment(\.openURL) var openURL
 
     var body: some View {
         let topicContactItems = topicContacts.map { topicContact in
@@ -25,7 +23,7 @@ struct ValidatorContactsRow: View {
                 ForEach(topicContactItems) { contactItem in
                     Image(contactItem.contact.type)
                         .onTapGesture {
-                            openURL(URL(string: contactItem.contact.link)!)
+                            UIApplication.shared.open(URL(string: contactItem.contact.link)!)
                         }
                 }
             }
@@ -33,16 +31,9 @@ struct ValidatorContactsRow: View {
         .padding(.top, 4)
         .padding(.bottom, 4)
     }
-    
-//    func getImageAsset(type: String) -> String {
-//        if (type == "twitter") {
-//            return "Twitter"
-//        }
-//    }
 }
 
 struct ValidatorContactItem: Identifiable {
     let id = UUID()
     let contact: Contact
 }
-
