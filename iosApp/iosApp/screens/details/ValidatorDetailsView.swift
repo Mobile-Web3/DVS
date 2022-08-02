@@ -20,7 +20,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @Environment(\.openURL) var openURL
 
-    @SwiftUI.State var shouldTransit1: Bool = false
+    @SwiftUI.State var shouldTransitToVotes: Bool = false
     
     var markdownParser = MarkdownParser()
     var threeColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
@@ -164,16 +164,11 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                                 ForEach((content.content as! ValidatorTopicContent.VotingNetworks).networks.map { network in
                                     ValidatorVotingNetworkItem(validatorNetwork: network)
                                 }) { networkItem in
-                                    NavigationLink(
-                                        destination: ValidatorVotingView().environmentObject(validatorVotesStore),
-                                        isActive: $shouldTransit1
-                                    ) {
-                                        NetworkCardView(blockchainNetwork: networkItem.validatorNetwork.blockchainNetwork)
-                                            .onTapGesture {
-                                                props.onClick(props.state.validatorModel!, networkItem.validatorNetwork)
-                                                self.shouldTransit1.toggle()
-                                            }
-                                    }
+                                    NetworkCardView(blockchainNetwork: networkItem.validatorNetwork.blockchainNetwork)
+                                        .onTapGesture {
+                                            props.onClick(props.state.validatorModel!, networkItem.validatorNetwork)
+                                            self.shouldTransitToVotes.toggle()
+                                        }
                                 }
                             }
                         }
@@ -188,7 +183,12 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                 }
             }
 
-            
+            NavigationLink(
+                destination: ValidatorVotingView().environmentObject(validatorVotesStore),
+                isActive: $shouldTransitToVotes
+            ) {
+                EmptyView()
+            }
             
             Spacer()
         }
