@@ -12,8 +12,6 @@ import AVFAudio
 
 struct SearchValidatorView: SearchNetworkConnectedView {
     
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
-    
     @EnvironmentObject var searchNetworkStore: ObservableSearchNetworkStore
     var validatorDetailsStore: ObservableValidatorDetailsStore
     var validatorVotesStore: ObservableValidatorVotesStore
@@ -35,21 +33,11 @@ struct SearchValidatorView: SearchNetworkConnectedView {
 
     func body(props: Props) -> some View {
         VStack {
-            HStack {
-                DefaultButtonBack {
-                    presentationMode.wrappedValue.dismiss()
-                }
-                
-                Spacer()
-            }
-            
-            DefaultHeaderView()
-            
             if (props.state.selectedNetwork == nil) {
                 SearchNetworkView(searchNetworkStore: searchNetworkStore, searchNetworkState: props.state)
             } else {
                 SelectedNetworkView(searchNetworkStore: searchNetworkStore, selectedNetwork: props.state.selectedNetwork!)
-                
+
                 ResultValidatorListView(
                     searchNetworkStore: searchNetworkStore,
                     validatorDetailsStore: validatorDetailsStore,
@@ -62,8 +50,8 @@ struct SearchValidatorView: SearchNetworkConnectedView {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitle("Search DVS validator by network")
     }
 }
 
