@@ -9,8 +9,6 @@
 import SwiftUI
 
 struct DVSInfoView: View {
-
-    @Environment(\.openURL) var openURL
     
     @State var appear = false
     
@@ -39,7 +37,7 @@ struct DVSInfoView: View {
                 .foregroundColor(Color.white)
                 .underline()
                 .onTapGesture {
-                    openURL(URL(string: "https://validators.network/")!)
+                    UIApplication.shared.open(URL(string:"https://validators.network/")!)
                 }
             
             Spacer()
