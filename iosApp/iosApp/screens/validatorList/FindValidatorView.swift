@@ -18,6 +18,26 @@ struct FindValidatorView: View {
     
     var body: some View {
         HStack() {
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(Color.white)
+                .onTapGesture {
+                    self.shouldTransitToSearch.toggle()
+                }
+            
+            Text("Search by network")
+                .foregroundColor(Color.white)
+                .onTapGesture {
+                    self.shouldTransitToSearch.toggle()
+                }
+            
+            Spacer()
+            
+            Image(systemName: "info.circle.fill")
+                .foregroundColor(Color.white)
+                .onTapGesture {
+                    self.shouldTransitToInfo.toggle()
+                }
+            
             NavigationLink(
                 destination: SearchValidatorView(
                     validatorDetailsStore: validatorDetailsStore,
@@ -26,27 +46,11 @@ struct FindValidatorView: View {
                 .environmentObject(searchNetworkStore),
                 isActive: $shouldTransitToSearch
             ) {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(Color.white)
+                EmptyView()
             }
-            
-            NavigationLink(
-                destination: SearchValidatorView(
-                    validatorDetailsStore: validatorDetailsStore,
-                    validatorVotesStore: validatorVotesStore
-                )
-                .environmentObject(searchNetworkStore),
-                isActive: $shouldTransitToSearch)
-            {
-                Text("Search by network")
-                    .foregroundColor(Color.white)
-            }
-            
-            Spacer()
             
             NavigationLink(destination: DVSInfoView(), isActive: $shouldTransitToInfo) {
-                Image(systemName: "info.circle.fill")
-                    .foregroundColor(Color.white)
+                EmptyView()
             }
         }
         .frame(height: 30, alignment: .leading)
