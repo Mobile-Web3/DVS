@@ -1,7 +1,5 @@
 package com.mobileweb3.dvs.core.entity.validator
 
-import io.github.aakira.napier.Napier
-
 data class ValidatorModel(
     val title: String,
     val avatar: String,
@@ -16,8 +14,8 @@ data class ValidatorModel(
     val otherInfo: List<OtherInfo> = emptyList()
 ) {
 
-    private val validatingNetworksCount = mainNets.size + testNets.size + genesisNets.size
-    private val otherActivities = otherProjects.size + contributionsTypes.size
+    val validatingNetworksCount = mainNets.size + testNets.size + genesisNets.size
+    val otherActivities = otherProjects.size + contributionsTypes.size
 
     fun validatingNetwork(network: BlockchainNetwork): Boolean {
         return mainNets.any { it.blockchainNetwork == network } ||
@@ -26,48 +24,13 @@ data class ValidatorModel(
     }
 
     fun getSmallDescription(): String {
-        val networksCount = validatingNetworksCount
-        val networksWord = if (networksCount == 1) {
-            "network"
-        } else {
-            "networks"
-        }
-
-        val stringBuilder = StringBuilder()
-
-        if (networksCount != 0) {
-            stringBuilder
-                .append("Validating ")
-                .append("$networksCount $networksWord")
-                .append("\n")
-        }
-
-        val ambassadorsCount = ambassadorPrograms.size
-        val ambassadorsWord = if (ambassadorsCount == 1) {
-            "project"
-        } else {
-            "projects"
-        }
-
-        if (ambassadorsCount != 0) {
-            stringBuilder
-                .append("Ambassador of ")
-                .append("$ambassadorsCount $ambassadorsWord")
-                .append("\n")
-        }
-
-        val otherActivitiesWord = if (otherActivities == 1) {
-            "activity"
-        } else {
-            "activities"
-        }
-
-        if (otherActivities != 0) {
-            stringBuilder
-                .append("\nand $otherActivities other $otherActivitiesWord")
-        }
-
-        return stringBuilder.toString()
+        return StringBuilder()
+            .append("Validator $validatingNetworksCount")
+            .append("\n")
+            .append("Ambassador ${ambassadorPrograms.size}")
+            .append("\n")
+            .append("Other $otherActivities")
+            .toString()
     }
 
     fun getTopics(): List<ValidatorTopic> {
