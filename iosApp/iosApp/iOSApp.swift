@@ -16,6 +16,8 @@ class iOSApp: App {
         validatorDetailsStore = ObservableValidatorDetailsStore(validatorDetailsStore: ValidatorDetailsStore())
         validatorVotesStore = ObservableValidatorVotesStore(validatorVotesStore: ValidatorVotesStore(interactor: mainInteractor))
         searchNetworkStore = ObservableSearchNetworkStore(searchNetworkStore: SearchNetworkStore())
+        
+        UINavigationBar.appearance().tintColor = UIColor(PurpleColor)
     }
     
 	var body: some Scene {
