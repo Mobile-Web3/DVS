@@ -17,8 +17,6 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     @EnvironmentObject var validatorDetailsStore: ObservableValidatorDetailsStore
     var validatorVotesStore: ObservableValidatorVotesStore
 
-    @Environment(\.openURL) var openURL
-
     @SwiftUI.State var shouldTransitToVotes: Bool = false
     
     var markdownParser = MarkdownParser()
@@ -121,7 +119,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                                 Button(
                                     action: {
                                         if (button.reference != nil) {
-                                            openURL(URL(string: button.reference!)!)
+                                            UIApplication.shared.open(URL(string: button.reference!)!)
                                         }
                                     },
                                     label: {
@@ -144,7 +142,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                                 }) { networkItem in
                                     NetworkCardView(blockchainNetwork: networkItem.validatorNetwork.blockchainNetwork)
                                         .onTapGesture {
-                                            openURL(URL(string: networkItem.validatorNetwork.getValidatorPageLink())!)
+                                            UIApplication.shared.open(URL(string: networkItem.validatorNetwork.getValidatorPageLink())!)
                                         }
                                 }
                             }
@@ -187,6 +185,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitle("Validator details")
     }
 }
 
