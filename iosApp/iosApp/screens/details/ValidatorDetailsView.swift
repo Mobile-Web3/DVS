@@ -96,7 +96,6 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                     }
                 }
             }
-            .padding(.horizontal, 16)
             
             if (!validatorTopicItems.isEmpty) {
                 let topicContent = validatorTopicItems[Int(props.state.selectedTopicIndex)].topic.topicContent.map { topicContent in
