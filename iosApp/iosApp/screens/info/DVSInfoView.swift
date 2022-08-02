@@ -9,29 +9,13 @@
 import SwiftUI
 
 struct DVSInfoView: View {
-    
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
+
     @Environment(\.openURL) var openURL
     
     @State var appear = false
     
     var body: some View {
         VStack {
-            ZStack {
-                HStack {
-                    DefaultButtonBack {
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                    
-                    Spacer()
-                }
-                
-                HStack {
-                    Text("Info")
-                        .foregroundColor(Color.white)
-                }
-            }
-            
             DefaultHeaderView()
             
             Spacer()
@@ -65,8 +49,8 @@ struct DVSInfoView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+        .navigationBarTitle("Info")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
