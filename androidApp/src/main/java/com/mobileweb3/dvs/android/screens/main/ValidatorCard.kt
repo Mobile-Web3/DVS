@@ -75,8 +75,7 @@ fun ValidatorCard(
             Spacer(modifier = Modifier.height(16.dp))
 
             ValidatorDescription(
-                validatorViewState = validatorViewState,
-                colorPalette = palette
+                validatorViewState = validatorViewState
             )
         }
     }
