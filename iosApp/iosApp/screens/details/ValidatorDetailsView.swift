@@ -17,7 +17,6 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
     @EnvironmentObject var validatorDetailsStore: ObservableValidatorDetailsStore
     var validatorVotesStore: ObservableValidatorVotesStore
 
-    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     @Environment(\.openURL) var openURL
 
     @SwiftUI.State var shouldTransitToVotes: Bool = false
@@ -50,37 +49,30 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
 
     func body(props: Props) -> some View {
         VStack() {
-            ZStack(alignment: .topLeading) {
-                VStack {
-                    RemoteImageView(
-                        urlString: props.state.validatorModel!.avatar,
-                        size: 120,
-                        onImageLoaded: { colors in
-                            let newGradient = LinearGradient(
-                                colors: colors.map({ it in Color(it)}),
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
+            VStack {
+                RemoteImageView(
+                    urlString: props.state.validatorModel!.avatar,
+                    size: 120,
+                    onImageLoaded: { colors in
+                        let newGradient = LinearGradient(
+                            colors: colors.map({ it in Color(it)}),
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
 
-                            defaultGradient.gradient = newGradient
-                        }
-                    )
-                    
-                    Text(props.state.validatorModel!.title)
-                        .padding(8)
-                        .foregroundColor(Color.white)
-                        .background(Color.purple)
-                        .font(Font.headline.weight(.bold))
-                        .cornerRadius(4)
-                }
-                .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
-                .background(defaultGradient.gradient)
+                        defaultGradient.gradient = newGradient
+                    }
+                )
                 
-                DefaultButtonBack {
-                    presentationMode.wrappedValue.dismiss()
-                }
+                Text(props.state.validatorModel!.title)
+                    .padding(8)
+                    .foregroundColor(Color.white)
+                    .background(Color.purple)
+                    .font(Font.headline.weight(.bold))
+                    .cornerRadius(4)
             }
-            .frame(maxWidth: .infinity, alignment: .topLeading)
+            .frame(maxWidth: .infinity, minHeight: 200, maxHeight: 200)
+            .background(defaultGradient.gradient)
             
             let validatorTopicItems = props.state.validatorModel!.getTopics().map { validatorTopic in
                 ValidatorTopicItem(topic: validatorTopic)
@@ -194,8 +186,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
