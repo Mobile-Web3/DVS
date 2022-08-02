@@ -15,8 +15,6 @@ struct ProposalCardView: View {
     let validatorVote: ValidatorVote
     let blockchainNetwork: BlockchainNetwork
     
-    @Environment(\.openURL) var openURL
-    
     var body: some View {
         ZStack(alignment: .top) {
             HStack {
@@ -30,7 +28,7 @@ struct ProposalCardView: View {
                     .cornerRadius(8)
                     .onTapGesture {
                         if (validatorVote.txhash != nil) {
-                            openURL(URL(string: validatorVote.exploreVoteRef(blockchainNetwork: blockchainNetwork))!)
+                            UIApplication.shared.open(URL(string: validatorVote.exploreVoteRef(blockchainNetwork: blockchainNetwork))!)
                         }
                     }
             }
@@ -66,7 +64,7 @@ struct ProposalCardView: View {
             }
         }
         .onTapGesture {
-            openURL(URL(string: validatorVote.exploreProposalRef(blockchainNetwork: blockchainNetwork))!)
+            UIApplication.shared.open(URL(string: validatorVote.exploreProposalRef(blockchainNetwork: blockchainNetwork))!)
         }
         .frame(maxWidth: .infinity, alignment: .top)
         .cornerRadius(8)
