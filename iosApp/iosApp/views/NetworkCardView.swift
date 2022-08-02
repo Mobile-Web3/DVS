@@ -40,8 +40,9 @@ struct NetworkCardView: View {
             
             Text(blockchainNetwork.title)
                 .padding(4)
+                .frame(maxWidth: .infinity)
                 .foregroundColor(Color.white)
-                .background(Color.purple)
+                .background(PurpleColor)
                 .font(Font.subheadline.weight(.bold))
                 .cornerRadius(4)
             

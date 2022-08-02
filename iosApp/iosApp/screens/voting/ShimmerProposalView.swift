@@ -24,15 +24,24 @@ struct ShimmerProposalView: View {
             
             VStack {
                 HStack {
-                    TextShimmer()
+                    Text("               ")
                         .padding(12)
+                        .background(Color.white)
+                        .cornerRadius(4)
+                        .padding(12)
+                        .redacted(reason: .placeholder)
+                        .shimmering()
                     
                     Spacer()
                 }
                 
                 HStack {
-                    TextShimmer()
+                    Text("                           ")
+                        .padding(4)
+                        .background(Color.white)
+                        .cornerRadius(4)
                         .padding(.horizontal, 12)
+                        .redacted(reason: .placeholder)
                         .shimmering()
                     
                     Spacer()
@@ -45,8 +54,7 @@ struct ShimmerProposalView: View {
                     
                     ProposalVotesShimmerView()
                 }
-                .padding(.horizontal, 12)
-                .padding(.bottom, 12)
+                .padding(12)
             }
         }
         .frame(maxWidth: .infinity, alignment: .top)

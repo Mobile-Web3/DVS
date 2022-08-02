@@ -11,9 +11,12 @@ import Shimmer
 
 struct ProposalVotesShimmerView: View {
     var body: some View {
-        TextShimmer()
+        Text("  ")
             .frame(width: 100, height: 45)
+            .background(Color.white)
             .cornerRadius(100)
+            .redacted(reason: .placeholder)
+            .shimmering()
     }
 }
 

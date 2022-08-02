@@ -36,7 +36,11 @@ struct SearchValidatorView: SearchNetworkConnectedView {
             if (props.state.selectedNetwork == nil) {
                 SearchNetworkView(searchNetworkStore: searchNetworkStore, searchNetworkState: props.state)
             } else {
-                SelectedNetworkView(searchNetworkStore: searchNetworkStore, selectedNetwork: props.state.selectedNetwork!)
+                SelectedNetworkView(
+                    searchNetworkStore: searchNetworkStore,
+                    selectedNetwork: props.state.selectedNetwork!
+                )
+                .padding(.horizontal, 16)
 
                 ResultValidatorListView(
                     searchNetworkStore: searchNetworkStore,
@@ -44,6 +48,7 @@ struct SearchValidatorView: SearchNetworkConnectedView {
                     validatorVotesStore: validatorVotesStore,
                     searchNetworkState: props.state
                 )
+                .padding(.horizontal, 16)
             }
 
             Spacer()

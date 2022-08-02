@@ -16,18 +16,21 @@ struct ValidatorCardLoading: View {
                 .padding(.top, 8)
                 .frame(width: 120, height: 120, alignment: Alignment.top)
             
-            Divider()
-            
-            TextShimmer()
-            
-            Divider()
+            Text("")
+                .padding(8)
+                .frame(maxWidth: .infinity)
+                .foregroundColor(Color.white)
+                .background(PurpleColor)
+                .font(Font.headline.weight(.bold))
+                .cornerRadius(4)
+                .redacted(reason: .placeholder)
+                .shimmering()
             
             Spacer()
         }
         .frame(maxWidth: .infinity, minHeight: 300)
-        .cornerRadius(20)
         .overlay(
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 10)
                 .stroke(.white, lineWidth: 2)
         )
     }

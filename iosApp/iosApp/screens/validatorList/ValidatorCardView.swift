@@ -43,7 +43,7 @@ struct ValidatorCardView: View {
                 .padding(8)
                 .frame(maxWidth: .infinity)
                 .foregroundColor(Color.white)
-                .background(Color.purple)
+                .background(PurpleColor)
                 .font(Font.headline.weight(.bold))
                 .cornerRadius(4)
             
@@ -58,9 +58,9 @@ struct ValidatorCardView: View {
         }
         .frame(maxWidth: .infinity, minHeight: 300, maxHeight: 300)
         .background(defaultGradient.gradient)
-        .cornerRadius(20)
+        .cornerRadius(10)
         .overlay(
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 10)
                 .stroke(.white, lineWidth: 2)
         )
     }

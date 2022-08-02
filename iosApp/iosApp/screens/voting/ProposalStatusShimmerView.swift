@@ -11,9 +11,11 @@ import Shimmer
 
 struct ProposalStatusShimmerView: View {
     var body: some View {
-        TextShimmer()
+        Text("               ")
             .padding(12)
+            .background(Color.white)
             .cornerRadius(100)
+            .redacted(reason: .placeholder)
             .shimmering()
     }
 }

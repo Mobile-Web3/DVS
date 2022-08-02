@@ -65,7 +65,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                 Text(props.state.validatorModel!.title)
                     .padding(8)
                     .foregroundColor(Color.white)
-                    .background(Color.purple)
+                    .background(PurpleColor)
                     .font(Font.headline.weight(.bold))
                     .cornerRadius(4)
             }
@@ -85,16 +85,18 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                             },
                             label: {
                                 Text(topicViewItem.topic.title)
+                                    .font(Font.subheadline.weight(.bold))
                                     .foregroundColor(Color.white)
                             }
                         )
-                        .padding(8)
-                        .background(Color.purple)
-                        .font(Font.subheadline.weight(.bold))
+                        .padding(12)
+                        .background(PurpleColor)
+                        .font(Font.headline.weight(.bold))
                         .cornerRadius(4)
                     }
                 }
             }
+            .padding(.horizontal, 16)
             
             if (!validatorTopicItems.isEmpty) {
                 let topicContent = validatorTopicItems[Int(props.state.selectedTopicIndex)].topic.topicContent.map { topicContent in
@@ -110,6 +112,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                             )
                             .foregroundColor(Color.white)
                         }
+                        .padding(.horizontal, 16)
                     
                     case is ValidatorTopicContent.ButtonsWithRefFlow:
                         FlowLayout(
@@ -128,11 +131,12 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                                     }
                                 )
                                 .padding(8)
-                                .background(Color.purple)
+                                .background(PurpleColor)
                                 .font(Font.subheadline.weight(.bold))
                                 .cornerRadius(100)
                             }
                         )
+                        .padding(.horizontal, 16)
                         
                     case is ValidatorTopicContent.MainNetworks:
                         ScrollView(.vertical, showsIndicators: false) {
@@ -147,6 +151,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                                 }
                             }
                         }
+                        .padding(.horizontal, 16)
                         
                     case is ValidatorTopicContent.VotingNetworks:
                         ScrollView(.vertical, showsIndicators: false) {
@@ -162,9 +167,13 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                                 }
                             }
                         }
+                        .padding(.horizontal, 16)
                         
                     case is ValidatorTopicContent.Contacts:
-                        ValidatorContactsRow(topicContacts: (content.content as! ValidatorTopicContent.Contacts).contacts)
+                        ValidatorContactsRow(
+                            topicContacts: (content.content as! ValidatorTopicContent.Contacts).contacts
+                        )
+                        .padding(.horizontal, 16)
                         
                     default:
                         Text("default")

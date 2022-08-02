@@ -59,8 +59,7 @@ struct ProposalCardView: View {
                     
                     ProposalVotesView(proposalPercentages: validatorVote.proposal.getPercentages())
                 }
-                .padding(.horizontal, 12)
-                .padding(.bottom, 12)
+                .padding(12)
             }
         }
         .onTapGesture {

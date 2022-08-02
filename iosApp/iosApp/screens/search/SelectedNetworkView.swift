@@ -54,9 +54,9 @@ struct SelectedNetworkView: View {
                 Text(selectedNetwork.title)
                     .padding(4)
                     .foregroundColor(Color.white)
-                    .background(Color.purple)
+                    .background(PurpleColor)
                     .font(Font.title2.weight(.bold))
-                    .cornerRadius(10)
+                    .cornerRadius(4)
             }
         }
         .frame(maxWidth: .infinity)

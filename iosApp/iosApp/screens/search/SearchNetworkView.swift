@@ -48,19 +48,23 @@ struct SearchNetworkView: View {
                     }
             }
         }
+        .padding(.horizontal, 16)
         
         ScrollView(.vertical, showsIndicators: false) {
             LazyVGrid(columns: threeColumnGrid, spacing: 8) {
                 ForEach(searchNetworkState.networks.map { network in
                     SearchNetworkItem(blockchainNetwork: network)
                 }) { networkItem in
-                    NetworkCardView(blockchainNetwork: networkItem.blockchainNetwork)
-                        .onTapGesture {
-                            searchNetworkStore.dispatch(SearchNetworkAction.NetworkSelected(network: networkItem.blockchainNetwork))
-                        }
+                    NetworkCardView(
+                        blockchainNetwork: networkItem.blockchainNetwork
+                    )
+                    .onTapGesture {
+                        searchNetworkStore.dispatch(SearchNetworkAction.NetworkSelected(network: networkItem.blockchainNetwork))
+                    }
                 }
             }
         }
+        .padding(.horizontal, 16)
     }
 }
 

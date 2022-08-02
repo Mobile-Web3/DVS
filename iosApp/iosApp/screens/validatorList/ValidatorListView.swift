@@ -44,6 +44,7 @@ struct ValidatorListView: ValidatorListConnectedView {
                 validatorDetailsStore: validatorDetailsStore,
                 validatorVotesStore: validatorVotesStore
             )
+            .padding(.horizontal, 16)
 
             let validatorViewItems = props.state.validatorViewStates.map { ValidatorViewState in
                 ValidatorViewItem(isLoading: ValidatorViewState.isLoading, validatorModel: ValidatorViewState.validatorModel)
@@ -64,6 +65,7 @@ struct ValidatorListView: ValidatorListConnectedView {
                     }
                 }
             }
+            .padding(.horizontal, 16)
             
             NavigationLink(
                 destination: ValidatorDetailsView(validatorVotesStore: validatorVotesStore)
