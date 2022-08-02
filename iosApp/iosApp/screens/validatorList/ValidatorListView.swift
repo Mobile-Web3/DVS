@@ -55,20 +55,21 @@ struct ValidatorListView: ValidatorListConnectedView {
                         if (item.isLoading) {
                             ValidatorCardLoading()
                         } else {
-                            NavigationLink(
-                                destination: ValidatorDetailsView(validatorVotesStore: validatorVotesStore)
-                                    .environmentObject(validatorDetailsStore), isActive: $shouldTransit
-                            ) {
-                                ValidatorCardView(validatorModel: item.validatorModel!)
-                                    .onTapGesture {
-                                        props.onClick(item.validatorModel!)
-                                        self.shouldTransit.toggle()
-                                    }
-                            }
+                            ValidatorCardView(validatorModel: item.validatorModel!)
+                                .onTapGesture {
+                                    props.onClick(item.validatorModel!)
+                                    self.shouldTransit.toggle()
+                                }
                         }
                     }
                 }
             }
+            
+            NavigationLink(
+                destination: ValidatorDetailsView(validatorVotesStore: validatorVotesStore)
+                    .environmentObject(validatorDetailsStore),
+                isActive: $shouldTransit
+            ) { EmptyView() }
         }
         .background(Color.black)
     }
