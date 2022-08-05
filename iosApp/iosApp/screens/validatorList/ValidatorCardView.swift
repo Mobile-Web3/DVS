@@ -47,15 +47,17 @@ struct ValidatorCardView: View {
                 .font(Font.headline.weight(.bold))
                 .cornerRadius(4)
             
-            Text(validatorModel.getSmallDescription())
-                .padding(6)
-                .multilineTextAlignment(.leading)
-                .foregroundColor(Color.white)
-                .background(PurpleColor)
-                .font(Font.subheadline.weight(.bold))
-                .cornerRadius(4)
-                .padding(.top, 8)
-            
+            let description = validatorModel.getSmallDescription()
+            if (!description.isEmpty) {
+                Text(description)
+                    .padding(6)
+                    .multilineTextAlignment(.leading)
+                    .foregroundColor(Color.white)
+                    .background(PurpleColor)
+                    .font(Font.subheadline.weight(.bold))
+                    .cornerRadius(4)
+                    .padding(.top, 8)
+            }
             
             Spacer()
         }
