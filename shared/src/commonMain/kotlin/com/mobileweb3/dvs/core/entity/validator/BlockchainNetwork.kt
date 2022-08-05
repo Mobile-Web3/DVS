@@ -311,6 +311,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "cerberus".toExploreCosmosTransaction(),
         validatorInfoRef = "cerberus".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    CHIHUAHUA(
+        title = "Chihuahua",
+        landingRef = "https://www.chihuahua.wtf/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/17208.png",
+        validatorsListRef = "chihuahua".toExproleCosmosValidators(),
+        getProposalsRef = "chihuahua".toGetCosmosProposals(),
+        exploreProposalRef = "chihuahua".toExploreCosmosProposals(),
+        getTransactionsRef = "chihuahua".toGetCosmosTransactions(),
+        exploreTransactionRef = "chihuahua".toExploreCosmosTransaction(),
+        validatorInfoRef = "chihuahua".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
