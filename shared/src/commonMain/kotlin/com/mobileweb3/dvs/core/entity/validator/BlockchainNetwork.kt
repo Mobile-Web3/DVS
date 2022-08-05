@@ -285,6 +285,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "fetchai".toExploreCosmosTransaction(),
         validatorInfoRef = "fetchai".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    AKASH(
+        title = "Akash",
+        landingRef = "https://akash.network/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/7431.png",
+        validatorsListRef = "akash".toExproleCosmosValidators(),
+        getProposalsRef = "akash".toGetCosmosProposals(),
+        exploreProposalRef = "akash".toExploreCosmosProposals(),
+        getTransactionsRef = "akash".toGetCosmosTransactions(),
+        exploreTransactionRef = "akash".toExploreCosmosTransaction(),
+        validatorInfoRef = "akash".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
