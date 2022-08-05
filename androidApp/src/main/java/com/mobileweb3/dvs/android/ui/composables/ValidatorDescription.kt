@@ -21,17 +21,20 @@ fun ValidatorDescription(
         return
     }
 
-    Text(
-        text = validatorViewState.validatorModel!!.getSmallDescription(),
-        textAlign = TextAlign.Start,
-        style = typography.subtitle2,
-        fontWeight = FontWeight.Bold,
-        modifier = Modifier
-            .padding(top = 8.dp, start = 16.dp, end = 16.dp)
-            .background(
-                color = MaterialTheme.colors.primary,
-                shape = RoundedCornerShape(4.dp)
-            )
-            .padding(8.dp)
-    )
+    val smallDescription = validatorViewState.validatorModel!!.getSmallDescription()
+    if (smallDescription.isNotEmpty()) {
+        Text(
+            text = validatorViewState.validatorModel!!.getSmallDescription(),
+            textAlign = TextAlign.Start,
+            style = typography.subtitle2,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .padding(top = 8.dp, start = 16.dp, end = 16.dp)
+                .background(
+                    color = MaterialTheme.colors.primary,
+                    shape = RoundedCornerShape(4.dp)
+                )
+                .padding(8.dp)
+        )
+    }
 }
