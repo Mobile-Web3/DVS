@@ -324,6 +324,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "chihuahua".toExploreCosmosTransaction(),
         validatorInfoRef = "chihuahua".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    COMDEX(
+        title = "Comdex",
+        landingRef = "comdex.one/home",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/14713.png",
+        validatorsListRef = "comdex".toExproleCosmosValidators(),
+        getProposalsRef = "comdex".toGetCosmosProposals(),
+        exploreProposalRef = "comdex".toExploreCosmosProposals(),
+        getTransactionsRef = "comdex".toGetCosmosTransactions(),
+        exploreTransactionRef = "comdex".toExploreCosmosTransaction(),
+        validatorInfoRef = "comdex".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
