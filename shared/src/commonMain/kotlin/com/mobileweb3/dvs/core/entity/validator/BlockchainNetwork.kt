@@ -298,6 +298,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "akash".toExploreCosmosTransaction(),
         validatorInfoRef = "akash".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    CERBERUS(
+        title = "Cerberus",
+        landingRef = "https://cerberus.zone/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/18900.png",
+        validatorsListRef = "cerberus".toExproleCosmosValidators(),
+        getProposalsRef = "cerberus".toGetCosmosProposals(),
+        exploreProposalRef = "cerberus".toExploreCosmosProposals(),
+        getTransactionsRef = "cerberus".toGetCosmosTransactions(),
+        exploreTransactionRef = "cerberus".toExploreCosmosTransaction(),
+        validatorInfoRef = "cerberus".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
