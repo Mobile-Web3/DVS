@@ -12,7 +12,8 @@ val KURASH = ValidatorModel(
     mainNets = listOf(
         ValidatorNetwork(
             blockchainNetwork = BlockchainNetwork.FETCH_AI,
-            validatorAddress = "fetchvaloper14q3mtnec6wjyhyfxcjdgqmx3kqk52gwdryt4vz"
+            validatorAddress = "fetchvaloper14q3mtnec6wjyhyfxcjdgqmx3kqk52gwdryt4vz",
+            walletAddress = "fetch14q3mtnec6wjyhyfxcjdgqmx3kqk52gwdxq5kl9"
         )
     ),
     testNets = emptyList(),
