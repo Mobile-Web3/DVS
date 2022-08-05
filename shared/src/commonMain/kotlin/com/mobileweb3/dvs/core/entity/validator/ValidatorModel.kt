@@ -24,13 +24,32 @@ data class ValidatorModel(
     }
 
     fun getSmallDescription(): String {
-        return StringBuilder()
-            .append("Validator $validatingNetworksCount")
-            .append("\n")
-            .append("Ambassador ${ambassadorPrograms.size}")
-            .append("\n")
-            .append("Other $otherActivities")
-            .toString()
+        val stringBuilder = StringBuilder()
+
+        if (validatingNetworksCount != 0) {
+            stringBuilder
+                .append("Validator $validatingNetworksCount")
+        }
+
+        if (ambassadorPrograms.isNotEmpty()) {
+            if (stringBuilder.isNotEmpty()) {
+                stringBuilder.append("\n")
+            }
+
+            stringBuilder
+                .append("Ambassador ${ambassadorPrograms.size}")
+        }
+
+        if (otherActivities != 0) {
+            if (stringBuilder.isNotEmpty()) {
+                stringBuilder.append("\n")
+            }
+
+            stringBuilder
+                .append("Other $otherActivities")
+        }
+
+        return stringBuilder.toString()
     }
 
     fun getTopics(): List<ValidatorTopic> {
