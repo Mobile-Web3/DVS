@@ -337,6 +337,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "comdex".toExploreCosmosTransaction(),
         validatorInfoRef = "comdex".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    CRYPTO_ORG(
+        title = "Crypto.org",
+        landingRef = "https://crypto.org/",
+        imageRef = "https://avatars.githubusercontent.com/u/78834054?s=200&v=4",
+        validatorsListRef = "cryptocom".toExproleCosmosValidators(),
+        getProposalsRef = "crypto-org".toGetCosmosProposals(),
+        exploreProposalRef = "crypto-org".toExploreCosmosProposals(),
+        getTransactionsRef = "crypto-org".toGetCosmosTransactions(),
+        exploreTransactionRef = "crypto-org".toExploreCosmosTransaction(),
+        validatorInfoRef = "cryptocom".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
