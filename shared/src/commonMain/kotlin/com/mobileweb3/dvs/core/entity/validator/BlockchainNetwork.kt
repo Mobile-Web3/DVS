@@ -272,6 +272,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "asset-mantle".toExploreCosmosTransaction(),
         validatorInfoRef = "asset-mantle".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    FETCH_AI(
+        title = "Fetch.ai",
+        landingRef = "https://fetch-ai.network/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/3773.png",
+        validatorsListRef = "fetchai".toExproleCosmosValidators(),
+        getProposalsRef = "fetchai".toGetCosmosProposals(),
+        exploreProposalRef = "fetchai".toExploreCosmosProposals(),
+        getTransactionsRef = "fetchai".toGetCosmosTransactions(),
+        exploreTransactionRef = "fetchai".toExploreCosmosTransaction(),
+        validatorInfoRef = "fetchai".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
