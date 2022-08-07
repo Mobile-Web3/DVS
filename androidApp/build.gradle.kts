@@ -13,7 +13,7 @@ android {
 
         applicationId = "com.mobileweb3.dvs.android"
         versionCode = 1
-        versionName = "1.0"
+        versionName = "0.0.1"
     }
 
     //sign for release
