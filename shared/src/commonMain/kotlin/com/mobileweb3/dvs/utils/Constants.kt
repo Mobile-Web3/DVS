@@ -15,7 +15,7 @@ internal object Constants {
     const val MINTSCAN_VALIDATOR_INFO_END = ".cosmostation.io/v1/staking/validator"
 }
 
-internal fun String.toExproleCosmosValidators(): String {
+internal fun String.toExploreMintScanValidators(): String {
     return "$MINTSCAN_REF/$this/validators"
 }
 

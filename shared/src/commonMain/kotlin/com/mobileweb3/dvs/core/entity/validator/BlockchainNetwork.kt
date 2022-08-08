@@ -1,9 +1,12 @@
 package com.mobileweb3.dvs.core.entity.validator
 
+import com.mobileweb3.dvs.core.entity.network.NetworkExplorer
+import com.mobileweb3.dvs.core.entity.network.MintScanExplorer
+import com.mobileweb3.dvs.core.entity.network.PingPubExplorer
 import com.mobileweb3.dvs.utils.toExploreCosmosProposals
 import com.mobileweb3.dvs.utils.toExploreCosmosTransaction
 import com.mobileweb3.dvs.utils.toGetCosmosProposals
-import com.mobileweb3.dvs.utils.toExproleCosmosValidators
+import com.mobileweb3.dvs.utils.toExploreMintScanValidators
 import com.mobileweb3.dvs.utils.toGetCosmosTransactions
 import com.mobileweb3.dvs.utils.toGetCosmosValidator
 
@@ -12,6 +15,9 @@ enum class BlockchainNetwork(
     val imageRef: String,
     val landingRef: String,
     val validatorsListRef: String? = null,
+
+    val networkExplorer: NetworkExplorer? = null,
+
     val getProposalsRef: String? = null,
     val exploreProposalRef: String? = null,
     val getTransactionsRef: String? = null,
@@ -96,59 +102,39 @@ enum class BlockchainNetwork(
         title = "Juno",
         landingRef = "https://www.junonetwork.io/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/14299.png",
-        validatorsListRef = "juno".toExproleCosmosValidators(),
-        getProposalsRef = "juno".toGetCosmosProposals(),
-        exploreProposalRef = "juno".toExploreCosmosProposals(),
-        getTransactionsRef = "juno".toGetCosmosTransactions(),
-        exploreTransactionRef = "juno".toExploreCosmosTransaction(),
-        validatorInfoRef = "juno".toGetCosmosValidator(),
-        isCosmosNetwork = true
+        validatorsListRef = "juno".toExploreMintScanValidators(),
+        networkExplorer = MintScanExplorer("juno")
     ),
 
     OMNIFLIX(
         title = "Omniflix",
         landingRef = "https://omniflix.network/",
         imageRef = "https://static.tildacdn.com/tild3632-6535-4136-b362-356132663835/omniflix.png",
-        validatorsListRef = "omniflix".toExproleCosmosValidators(),
-        getProposalsRef = "omniflix".toGetCosmosProposals(),
-        exploreProposalRef = "omniflix".toExploreCosmosProposals(),
-        getTransactionsRef = "omniflix".toGetCosmosTransactions(),
-        exploreTransactionRef = "omniflix".toExploreCosmosTransaction(),
-        validatorInfoRef = "omniflix".toGetCosmosValidator(),
-        isCosmosNetwork = true
+        validatorsListRef = "omniflix".toExploreMintScanValidators(),
+        networkExplorer = MintScanExplorer("omniflix")
     ),
 
     EVMOS(
         title = "Evmos",
         landingRef = "https://evmos.org/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/19899.png",
-        validatorsListRef = "evmos".toExproleCosmosValidators(),
-        getProposalsRef = "evmos".toGetCosmosProposals(),
-        exploreProposalRef = "evmos".toExploreCosmosProposals(),
-        getTransactionsRef = "evmos".toGetCosmosTransactions(),
-        exploreTransactionRef = "evmos".toExploreCosmosTransaction(),
-        validatorInfoRef = "evmos".toGetCosmosValidator(),
-        isCosmosNetwork = true
+        validatorsListRef = "evmos".toExploreMintScanValidators(),
+        networkExplorer = MintScanExplorer("evmos")
     ),
 
     STARGAZE(
         title = "Stargaze",
         landingRef = "https://www.stargaze.zone/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/16842.png",
-        validatorsListRef = "stargaze".toExproleCosmosValidators(),
-        getProposalsRef = "stargaze".toGetCosmosProposals(),
-        exploreProposalRef = "stargaze".toExploreCosmosProposals(),
-        getTransactionsRef = "stargaze".toGetCosmosTransactions(),
-        exploreTransactionRef = "stargaze".toExploreCosmosTransaction(),
-        validatorInfoRef = "stargaze".toGetCosmosValidator(),
-        isCosmosNetwork = true
+        validatorsListRef = "stargaze".toExploreMintScanValidators(),
+        networkExplorer = PingPubExplorer("stargaze")
     ),
 
     CERTIK(
         title = "Certik",
         landingRef = "https://www.certik.com/",
         imageRef = "https://www.mintscan.io/_next/static/image/assets/Dashboard/chain_certik.8ae38e6334ad25a00b7808b5747e7374.svg",
-        validatorsListRef = "certik".toExproleCosmosValidators(),
+        validatorsListRef = "certik".toExploreMintScanValidators(),
         getProposalsRef = "certik".toGetCosmosProposals(),
         exploreProposalRef = "certik".toExploreCosmosProposals(),
         getTransactionsRef = "certik".toGetCosmosTransactions(),
@@ -187,7 +173,7 @@ enum class BlockchainNetwork(
         title = "Gravity-Bridge",
         landingRef = "https://gravitybridge.persona.co/",
         imageRef = "https://assets.coingecko.com/coins/images/24818/small/Graviton_-_Blue_200x200i.png?1649038479",
-        validatorsListRef = "gravity-bridge".toExproleCosmosValidators(),
+        validatorsListRef = "gravity-bridge".toExploreMintScanValidators(),
         getProposalsRef = "gravity-bridge".toGetCosmosProposals(),
         exploreProposalRef = "gravity-bridge".toExploreCosmosProposals(),
         getTransactionsRef = "gravity-bridge".toGetCosmosTransactions(),
@@ -200,7 +186,7 @@ enum class BlockchainNetwork(
         title = "Rizon",
         landingRef = "https://rizon.world/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/15388.png",
-        validatorsListRef = "rizon".toExproleCosmosValidators(),
+        validatorsListRef = "rizon".toExploreMintScanValidators(),
         getProposalsRef = "rizon".toGetCosmosProposals(),
         exploreProposalRef = "rizon".toExploreCosmosProposals(),
         getTransactionsRef = "rizon".toGetCosmosTransactions(),
@@ -226,7 +212,7 @@ enum class BlockchainNetwork(
         title = "Bitcanna",
         landingRef = "https://www.bitcanna.io/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/4263.png",
-        validatorsListRef = "bitcanna".toExproleCosmosValidators(),
+        validatorsListRef = "bitcanna".toExploreMintScanValidators(),
         getProposalsRef = "bitcanna".toGetCosmosProposals(),
         exploreProposalRef = "bitcanna".toExploreCosmosProposals(),
         getTransactionsRef = "bitcanna".toGetCosmosTransactions(),
@@ -239,7 +225,7 @@ enum class BlockchainNetwork(
         title = "Bitsong",
         landingRef = "https://bitsong.io/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/8905.png",
-        validatorsListRef = "bitsong".toExproleCosmosValidators(),
+        validatorsListRef = "bitsong".toExploreMintScanValidators(),
         getProposalsRef = "bitsong".toGetCosmosProposals(),
         exploreProposalRef = "bitsong".toExploreCosmosProposals(),
         getTransactionsRef = "bitsong".toGetCosmosTransactions(),
@@ -265,7 +251,7 @@ enum class BlockchainNetwork(
         title = "AssetMantle",
         landingRef = "https://assetmantle.one/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/19686.png",
-        validatorsListRef = "asset-mantle".toExproleCosmosValidators(),
+        validatorsListRef = "asset-mantle".toExploreMintScanValidators(),
         getProposalsRef = "assetmantle".toGetCosmosProposals(),
         exploreProposalRef = "asset-mantle".toExploreCosmosProposals(),
         getTransactionsRef = "asset-mantle".toGetCosmosTransactions(),
@@ -278,7 +264,7 @@ enum class BlockchainNetwork(
         title = "Fetch.ai",
         landingRef = "https://fetch-ai.network/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/3773.png",
-        validatorsListRef = "fetchai".toExproleCosmosValidators(),
+        validatorsListRef = "fetchai".toExploreMintScanValidators(),
         getProposalsRef = "fetchai".toGetCosmosProposals(),
         exploreProposalRef = "fetchai".toExploreCosmosProposals(),
         getTransactionsRef = "fetchai".toGetCosmosTransactions(),
@@ -291,7 +277,7 @@ enum class BlockchainNetwork(
         title = "Akash",
         landingRef = "https://akash.network/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/7431.png",
-        validatorsListRef = "akash".toExproleCosmosValidators(),
+        validatorsListRef = "akash".toExploreMintScanValidators(),
         getProposalsRef = "akash".toGetCosmosProposals(),
         exploreProposalRef = "akash".toExploreCosmosProposals(),
         getTransactionsRef = "akash".toGetCosmosTransactions(),
@@ -304,7 +290,7 @@ enum class BlockchainNetwork(
         title = "Cerberus",
         landingRef = "https://cerberus.zone/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/18900.png",
-        validatorsListRef = "cerberus".toExproleCosmosValidators(),
+        validatorsListRef = "cerberus".toExploreMintScanValidators(),
         getProposalsRef = "cerberus".toGetCosmosProposals(),
         exploreProposalRef = "cerberus".toExploreCosmosProposals(),
         getTransactionsRef = "cerberus".toGetCosmosTransactions(),
@@ -317,7 +303,7 @@ enum class BlockchainNetwork(
         title = "Chihuahua",
         landingRef = "https://www.chihuahua.wtf/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/17208.png",
-        validatorsListRef = "chihuahua".toExproleCosmosValidators(),
+        validatorsListRef = "chihuahua".toExploreMintScanValidators(),
         getProposalsRef = "chihuahua".toGetCosmosProposals(),
         exploreProposalRef = "chihuahua".toExploreCosmosProposals(),
         getTransactionsRef = "chihuahua".toGetCosmosTransactions(),
@@ -330,7 +316,7 @@ enum class BlockchainNetwork(
         title = "Comdex",
         landingRef = "comdex.one/home",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/14713.png",
-        validatorsListRef = "comdex".toExproleCosmosValidators(),
+        validatorsListRef = "comdex".toExploreMintScanValidators(),
         getProposalsRef = "comdex".toGetCosmosProposals(),
         exploreProposalRef = "comdex".toExploreCosmosProposals(),
         getTransactionsRef = "comdex".toGetCosmosTransactions(),
@@ -343,14 +329,29 @@ enum class BlockchainNetwork(
         title = "Crypto.org",
         landingRef = "https://crypto.org/",
         imageRef = "https://avatars.githubusercontent.com/u/78834054?s=200&v=4",
-        validatorsListRef = "cryptocom".toExproleCosmosValidators(),
+        validatorsListRef = "cryptocom".toExploreMintScanValidators(),
         getProposalsRef = "crypto-org".toGetCosmosProposals(),
         exploreProposalRef = "crypto-org".toExploreCosmosProposals(),
         getTransactionsRef = "crypto-org".toGetCosmosTransactions(),
         exploreTransactionRef = "crypto-org".toExploreCosmosTransaction(),
         validatorInfoRef = "cryptocom".toGetCosmosValidator(),
         isCosmosNetwork = true
-    );
+    )
+//    ,
+//
+//    DIG(
+//        title = "Dig",
+//        landingRef = "https://digchain.org/",
+//        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/17748.png",
+//        validatorsListRef = "cryptocom".toExproleCosmosValidators(),
+//        getProposalsRef = "crypto-org".toGetCosmosProposals(),
+//        exploreProposalRef = "crypto-org".toExploreCosmosProposals(),
+//        getTransactionsRef = "crypto-org".toGetCosmosTransactions(),
+//        exploreTransactionRef = "crypto-org".toExploreCosmosTransaction(),
+//        validatorInfoRef = "cryptocom".toGetCosmosValidator(),
+//        isCosmosNetwork = true
+//    )
+    ;
 
 
 }

@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ValidatorInfo(
-    val rank: Long,
+    val rank: Long? = null,
     val status: Int
 )
 

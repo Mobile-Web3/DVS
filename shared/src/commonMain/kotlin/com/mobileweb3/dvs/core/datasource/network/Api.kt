@@ -14,10 +14,10 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 class Api(
-    private val httpClient: HttpClient
+    val httpClient: HttpClient
 ) {
 
-    private val json = Json {
+    val json = Json {
         ignoreUnknownKeys = true
         coerceInputValues = true
     }
@@ -38,11 +38,21 @@ class Api(
         return json.decodeFromString(httpClient.get(url).bodyAsText())
     }
 
-    //cosmos1vvwtk805lxehwle9l4yudmq6mn0g32pxqjlrmt
+    suspend fun getProposalsNew(url: String): List<Proposal> {
+        return json.decodeFromString(httpClient.get(url).bodyAsText())
+    }
+
     suspend fun getValidatorTransactions(url: String): List<Transaction> {
         return json.decodeFromString(
             // also there is another path to get tx-ns "https://api.cosmostation.io/v1/account/txs/$validationAddress?limit=100&from=0"
             httpClient.get("$url?limit=100&from=0").bodyAsText()
+        )
+    }
+
+    suspend inline fun <reified T> getValidatorTransactionsNew(url: String): T {
+        return json.decodeFromString(
+            // also there is another path to get tx-ns "https://api.cosmostation.io/v1/account/txs/$validationAddress?limit=100&from=0"
+            httpClient.get("$url").bodyAsText()
         )
     }
 

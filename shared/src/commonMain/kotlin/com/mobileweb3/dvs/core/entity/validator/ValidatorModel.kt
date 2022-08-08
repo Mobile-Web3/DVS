@@ -77,7 +77,7 @@ data class ValidatorModel(
             )
         }
 
-        val cosmosNetworks = mainNets.filter { it.blockchainNetwork.isCosmosNetwork }
+        val cosmosNetworks = mainNets.filter { it.blockchainNetwork.isCosmosNetwork || it.blockchainNetwork.networkExplorer != null }
         if (cosmosNetworks.isNotEmpty()) {
             resultList.add(
                 ValidatorTopic(
@@ -217,14 +217,6 @@ data class ValidatorNetwork(
     val validatorAddress: String? = null,
     val walletAddress: String? = null,
 ) {
-
-    override fun toString(): String {
-        return if (validatorAddress != null) {
-            "<a href=\"${blockchainNetwork.validatorsListRef}/${validatorAddress}\">${blockchainNetwork.title}</a>"
-        } else {
-            "- ${blockchainNetwork.title}"
-        }
-    }
 
     fun getValidatorPageLink(): String {
         return if (validatorAddress != null) {
