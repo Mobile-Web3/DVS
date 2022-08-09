@@ -350,6 +350,14 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "crypto-org".toExploreCosmosTransaction(),
         validatorInfoRef = "cryptocom".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    DIG(
+        title = "Dig",
+        landingRef = "https://digchain.org/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/17748.png",
+        validatorsListRef = "https://ping.pub/dig/staking",
+        isCosmosNetwork = false
     );
 
 
