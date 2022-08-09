@@ -423,6 +423,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "desmos".toExploreCosmosTransaction(),
         validatorInfoRef = "desmos".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    MEDIBLOC(
+        title = "Medibloc",
+        landingRef = "https://medibloc.com/en/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/2303.png",
+        validatorsListRef = "medibloc".toExproleCosmosValidators(),
+        getProposalsRef = "medibloc".toGetCosmosProposals(),
+        exploreProposalRef = "medibloc".toExploreCosmosProposals(),
+        getTransactionsRef = "medibloc".toGetCosmosTransactions(),
+        exploreTransactionRef = "medibloc".toExploreCosmosTransaction(),
+        validatorInfoRef = "medibloc".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
