@@ -397,6 +397,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "sifchain".toExploreCosmosTransaction(),
         validatorInfoRef = "sifchain".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    SECRET(
+        title = "Secret",
+        landingRef = "https://scrt.network/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/5604.png",
+        validatorsListRef = "secret".toExproleCosmosValidators(),
+        getProposalsRef = "secret".toGetCosmosProposals(),
+        exploreProposalRef = "secret".toExploreCosmosProposals(),
+        getTransactionsRef = "secret".toGetCosmosTransactions(),
+        exploreTransactionRef = "secret".toExploreCosmosTransaction(),
+        validatorInfoRef = "secret".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
