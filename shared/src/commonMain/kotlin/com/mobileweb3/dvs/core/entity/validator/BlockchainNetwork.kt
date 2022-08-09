@@ -91,11 +91,21 @@ enum class BlockchainNetwork(
         validatorsListRef = "https://dashboard.xx.network/nodes"
     ),
 
+    //need to add parsing from ping.pub
     DIG(
         title = "Dig",
         landingRef = "https://digchain.org/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/17748.png",
         validatorsListRef = "https://ping.pub/dig/staking",
+        isCosmosNetwork = false
+    ),
+
+    //need to add parsing from ping.pub
+    IXO(
+        title = "Ixo",
+        landingRef = "https://www.ixo.world/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/14973.png",
+        validatorsListRef = "https://ping.pub/ixo/staking",
         isCosmosNetwork = false
     ),
 
