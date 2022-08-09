@@ -110,9 +110,7 @@ data class ValidatorModel(
             resultList.add(
                 ValidatorTopic(
                     title = "TestNets",
-                    topicContent = testNets.map { network ->
-                        ValidatorTopicContent.SimpleText(network.toString())
-                    },
+                    topicContent = listOf(ValidatorTopicContent.MainNetworks(testNets)),
                     topicIndex = resultList.count()
                 )
             )
