@@ -436,6 +436,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "medibloc".toExploreCosmosTransaction(),
         validatorInfoRef = "medibloc".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    KICHAIN(
+        title = "KI Chain",
+        landingRef = "http://foundation.ki/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/9908.png",
+        validatorsListRef = "kichain".toExproleCosmosValidators(),
+        getProposalsRef = "kichain".toGetCosmosProposals(),
+        exploreProposalRef = "kichain".toExploreCosmosProposals(),
+        getTransactionsRef = "kichain".toGetCosmosTransactions(),
+        exploreTransactionRef = "kichain".toExploreCosmosTransaction(),
+        validatorInfoRef = "kichain".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
