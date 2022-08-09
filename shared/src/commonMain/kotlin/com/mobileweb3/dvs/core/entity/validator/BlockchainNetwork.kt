@@ -384,6 +384,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "regen".toExploreCosmosTransaction(),
         validatorInfoRef = "regen".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    SIFCHAIN(
+        title = "SifChain",
+        landingRef = "https://sifchain.network/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/8541.png",
+        validatorsListRef = "sifchain".toExproleCosmosValidators(),
+        getProposalsRef = "sifchain".toGetCosmosProposals(),
+        exploreProposalRef = "sifchain".toExploreCosmosProposals(),
+        getTransactionsRef = "sifchain".toGetCosmosTransactions(),
+        exploreTransactionRef = "sifchain".toExploreCosmosTransaction(),
+        validatorInfoRef = "sifchain".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
