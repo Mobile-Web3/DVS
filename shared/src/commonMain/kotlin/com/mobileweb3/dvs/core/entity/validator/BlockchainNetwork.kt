@@ -91,6 +91,14 @@ enum class BlockchainNetwork(
         validatorsListRef = "https://dashboard.xx.network/nodes"
     ),
 
+    DIG(
+        title = "Dig",
+        landingRef = "https://digchain.org/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/17748.png",
+        validatorsListRef = "https://ping.pub/dig/staking",
+        isCosmosNetwork = false
+    ),
+
     //cosmos
     JUNO(
         title = "Juno",
@@ -352,12 +360,30 @@ enum class BlockchainNetwork(
         isCosmosNetwork = true
     ),
 
-    DIG(
-        title = "Dig",
-        landingRef = "https://digchain.org/",
-        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/17748.png",
-        validatorsListRef = "https://ping.pub/dig/staking",
-        isCosmosNetwork = false
+    OSMOSIS(
+        title = "Osmosis",
+        landingRef = "https://osmosis.zone/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/12220.png",
+        validatorsListRef = "osmosis".toExproleCosmosValidators(),
+        getProposalsRef = "osmosis".toGetCosmosProposals(),
+        exploreProposalRef = "osmosis".toExploreCosmosProposals(),
+        getTransactionsRef = "osmosis".toGetCosmosTransactions(),
+        exploreTransactionRef = "osmosis".toExploreCosmosTransaction(),
+        validatorInfoRef = "osmosis".toGetCosmosValidator(),
+        isCosmosNetwork = true
+    ),
+
+    REGEN(
+        title = "Regen",
+        landingRef = "www.regen.network",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/11646.png",
+        validatorsListRef = "regen".toExproleCosmosValidators(),
+        getProposalsRef = "regen".toGetCosmosProposals(),
+        exploreProposalRef = "regen".toExploreCosmosProposals(),
+        getTransactionsRef = "regen".toGetCosmosTransactions(),
+        exploreTransactionRef = "regen".toExploreCosmosTransaction(),
+        validatorInfoRef = "regen".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
