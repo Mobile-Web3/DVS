@@ -91,7 +91,15 @@ enum class BlockchainNetwork(
         validatorsListRef = "https://dashboard.xx.network/nodes"
     ),
 
-    //need to add parsing from ping.pub
+    //todo need to add parsing from ping.pub
+    AGORIC(
+        title = "Agoric",
+        landingRef = "https://agoric.com/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/16697.png",
+        validatorsListRef = "https://agoric.bigdipper.live/validators"
+    ),
+
+    //todo need to add parsing from ping.pub
     DIG(
         title = "Dig",
         landingRef = "https://digchain.org/",
@@ -100,12 +108,21 @@ enum class BlockchainNetwork(
         isCosmosNetwork = false
     ),
 
-    //need to add parsing from ping.pub
+    //todo need to add parsing from ping.pub
     IXO(
         title = "Ixo",
         landingRef = "https://www.ixo.world/",
         imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/14973.png",
         validatorsListRef = "https://ping.pub/ixo/staking",
+        isCosmosNetwork = false
+    ),
+
+    //todo need to add parsing from ping.pub
+    GALAXY(
+        title = "Galaxy",
+        landingRef = "",
+        imageRef = "https://raw.githubusercontent.com/galaxies-labs/galaxy-website/main/public/assets/images/logo.svg",
+        validatorsListRef = "https://explorer.postcapitalist.io/galaxy/staking",
         isCosmosNetwork = false
     ),
 
@@ -175,6 +192,7 @@ enum class BlockchainNetwork(
         isCosmosNetwork = true
     ),
 
+    //todo need to add parsing from ping.pub
     BOSTROM(
         title = "Bostrom",
         landingRef = "https://cyb.ai/",
