@@ -72,6 +72,8 @@ data class ValidatorModel(
 
             if (description.isNotEmpty()) {
                 resultTopicsList.add(ValidatorTopicContent.SimpleText(description))
+            } else {
+                resultTopicsList.add(ValidatorTopicContent.SimpleText("More info soon..."))
             }
 
             resultList.add(
