@@ -15,7 +15,13 @@ data class ValidatorModel(
 ) {
 
     val validatingNetworksCount = mainNets.size + testNets.size + genesisNets.size
-    val otherActivities = otherProjects.size + contributionsTypes.size
+    val otherActivities = otherProjects.size + contributionsSize()
+
+    private fun contributionsSize(): Int {
+        var result = 0
+        contributionsTypes.forEach { result += it.contributions.size }
+        return result
+    }
 
     fun validatingNetwork(network: BlockchainNetwork): Boolean {
         return mainNets.any { it.blockchainNetwork == network } ||
