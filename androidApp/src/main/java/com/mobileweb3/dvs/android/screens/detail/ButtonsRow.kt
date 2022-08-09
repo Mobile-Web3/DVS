@@ -9,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.UriHandler
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mobileweb3.dvs.android.ui.composables.DefaultFlowRow
@@ -36,6 +37,8 @@ fun ButtonsRow(
                 Text(
                     modifier = Modifier,
                     text = content.text,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
                     fontSize = 16.sp
                 )
             }
