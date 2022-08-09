@@ -410,6 +410,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "secret".toExploreCosmosTransaction(),
         validatorInfoRef = "secret".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    DESMOS(
+        title = "Desmos",
+        landingRef = "https://www.desmos.network/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/17338.png",
+        validatorsListRef = "desmos".toExproleCosmosValidators(),
+        getProposalsRef = "desmos".toGetCosmosProposals(),
+        exploreProposalRef = "desmos".toExploreCosmosProposals(),
+        getTransactionsRef = "desmos".toGetCosmosTransactions(),
+        exploreTransactionRef = "desmos".toExploreCosmosTransaction(),
+        validatorInfoRef = "desmos".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
