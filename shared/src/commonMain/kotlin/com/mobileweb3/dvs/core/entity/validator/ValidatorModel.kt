@@ -52,7 +52,7 @@ data class ValidatorModel(
             }
 
             stringBuilder
-                .append("Other $otherActivities")
+                .append("Activities $otherActivities")
         }
 
         return stringBuilder.toString()
