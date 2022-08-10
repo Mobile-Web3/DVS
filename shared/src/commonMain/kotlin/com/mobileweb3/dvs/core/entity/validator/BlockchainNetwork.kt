@@ -477,6 +477,20 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "kichain".toExploreCosmosTransaction(),
         validatorInfoRef = "kichain".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    //todo need to add parsing from ping.pub
+    STARNAME(
+        title = "Starname",
+        landingRef = "https://starname.me/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/7271.png",
+        validatorsListRef = "iov".toExproleCosmosValidators(),
+        getProposalsRef = "starname".toGetCosmosProposals(),
+        exploreProposalRef = "starname".toExploreCosmosProposals(),
+        getTransactionsRef = "iov".toGetCosmosTransactions(),
+        exploreTransactionRef = "starname".toExploreCosmosTransaction(),
+        validatorInfoRef = "starname".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
