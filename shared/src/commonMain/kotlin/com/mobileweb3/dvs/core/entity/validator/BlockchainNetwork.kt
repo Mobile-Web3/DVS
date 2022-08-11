@@ -526,6 +526,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "cosmos".toExploreCosmosTransaction(),
         validatorInfoRef = "https://api.cosmostation.io/v1/staking/validator",
         isCosmosNetwork = true
+    ),
+
+    LUM(
+        title = "Lum",
+        landingRef = "https://lum.network/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/17183.png",
+        validatorsListRef = "lum".toExproleCosmosValidators(),
+        getProposalsRef = "lum".toGetCosmosProposals(),
+        exploreProposalRef = "lum".toExploreCosmosProposals(),
+        getTransactionsRef = "lum".toGetCosmosTransactions(),
+        exploreTransactionRef = "lum".toExploreCosmosTransaction(),
+        validatorInfoRef = "lum".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
