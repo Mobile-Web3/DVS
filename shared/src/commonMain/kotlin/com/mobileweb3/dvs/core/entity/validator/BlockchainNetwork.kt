@@ -126,6 +126,15 @@ enum class BlockchainNetwork(
         isCosmosNetwork = false
     ),
 
+    //todo need to add parsing from ping.pub
+    ODIN(
+        title = "Odin",
+        landingRef = "https://odinprotocol.io/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/9546.png",
+        validatorsListRef = "https://ping.pub/odin/staking",
+        isCosmosNetwork = false
+    ),
+
     //cosmos
     JUNO(
         title = "Juno",
