@@ -539,6 +539,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "lum".toExploreCosmosTransaction(),
         validatorInfoRef = "lum".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    UMEE(
+        title = "Umee",
+        landingRef = "https://umee.cc/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/16389.png",
+        validatorsListRef = "umee".toExproleCosmosValidators(),
+        getProposalsRef = "umee".toGetCosmosProposals(),
+        exploreProposalRef = "umee".toExploreCosmosProposals(),
+        getTransactionsRef = "umee".toGetCosmosTransactions(),
+        exploreTransactionRef = "umee".toExploreCosmosTransaction(),
+        validatorInfoRef = "umee".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
