@@ -190,14 +190,14 @@ enum class BlockchainNetwork(
 
     CERTIK(
         title = "Certik",
-        landingRef = "https://www.certik.com/",
-        imageRef = "https://www.mintscan.io/_next/static/image/assets/Dashboard/chain_certik.8ae38e6334ad25a00b7808b5747e7374.svg",
-        validatorsListRef = "certik".toExproleCosmosValidators(),
-        getProposalsRef = "certik".toGetCosmosProposals(),
-        exploreProposalRef = "certik".toExploreCosmosProposals(),
-        getTransactionsRef = "certik".toGetCosmosTransactions(),
-        exploreTransactionRef = "certik".toExploreCosmosTransaction(),
-        validatorInfoRef = "certik".toGetCosmosValidator(),
+        landingRef = "https://www.shentu.technology/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/4807.png",
+        validatorsListRef = "shentu".toExproleCosmosValidators(),
+        getProposalsRef = "shentu".toGetCosmosProposals(),
+        exploreProposalRef = "shentu".toExploreCosmosProposals(),
+        getTransactionsRef = "shentu".toGetCosmosTransactions(),
+        exploreTransactionRef = "shentu".toExploreCosmosTransaction(),
+        validatorInfoRef = "shentu".toGetCosmosValidator(),
         isCosmosNetwork = true
     ),
 
