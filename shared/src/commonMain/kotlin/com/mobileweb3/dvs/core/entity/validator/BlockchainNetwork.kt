@@ -491,6 +491,19 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "starname".toExploreCosmosTransaction(),
         validatorInfoRef = "starname".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    PERSISTENCE(
+        title = "Persistence",
+        landingRef = "https://persistence.one/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/7281.png",
+        validatorsListRef = "persistence".toExproleCosmosValidators(),
+        getProposalsRef = "persistence".toGetCosmosProposals(),
+        exploreProposalRef = "persistence".toExploreCosmosProposals(),
+        getTransactionsRef = "persistence".toGetCosmosTransactions(),
+        exploreTransactionRef = "persistence".toExploreCosmosTransaction(),
+        validatorInfoRef = "persistence".toGetCosmosValidator(),
+        isCosmosNetwork = true
     );
 
 
