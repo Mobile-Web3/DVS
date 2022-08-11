@@ -552,6 +552,15 @@ enum class BlockchainNetwork(
         exploreTransactionRef = "umee".toExploreCosmosTransaction(),
         validatorInfoRef = "umee".toGetCosmosValidator(),
         isCosmosNetwork = true
+    ),
+
+    //todo add parsing https://cosmosrun.info/kujira/staking
+    KUJIRA(
+        title = "Kujira",
+        landingRef = "https://kujira.app/",
+        imageRef = "https://s2.coinmarketcap.com/static/img/coins/64x64/15185.png",
+        validatorsListRef = "https://cosmosrun.info/kujira/staking",
+        isCosmosNetwork = false
     );
 
 
