@@ -21,10 +21,32 @@ struct ValidatorContactsRow: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
                 ForEach(topicContactItems) { contactItem in
-                    Image(contactItem.contact.type)
-                        .onTapGesture {
+                    Button(
+                        action: {
                             UIApplication.shared.open(URL(string: contactItem.contact.link)!)
+                        },
+                        label: {
+                            HStack {
+                                Spacer().frame(width: 2)
+                                
+                                Image(contactItem.contact.type)
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                    .onTapGesture {
+                                        UIApplication.shared.open(URL(string: contactItem.contact.link)!)
+                                    }
+                                
+                                Text(contactItem.contact.type)
+                                    .foregroundColor(Color.white)
+                                
+                                Spacer().frame(width: 2)
+                            }
                         }
+                    )
+                    .padding(8)
+                    .background(PurpleColor)
+                    .font(Font.subheadline.weight(.bold))
+                    .cornerRadius(100)
                 }
             }
         }
