@@ -130,14 +130,6 @@ fun ValidatorDetailsContent(
         Column(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(
-                    start = 16.dp,
-                    end = 16.dp
-                )
-            //                .verticalScroll(
-            //                    state = rememberScrollState(),
-            //                    enabled = true
-            //                )
         ) {
             val uriHandler = LocalUriHandler.current
             val context = LocalContext.current

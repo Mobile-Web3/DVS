@@ -36,6 +36,8 @@ fun ContactsButtonsRow(
                 enabled = true
             )
     ) {
+        Spacer(modifier = Modifier.width(8.dp))
+
         topicContent.contacts.forEachIndexed { index, content ->
             Button(
                 modifier = Modifier.height(40.dp),
@@ -67,5 +69,7 @@ fun ContactsButtonsRow(
                 Spacer(modifier = Modifier.width(8.dp))
             }
         }
+
+        Spacer(modifier = Modifier.width(8.dp))
     }
 }

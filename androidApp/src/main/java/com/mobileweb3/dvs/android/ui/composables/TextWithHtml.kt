@@ -23,7 +23,7 @@ fun TextWithHtml(
         text = textWithLinks,
         style = LocalTextStyle.current,
         modifier = modifier
-            .padding(bottom = 8.dp)
+            .padding(8.dp)
             .verticalScroll(rememberScrollState()),
         onClick = { offset ->
             textWithLinks.getStringAnnotations(

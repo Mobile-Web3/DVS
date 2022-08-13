@@ -11,7 +11,7 @@ fun DefaultFlowRow(
     content: @Composable () -> Unit
 ) {
     FlowRow(
-        modifier = Modifier.padding(bottom = 16.dp),
+        modifier = Modifier.padding(8.dp),
         mainAxisSpacing = 8.dp,
         crossAxisSpacing = 8.dp
     ) {

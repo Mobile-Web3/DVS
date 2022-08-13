@@ -21,7 +21,9 @@ fun ButtonsRow(
     uriHandler: UriHandler,
     context: Context
 ) {
-    DefaultFlowRow {
+    DefaultFlowRow(
+
+    ) {
         topicContent.buttons.forEach { content ->
             Button(
                 modifier = Modifier.height(40.dp),
