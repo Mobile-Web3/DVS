@@ -62,7 +62,8 @@ fun SearchNetworkContent(
 
     NetworksGrid(
         blockchainNetworks = searchState.networks,
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier
+            .padding(top = 16.dp, start = 16.dp, end = 16.dp)
     ) {
         searchNetworkStore.dispatch(SearchNetworkAction.NetworkSelected(it))
     }
