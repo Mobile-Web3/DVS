@@ -97,12 +97,14 @@ fun ValidatorDetailsContent(
         Row(
             modifier = modifier
                 .fillMaxWidth()
-                .padding(8.dp)
+                .padding(vertical = 8.dp)
                 .horizontalScroll(
                     state = rememberScrollState(),
                     enabled = true
                 )
         ) {
+            Spacer(modifier = Modifier.width(8.dp))
+
             topics.forEachIndexed { index, validatorTopic ->
                 Button(
                     onClick = {
@@ -121,6 +123,8 @@ fun ValidatorDetailsContent(
                     Spacer(modifier = modifier.width(8.dp))
                 }
             }
+
+            Spacer(modifier = Modifier.width(8.dp))
         }
 
         Column(
