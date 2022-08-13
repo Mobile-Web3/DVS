@@ -69,6 +69,7 @@ class SearchNetworkStore : Store<SearchNetworkState, SearchNetworkAction, Search
             }
             is SearchNetworkAction.NetworkSelectCanceled -> {
                 oldState.copy(
+                    networks = allNetworks,
                     selectedNetwork = null,
                     validatorsByNetwork = emptyList()
                 )
