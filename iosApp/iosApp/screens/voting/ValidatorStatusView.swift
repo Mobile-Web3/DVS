@@ -11,8 +11,8 @@ import shared
 
 struct ValidatorStatusView: View {
     
-    var validatorAvatar: String
-    var networkAvatar: String
+    var validatorModel: ValidatorModel
+    var network: ValidatorNetwork
     var validatorInfo: RequestStatus<ValidatorInfo>
     
     var body: some View {
@@ -60,12 +60,17 @@ struct ValidatorStatusView: View {
             
             Spacer()
             
-            RemoteImageView(urlString: validatorAvatar, size: 50) { colors in
+            RemoteImageView(urlString: validatorModel.avatar, size: 50) { colors in
                 
             }
+            .onTapGesture {
+                UIApplication.shared.open(URL(string: network.getValidatorPageLink())!)
+            }
             
-            RemoteImageView(urlString: networkAvatar, size: 50) { colors in
+            RemoteImageView(urlString: network.blockchainNetwork.imageRef, size: 50) { colors in
                 
+            }.onTapGesture {
+                UIApplication.shared.open(URL(string: network.blockchainNetwork.landingRef)!)
             }
         }
     }

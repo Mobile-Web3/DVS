@@ -33,8 +33,8 @@ struct ValidatorVotingView: ValidatorVotesConnectedView {
             ValidatorVotingHeader()
             
             ValidatorStatusView(
-                validatorAvatar: props.state.validatorModel!.avatar,
-                networkAvatar: props.state.network!.blockchainNetwork.imageRef,
+                validatorModel: props.state.validatorModel!,
+                network: props.state.network!,
                 validatorInfo: props.state.validatorInfo
             )
             
