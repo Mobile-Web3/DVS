@@ -69,11 +69,11 @@ val stakrspace = ValidatorModel(
     ),
     contacts = listOf(
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://stakr.space/#contact"
         ),
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/papanomad535/blog"
         )
     ),

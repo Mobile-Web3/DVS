@@ -23,15 +23,15 @@ val Quantum_AI = ValidatorModel(
     contributionsTypes = emptyList(),
     contacts = listOf(
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/Widlar/"
         ),
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/sm_quantum"
         ),
         Contact(
-            type = "keybase",
+            type = "Keybase",
             link = "https://keybase.io/quantum_ai"
         )
     ),

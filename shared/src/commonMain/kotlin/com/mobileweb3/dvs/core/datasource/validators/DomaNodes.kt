@@ -48,11 +48,11 @@ val DomaNodes = ValidatorModel(
     ),
     contacts = listOf(
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/doma2k"
         ),
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/domanodes"
         )
     ),

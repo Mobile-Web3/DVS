@@ -151,27 +151,27 @@ val cyberG = ValidatorModel(
     ),
     contacts = listOf(
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://www.cyberg.digital/"
         ),
         Contact(
-            type = "twitter",
+            type = "Twitter",
             link = "https://twitter.com/vadyhodler777"
         ),
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/cryptoq11"
         ),
         Contact(
-            type = "medium",
+            type = "Medium",
             link = "https://88vgk88.medium.com/"
         ),
         Contact(
-            type = "instagram",
+            type = "Instagram",
             link = "https://www.instagram.com/vadim.k88/"
         ),
         Contact(
-            type = "keybase",
+            type = "Keybase",
             link = "https://keybase.io/vgk8888"
         )
     ),

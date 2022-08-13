@@ -75,15 +75,15 @@ val ParanormalBrothers = ValidatorModel(
     ),
     contacts = listOf(
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/ParanormalBrothers"
         ),
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/nordhedgehog"
         ),
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://paranormal-brothers.com/"
         )
     )

@@ -47,15 +47,15 @@ val anvi79 = ValidatorModel(
     contributionsTypes = emptyList(),
     contacts = listOf(
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/79anvi"
         ),
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/Andrei2cards"
         ),
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://79anvi.com/"
         )
     ),

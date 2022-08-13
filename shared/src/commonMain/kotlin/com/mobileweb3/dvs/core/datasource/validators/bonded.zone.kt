@@ -74,27 +74,27 @@ val bonded_zone = ValidatorModel(
     ),
     contacts = listOf(
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://bonded.zone/"
         ),
         Contact(
-            type = "medium",
+            type = "Medium",
             link = "https://bondedzone.medium.com/"
         ),
         Contact(
-            type = "twitter",
+            type = "Twitter",
             link = "https://twitter.com/SKosjakoff"
         ),
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/kosjakoff"
         ),
         Contact(
-            type = "discord",
+            type = "Discord",
             link = "https://discord.com/users/864778911548309506"
         ),
         Contact(
-            type = "keybase",
+            type = "Keybase",
             link = "https://keybase.io/kosjakoff"
         )
     ),

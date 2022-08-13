@@ -22,11 +22,11 @@ val KURASH = ValidatorModel(
     contributionsTypes = emptyList(),
     contacts = listOf(
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/AlexeySergeeich"
         ),
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/kuraassh"
         ),
     ),

@@ -22,11 +22,11 @@ val Artemis_red = ValidatorModel(
     contributionsTypes = emptyList(),
     contacts = listOf(
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/Artemisred"
         ),
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/Art3misred"
         )
     ),

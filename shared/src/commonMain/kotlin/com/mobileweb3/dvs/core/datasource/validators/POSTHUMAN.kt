@@ -180,31 +180,27 @@ val POSTHUMAN = ValidatorModel(
     ),
     contacts = listOf(
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://posthuman.digital/"
         ),
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/Antropocosmist/my_competencies"
         ),
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/antropocosmist"
         ),
         Contact(
-            type = "website",
-            link = "https://posthuman.digital/"
-        ),
-        Contact(
-            type = "twitter",
+            type = "Twitter",
             link = "https://twitter.com/POSTHUMAN_DVS"
         ),
         Contact(
-            type = "medium",
+            type = "Medium",
             link = "https://antropocosmist.medium.com/"
         ),
         Contact(
-            type = "email",
+            type = "Email",
             link = "validator@posthuman.digital"
         )
     ),

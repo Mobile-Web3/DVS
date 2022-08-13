@@ -22,15 +22,15 @@ val BananaMaker = ValidatorModel(
     contributionsTypes = emptyList(),
     contacts = listOf(
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/Stalisnav"
         ),
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/Filantro"
         ),
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://bananamaker.net/"
         )
     ),

@@ -90,15 +90,15 @@ val ECO_Stake = ValidatorModel(
     ),
     contacts = listOf(
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://www.ecostake.com/"
         ),
         Contact(
-            type = "discord",
+            type = "Discord",
             link = "https://discord.gg/MuB7qfBncg"
         ),
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/eco-stake"
         )
     ),

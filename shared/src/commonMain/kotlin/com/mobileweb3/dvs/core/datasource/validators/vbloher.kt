@@ -79,19 +79,19 @@ val vbloher = ValidatorModel(
     ),
     contacts = listOf(
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://vbloher.com/"
         ),
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/vbloher"
         ),
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/vbloher"
         ),
         Contact(
-            type = "keybase",
+            type = "Keybase",
             link = "https://keybase.io/vbloher"
         )
     ),

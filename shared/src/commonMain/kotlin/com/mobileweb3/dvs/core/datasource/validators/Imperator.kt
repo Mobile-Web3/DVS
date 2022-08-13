@@ -54,7 +54,7 @@ val Imperator = ValidatorModel(
     ),
     contacts = listOf(
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://imperator.co/"
         )
     ),

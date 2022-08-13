@@ -178,23 +178,23 @@ val web34ever = ValidatorModel(
     ),
     contacts = listOf(
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/hekit"
         ),
         Contact(
-            type = "twitter",
+            type = "Twitter",
             link = "https://twitter.com/web34ever"
         ),
         Contact(
-            type = "keybase",
+            type = "Keybase",
             link = "https://keybase.io/web34ever"
         ),
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/cybernekit"
         ),
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://web34ever.network/"
         )
     ),

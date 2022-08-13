@@ -176,7 +176,7 @@ fun ValidatorDetailsContent(
                         }
                     }
                     is ValidatorTopicContent.Contacts -> {
-                        RowValidatorContacts(topicContent.contacts, modifier.padding(bottom = 8.dp))
+                        ContactsButtonsRow(topicContent, uriHandler)
                     }
                 }
             }

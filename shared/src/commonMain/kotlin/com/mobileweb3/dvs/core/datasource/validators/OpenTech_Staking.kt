@@ -31,7 +31,7 @@ val OpenTechStaking = ValidatorModel(
     contributionsTypes = emptyList(),
     contacts = listOf(
         Contact(
-            type = "website",
+            type = "Website",
             link = "https://validators.network/"
         )
     ),

@@ -27,7 +27,7 @@ val moonsoon = ValidatorModel(
     contributionsTypes = emptyList(),
     contacts = listOf(
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/tt1000vv"
         )
     ),

@@ -64,11 +64,11 @@ val Godshunter = ValidatorModel(
     ),
     contacts = listOf(
         Contact(
-            type = "github",
+            type = "Github",
             link = "https://github.com/godshunter"
         ),
         Contact(
-            type = "telegram",
+            type = "Telegram",
             link = "https://t.me/godshunter"
         )
     ),
