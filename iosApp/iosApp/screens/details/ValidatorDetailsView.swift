@@ -111,7 +111,7 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                             )
                             .foregroundColor(Color.white)
                         }
-                        .padding(.horizontal, 16)
+                        .padding(.horizontal, 4)
                     
                     case is ValidatorTopicContent.ButtonsWithRefFlow:
                         FlowLayout(
@@ -135,7 +135,6 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                                 .cornerRadius(100)
                             }
                         )
-                        .padding(.horizontal, 16)
                         
                     case is ValidatorTopicContent.MainNetworks:
                         ScrollView(.vertical, showsIndicators: false) {
@@ -150,7 +149,6 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                                 }
                             }
                         }
-                        .padding(.horizontal, 16)
                         
                     case is ValidatorTopicContent.VotingNetworks:
                         ScrollView(.vertical, showsIndicators: false) {
@@ -166,13 +164,11 @@ struct ValidatorDetailsView: ValidatorDetailsConnectedView {
                                 }
                             }
                         }
-                        .padding(.horizontal, 16)
                         
                     case is ValidatorTopicContent.Contacts:
                         ValidatorContactsRow(
                             topicContacts: (content.content as! ValidatorTopicContent.Contacts).contacts
                         )
-                        .padding(.horizontal, 16)
                         
                     default:
                         Text("default")
